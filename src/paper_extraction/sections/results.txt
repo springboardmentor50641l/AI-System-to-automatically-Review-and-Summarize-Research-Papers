@@ -1,0 +1,19 @@
+display strong correlation views between
+users' sentiments toward corresponding keywords and the real-world
+events.
+
+
+the primary aim of this research is to assist scholars in identifying
+high-quality research papers on sentiment analysis. our approach
+involves sentiment analysis of youtube comments using citation
+sentences based on an existing annotated corpus consisting of 1500
+citation sentences. data cleansing involved the application of various
+normalization rules to eliminate noise from the comments in the
+corpus.
+
+
+_keywords_ - sentimental analysis; citations; machine learning;
+classification;
+
+
+**1.** **

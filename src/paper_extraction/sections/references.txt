@@ -1,0 +1,89 @@
+[1] Athar, A. (2014). Sentiment analysis of scientific citations
+(No. UCAMCL-TR-856). University of Cambridge,
+Computer Laboratory.
+
+
+[2] Athar, A., Teufel, S. (2012, July). Detection of implicit
+citations for sentiment detection of the
+Workshop on Detecting  Structure in Scholarly
+Discourse (ppp. 18-26).
+
+
+[3] Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V.,
+Thirion, B., Grisel, O., ... &Vanderplas J. (2011). Scikit-learn:
+Machine learning in Python. Journal of machine learning
+research.
+
+
+[4] Poria S, Cambria E, Gelbukh A, Bisio F, Hussain A (2015)
+Sentiment data flow analysis by means of dynamic linguistic
+patterns
+
+[5] Turney PD, Mohammad SM (2014) Experiments with three
+approaches to recognizing lexical entailment.
+
+
+
+ISBN: 979-8-3503-5681-6/24/$31.00©2024 IEEE
+573
+
+
+Authorized licensed use limited to: VIT University. Downloaded on August 17,2025 at 14:21:44 UTC from IEEE Xplore. Restrictions apply.
+
+
+2024 1 [st] International Conference on Advances in Computing, Communication and Networking (ICAC2N)
+
+
+[6] Parvathy G, Bindhu JS (2016) A probabilistic generative
+model for mining cybercriminal network from online social
+media: a review.
+
+[7] Qazvinian, V., &Radev, D. R. (2010, July). Identifying nonexplicit citing sentences for citation-based summarization. In
+Proceedings of the 48th annual meeting of the association for
+computational linguistics (pp. 555-564). Association for
+Computational Linguistics.
+
+[8] Socher R (2016) deep learning for sentiment analysis—
+invited talk. In: Proceedings of the 7th workshop on
+computational approaches to subjectivity, sentiment and
+social media analysis.
+
+[9] Sobhani P, Mohammad S, Kiritchenko S (2016) Detecting
+stance in tweets and analyzing its interaction with sentiment.
+In: Proceedings of the 5th joint conference on lexical and
+computational semantics.
+
+[10] Saif, H., He, Y., & Alani, H. (2012, November). Semantic
+sentiment analysis of twitter. In international semantic web
+conference (pp. 508- 524). Springer, Berlin, Heidelberg.
+
+[11] Dashtipour K, Poria S, Hussain A, Cambria E, Hawalah AY,
+Gelbukh A, Zhou Q (2016) Multilingual sentiment analysis:
+state of the art and independent comparison of techniques.
+
+[12] Efthymios Kouloumpis, Theresa Wilson, and Johanna Moore.
+Twitter Sentiment Analysis: The Good the Bad and the OMG!
+In Proceedings of the Fifth International Conference on
+Weblogs and Social Media, ICWSM, (2011).
+
+[13] Cambria E, White B (2014) Jumping NLP curves: a review of
+natural language processing research.
+
+[14] Mohammad SM, Zhu X, Kiritchenko S, Martin J (2015)
+Sentiment, emotion, purpose, and style in electoral tweets.
+
+
+[15] G. Eason, B. Noble, and I.N. Sneddon, “On certain integrals
+of Lipschitz-Hankel type involving products of Bessel
+functions,” Phil. Trans. Roy. Soc. London, vol. A247, pp. 529551, April 1955. (references)
+
+
+[16] J. Clerk Maxwell, A Treatise on Electricity and Magnetism,
+3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68-73.
+
+
+ISBN: 979-8-3503-5681-6/24/$31.00©2024 IEEE
+574
+
+
+Authorized licensed use limited to: VIT University. Downloaded on August 17,2025 at 14:21:44 UTC from IEEE Xplore. Restrictions apply.
