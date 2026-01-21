@@ -5,47 +5,37 @@ import time
 def select_and_download_pdfs(papers, required_count=3, folder="papers"):
     os.makedirs(folder, exist_ok=True)
 
-    downloaded_papers = []
+    downloaded = []
+    failed = []
 
     for paper in papers:
-        if len(downloaded_papers) >= required_count:
+        if len(downloaded) >= required_count:
             break
 
         url = paper.get("downloadUrl")
         if not url:
+            failed.append(paper)
             continue
 
-        # Retry logic
-        for attempt in range(3):
-            try:
-                response = requests.get(
-                    url,
-                    allow_redirects=True,
-                    timeout=40
-                )
+        try:
+            response = requests.get(url, allow_redirects=True, timeout=40)
+            content_type = response.headers.get("Content-Type", "").lower()
 
-                content_type = response.headers.get("Content-Type", "").lower()
+            if "pdf" not in content_type:
+                failed.append(paper)
+                continue
 
-                if "pdf" not in content_type:
-                    break  # not a PDF, don't retry
+            file_path = os.path.join(
+                folder, f"paper_{len(downloaded) + 1}.pdf"
+            )
 
-                file_path = os.path.join(
-                    folder, f"paper_{len(downloaded_papers) + 1}.pdf"
-                )
+            with open(file_path, "wb") as f:
+                f.write(response.content)
 
-                with open(file_path, "wb") as f:
-                    f.write(response.content)
+            downloaded.append(paper)
+            print(f"Downloaded PDF {len(downloaded)}")
 
-                downloaded_papers.append(paper)
-                print(f"Downloaded PDF {len(downloaded_papers)}")
-                break  # success, stop retrying
+        except Exception:
+            failed.append(paper)
 
-            except requests.exceptions.Timeout:
-                print("Timeout occurred, retrying...")
-                time.sleep(2)
-
-            except Exception as e:
-                print(f"Skipping paper due to error: {e}")
-                break
-
-    return downloaded_papers
+    return downloaded, failed

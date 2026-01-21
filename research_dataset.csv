@@ -1,18 +1,12 @@
-title,authors,year,citations,pdf_path
-"Beyond Volume: The Impact of Complex Healthcare Data on the Machine
-  Learning Pipeline","A Arcuri, AL Rector, AM Wood, AS Glas, B Kulis, C Cortes, C Sammut, CC Diamond, CD Kidd, CR MacIntyre, DP Lewis, E Koumoundouros, E Rahm, EM Knorr, ES Fisher, GE Box, GM Weber, H Carter, H He, H Meyer, H Quan, HH Hoos, I Yoo, J Andreu-Perez, J Fan, J Zhao, JD Lafferty, JM Bland, JW Graham, K Lange, KP Murphy, LA King, LM Collins, M Azarm-Daigle, M Kantardzic, M Sokolova, MA Stoto, N Oreskes, PB Jensen, PK Lindenauer, PM Visscher, RJ Little, V López, V Sessions, VN Vapnik, W Raghupathi, Y Luo",2017,0,papers/paper_1.pdf
-Privacy-preserving scoring of tree ensembles : a novel framework for AI in healthcare,"De Cock, Martine, Dowsley, Rafael, Fritchman, Kyle, Hughes, Tyler, Nascimento, Anderson, Saminathan, Keerthanaa, Teredesai, Ankur",2018,0,papers/paper_2.pdf
-"Towards Deep Learning Models for Psychological State Prediction using
-  Smartphone Data: Challenges and Opportunities","Mehrotra, Abhinav, Mikelsons, Gatis, Musolesi, Mirco, Smith, Matthew",2017,0,papers/paper_3.pdf
-Machine Learning in healthcare,"Towards Deep Learning Models for Psychological State Prediction using
-  Smartphone Data: Challenges and Opportunities","Mehrotra, Abhinav, Mikelsons, Gatis, Musolesi, Mirco, Smith, Matthew",2017,0,papers\machine_learning_in_healthcare/paper_1.pdf
-Blockchain,A Systematic Review of Blockchain Literature in Logistics and Supply Chain Management: Identifying Research Questions and Future Directions,"Dobrovnik, Mario, Herold, David Martin, Kummer, Sebastian, Mikl, Jasmin, Schäfer, Nicole",2020,0,papers\blockchain/paper_1.pdf
-Cyber security,Malicious email mitigation strategies,Australian Cyber Security Centre,,0,papers\cyber_security/paper_1.pdf
-Cyber security,Governing cyber security through networks : an analysis of cyber security coordination in Belgium,"Rondelez, Rafaël",2015.0,0,papers\cyber_security/paper_2.pdf
-Cyber security,Governing cyber security through networks : an analysis of cyber security coordination in Belgium,"Rondelez, Rafaël",2018.0,0,papers\cyber_security/paper_3.pdf
-Machine Learning in healthcare,Privacy-preserving scoring of tree ensembles : a novel framework for AI in healthcare,"De Cock, Martine, Dowsley, Rafael, Fritchman, Kyle, Hughes, Tyler, Nascimento, Anderson, Saminathan, Keerthanaa, Teredesai, Ankur",2018,0,papers\machine_learning_in_healthcare/paper_1.pdf
-Machine Learning in healthcare,"Towards Deep Learning Models for Psychological State Prediction using
-  Smartphone Data: Challenges and Opportunities","Mehrotra, Abhinav, Mikelsons, Gatis, Musolesi, Mirco, Smith, Matthew",2017,0,papers\machine_learning_in_healthcare/paper_2.pdf
-Blockchain,A Systematic Review of Blockchain Literature in Logistics and Supply Chain Management: Identifying Research Questions and Future Directions,"Dobrovnik, Mario, Herold, David Martin, Kummer, Sebastian, Mikl, Jasmin, Schäfer, Nicole",2020,0,papers\blockchain/paper_1.pdf
-Blockchain,How blockchain impacts cloud-based system performance: a case study for a groupware communication application,"Beck, Roman, Eklund, Peter, Spasovski, Jason",2019,0,papers\blockchain/paper_2.pdf
-Blockchain,The Evolution of Embedding Metadata in Blockchain Transactions,"Courtois, Nicolas, Faisal, Tooba, Serguieva, Antoaneta",2018,0,papers\blockchain/paper_3.pdf
+paper_id,title,year,url,pdf_path,availability_status
+1,Adverse Drug Reaction Classification With Deep Neural Networks,2016,https://core.ac.uk/download/74210625.pdf,papers\convolutional_neural_network/paper_1.pdf,AVAILABLE
+2,"Isointense infant brain MRI segmentation with a dilated convolutional
+  neural network",2017,https://core.ac.uk/download/577048523.pdf,papers\convolutional_neural_network/paper_2.pdf,AVAILABLE
+3,Deep Spiking Neural Network model for time-variant signals classification: a real-time speech recognition approach,2018,https://core.ac.uk/download/286563118.pdf,papers\convolutional_neural_network/paper_3.pdf,AVAILABLE
+1,Improving SIEM for critical SCADA water infrastructures using machine learning,2019,https://core.ac.uk/download/228178519.pdf,papers\anomaly_detection_using_machine_learning/paper_1.pdf,AVAILABLE
+2,Support Vector Machine for Network Intrusion and Cyber-Attack Detection,2017,https://core.ac.uk/download/228195501.pdf,papers\anomaly_detection_using_machine_learning/paper_2.pdf,AVAILABLE
+3,"SENATUS: An Approach to Joint Traffic Anomaly Detection and Root Cause
+  Analysis",2017,https://core.ac.uk/download/636668068.pdf,papers\anomaly_detection_using_machine_learning/paper_3.pdf,AVAILABLE
+1,Artificial intelligence in the cyber domain: Offense and defense,2020,https://core.ac.uk/download/323112801.pdf,papers\malware_detection_using_deep_learning/paper_1.pdf,AVAILABLE
+2,PowerDrive: Accurate De-Obfuscation and Analysis of PowerShell Malware,2019,https://core.ac.uk/download/220682597.pdf,papers\malware_detection_using_deep_learning/paper_2.pdf,AVAILABLE
+3,Wild Patterns: Ten Years After the Rise of Adversarial Machine Learning,2018,https://core.ac.uk/download/160465850.pdf,papers\malware_detection_using_deep_learning/paper_3.pdf,AVAILABLE
