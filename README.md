@@ -179,13 +179,3 @@ under guided milestone-based evaluation.
 📜 License
 For academic and educational use only.
 
-⭐ Milestone 1 successfully completed.
-
----
-
-If you want next, I can also help you:
-
-✅ make README visually attractive with badges  
-✅ prepare Week-3 README in advance  
-✅ write mentor explanation script  
-✅ add architecture diagram section  
