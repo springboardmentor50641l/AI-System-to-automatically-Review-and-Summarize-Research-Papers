@@ -47,13 +47,13 @@ Dataset Preparation
 
 ## 🧱 Project Structure
 
-AI-System-to-automatically-Review-and-Summarize-Research-Papers
+AI-System-to-automatically-Review-and-Summarize-Research-Papers/
 │
 ├── data/
 │ ├── papers/ # Downloaded research PDFs
 │ ├── metadata/
-│ │ └── papers_metadata.json # Paper metadata
-│ └── dataset.json # Final dataset
+│ │ └── papers_metadata.json # Research paper metadata
+│ └── dataset.json # Final prepared dataset
 │
 ├── src/
 │ ├── init.py
