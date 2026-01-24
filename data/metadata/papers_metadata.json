@@ -1,0 +1,42 @@
+[
+  {
+    "paper_id": "6e6c03c3a971ca0d17f21bd094beaca51b514676",
+    "title": "Identifying Ethical Considerations for Machine Learning Healthcare Applications",
+    "authors": [
+      "Danton S. Char",
+      "M. Abràmoff",
+      "C. Feudtner"
+    ],
+    "year": 2020,
+    "abstract": "Abstract Along with potential benefits to healthcare delivery, machine learning healthcare applications (ML-HCAs) raise a number of ethical concerns. Ethical evaluations of ML-HCAs will need to struct...",
+    "citation_count": 272,
+    "pdf_url": "https://europepmc.org/articles/pmc7737650?pdf=render",
+    "venue": "American Journal of Bioethics",
+    "search_topic": "machine learning healthcare",
+    "pdf_downloaded": true,
+    "file_name": "Identifying_Ethical_Considerations_for_Machine_Lea_20260124.pdf",
+    "file_path": "C:\\Users\\hp\\Research-Review-AI\\data\\papers\\Identifying_Ethical_Considerations_for_Machine_Lea_20260124.pdf",
+    "download_date": "2026-01-24T03:03:31.298635",
+    "file_size": 486803
+  },
+  {
+    "paper_id": "a7b19803f0bda248540ef9d1889b6911dffadd49",
+    "title": "Generating high-fidelity synthetic patient data for assessing machine learning healthcare software",
+    "authors": [
+      "A. Tucker",
+      "Zhenchen Wang",
+      "Ylenia Rotalinti"
+    ],
+    "year": 2020,
+    "abstract": "There is a growing demand for the uptake of modern artificial intelligence technologies within healthcare systems. Many of these technologies exploit historical patient health data to build powerful p...",
+    "citation_count": 186,
+    "pdf_url": "https://www.nature.com/articles/s41746-020-00353-9.pdf",
+    "venue": "npj Digital Medicine",
+    "search_topic": "machine learning healthcare",
+    "pdf_downloaded": true,
+    "file_name": "Generating_high-fidelity_synthetic_patient_data_fo_20260124.pdf",
+    "file_path": "C:\\Users\\hp\\Research-Review-AI\\data\\papers\\Generating_high-fidelity_synthetic_patient_data_fo_20260124.pdf",
+    "download_date": "2026-01-24T03:03:41.035119",
+    "file_size": 2145916
+  }
+]

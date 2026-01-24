@@ -1,5 +1,14 @@
-# AI-System-to-automatically-Review-and-Summarize-Research-Papers
+# AI Research Paper Reviewer - Milestone 1
 
-This system automates the process of creating systematic reviews of academic papers
-through a structured workflow. It handles everything from initial paper search to final draft
-generation using a directed graph architecture.
+## Project Overview
+This system automates the collection of academic papers for systematic reviews.
+
+## Current Milestone: Week 1-2
+**Goal**: Collect research papers and prepare dataset
+
+## Setup Instructions
+
+### 1. Install Python 3.8+
+Check version:
+```bash
+python --version
