@@ -1,7 +1,3 @@
-"""
-Utility functions - WORKING VERSION
-"""
-
 import os
 import re
 import json

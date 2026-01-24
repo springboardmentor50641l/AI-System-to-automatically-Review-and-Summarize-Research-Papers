@@ -1,7 +1,3 @@
-"""
-Main program - FINAL WORKING VERSION
-"""
-
 import os
 import requests
 import json
