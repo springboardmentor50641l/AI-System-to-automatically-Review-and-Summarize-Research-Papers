@@ -1,51 +1,71 @@
 {
   "project": "AI Research Paper Reviewer",
   "milestone": 1,
-  "created_at": "2026-01-24T03:03:44.209479",
-  "search_topic": "machine learning healthcare",
-  "total_papers_found": 2,
-  "papers_downloaded": 2,
+  "created_at": "2026-01-25T20:14:03.250167",
+  "search_topic": "Ethics in AI",
+  "total_papers_found": 3,
+  "papers_downloaded": 3,
   "papers": [
     {
-      "paper_id": "6e6c03c3a971ca0d17f21bd094beaca51b514676",
-      "title": "Identifying Ethical Considerations for Machine Learning Healthcare Applications",
+      "paper_id": "18819a447d272aec1aada3212e246193b3b5742e",
+      "title": "Toward Fairness, Accountability, Transparency, and Ethics in AI for Social Media and Health Care: Scoping Review",
       "authors": [
-        "Danton S. Char",
-        "M. Abràmoff",
-        "C. Feudtner"
+        "Aditya Singhal",
+        "Nikita Neveditsin",
+        "Hasnaat Tanveer"
       ],
-      "year": 2020,
-      "abstract": "Abstract Along with potential benefits to healthcare delivery, machine learning healthcare applications (ML-HCAs) raise a number of ethical concerns. Ethical evaluations of ML-HCAs will need to struct...",
-      "citation_count": 272,
-      "pdf_url": "https://europepmc.org/articles/pmc7737650?pdf=render",
-      "venue": "American Journal of Bioethics",
-      "search_topic": "machine learning healthcare",
+      "year": 2024,
+      "abstract": "Background The use of social media for disseminating health care information has become increasingly prevalent, making the expanding role of artificial intelligence (AI) and machine learning in this p...",
+      "citation_count": 75,
+      "pdf_url": "https://medinform.jmir.org/2024/1/e50048/PDF",
+      "venue": "JMIR Medical Informatics",
+      "search_topic": "Ethics in AI",
       "pdf_downloaded": true,
-      "file_name": "Identifying_Ethical_Considerations_for_Machine_Lea_20260124.pdf",
-      "file_path": "C:\\Users\\hp\\Research-Review-AI\\data\\papers\\Identifying_Ethical_Considerations_for_Machine_Lea_20260124.pdf",
-      "download_date": "2026-01-24T03:03:31.298635",
-      "file_size": 486803
+      "file_name": "Toward_Fairness_Accountability_Transparency_and_Et_20260125.pdf",
+      "file_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\Toward_Fairness_Accountability_Transparency_and_Et_20260125.pdf",
+      "download_date": "2026-01-25T20:13:46.911170",
+      "file_size": 463266
     },
     {
-      "paper_id": "a7b19803f0bda248540ef9d1889b6911dffadd49",
-      "title": "Generating high-fidelity synthetic patient data for assessing machine learning healthcare software",
+      "paper_id": "1d1ea023bd1b0363951407d286bb7b4306e4a60e",
+      "title": "Integrating ethics in AI development: a qualitative study",
       "authors": [
-        "A. Tucker",
-        "Zhenchen Wang",
-        "Ylenia Rotalinti"
+        "Laura Arbelaez Ossa",
+        "Giorgia Lorenzini",
+        "Stephen R. Milford"
       ],
-      "year": 2020,
-      "abstract": "There is a growing demand for the uptake of modern artificial intelligence technologies within healthcare systems. Many of these technologies exploit historical patient health data to build powerful p...",
-      "citation_count": 186,
-      "pdf_url": "https://www.nature.com/articles/s41746-020-00353-9.pdf",
-      "venue": "npj Digital Medicine",
-      "search_topic": "machine learning healthcare",
+      "year": 2024,
+      "abstract": "Background While the theoretical benefits and harms of Artificial Intelligence (AI) have been widely discussed in academic literature, empirical evidence remains elusive regarding the practical ethica...",
+      "citation_count": 28,
+      "pdf_url": "https://bmcmedethics.biomedcentral.com/counter/pdf/10.1186/s12910-023-01000-0",
+      "venue": "BMC Medical Ethics",
+      "search_topic": "Ethics in AI",
       "pdf_downloaded": true,
-      "file_name": "Generating_high-fidelity_synthetic_patient_data_fo_20260124.pdf",
-      "file_path": "C:\\Users\\hp\\Research-Review-AI\\data\\papers\\Generating_high-fidelity_synthetic_patient_data_fo_20260124.pdf",
-      "download_date": "2026-01-24T03:03:41.035119",
-      "file_size": 2145916
+      "file_name": "Integrating_ethics_in_AI_development_a_qualitative_20260125.pdf",
+      "file_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\Integrating_ethics_in_AI_development_a_qualitative_20260125.pdf",
+      "download_date": "2026-01-25T20:13:55.694066",
+      "file_size": 1141046
+    },
+    {
+      "paper_id": "18c311edb484ac043e82f6badb3a2d1f4615b0e0",
+      "title": "The future of ethics in AI: challenges and opportunities",
+      "authors": [
+        "A. Trotta",
+        "Marta Ziosi",
+        "Vincenzo Lomonaco"
+      ],
+      "year": 2023,
+      "abstract": "None...",
+      "citation_count": 32,
+      "pdf_url": "https://link.springer.com/content/pdf/10.1007/s00146-023-01644-x.pdf",
+      "venue": "Ai & Society",
+      "search_topic": "Ethics in AI",
+      "pdf_downloaded": true,
+      "file_name": "The_future_of_ethics_in_AI_challenges_and_opportun_20260125.pdf",
+      "file_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\The_future_of_ethics_in_AI_challenges_and_opportun_20260125.pdf",
+      "download_date": "2026-01-25T20:14:03.242052",
+      "file_size": 483399
     }
   ],
-  "data_location": "C:\\Users\\hp\\Research-Review-AI\\data"
+  "data_location": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data"
 }
