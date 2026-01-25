@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Assistant Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --glass-white: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-pink: #f472b6;
+            --accent-blue: #38bdf8;
+            --text-main: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Dashboard Layout */
+        .sidebar {
+            width: 320px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid var(--glass-border);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Typography */
+        h1 { font-size: 24px; font-weight: 700; margin-bottom: 5px; color: var(--accent-blue); }
+        .tagline { font-size: 13px; opacity: 0.6; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* File Upload Area */
+        .upload-section {
+            background: var(--glass-white);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .drop-zone {
+            border: 2px dashed rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .drop-zone:hover { border-color: var(--accent-blue); background: rgba(56, 189, 248, 0.05); }
+
+        input[type="file"] { display: none; }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            background: var(--accent-blue);
+            color: #0f172a;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 15px;
+        }
+
+        button:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+        /* Summary Box Rendering */
+        .summary-display {
+            width: 100%;
+            max-width: 800px;
+            background: var(--glass-white);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            min-height: 400px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Proper Structured Form Elements */
+        .summary-display h1 { color: var(--accent-blue); font-size: 32px; border-bottom: 2px solid var(--glass-border); padding-bottom: 15px; }
+        .summary-display h2 { color: var(--accent-pink); font-size: 22px; margin-top: 35px; margin-bottom: 15px; }
+        .summary-display h3 { color: #cbd5e1; font-size: 18px; margin-top: 20px; }
+        .summary-display p { line-height: 1.8; color: #94a3b8; }
+        .summary-display ul { padding-left: 20px; }
+        .summary-display li { margin-bottom: 12px; color: #e2e8f0; }
+        .summary-display strong { color: #fff; font-weight: 600; }
+
+        /* Empty State */
+        .empty-state { text-align: center; margin-top: 100px; opacity: 0.3; }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h1>Research AI</h1>
+        <div class="tagline">Literature Analysis v3.0</div>
+
+        <div class="upload-section">
+            <form method="POST" enctype="multipart/form-data">
+                <label class="drop-zone" id="dz">
+                    <span id="txt">📄 Drop PDF Here</span>
+                    <input type="file" name="file" id="fi" required>
+                </label>
+                <button type="submit">Run Full Analysis</button>
+            </form>
+        </div>
+
+        <div style="margin-top: auto; font-size: 11px; opacity: 0.5;">
+            Connected to Gemini 3 Flash<br>
+            Processing status: Active
+        </div>
+    </div>
+
+    <div class="main-content">
+        {% if summary %}
+            <div class="summary-display">
+                {{ summary | safe }}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <img src="https://cdn-icons-png.flaticon.com/512/3593/3593532.png" width="80" style="filter: invert(1);">
+                <p>Upload a document to begin the AI synthesis process.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('fi').onchange = (e) => {
+            const fileName = e.target.files[0].name;
+            document.getElementById('txt').innerText = fileName;
+            document.getElementById('dz').style.borderColor = "#38bdf8";
+        };
+    </script>
+</body>
+</html>
