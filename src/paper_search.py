@@ -1,29 +1,53 @@
+"""
+paper_search.py - Fixed version with proper imports
+"""
+
 import os
+import sys 
 import requests
 import json
 from datetime import datetime
 from pathlib import Path
 
-# Import modules
+# Fix import paths
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(current_dir)
+
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 try:
-    from config import Config, setup_directories, get_api_headers
-    from utils import create_filename, download_pdf_file, save_metadata, print_paper_details
+    from src.config import Config, get_api_headers
+    from src.utils import create_filename, download_pdf_file, save_metadata, print_paper_details
 except ImportError:
-    # Fallback import
+    # Try absolute import
     import sys
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(current_dir)
     sys.path.insert(0, project_root)
     
-    from src.config import Config, setup_directories, get_api_headers
-    from src.utils import create_filename, download_pdf_file, save_metadata, print_paper_details
+    # Try different import patterns
+    try:
+        # Try direct module import
+        import src.config as config_module
+        import src.utils as utils_module
+        
+        Config = config_module.Config
+        get_api_headers = config_module.get_api_headers
+        create_filename = utils_module.create_filename
+        download_pdf_file = utils_module.download_pdf_file
+        save_metadata = utils_module.save_metadata
+        print_paper_details = utils_module.print_paper_details
+        
+    except ImportError as e:
+        print(f"Import error: {e}")
+        print("Please check your module structure.")
+        raise
 
 class PaperSearchSystem:
     """Main system class"""
     
     def __init__(self):
         """Initialize the system"""
-        self.setup_complete = setup_directories()
+        self.setup_complete = Config.setup_directories()
     
     def search_papers(self, topic):
         """

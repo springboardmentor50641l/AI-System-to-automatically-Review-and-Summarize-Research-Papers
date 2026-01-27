@@ -1,62 +1,61 @@
 [
   {
-    "paper_id": "18819a447d272aec1aada3212e246193b3b5742e",
-    "title": "Toward Fairness, Accountability, Transparency, and Ethics in AI for Social Media and Health Care: Scoping Review",
+    "paper_id": "8c5293da3ad1a463cb9694edfbf1bf19b8cbd698",
+    "title": "A Survey on Mobile Edge Computing: The Communication Perspective",
     "authors": [
-      "Aditya Singhal",
-      "Nikita Neveditsin",
-      "Hasnaat Tanveer"
+      "Yuyi Mao",
+      "Changsheng You",
+      "Jun Zhang"
     ],
-    "year": 2024,
-    "abstract": "Background The use of social media for disseminating health care information has become increasingly prevalent, making the expanding role of artificial intelligence (AI) and machine learning in this p...",
-    "citation_count": 75,
-    "pdf_url": "https://medinform.jmir.org/2024/1/e50048/PDF",
-    "venue": "JMIR Medical Informatics",
-    "search_topic": "Ethics in AI",
-    "pdf_downloaded": true,
-    "file_name": "Toward_Fairness_Accountability_Transparency_and_Et_20260125.pdf",
-    "file_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\Toward_Fairness_Accountability_Transparency_and_Et_20260125.pdf",
-    "download_date": "2026-01-25T20:13:46.911170",
-    "file_size": 463266
-  },
-  {
-    "paper_id": "1d1ea023bd1b0363951407d286bb7b4306e4a60e",
-    "title": "Integrating ethics in AI development: a qualitative study",
-    "authors": [
-      "Laura Arbelaez Ossa",
-      "Giorgia Lorenzini",
-      "Stephen R. Milford"
-    ],
-    "year": 2024,
-    "abstract": "Background While the theoretical benefits and harms of Artificial Intelligence (AI) have been widely discussed in academic literature, empirical evidence remains elusive regarding the practical ethica...",
-    "citation_count": 28,
-    "pdf_url": "https://bmcmedethics.biomedcentral.com/counter/pdf/10.1186/s12910-023-01000-0",
-    "venue": "BMC Medical Ethics",
-    "search_topic": "Ethics in AI",
-    "pdf_downloaded": true,
-    "file_name": "Integrating_ethics_in_AI_development_a_qualitative_20260125.pdf",
-    "file_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\Integrating_ethics_in_AI_development_a_qualitative_20260125.pdf",
-    "download_date": "2026-01-25T20:13:55.694066",
-    "file_size": 1141046
-  },
-  {
-    "paper_id": "18c311edb484ac043e82f6badb3a2d1f4615b0e0",
-    "title": "The future of ethics in AI: challenges and opportunities",
-    "authors": [
-      "A. Trotta",
-      "Marta Ziosi",
-      "Vincenzo Lomonaco"
-    ],
-    "year": 2023,
+    "year": 2017,
     "abstract": "None...",
-    "citation_count": 32,
-    "pdf_url": "https://link.springer.com/content/pdf/10.1007/s00146-023-01644-x.pdf",
-    "venue": "Ai & Society",
-    "search_topic": "Ethics in AI",
+    "citation_count": 4315,
+    "pdf_url": "http://arxiv.org/pdf/1701.01090",
+    "venue": "IEEE Communications Surveys and Tutorials",
+    "search_topic": "Edge Computing",
     "pdf_downloaded": true,
-    "file_name": "The_future_of_ethics_in_AI_challenges_and_opportun_20260125.pdf",
-    "file_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\The_future_of_ethics_in_AI_challenges_and_opportun_20260125.pdf",
-    "download_date": "2026-01-25T20:14:03.242052",
-    "file_size": 483399
+    "file_name": "A_Survey_on_Mobile_Edge_Computing_The_Communicatio_20260127.pdf",
+    "file_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\A_Survey_on_Mobile_Edge_Computing_The_Communicatio_20260127.pdf",
+    "download_date": "2026-01-27T21:47:32.973239",
+    "file_size": 4607229
+  },
+  {
+    "paper_id": "007e7d6cb64a7dfcdcad9fc6f4f0ba69fdc88203",
+    "title": "EdgeShard: Efficient LLM Inference via Collaborative Edge Computing",
+    "authors": [
+      "Mingjin Zhang",
+      "Xiaoming Shen",
+      "Jiannong Cao"
+    ],
+    "year": 2025,
+    "abstract": "Large language models (LLMs) have shown great success in content generation and intelligent intelligent decision making for IoT systems. Traditionally, LLMs are deployed on the cloud, incurring prolon...",
+    "citation_count": 157,
+    "pdf_url": "https://arxiv.org/pdf/2405.14371",
+    "venue": "IEEE Internet of Things Journal",
+    "search_topic": "Edge Computing",
+    "pdf_downloaded": true,
+    "file_name": "EdgeShard_Efficient_LLM_Inference_via_Collaborativ_20260127.pdf",
+    "file_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\EdgeShard_Efficient_LLM_Inference_via_Collaborativ_20260127.pdf",
+    "download_date": "2026-01-27T21:47:36.540829",
+    "file_size": 853456
+  },
+  {
+    "paper_id": "afd9dadac8d3354615e26b2038887ecdbc9e33e5",
+    "title": "Mobile Edge Computing: A Survey on Architecture and Computation Offloading",
+    "authors": [
+      "Pavel Mach",
+      "Zdenek Becvar"
+    ],
+    "year": 2017,
+    "abstract": "Technological evolution of mobile user equipment (UEs), such as smartphones or laptops, goes hand-in-hand with evolution of new mobile applications. However, running computationally demanding applicat...",
+    "citation_count": 2492,
+    "pdf_url": "http://arxiv.org/pdf/1702.05309",
+    "venue": "IEEE Communications Surveys and Tutorials",
+    "search_topic": "Edge Computing",
+    "pdf_downloaded": true,
+    "file_name": "Mobile_Edge_Computing_A_Survey_on_Architecture_and_20260127.pdf",
+    "file_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\Mobile_Edge_Computing_A_Survey_on_Architecture_and_20260127.pdf",
+    "download_date": "2026-01-27T21:47:56.720575",
+    "file_size": 5511894
   }
 ]
