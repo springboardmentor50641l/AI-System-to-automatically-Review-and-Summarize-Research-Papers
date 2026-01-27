@@ -1,39 +1,33 @@
+# Data files (too large for GitHub)
+data/papers/*.pdf
+data/extracted_text/*.json
+data/analysis/*.json
+data/drafts/*.json
+data/drafts/*.txt
+data/metadata/*.json
+
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-venv/
-env/
-.env
-.env.local
-.env.*.local
 
 # Virtual Environment
 venv/
+env/
 ENV/
-env.bak/
-venv.bak/
 
-# API Keys and Secrets
-.env
-api_keys.txt
-secrets.txt
-*.key
-*.pem
-
-# Data files
-data/papers/*.pdf
-data/papers/
-*.pdf
-
-# IDE files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
+
+# API Keys
+.env
+secrets.json
