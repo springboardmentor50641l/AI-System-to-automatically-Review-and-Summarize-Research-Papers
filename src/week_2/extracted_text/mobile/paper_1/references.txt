@@ -1,0 +1,167 @@
+[1] Irwan Bello, Barret Zoph, Ashish Vaswani, Jonathon Shlens,
+and Quoc V Le. Attention augmented convolutional networks. _arXiv preprint arXiv:1904.09925_, 2019.
+[2] Han Cai, Ligeng Zhu, and Song Han. Proxylessnas: Direct
+neural architecture search on target task and hardware. _arXiv_
+_preprint arXiv:1812.00332_, 2018.
+[3] Yue Cao, Jiarui Xu, Stephen Lin, Fangyun Wei, and Han
+Hu. Gcnet: Non-local networks meet squeeze-excitation
+networks and beyond. In _Proceedings of the IEEE Inter-_
+_national Conference on Computer Vision Workshops_, pages
+0–0, 2019.
+[4] Liang-Chieh Chen, Maxwell Collins, Yukun Zhu, George
+Papandreou, Barret Zoph, Florian Schroff, Hartwig Adam,
+and Jon Shlens. Searching for efficient multi-scale architectures for dense image prediction. In _NeurIPS_, pages 8699–
+8710, 2018.
+[5] Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos,
+Kevin Murphy, and Alan L Yuille. Semantic image segmentation with deep convolutional nets and fully connected crfs.
+In _ICLR_, 2015.
+[6] Liang-Chieh Chen, George Papandreou, Florian Schroff, and
+Hartwig Adam. Rethinking atrous convolution for semantic image segmentation. _arXiv preprint arXiv:1706.05587_,
+2017.
+[7] Yunpeng Chen, Yannis Kalantidis, Jianshu Li, Shuicheng
+Yan, and Jiashi Feng. Aˆ 2-nets: Double attention networks.
+In _Advances in neural information processing systems_, pages
+352–361, 2018.
+[8] Marius Cordts, Mohamed Omran, Sebastian Ramos, Timo
+Rehfeld, Markus Enzweiler, Rodrigo Benenson, Uwe
+Franke, Stefan Roth, and Bernt Schiele. The cityscapes
+dataset for semantic urban scene understanding. In _CVPR_,
+2016.
+[9] Mark Everingham, SM Ali Eslami, Luc Van Gool, Christopher KI Williams, John Winn, and Andrew Zisserman. The
+pascal visual object classes challenge: A retrospective. _IJCV_,
+2015.
+[10] Jun Fu, Jing Liu, Haijie Tian, Yong Li, Yongjun Bao, Zhiwei
+Fang, and Hanqing Lu. Dual attention network for scene
+segmentation. In _CVPR_, pages 3146–3154, 2019.
+[11] Zilin Gao, Jiangtao Xie, Qilong Wang, and Peihua Li. Global
+second-order pooling convolutional networks. In _Proceed-_
+_ings of the IEEE Conference on Computer Vision and Pattern_
+_Recognition_, pages 3024–3033, 2019.
+[12] Bharath Hariharan, Pablo Arbel´aez, Lubomir Bourdev,
+Subhransu Maji, and Jitendra Malik. Semantic contours from
+inverse detectors. In _ICCV_, 2011.
+[13] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+Deep residual learning for image recognition. In _CVPR_,
+2016.
+[14] Qibin Hou, Li Zhang, Ming-Ming Cheng, and Jiashi Feng.
+Strip pooling: Rethinking spatial pooling for scene parsing.
+In _Proceedings of the IEEE/CVF Conference on Computer_
+_Vision and Pattern Recognition_, pages 4003–4012, 2020.
+[15] Andrew Howard, Mark Sandler, Grace Chu, Liang-Chieh
+Chen, Bo Chen, Mingxing Tan, Weijun Wang, Yukun Zhu,
+Ruoming Pang, Vijay Vasudevan, et al. Searching for mobilenetv3. In _ICCV_, pages 1314–1324, 2019.
+[16] Andrew G Howard, Menglong Zhu, Bo Chen, Dmitry
+Kalenichenko, Weijun Wang, Tobias Weyand, Marco Andreetto, and Hartwig Adam. Mobilenets: Efficient convolutional neural networks for mobile vision applications. _arXiv_
+_preprint arXiv:1704.04861_, 2017.
+[17] Jie Hu, Li Shen, Samuel Albanie, Gang Sun, and Andrea
+Vedaldi. Gather-excite: Exploiting feature context in convolutional neural networks. In _Advances in neural information_
+_processing systems_, pages 9401–9411, 2018.
+[18] Jie Hu, Li Shen, and Gang Sun. Squeeze-and-excitation networks. In _CVPR_, pages 7132–7141, 2018.
+[19] Zilong Huang, Xinggang Wang, Lichao Huang, Chang
+Huang, Yunchao Wei, and Wenyu Liu. Ccnet: Crisscross attention for semantic segmentation. _arXiv preprint_
+_arXiv:1811.11721_, 2018.
+[20] Duo Li, Aojun Zhou, and Anbang Yao. Hbonet: Harmonious
+bottleneck on two orthogonal dimensions. In _Proceedings_
+_of the IEEE International Conference on Computer Vision_,
+pages 3316–3325, 2019.
+[21] Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays,
+Pietro Perona, Deva Ramanan, Piotr Doll´ar, and C Lawrence
+Zitnick. Microsoft coco: Common objects in context. In
+_ECCV_, 2014.
+[22] Drew Linsley, Dan Shiebler, Sven Eberhardt, and Thomas
+Serre. Learning what and where to attend. In _ICLR_, 2019.
+[23] Chenxi Liu, Barret Zoph, Maxim Neumann, Jonathon
+Shlens, Wei Hua, Li-Jia Li, Li Fei-Fei, Alan Yuille, Jonathan
+Huang, and Kevin Murphy. Progressive neural architecture
+search. In _Proceedings of the European Conference on Com-_
+_puter Vision (ECCV)_, pages 19–34, 2018.
+[24] Hanxiao Liu, Karen Simonyan, and Yiming Yang.
+Darts: Differentiable architecture search. _arXiv preprint_
+_arXiv:1806.09055_, 2018.
+[25] Jiang-Jiang Liu, Qibin Hou, Ming-Ming Cheng, Changhu
+Wang, and Jiashi Feng. Improving convolutional networks
+with self-calibrated convolutions. In _Proceedings of the_
+_IEEE/CVF Conference on Computer Vision and Pattern_
+_Recognition_, pages 10096–10105, 2020.
+[26] Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian
+Szegedy, Scott Reed, Cheng-Yang Fu, and Alexander C
+Berg. Ssd: Single shot multibox detector. In _ECCV_, 2016.
+[27] Ningning Ma, Xiangyu Zhang, Hai-Tao Zheng, and Jian Sun.
+Shufflenet v2: Practical guidelines for efficient cnn architec
+9
+ture design. In _Proceedings of the European conference on_
+_computer vision (ECCV)_, pages 116–131, 2018.
+[28] Diganta Misra, Trikay Nalamada, Ajay Uppili Arasanipalai,
+and Qibin Hou. Rotate to attend: Convolutional triplet attention module. In _Proceedings of the IEEE/CVF Winter Con-_
+_ference on Applications of Computer Vision_, pages 3139–
+3148, 2021.
+[29] Volodymyr Mnih, Nicolas Heess, Alex Graves, et al. Recurrent models of visual attention. In _Advances in neural_
+_information processing systems_, pages 2204–2212, 2014.
+[30] Jongchan Park, Sanghyun Woo, Joon-Young Lee, and In So
+Kweon. Bam: Bottleneck attention module. _arXiv preprint_
+_arXiv:1807.06514_, 2018.
+[31] Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer,
+James Bradbury, Gregory Chanan, Trevor Killeen, Zeming
+Lin, Natalia Gimelshein, Luca Antiga, et al. Pytorch: An
+imperative style, high-performance deep learning library. In
+_NeurIPS_, pages 8024–8035, 2019.
+[32] Esteban Real, Alok Aggarwal, Yanping Huang, and Quoc V
+Le. Regularized evolution for image classifier architecture
+search. In _Proceedings of the aaai conference on artificial_
+_intelligence_, volume 33, pages 4780–4789, 2019.
+[33] Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma, Zhiheng Huang, Andrej Karpathy,
+Aditya Khosla, Michael Bernstein, et al. Imagenet large
+scale visual recognition challenge. _IJCV_, 115(3):211–252,
+2015.
+[34] Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh Chen. Mobilenetv2: Inverted
+residuals and linear bottlenecks. In _CVPR_, pages 4510–4520,
+2018.
+[35] Ramprasaath R Selvaraju, Michael Cogswell, Abhishek Das,
+Ramakrishna Vedantam, Devi Parikh, and Dhruv Batra.
+Grad-cam: Visual explanations from deep networks via
+gradient-based localization. In _ICCV_, pages 618–626, 2017.
+[36] Karen Simonyan and Andrew Zisserman. Very deep convolutional networks for large-scale image recognition. In _ICLR_,
+2015.
+[37] Mingxing Tan, Bo Chen, Ruoming Pang, Vijay Vasudevan,
+Mark Sandler, Andrew Howard, and Quoc V Le. Mnasnet: Platform-aware neural architecture search for mobile.
+In _Proceedings of the IEEE Conference on Computer Vision_
+_and Pattern Recognition_, pages 2820–2828, 2019.
+[38] Mingxing Tan and Quoc V Le. Efficientnet: Rethinking
+model scaling for convolutional neural networks. In _ICML_,
+2019.
+[39] Mingxing Tan and Quoc V Le. Mixconv: Mixed depthwise
+convolutional kernels. _CoRR, abs/1907.09595_, 2019.
+[40] John K Tsotsos. _A computational perspective on visual at-_
+_tention_ . MIT Press, 2011.
+[41] John K Tsotsos et al. Analyzing vision at the complexity
+level. _Behavioral and brain sciences_, 13(3):423–469, 1990.
+[42] Huiyu Wang, Yukun Zhu, Bradley Green, Hartwig Adam,
+Alan Yuille, and Liang-Chieh Chen. Axial-deeplab: Standalone axial-attention for panoptic segmentation. _arXiv_
+_preprint arXiv:2003.07853_, 2020.
+[43] Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He. Non-local neural networks. In _CVPR_, 2018.
+[44] Sanghyun Woo, Jongchan Park, Joon-Young Lee, and In
+So Kweon. Cbam: Convolutional block attention module.
+In _Proceedings of the European conference on computer vi-_
+_sion (ECCV)_, pages 3–19, 2018.
+[45] Bichen Wu, Xiaoliang Dai, Peizhao Zhang, Yanghan Wang,
+Fei Sun, Yiming Wu, Yuandong Tian, Peter Vajda, Yangqing
+Jia, and Kurt Keutzer. Fbnet: Hardware-aware efficient convnet design via differentiable neural architecture search. In
+_Proceedings of the IEEE Conference on Computer Vision_
+_and Pattern Recognition_, pages 10734–10742, 2019.
+[46] Saining Xie, Ross Girshick, Piotr Doll´ar, Zhuowen Tu, and
+Kaiming He. Aggregated residual transformations for deep
+neural networks. In _CVPR_, 2017.
+[47] Kelvin Xu, Jimmy Ba, Ryan Kiros, Kyunghyun Cho, Aaron
+Courville, Ruslan Salakhudinov, Rich Zemel, and Yoshua
+Bengio. Show, attend and tell: Neural image caption generation with visual attention. In _ICML_, pages 2048–2057,
+2015.
+[48] Hengshuang Zhao, Jianping Shi, Xiaojuan Qi, Xiaogang
+Wang, and Jiaya Jia. Pyramid scene parsing network. In
+_CVPR_, 2017.
+[49] Daquan Zhou, Qibin Hou, Yunpeng Chen, Jiashi Feng, and
+Shuicheng Yan. Rethinking bottleneck structure for efficient
+mobile network design. In _ECCV_, 2020.
+[50] Barret Zoph, Vijay Vasudevan, Jonathon Shlens, and Quoc V
+Le. Learning transferable architectures for scalable image
+recognition. In _CVPR_, pages 8697–8710, 2018.
+10

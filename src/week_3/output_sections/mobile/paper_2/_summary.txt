@@ -1,0 +1,7 @@
+STORED SECTIONS SUMMARY
+========================================
+- abstract
+- introduction
+- raw_text
+- references
+- related_work

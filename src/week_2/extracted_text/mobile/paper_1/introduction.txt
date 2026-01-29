@@ -1,0 +1,46 @@
+Attention mechanisms, used to tell a model “what” and
+“where” to attend, have been extensively studied [47, 29]
+and widely deployed for boosting the performance of modern deep neural networks [18, 44, 3, 25, 10, 14]. However, their application for mobile networks (with limited
+model size) significantly lags behind that for large networks
+Figure 1. Performance of different attention methods on three classic vision tasks. The y-axis labels from left to right are top-1 accuracy, mean IoU, and AP, respectively. Clearly, our approach
+not only achieves the best result in ImageNet classification [33]
+against the SE block [18] and CBAM [44] but performs even better
+in down-stream tasks, like semantic segmentation [9] and COCO
+object detection [21]. Results are based on MobileNetV2 [34].
+[36, 13, 46]. This is mainly because the computational overhead brought by most attention mechanisms is not affordable for mobile networks.
+Considering the restricted computation capacity of mobile networks, to date, the most popular attention mechanism for mobile networks is still the Squeeze-andExcitation (SE) attention [18]. It computes channel attention with the help of 2D global pooling and provides notable performance gains at considerably low computational
+cost. However, the SE attention only considers encoding
+inter-channel information but neglects the importance of
+positional information, which is critical to capturing object
+structures in vision tasks [42]. Later works, such as BAM
+[30] and CBAM [44], attempt to exploit positional information by reducing the channel dimension of the input tensor
+and then computing spatial attention using convolutions as
+shown in Figure 2(b). However, convolutions can only capture local relations but fail in modeling long-range dependencies that are essential for vision tasks [48, 14].
+In this paper, beyond the first works, we propose a novel
+and efficient attention mechanism by embedding positional
+information into channel attention to enable mobile networks to attend over large regions while avoiding incurring significant computation overhead. To alleviate the positional information loss caused by the 2D global pooling,
+we factorize channel attention into two parallel 1D feature
+encoding processes to effectively integrate spatial coordi
+nate information into the generated attention maps. Specifically, our method exploits two 1D global pooling operations
+to respectively aggregate the input features along the vertical and horizontal directions into two separate directionaware feature maps. These two feature maps with embedded direction-specific information are then separately encoded into two attention maps, each of which captures longrange dependencies of the input feature map along one spatial direction. The positional information can thus be preserved in the generated attention maps. Both attention maps
+are then applied to the input feature map via multiplication
+to emphasize the representations of interest. We name the
+proposed attention method as _coordinate attention_ as its operation distinguishes spatial direction ( _i.e.,_ coordinate) and
+generates coordinate-aware attention maps.
+Our coordinate attention offers the following advantages.
+First of all, it captures not only cross-channel but also
+direction-aware and position-sensitive information, which
+helps models to more accurately locate and recognize the
+objects of interest. Secondly, our method is flexible and
+light-weight, and can be easily plugged into classic building blocks of mobile networks, such as the inverted residual block proposed in MobileNetV2 [34] and the sandglass
+block proposed in MobileNeXt [49], to augment the features by emphasizing informative representations. Thirdly,
+as a pretrained model, our coordinate attention can bring
+significant performance gains to down-stream tasks with
+mobile networks, especially for those with dense predictions ( _e.g.,_ semantic segmentation), which we will show in
+our experiment section.
+To demonstrate the advantages of the proposed approach
+over previous attention methods for mobile networks, we
+conduct extensive experiments in both ImageNet classification [33] and popular down-stream tasks, including object detection and semantic segmentation. With a comparable amount of learnable parameters and computation, our
+network achieves 0.8% performance gain in top-1 classification accuracy on ImageNet. In object detection and semantic segmentation, we also observe significant improvements compared to models with other attention mechanisms
+as shown in Figure 1. We hope our simple and efficient
+design could facilitate the development of attention mechanisms for mobile networks in the future.

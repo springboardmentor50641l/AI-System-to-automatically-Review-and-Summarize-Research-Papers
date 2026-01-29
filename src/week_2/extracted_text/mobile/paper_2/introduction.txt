@@ -1,0 +1,30 @@
+Building deeper and larger convolutional neural networks (CNNs) is a primary trend for solving major visual
+recognition tasks [21, 9, 33, 5, 28, 24]. The most accurate CNNs usually have hundreds of layers and thousands
+of channels [9, 34, 32, 40], thus requiring computation at
+billions of FLOPs. This report examines the opposite extreme: pursuing the best accuracy in very limited computational budgets at tens or hundreds of MFLOPs, focusing
+on common mobile platforms such as drones, robots, and
+smartphones. Note that many existing works [16, 22, 43, 42,
+38, 27] focus on pruning, compressing, or low-bit representing a “basic” network architecture. Here we aim to explore
+a highly efficient basic architecture specially designed for
+our desired computing ranges.
+We notice that state-of-the-art basic architectures such as
+_Xception_ [3] and _ResNeXt_ [40] become less efficient in extremely small networks because of the costly dense 1 _×_ 1
+convolutions. We propose using _pointwise group convolu-_
+ - Equally contribution.
+_tions_ to reduce computation complexity of 1 _×_ 1 convolutions. To overcome the side effects brought by group convolutions, we come up with a novel _channel shuffle_ operation to help the information flowing across feature channels.
+Based on the two techniques, we build a highly efficient architecture called _ShuffleNet_ . Compared with popular structures like [30, 9, 40], for a given computation complexity
+budget, our ShuffleNet allows more feature map channels,
+which helps to encode more information and is especially
+critical to the performance of very small networks.
+We evaluate our models on the challenging ImageNet
+classification [4, 29] and MS COCO object detection [23]
+tasks. A series of controlled experiments shows the effectiveness of our design principles and the better performance
+over other structures. Compared with the state-of-the-art
+architecture _MobileNet_ [12], ShuffleNet achieves superior
+performance by a significant margin, e.g. absolute 7.8%
+lower ImageNet top-1 error at level of 40 MFLOPs.
+We also examine the speedup on real hardware, i.e. an
+off-the-shelf ARM-based computing core. The ShuffleNet
+model achieves _∼_ **13** _× actual_ speedup (theoretical speedup
+is 18 _×_ ) over AlexNet [21] while maintaining comparable
+accuracy.

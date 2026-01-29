@@ -1,0 +1,21 @@
+In this study, we used a survey design to collect data from university students in
+Hong Kong, exploring their use and perceptions of GenAI in teaching and learning. The survey was administered via an online questionnaire, consisting of both
+Chan and Hu _﻿Int J Educ Technol High Educ (2023) 20:43_ Page 6 of 18
+closed-ended and open-ended questions in order a large population of responses.
+The initial questionnaire was developed by drawing upon similar studies and existing questionnaires on teachers’ and students’ perceptions of educational technologies in higher education. To ensure the relevance and clarity of the questionnaire
+items, pilot studies were conducted prior to formal data collection. And the questionnaire was modified based on the feedback from the pilot study. The final version of the instrument comprises a pool of 26 items, employing a 5-point Likert
+scale ranging from “Strongly agree” to “Strongly disagree,” as well as 3 open-ended
+questions to gather additional insights and perspectives from the respondents. Topics covered in the survey encompassed their knowledge of GenAI technologies like
+ChatGPT, the incorporation of AI technologies in higher education, potential challenges related to AI technologies, and the influence of AI on teaching and learning.
+Data were gathered through an online survey, targeting students from all post-secondary educational institutions to ensure that the results represented the needs and
+values of all participants. A convenience sampling method was employed to select
+respondents based on their availability and willingness to partake in the study. Participants were recruited through an online platform and given an informed consent
+form before completing the survey. The participation was completely voluntary, and
+the responses were anonymous.
+A total of 399 undergraduate and postgraduate students, from various disciplines
+of six universities in Hong Kong, completed the survey. Descriptive analysis was utilized to analyze the survey data, and a thematic analysis approach was applied to
+examine the responses from the open-ended questions in the survey. As the total
+number of responses was manageable (n = 387), two coders manually generated
+codes. After reading the entire dataset, each coder was assigned the same subset of
+50 responses to identify potential themes. In cases where the coders disagreed, they
+discussed the discrepancies and reached an agreement. Finally, a codebook was created based on consensus and utilized to code the remaining responses.

@@ -1,9 +1,0 @@
-Studies conducted by different researchers on sentiment analysis cover
-Twitter and YouTube. They perform the analysis of comments, tweets,
-and metadata picked from user profiles or public events associated
-with these social networks in order to derive essential observations
-about their overall usage patterns.
-
-
-Still, sentiment classification accuracy will not be as high as that for
-standard topic-based text categorization via machine learning

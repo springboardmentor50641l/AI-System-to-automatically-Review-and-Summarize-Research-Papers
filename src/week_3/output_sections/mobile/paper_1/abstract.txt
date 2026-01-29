@@ -1,0 +1,30 @@
+_Recent studies on mobile network design have demon-_
+_strated the remarkable effectiveness of channel atten-_
+_tion (_ e.g., _the Squeeze-and-Excitation attention) for lifting_
+_model performance, but they generally neglect the posi-_
+_tional information, which is important for generating spa-_
+_tially selective attention maps. In this paper, we propose a_
+_novel attention mechanism for mobile networks by embed-_
+_ding positional information into channel attention, which_
+_we call “coordinate attention”. Unlike channel attention_
+_that transforms a feature tensor to a single feature vec-_
+_tor via 2D global pooling, the coordinate attention factor-_
+_izes channel attention into two 1D feature encoding pro-_
+_cesses that aggregate features along the two spatial di-_
+_rections, respectively. In this way, long-range dependen-_
+_cies can be captured along one spatial direction and mean-_
+_while precise positional information can be preserved along_
+_the other spatial direction. The resulting feature maps are_
+_then encoded separately into a pair of direction-aware and_
+_position-sensitive attention maps that can be complemen-_
+_tarily applied to the input feature map to augment the rep-_
+_resentations of the objects of interest. Our coordinate at-_
+_tention is simple and can be flexibly plugged into classic_
+_mobile networks, such as MobileNetV2, MobileNeXt, and_
+_EfficientNet with nearly no computational overhead. Exten-_
+_sive experiments demonstrate that our coordinate attention_
+_is not only beneficial to ImageNet classification but more_
+_interestingly, behaves better in down-stream tasks, such as_
+_object detection and semantic segmentation. Code is avail-_
+_[able at https://github.com/Andrew-Qibin/](https://github.com/Andrew-Qibin/CoordAttention)_
+_[CoordAttention.](https://github.com/Andrew-Qibin/CoordAttention)_

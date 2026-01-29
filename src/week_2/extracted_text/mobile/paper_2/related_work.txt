@@ -1,0 +1,340 @@
+**Efficient Model Designs** The last few years have seen
+the success of deep neural networks in computer vision
+tasks [21, 36, 28], in which model designs play an important role. The increasing needs of running high quality deep neural networks on embedded devices encourage the study on efficient model designs [8]. For example, _GoogLeNet_ [33] increases the depth of networks
+with much lower complexity compared to simply stacking convolution layers. _SqueezeNet_ [14] reduces parameters and computation significantly while maintaining accuracy. _ResNet_ [9, 10] utilizes the efficient bottleneck structure to achieve impressive performance. _SENet_ [13] introduces an architectural unit that boosts performance at
+slight computation cost. Concurrent with us, a very re
+1
+Figure 1. Channel shuffle with two stacked group convolutions. GConv stands for group convolution. a) two stacked convolution layers
+with the same number of groups. Each output channel only relates to the input channels within the group. No cross talk; b) input and
+output channels are fully related when GConv2 takes data from different groups after GConv1; c) an equivalent implementation to b) using
+channel shuffle.
+cent work [46] employs reinforcement learning and model
+search to explore efficient model designs. The proposed
+mobile _NASNet_ model achieves comparable performance
+with our counterpart ShuffleNet model (26.0% @ 564
+MFLOPs vs. 26.3% @ 524 MFLOPs for ImageNet classification error). But [46] do not report results on extremely
+tiny models (e.g. complexity less than 150 MFLOPs), nor
+evaluate the actual inference time on mobile devices.
+**Group Convolution** The concept of group convolution,
+which was first introduced in _AlexNet_ [21] for distributing the model over two GPUs, has been well demonstrated its effectiveness in ResNeXt [40]. Depthwise separable convolution proposed in Xception [3] generalizes the
+ideas of separable convolutions in Inception series [34, 32].
+Recently, MobileNet [12] utilizes the depthwise separable convolutions and gains state-of-the-art results among
+lightweight models. Our work generalizes group convolution and depthwise separable convolution in a novel form.
+**Channel Shuffle Operation** To the best of our knowledge, the idea of channel shuffle operation is rarely mentioned in previous work on efficient model design, although
+CNN library _cuda-convnet_ [20] supports “random sparse
+convolution” layer, which is equivalent to random channel
+shuffle followed by a group convolutional layer. Such “random shuffle” operation has different purpose and been seldom exploited later. Very recently, another concurrent work
+[41] also adopt this idea for a two-stage convolution. However, [41] did not specially investigate the effectiveness of
+channel shuffle itself and its usage in tiny model design.
+**Model Acceleration** This direction aims to accelerate inference while preserving accuracy of a pre-trained model.
+Pruning network connections [6, 7] or channels [38] reduces redundant connections in a pre-trained model while
+maintaining performance. Quantization [31, 27, 39, 45, 44]
+and factorization [22, 16, 18, 37] are proposed in literature to reduce redundancy in calculations to speed up inference. Without modifying the parameters, optimized convolution algorithms implemented by FFT [25, 35] and other
+methods [2] decrease time consumption in practice. Distilling [11] transfers knowledge from large models into small
+ones, which makes training small models easier.
+**3. Approach**
+**3.1. Channel Shuffle for Group Convolutions**
+Modern convolutional neural networks [30, 33, 34, 32,
+9, 10] usually consist of repeated building blocks with the
+same structure. Among them, state-of-the-art networks
+such as _Xception_ [3] and _ResNeXt_ [40] introduce efficient
+depthwise separable convolutions or group convolutions
+into the building blocks to strike an excellent trade-off
+between representation capability and computational cost.
+However, we notice that both designs do not fully take the
+1 _×_ 1 convolutions (also called _pointwise convolutions_ in
+[12]) into account, which require considerable complexity. For example, in ResNeXt [40] only 3 _×_ 3 layers are
+equipped with group convolutions. As a result, for each
+residual unit in ResNeXt the pointwise convolutions occupy
+93.4% multiplication-adds (cardinality = 32 as suggested in
+[40]). In tiny networks, expensive pointwise convolutions
+result in limited number of channels to meet the complexity
+constraint, which might significantly damage the accuracy.
+To address the issue, a straightforward solution is to ap
+Figure 2. ShuffleNet Units. a) bottleneck unit [9] with depthwise convolution (DWConv) [3, 12]; b) ShuffleNet unit with pointwise group
+convolution (GConv) and channel shuffle; c) ShuffleNet unit with stride = 2.
+ply channel sparse connections, for example group convolutions, also on 1 _×_ 1 layers. By ensuring that each convolution operates only on the corresponding input channel
+group, group convolution significantly reduces computation
+cost. However, if multiple group convolutions stack together, there is one side effect: outputs from a certain channel are only derived from a small fraction of input channels.
+Fig 1 (a) illustrates a situation of two stacked group convolution layers. It is clear that outputs from a certain group
+only relate to the inputs within the group. This property
+blocks information flow between channel groups and weakens representation.
+If we allow group convolution to obtain input data from
+different groups (as shown in Fig 1 (b)), the input and output channels will be fully related. Specifically, for the feature map generated from the previous group layer, we can
+first divide the channels in each group into several subgroups, then feed each group in the next layer with different subgroups. This can be efficiently and elegantly implemented by a _channel shuffle_ operation (Fig 1 (c)): suppose a convolutional layer with _g_ groups whose output has
+_g × n_ channels; we first reshape the output channel dimension into ( _g, n_ ), transposing and then flattening it back as
+the input of next layer. Note that the operation still takes
+effect even if the two convolutions have different numbers
+of groups. Moreover, channel shuffle is also differentiable,
+which means it can be embedded into network structures for
+end-to-end training.
+Channel shuffle operation makes it possible to build
+more powerful structures with multiple group convolutional
+layers. In the next subsection we will introduce an efficient
+network unit with channel shuffle and group convolution.
+**3.2. ShuffleNet Unit**
+Taking advantage of the channel shuffle operation, we
+propose a novel _ShuffleNet_ unit specially designed for small
+networks. We start from the design principle of bottleneck
+unit [9] in Fig 2 (a). It is a residual block. In its residual
+branch, for the 3 _×_ 3 layer, we apply a computational economical 3 _×_ 3 depthwise convolution [3] on the bottleneck
+feature map. Then, we replace the first 1 _×_ 1 layer with
+pointwise group convolution followed by a channel shuffle
+operation, to form a ShuffleNet unit, as shown in Fig 2 (b).
+The purpose of the second pointwise group convolution is
+to recover the channel dimension to match the shortcut path.
+For simplicity, we do not apply an extra channel shuffle operation after the second pointwise layer as it results in comparable scores. The usage of batch normalization (BN) [15]
+and nonlinearity is similar to [9, 40], except that we do not
+use ReLU after depthwise convolution as suggested by [3].
+As for the case where ShuffleNet is applied with stride, we
+simply make two modifications (see Fig 2 (c)): (i) add a
+3 _×_ 3 average pooling on the shortcut path; (ii) replace the
+element-wise addition with channel concatenation, which
+makes it easy to enlarge channel dimension with little extra
+computation cost.
+Thanks to pointwise group convolution with channel
+shuffle, all components in ShuffleNet unit can be computed efficiently. Compared with ResNet [9] (bottleneck
+design) and ResNeXt [40], our structure has less complexity under the same settings. For example, given the input
+size _c × h × w_ and the bottleneck channels _m_, ResNet
+unit requires _hw_ (2 _cm_ + 9 _m_ [2] ) FLOPs and ResNeXt has
+_hw_ (2 _cm_ + 9 _m_ [2] _/g_ ) FLOPs, while our ShuffleNet unit requires only _hw_ (2 _cm/g_ + 9 _m_ ) FLOPs, where _g_ means the
+|Layer|Output size|KSize|Stride|Repeat|Output channels (g groups)<br>g = 1 g = 2 g = 3 g = 4 g = 8|
+|---|---|---|---|---|---|
+|Image|224_ ×_ 224||||3<br>3<br>3<br>3<br>3|
+|Conv1<br>MaxPool|112_ ×_ 112<br>56_ ×_ 56|3_ ×_ 3<br>3_ ×_ 3|2<br>2|1|24<br>24<br>24<br>24<br>24|
+|Stage2|28_ ×_ 28<br>28_ ×_ 28||2<br>1|1<br>3|144<br>200<br>240<br>272<br>384<br>144<br>200<br>240<br>272<br>384|
+|Stage3|14_ ×_ 14<br>14_ ×_ 14||2<br>1|1<br>7|288<br>400<br>480<br>544<br>768<br>288<br>400<br>480<br>544<br>768|
+|Stage4|7_ ×_ 7<br>7_ ×_ 7||2<br>1|1<br>3|576<br>800<br>960<br>1088<br>1536<br>576<br>800<br>960<br>1088<br>1536|
+|GlobalPool|1_ ×_ 1|7_ ×_ 7||||
+|FC|||||1000<br>1000<br>1000<br>1000<br>1000|
+|Complexity|||||143M<br>140M<br>137M<br>133M<br>137M|
+Table 1. ShuffleNet architecture. The complexity is evaluated with FLOPs, i.e. the number of floating-point multiplication-adds. Note that
+for Stage 2, we do not apply group convolution on the first pointwise layer because the number of input channels is relatively small.
+|Model|Complexity<br>(MFLOPs)|Classification error (%)<br>g = 1 g = 2 g = 3 g = 4 g = 8|
+|---|---|---|
+|ShufﬂeNet 1_×_<br>ShufﬂeNet 0.5_×_<br>ShufﬂeNet 0.25_×_|140<br>38<br>13|33.6<br>32.7<br>32.6<br>32.8<br>**32.4**<br>45.1<br>44.4<br>43.2<br>**41.6**<br>42.3<br>57.1<br>56.8<br>55.0<br>54.2<br>**52.7**|
+Table 2. Classification error vs. number of groups _g_ ( _smaller number represents better performance_ )
+number of groups for convolutions. In other words, given
+a computational budget, ShuffleNet can use wider feature
+maps. We find this is critical for small networks, as tiny
+networks usually have an insufficient number of channels
+to process the information.
+In addition, in ShuffleNet depthwise convolution only
+performs on bottleneck feature maps. Even though depthwise convolution usually has very low theoretical complexity, we find it difficult to efficiently implement on lowpower mobile devices, which may result from a worse computation/memory access ratio compared with other dense
+operations. Such drawback is also referred in [3], which has
+a runtime library based on TensorFlow [1]. In ShuffleNet
+units, we intentionally use depthwise convolution only on
+bottleneck in order to prevent overhead as much as possible.
+**3.3. Network Architecture**
+Built on ShuffleNet units, we present the overall ShuffleNet architecture in Table 1. The proposed network is
+mainly composed of a stack of ShuffleNet units grouped
+into three stages. The first building block in each stage is applied with stride = 2. Other hyper-parameters within a stage
+stay the same, and for the next stage the output channels are
+doubled. Similar to [9], we set the number of bottleneck
+channels to 1/4 of the output channels for each ShuffleNet
+unit. Our intent is to provide a reference design as simple
+as possible, although we find that further hyper-parameter
+tunning might generate better results.
+In ShuffleNet units, group number _g_ controls the connection sparsity of pointwise convolutions. Table 1 explores
+different group numbers and we adapt the output channels to ensure overall computation cost roughly unchanged
+( _∼_ 140 MFLOPs). Obviously, larger group numbers result
+in more output channels (thus more convolutional filters) for
+a given complexity constraint, which helps to encode more
+information, though it might also lead to degradation for an
+individual convolutional filter due to limited corresponding
+input channels. In Sec 4.1.1 we will study the impact of this
+number subject to different computational constrains.
+To customize the network to a desired complexity, we
+can simply apply a scale factor _s_ on the number of channels. For example, we denote the networks in Table 1 as
+”ShuffleNet 1 _×_ ”, then ”ShuffleNet _s×_ ” means scaling the
+number of filters in ShuffleNet 1 _×_ by _s_ times thus overall
+complexity will be roughly _s_ [2] times of ShuffleNet 1 _×_ .
+**4. Experiments**
+We mainly evaluate our models on the ImageNet 2012
+classification dataset [29, 4]. We follow most of the training settings and hyper-parameters used in [40], with two
+exceptions: (i) we set the weight decay to 4e-5 instead of
+|Model|Cls err. (%, no shuffle)|Cls err. (%, shuffle)|∆err. (%)|
+|---|---|---|---|
+|ShufﬂeNet 1x (_g_ = 3)<br>ShufﬂeNet 1x (_g_ = 8)|34.5<br>37.6|**32.6**<br>**32.4**|1.9<br>5.2|
+|ShufﬂeNet 0.5x (_g_ = 3)<br>ShufﬂeNet 0.5x (_g_ = 8)|45.7<br>48.1|**43.2**<br>**42.3**|2.5<br>5.8|
+|ShufﬂeNet 0.25x (_g_ = 3)<br>ShufﬂeNet 0.25x (_g_ = 8)|56.3<br>56.5|**55.0**<br>**52.7**|1.3<br>3.8|
+Table 3. ShuffleNet with/without channel shuffle ( _smaller number represents better performance_ )
+1e-4 and use linear-decay learning rate policy (decreased
+from 0.5 to 0); (ii) we use slightly less aggressive scale augmentation for data preprocessing. Similar modifications are
+also referenced in [12] because such small networks usually suffer from underfitting rather than overfitting. It takes
+1 or 2 days to train a model for 3 _×_ 10 [5] iterations on 4 GPUs,
+whose batch size is set to 1024. To benchmark, we compare
+single crop top-1 performance on ImageNet validation set,
+i.e. cropping 224 _×_ 224 center view from 256 _×_ input image
+and evaluating classification accuracy. We use exactly the
+same settings for all models to ensure fair comparisons.
+**4.1. Ablation Study**
+The core idea of ShuffleNet lies in pointwise group convolution and channel shuffle operation. In this subsection
+we evaluate them respectively.
+**4.1.1** **Pointwise Group Convolutions**
+To evaluate the importance of pointwise group convolutions, we compare ShuffleNet models of the same complexity whose numbers of groups range from 1 to 8. If
+the group number equals 1, no pointwise group convolution is involved and then the ShuffleNet unit becomes an
+”Xception-like” [3] structure. For better understanding, we
+also scale the width of the networks to 3 different complexities and compare their classification performance respectively. Results are shown in Table 2.
+From the results, we see that models with group convolutions ( _g >_ 1) consistently perform better than the counterparts without pointwise group convolutions ( _g_ = 1).
+Smaller models tend to benefit more from groups. For example, for ShuffleNet 1 _×_ the best entry ( _g_ = 8) is 1.2%
+better than the counterpart, while for ShuffleNet 0.5 _×_ and
+0.25 _×_ the gaps become 3.5% and 4.4% respectively. Note
+that group convolution allows more feature map channels
+for a given complexity constraint, so we hypothesize that
+the performance gain comes from wider feature maps which
+help to encode more information. In addition, a smaller
+network involves thinner feature maps, meaning it benefits
+more from enlarged feature maps.
+Table 2 also shows that for some models (e.g. ShuffleNet 0.5 _×_ ) when group numbers become relatively large
+(e.g. _g_ = 8), the classification score saturates or even
+drops. With an increase in group number (thus wider feature maps), input channels for each convolutional filter become fewer, which may harm representation capability. Interestingly, we also notice that for smaller models such as
+ShuffleNet 0.25 _×_ larger group numbers tend to better results consistently, which suggests wider feature maps bring
+more benefits for smaller models.
+**4.1.2** **Channel Shuffle vs. No Shuffle**
+The purpose of shuffle operation is to enable cross-group
+information flow for multiple group convolution layers. Table 3 compares the performance of ShuffleNet structures
+(group number is set to 3 or 8 for instance) with/without
+channel shuffle. The evaluations are performed under three
+different scales of complexity. It is clear that channel shuffle consistently boosts classification scores for different settings. Especially, when group number is relatively large
+(e.g. _g_ = 8), models with channel shuffle outperform the
+counterparts by a significant margin, which shows the importance of cross-group information interchange.
+**4.2. Comparison with Other Structure Units**
+Recent leading convolutional units in VGG [30],
+ResNet [9], GoogleNet [33], ResNeXt [40] and Xception [3] have pursued state-of-the-art results with large models (e.g. _≥_ 1GFLOPs), but do not fully explore lowcomplexity conditions. In this section we survey a variety
+of building blocks and make comparisons with ShuffleNet
+under the same complexity constraint.
+For fair comparison, we use the overall network architecture as shown in Table 1. We replace the ShuffleNet units
+in Stage 2-4 with other structures, then adapt the number of
+channels to ensure the complexity remains unchanged. The
+structures we explored include:
+_• VGG-like_ . Following the design principle of VGG
+net [30], we use a two-layer 3 _×_ 3 convolutions as the
+basic building block. Different from [30], we add a
+Batch Normalization layer [15] after each of the convolutions to make end-to-end training easier.
+|Complexity (MFLOPs)|VGG-like|ResNet|Xception-like|ResNeXt|ShuffleNet (ours)|
+|---|---|---|---|---|---|
+|140<br>38<br>13|50.7<br>-<br>-|37.3<br>48.8<br>63.7|33.6<br>45.1<br>57.1|33.3<br>46.0<br>65.2|**32.4** (1_×_,_ g_ = 8)<br>**41.6** (0.5_×_,_ g_ = 4)<br>**52.7** (0.25_×_,_ g_ = 8)|
+Table 4. Classification error vs. various structures (%, _smaller number represents better performance_ ). We do not report VGG-like structure
+on smaller networks because the accuracy is significantly worse.
+|Model|Complexity (MFLOPs)|Cls err. (%)|∆err. (%)|
+|---|---|---|---|
+|1.0 MobileNet-224<br>ShufﬂeNet 2_×_ (_g_ = 3)<br>ShufﬂeNet 2_×_ (with_ SE_[13],_ g_ = 3)|569<br>524<br>527|29.4<br>**26.3**<br>**24.7**|-<br>3.1<br>4.7|
+|0.75 MobileNet-224<br>ShufﬂeNet 1.5_×_ (_g_ = 3)|325<br>292|31.6<br>**28.5**|-<br>3.1|
+|0.5 MobileNet-224<br>ShufﬂeNet 1_×_ (_g_ = 8)|149<br>140|36.3<br>**32.4**|-<br>3.9|
+|0.25 MobileNet-224<br>ShufﬂeNet 0.5_×_ (_g_ = 4)<br>ShufﬂeNet 0.5_×_ (shallow,_ g_ = 3)|41<br>38<br>40|49.4<br>**41.6**<br>42.8|-<br>7.8<br>6.6|
+Table 5. ShuffleNet vs. MobileNet [12] on ImageNet Classification
+_• ResNet_ . We adopt the ”bottleneck” design in our experiment, which has been demonstrated more efficient
+in [9] . Same as [9], the _bottleneck ratio_ [1] is also 1 : 4.
+_• Xception-like_ . The original structure proposed in [3]
+involves fancy designs or hyper-parameters for different stages, which we find difficult for fair comparison
+on small models. Instead, we remove the pointwise
+group convolutions and channel shuffle operation from
+ShuffleNet (also equivalent to ShuffleNet with _g_ = 1).
+The derived structure shares the same idea of “depthwise separable convolution” as in [3], which is called
+an _Xception-like_ structure here.
+_• ResNeXt_ . We use the settings of _cardinality_ = 16 and
+bottleneck ratio = 1 : 2 as suggested in [40]. We also
+explore other settings, e.g. bottleneck ratio = 1 : 4,
+and get similar results.
+We use exactly the same settings to train these models.
+Results are shown in Table 4. Our ShuffleNet models outperform most others by a significant margin under different
+complexities. Interestingly, we find an empirical relationship between feature map channels and classification accuracy. For example, under the complexity of 38 MFLOPs,
+output channels of Stage 4 (see Table 1) for VGG-like,
+ResNet, ResNeXt, Xception-like, ShuffleNet models are 50,
+192, 192, 288, 576 respectively, which is consistent with
+1In the bottleneck-like units (like ResNet, ResNeXt or ShuffleNet) _bot-_
+_tleneck ratio_ implies the ratio of bottleneck channels to output channels.
+For example, bottleneck ratio = 1 : 4 means the output feature map is 4
+times the width of the bottleneck feature map.
+the increase of accuracy. Since the efficient design of ShuffleNet, we can use more channels for a given computation
+budget, thus usually resulting in better performance.
+Note that the above comparisons do not include
+_GoogleNet_ or _Inception_ series [33, 34, 32]. We find it nontrivial to generate such Inception structures to small networks because the original design of Inception module involves too many hyper-parameters. As a reference, the first
+GoogleNet version [33] has 31.3% top-1 error at the cost of
+1.5 GFLOPs (See Table 6). More sophisticated Inception
+versions [34, 32] are more accurate, however, involve significantly increased complexity. Recently, Kim et al. propose a lightweight network structure named _PVANET_ [19]
+which adopts Inception units. Our reimplemented PVANET
+(with 224 _×_ 224 input size) has 29.7% classification error
+with a computation complexity of 557 MFLOPs, while our
+ShuffleNet 2x model ( _g_ = 3) gets 26.3% with 524 MFLOPs
+(see Table 6).
+**4.3. Comparison with MobileNets and Other**
+**Frameworks**
+Recently Howard et al. have proposed _MobileNets_ [12]
+which mainly focus on efficient network architecture for
+mobile devices. MobileNet takes the idea of depthwise separable convolution from [3] and achieves state-of-the-art
+results on small models.
+Table 5 compares classification scores under a variety of
+complexity levels. It is clear that our ShuffleNet models are
+superior to MobileNet for all the complexities. Though our
+ShuffleNet network is specially designed for small models
+( _<_ 150 MFLOPs), we find it is still better than MobileNet
+|Model|Cls err. (%)|Complexity (MFLOPs)|
+|---|---|---|
+|VGG-16 [30]<br>ShufﬂeNet 2_×_ (_g_ = 3)|28.5<br>26.3|15300<br>**524**|
+|GoogleNet [33]*<br>ShufﬂeNet 1_×_ (_g_ = 8)|31.3<br>32.4|1500<br>**140**|
+|AlexNet [21]<br>SqueezeNet [14]<br>ShufﬂeNet 0.5_×_ (_g_ = 4)|42.8<br>42.5<br>41.6|720<br>833<br>**38**|
+Table 6. Complexity comparison. * _Implemented by BVLC (https://github.com/BVLC/caffe/tree/master/models/bvlc_ ~~_g_~~ _ooglenet)_
+|Model|mAP [.5, .95] (300× image)|mAP [.5, .95] (600× image)|
+|---|---|---|
+|ShufﬂeNet 2_×_ (_g_ = 3)<br>ShufﬂeNet 1_×_ (_g_ = 3)|**18.7%**<br>14.5%|**25.0%**<br>19.8%|
+|1.0 MobileNet-224 [12]<br>1.0 MobileNet-224 (our impl.)|16.4%<br>14.9%|19.8%<br>19.3%|
+Table 7. Object detection results on MS COCO ( _larger numbers represents better performance_ ). For MobileNets we compare two results:
+1) COCO detection scores reported by [12]; 2) finetuning from our reimplemented MobileNets, whose training and finetuning settings are
+exactly the same as that for ShuffleNets.
+|Model|Cls err. (%)|FLOPs|224 × 224|480 × 640|720 × 1280|
+|---|---|---|---|---|---|
+|ShufﬂeNet 0.5_×_ (_g_ = 3)<br>ShufﬂeNet 1_×_ (_g_ = 3)<br>ShufﬂeNet 2_×_ (_g_ = 3)|43.2<br>32.6<br>26.3|38M<br>140M<br>524M|15.2ms<br>37.8ms<br>108.8ms|87.4ms<br>222.2ms<br>617.0ms|260.1ms<br>684.5ms<br>1857.6ms|
+|AlexNet [21]<br>1.0 MobileNet-224 [12]|42.8<br>29.4|720M<br>569M|184.0ms<br>110.0ms|1156.7ms<br>612.0ms|3633.9ms<br>1879.2ms|
+Table 8. Actual inference time on mobile device ( _smaller number represents better performance_ ). The platform is based on a single
+Qualcomm Snapdragon 820 processor. All results are evaluated with **single thread** .
+for higher computation cost, e.g. 3.1% more accurate than
+MobileNet 1 _×_ at the cost of 500 MFLOPs. For smaller
+networks ( _∼_ 40 MFLOPs) ShuffleNet surpasses MobileNet
+by **7.8%** . Note that our ShuffleNet architecture contains 50
+layers while MobileNet only has 28 layers. For better understanding, we also try ShuffleNet on a 26-layer architecture by removing half of the blocks in Stage 2-4 (see ”ShuffleNet 0.5 _×_ shallow ( _g_ = 3)” in Table 5). Results show that
+the shallower model is still significantly better than the corresponding MobileNet, which implies that the effectiveness
+of ShuffleNet mainly results from its efficient structure, not
+the depth.
+Table 6 compares our ShuffleNet with a few popular
+models. Results show that with similar accuracy ShuffleNet
+is much more efficient than others. For example, ShuffleNet 0.5 _×_ is theoretically 18 _×_ faster than AlexNet [21]
+with comparable classification score. We will evaluate the
+actual running time in Sec 4.5.
+It is also worth noting that the simple architecture design makes it easy to equip ShuffeNets with the latest advances such as [13, 26]. For example, in [13] the authors
+propose _Squeeze-and-Excitation (SE)_ blocks which achieve
+state-of-the-art results on large ImageNet models. We find
+SE modules also take effect in combination with the backbone ShuffleNets, for instance, boosting the top-1 error of
+ShuffleNet 2 _×_ to 24.7% (shown in Table 5). Interestingly,
+though negligible increase of theoretical complexity, we
+find ShuffleNets with SE modules are usually 25 _∼_ 40%
+slower than the “raw” ShuffleNets on mobile devices, which
+implies that actual speedup evaluation is critical on low-cost
+architecture design. In Sec 4.5 we will make further discussion.
+**4.4. Generalization Ability**
+To evaluate the generalization ability for transfer learning, we test our ShuffleNet model on the task of MS COCO
+object detection [23]. We adopt Faster-RCNN [28] as the
+detection framework and use the publicly released Caffe
+code [28, 17] for training with default settings. Similar to
+[12], the models are trained on the COCO train+val dataset
+excluding 5000 minival images and we conduct testing on
+the minival set. Table 7 shows the comparison of results
+trained and evaluated on two input resolutions. Comparing
+ShuffleNet 2 _×_ with MobileNet whose complexity are com
+parable (524 vs. 569 MFLOPs), our ShuffleNet 2 _×_ surpasses MobileNet by a significant margin on both resolutions; our ShuffleNet 1 _×_ also achieves comparable results
+with MobileNet on 600 _×_ resolution, but has _∼_ 4 _×_ complexity reduction. We conjecture that this significant gain
+is partly due to ShuffleNet’s simple design of architecture
+without bells and whistles.
+**4.5. Actual Speedup Evaluation**
+Finally, we evaluate the actual inference speed of ShuffleNet models on a mobile device with an ARM platform.
+Though ShuffleNets with larger group numbers (e.g. _g_ = 4
+or _g_ = 8) usually have better performance, we find it less
+efficient in our current implementation. Empirically _g_ = 3
+usually has a proper trade-off between accuracy and actual
+inference time. As shown in Table 8, three input resolutions
+are exploited for the test. Due to memory access and other
+overheads, we find every 4 _×_ theoretical complexity reduction usually results in _∼_ 2.6 _×_ actual speedup in our implementation. Nevertheless, compared with AlexNet [21]
+our ShuffleNet 0.5 _×_ model still achieves _∼_ 13 _×_ **actual**
+speedup under comparable classification accuracy (the theoretical speedup is 18 _×_ ), which is much faster than previous AlexNet-level models or speedup approaches such as
+[14, 16, 22, 42, 43, 38].

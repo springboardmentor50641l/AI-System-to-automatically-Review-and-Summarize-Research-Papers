@@ -1,0 +1,31 @@
+MEC is an innovative network paradigm to cater for the
+unprecedented growth of computation demands and the everincreasing computation quality of user experience requirements. It aims at enabling Cloud Computing capabilities and
+IT services in close proximity to end users, by pushing
+abundant computational and storage resources towards the
+network edges. The direct interaction between mobile devices
+and edge servers through wireless communications brings the
+possibility of supporting applications with ultra-low latency
+requirement, prolonging device battery lives and facilitating
+highly-efficient network operations. However, they come along
+with various new design considerations and unique challenges
+due to reasons such as the complex wireless environments and
+the inherent limited computation capacities of MEC servers.
+In this survey, we presented a comprehensive overview and
+research outlook of MEC from the communication perspective.
+To this end, we first summarized the modeling methodologies
+on key components of MEC systems such as the computation
+tasks, communications, as well as mobile devices and MEC
+servers computation. This help characterize the latency and
+energy performance of MEC systems. Based upon the system
+modeling, we conducted a comprehensive literature review
+on recent research efforts on resource management for MEC
+under various system architectures, which exploit the concepts
+of computation offloading, joint radio-and-computational resource allocation, MEC server scheduling, as well as multiserver selection and cooperation. A number of potential research directions were then identified, including MEC deployment issues, cache-enabled MEC, mobility management
+for MEC, green MEC, as well as security-and-privacy issues
+in MEC. Key research problems and preliminary solutions
+for each of these directions were elaborated. Finally, we
+introduced the recent standardization efforts from industry,
+along with several typical use scenarios. The comprehensive
+overview and research outlook on MEC provided in this
+survey hopefully can serve as useful references and valuable
+guidelines for further in-depth investigations of MEC.

@@ -1,0 +1,775 @@
+[1] M. Armbrust, R. G. A. Fox, A. D. Joseph, R. H. Katz, A. Konwinski,
+G. Lee, D. A. Patterson, A. Rabkin, I. Stoica, and M. Zaharia,
+“Above the clouds: A berkeley view of cloud computing,” Feb. 2012.
+[Online]. Available: [https://www2.eecs.berkeley.edu/Pubs/TechRpts/](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-28.pdf)
+[2009/EECS-2009-28.pdf](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-28.pdf)
+[2] Q. Zhang, L. Cheng, and R. Boutaba, “Cloud computing: State-of-theart and research challenges,” _Journal Internet Services appl._, vol. 1,
+no. 1, pp. 7–18, 2010.
+[3] N. Wingfield, “Amazon’s profits grow more than 800 percent,
+lifted by cloud services,” _The_ _New_ _York_ _Times_, Jul. 2016.
+[[Online]. Available: http://www.nytimes.com/2016/07/29/technology/](http://www.nytimes.com/2016/07/29/technology/amazon-earnings-profit.html?_r=0)
+[amazon-earnings-profit.html? r=0](http://www.nytimes.com/2016/07/29/technology/amazon-earnings-profit.html?_r=0)
+[4] M. Chiang and T. Zhang, “Fog and IoT: An overview of research
+opportunities,” _IEEE Internet Things J._, vol. PP, no. 99, pp. 1–1, 2016.
+[5] ETSI, “Mobile-edge computing introductory technical white
+paper,” _White Paper, Mobile-edge Computing Industry Initiative_ .
+[[Online]. Available: https://portal.etsi.org/portals/0/tbpages/mec/docs/](https://portal.etsi.org/portals/0/tbpages/mec/docs/mobile-edge_computing_-_introductory_technical_white_paper_v1)
+[mobile-edge computing - introductory technical white paper v1](https://portal.etsi.org/portals/0/tbpages/mec/docs/mobile-edge_computing_-_introductory_technical_white_paper_v1)
+[6] G. P. Fettweis, “The tactile Internet: Applications and challenges,”
+_IEEE Veh. Techn. Mag._, vol. 9, no. 1, pp. 64–70, Mar. 2014.
+[7] A. A. Fuqaha, M. Guizani, M. Mohammadi, M. Aledhari, and
+M. Ayyash, “Internet of Things: A survey on enabling technologies,
+protocols, and applications,” _IEEE Commun. Surveys Tuts._, vol. 17,
+no. 4, pp. 2347–2376, 4th Quarter 2015.
+[8] Juniper, “Smart wireless devices and the Internet of me,” _White_ _paper_, Mar. 2015. [Online].
+Available: [http://itersnews.com/wp-content/uploads/experts/2015/03/](http://itersnews.com/wp-content/uploads/experts/2015/03/96079Smart-Wireless-Devices-and-the-Internet-of-Me.pdf)
+[96079Smart-Wireless-Devices-and-the-Internet-of-Me.pdf](http://itersnews.com/wp-content/uploads/experts/2015/03/96079Smart-Wireless-Devices-and-the-Internet-of-Me.pdf)
+[9] J. G. Andrews, S. Buzzi, W. Choi, S. V. Hanly, A. Lozano, A. C. Soong,
+and J. C. Zhang, “What will 5G be?” _IEEE J. Sel. Areas Commun._,
+vol. 32, no. 6, pp. 1065–1082, 2014.
+[10] CISCO, “The Internet of Things how the next evolution of the
+Internet is changing everything,” White paper, Apr. 2011. [Online].
+Available: [http://www.cisco.com/c/dam/en us/about/ac79/docs/innov/](http://www.cisco.com/c/dam/en_us/about/ac79/docs/innov/IoT_IBSG_0411FINAL.pdf)
+[IoT IBSG 0411FINAL.pdf](http://www.cisco.com/c/dam/en_us/about/ac79/docs/innov/IoT_IBSG_0411FINAL.pdf)
+[11] F. Bonomi, R. Milito, J. Zhu, and S. Addepalli, “Fog computing and its
+role in the Internet of Things,” in _Proc. ACM 1st edition of the MCC_
+_workshop on Mobile cloud computing_, 2012, pp. 13–16.
+[12] S. Yi, C. Li, and Q. Li, “A survey of fog computing: Concepts,
+applications and issues,” in _Proc. ACM Workshop on Mobile Big Data_,
+2015, pp. 37–42.
+[13] G. I. Klas, “Fog computing and mobile edge cloud gain momentum
+open fog consortium, ETSI MEC and Cloudlets,” 2015. [Online].
+[Available: http://www.engpaper.com/mobile-computing-2015.htm](http://www.engpaper.com/mobile-computing-2015.htm)
+[14] R. P. Goldberg, “Survey of virtual machine research,” _Computer_, vol. 7,
+no. 6, pp. 34–45, 1974.
+[15] Y. C. Hu, M. Patel, D. Sabella, N. Sprecher, and V. Young, “Mobile
+edge computing—A key technology towards 5G,” _ETSI White Paper_,
+vol. 11, 2015.
+[16] C.-Y. Chang, K. Alexandris, N. Nikaein, K. Katsalis, and T. Spyropoulos, “MEC architectural implications for LTE/LTE-A networks,” in
+_Proc. ACM Workshop on Mobility in the Evolving Internet Architecture_
+_(MobiArch)_, New York, NY, Oct. 2016, pp. 13–18.
+[17] Z. Q. Jaber and M. I. Younis, “Design and implementation of real time
+face recognition system (RTFRS),” _Int. J. Compt. Appl._, vol. 94, no. 12,
+pp. 15–22, May 2014.
+[18] T. Verbelen, P. Simoens, F. D. Turck, and B. Dhoedt, “Leveraging
+cloudlets for immersive collaborative applications,” _IEEE Pervasive_
+_Comput._, vol. 12, no. 4, pp. 30–38, Oct.-Dec. 2013.
+[19] A. A. Shuwaili and O. Simeone, “Energy-efficient resource allocation
+for mobile edge computing-based augmented reality applications,”
+_IEEE Wireless Commun. Lett._, vol. PP, no. 99, Apr. 2017.
+[20] A.-S. Ali and O. Simeone, “Energy-efficient resource allocation for
+mobile edge computing-based augmented reality applications,” _IEEE_
+_Wireless Commun. Lett._, to appear.
+[21] Juniper, “White paper: Mobile edge computing use cases &
+[deployment options.” [Online]. Available: https://www.juniper.net/](https://www.juniper.net/assets/us/en/local/pdf/whitepapers/2000642-en.pdf)
+[assets/us/en/local/pdf/whitepapers/2000642-en.pdf](https://www.juniper.net/assets/us/en/local/pdf/whitepapers/2000642-en.pdf)
+[22] M. Armbrust, A. Fox, R. Griffith, A. D. Joseph, R. Katz, A. Konwinski,
+G. Lee, D. Patterson, A. Rabkin, I. Stoica, and M. Zaharia, “A overview
+of cloud computing,” _Commun. ACM_, vol. 53, no. 4, pp. 52–58, Apr.
+2010.
+[23] M. Othman, S. A. Madani, S. U. Khan _et al._, “A survey of mobile
+cloud computing application models,” _IEEE Commun. Surveys Tuts._,
+vol. 16, no. 1, pp. 393–413, 1st Quater 2014.
+[24] M. F. Bari, R. Boutaba, R. Esteves, L. Z. Granville, M. Podlesny,
+M. G. Rabbani, Q. Zhang, and M. F. Zhani, “Data center network
+virtualization: A survey,” _IEEE Commun. Surveys Tuts._, vol. 15, no. 2,
+pp. 909–928, 2nd Quarter 2013.
+[25] A. Ghiasi and R. Baca, “Overview of largest data centers,” _IEEE_
+_802.3bs Task Force Interim Meeting_, May 2014. [Online]. Available:
+[http://www.ieee802.org/3/bs/public/14 05/ghiasi 3bs 01b 0514.pdf](http://www.ieee802.org/3/bs/public/14_05/ghiasi_3bs_01b_0514.pdf)
+32
+[26] S. Clinch, J. Harkes, A. Friday, N. Davies, and M. Satyanarayanan,
+“How close is close enough? Understanding the role of cloudlets in
+supporting display appropriation by mobile users,” in _Proc. IEEE Int._
+_Conf. Pervasive Comput. Commun. (PerCom)_, Lugano, Switzerland,
+Mar. 2012, pp. 122–127.
+[27] T. X. Tran, A. Hajisami, P. Pandey, and D. Pompili, “Collaborative
+mobile edge computing in 5G networks: New paradigms, scenarios,
+and challenges,” _IEEE Commun. Mag._, vol. 55, no. 4, Apr. 2017.
+[28] S. Wang, X. Zhang, Y. Zhang, L. Wang, J. Yang, and W. Wang, “A
+survey on mobile edge networks: Convergence of computing, caching
+and communications,” _IEEE Access_, to appear.
+[29] J. Zhang, W. Xie, F. Yang, and Q. Bi, “Mobile edge computing and
+field trial results for 5G low latency scenario,” _China Commun._, vol. 13,
+no. 2 (Supplement), pp. 174–182, 2016.
+[30] E. Cuervo, A. Balasubramanian, D.-k. Cho, A. Wolman, S. Saroiu,
+R. Chandra, and P. Bahl, “Maui: Making smartphones last longer
+with code offload,” in _Proc. ACM Int. Conf. Mobile Syst. Appl. Serv._
+_(MobiSys)_, San Francisco, California, USA, Jun. 2010, pp. 49–62.
+[31] M. Satyanarayanan, P. Bahl, R. Caceres, and N. Davies, “The case for
+VM-based cloudlets in mobile computing,” _IEEE Pervasive Comput._,
+vol. 8, no. 4, pp. 14–23, 2009.
+[32] 5GPPP, “5g automotive vision,” _White_ _Paper_ . [Online]. Available: [https://5g-ppp.eu/wp-content/uploads/2014/02/](https://5g-ppp.eu/wp-content/uploads/2014/02/5G-PPP-White-Paper-on-Automotive-Vertical-Sectors.pdf)
+[5G-PPP-White-Paper-on-Automotive-Vertical-Sectors.pdf](https://5g-ppp.eu/wp-content/uploads/2014/02/5G-PPP-White-Paper-on-Automotive-Vertical-Sectors.pdf)
+[33] O. Khalid, M. Khan, S. Khan, and A. Zomaya, “OmniSuggest: A
+ubiquitous cloud based context aware recommendation system for
+mobile social networks,” _IEEE Trans. Serv. Comput._, vol. 7, no. 3,
+pp. 401–414, Dec. 2014.
+[34] K. Goel and M. Goel, “Cloud computing based e-commerce model,”
+in _Proc. IEEE Int. Conf. Recent Trends in Electron., Info. & Commun._
+_Techn. (RTEICT)_, Banglore, India, May 2016, pp. 27–30.
+[35] G. Riah, “E-learning systems based on cloud computing: A review,”
+_ELSEVIER Proc. Comput. Sci._, vol. 62, pp. 352–359, Sep. 2015.
+[36] A. Abbas and S. U. Khan, “A review on the state-of-the-art privacypreserving approaches in the e-health clouds,” _IEEE J. Biomed. Health_
+_Inform._, vol. 18, no. 4, pp. 1431–1441, Apr. 2014.
+[37] G. Intelligence, “Understanding 5G: Perspectives on future technological advancements in mobile,” _London, UK_, 2014.
+[38] A. Somov and R. Giaffreda, “Powering IoT devices: Technologies
+and opportunities,” _[Available: http://iot.ieee.org/newsletter/november-](http://iot.ieee.org/newsletter/november-2015/powering-iot-devices-technologies-and-opportunities.html)_
+_[2015/powering-iot-devices-technologies-and-opportunities.html](http://iot.ieee.org/newsletter/november-2015/powering-iot-devices-technologies-and-opportunities.html)_ .
+[39] R. Kemp, N. Palmer, T. Kielmann, F. Seinstra, N. Drost, J. Maassen,
+and H. Bal, “EyeDentify: Multimedia cyber foraging from a smartphone,” in _Proc. IEEE Int. Symp. Multimedia_, San Diego, CA, USA,
+Dec. 2009, pp. 392–399.
+[40] B. Shi, J. Yang, Z. Huang, and P. Hui, “Offloading guidelines for
+augmented reality applications on wearable devices,” in _Proc. ACM_
+_Int. Symp. Multimedia_, Brisbane, Australia, Oct. 2015, pp. 1271–1274.
+[41] W. N. Schilit, “A system architecture for context-aware mobile computing,” Ph.D. dissertation, Columbia University, 1995.
+[42] C. Perera, A. Zaslavsky, P. Christen, and D. Georgakopoulos, “Context
+aware computing for the Internet of Things: A survey,” _IEEE Commun._
+_Surveys Tuts._, vol. 16, no. 1, pp. 414–454, 1st Quater 2014.
+[43] S. Nunna, A. Kousaridas, M. Ibrahim, M. Dillinger, C. Thuemmler,
+H. Feussner, and A. Schneider, “Enabling real-time context-aware
+collaboration through 5G and mobile edge computing,” in _Proc. IEEE_
+_Int. Conf. Inf. Techn. New Generations (ITNG)_, Las Vegas, NV, Apr.
+2015, pp. 601–605.
+[44] X. Luo, “From augmented reality to augmented computing: A look
+at cloud-mobile convergence,” in _Proc. IEEE Int. Symp. Ubiquitous_
+_Virtual Reality_, Gwangju, South Korea, Jul. 2009, pp. 29–32.
+[45] A. Thiagarajan, L. Ravindranath, H. Balakrishnan, S. Madden, and
+L. Girod, “Accurate, low-energy trajectory mapping for mobile devices.” in _Proc. USENIX Symp. Networked Systems Design and Imple-_
+_mentation (NSDI)_, Boston, MA, Mar. 2011, pp. 1–14.
+[46] H. Suo, Z. Liu, J. Wan, and K. Zhou, “Security and privacy in
+mobile cloud computing,” in _Proc. IEEE Int. Wireless Commun. Mobile_
+_Comput. Conf. (IWCMC)_, Cagliari, Italy, Jul. 2013, pp. 655–659.
+[47] ETSI, “Mobile-edge computing (MEC): Service scenarios.” [Online].
+[Available: http://www.etsi.org/deliver/etsi gs/MEC-IEG/001](http://www.etsi.org/deliver/etsi_gs/MEC-IEG/001_099/004/01.01.01_60/gs_mec-ieg004v010101p.pdf) 099/004/
+[01.01.01 60/gs mec-ieg004v010101p.pdf](http://www.etsi.org/deliver/etsi_gs/MEC-IEG/001_099/004/01.01.01_60/gs_mec-ieg004v010101p.pdf)
+[48] W. Shi and S. Dustdar, “The promise of edge computing,” _Comput_,
+vol. 49, no. 5, pp. 78–81, May 2016.
+[49] O. Salman, I. Elhajj, A. Kayssi, and A. Chehab, “Edge computing
+enabling the Internet of Things,” in _Proc. IEEE World Forum Internet_
+_of Things (WFIOT)_, Dec. 2015, pp. 603–608.
+[50] A. Ahmed and E. Ahmed, “A survey on mobile edge computing,” in
+_Proc. IEEE Int. Conf. Intell. Syst. Control (ISCO)_, Coimbatore, India,
+Jan. 2016, pp. 1–8.
+[51] T. Taleb, K. Samdanis, B. Mada, H. Flinck, S. Dutta, and D. Sabella,
+“On multi-access edge computing: A survey of the emerging 5g network edge architecture &amp; orchestration,” _IEEE Commun. Surveys_
+_Tuts._, to appear.
+[52] H. Liu, F. Eldarrat, H. Alqahtani, A. Reznik, X. de Foy, and
+Y. Zhang, “Mobile edge cloud system: Architectures, challenges, and
+approaches,” _IEEE Syst. J._, to appear.
+[53] M. T. Beck, M. Werner, S. Feld, and S. Schimper, “Mobile edge
+computing: A taxonomy,” in _Proc. Int. Conf. Advances Future Internet_
+_(AFIN)_, Lisbon, Portugal, Nov 2014, pp. 48–54.
+[54] P. Mach and Z. Becvar, “Mobile edge computing: A survey on architecture and computation offloading,” _IEEE Commun. Surveys Tuts._, to
+appear.
+[55] D. Sabella, A. Vaillant, P. Kuure, U. Rauschenbach, and F. Giust,
+“Mobile-edge computing architecture: The role of MEC in the Internet
+of Things.” _IEEE Consum. Electron. Mag._, vol. 5, no. 4, pp. 84–91,
+Oct. 2016.
+[56] E. Ahmed and M. H. Rehmani, “Mobile edge computing: Opportunities, solutions, and challenges,” _Future Generation Comput. Syst._,
+vol. 70, pp. 59–63, May 2017.
+[57] A. u. R. Khan, M. Othman, S. A. Madani, and S. U. Khan, “A survey of
+mobile cloud computing application models,” _IEEE Commun. Surveys_
+_Tuts._, vol. 16, no. 1, pp. 393–413, 1st Quater 2014.
+[58] A. P. Miettinen and J. K. Nurminen, “Energy efficiency of mobile
+clients in cloud computing,” in _Proc. USENIX Conf. Hot Topics Cloud_
+_Comput. (HotCloud)_, Boston, MA, Jun. 2010, pp. 1–7.
+[59] S. Melendez and M. P. McGarry, “Computation offloading decisions
+[for reducing completion time,” 2016. [Online]. Available: http:](http://arxiv.org/pdf/1608.05839.pdf)
+[//arxiv.org/pdf/1608.05839.pdf](http://arxiv.org/pdf/1608.05839.pdf)
+[60] W. Yuan and K. Nahrstedt, “Energy-efficient soft real-time CPU
+scheduling for mobile multimedia systems,” in _Proc. ACM Symp._
+_Operat. Syst. Principles (SOSP)_, Bolton Landing, NY, USA, Oct. 2003,
+pp. 149–163.
+[61] M. Jia, J. Cao, and L. Yang, “Heuristic offloading of concurrent tasks
+for computation-intensive applications in mobile cloud computing,”
+in _Proc. IEEE Int. Conf. Comput. Commun. (INFOCOM WKSHPS)_,
+Toronto, Canada, Apr. 2014, pp. 352–357.
+[62] S. E. Mahmoodi, R. N. Uma, and K. P. Subbalakshmi, “Optimal joint
+scheduling and cloud offloading for mobile applications,” _IEEE Trans._
+_Cloud Comput._, vol. PP, no. 99, pp. 1–13, 2016.
+[63] A. Goldsmith, _Wireless Communications_ . New York, NY, USA:
+Cambridge University Press, 2005.
+[64] D. Gesbert, S. Hanly, H. Huang, S. S. Shitz, O. Simeone, and W. Yu,
+“Multi-cell MIMO cooperative networks: A new look at interference,”
+_IEEE J. Sel. Areas Commun._, vol. 28, no. 9, pp. 1380–1408, Dec. 2010.
+[65] S. A. Jafar, “Topological interference management through index
+coding,” _IEEE Trans. Inf. Theory_, vol. 60, no. 1, pp. 529–568, Jan
+2014.
+[66] C. Li, J. Zhang, M. Haenggi, and K. B. Letaief, “User-centric intercell
+interference nulling for downlink small cell networks,” _IEEE Trans._
+_Commun._, vol. 63, no. 4, pp. 1419–1431, Apr. 2015.
+[67] E. Torkildson, U. Madhow, and M. Rodwell, “Indoor millimeter wave
+MIMO: Feasibility and performance,” _IEEE Trans. Wireless Commun._,
+vol. 10, no. 12, pp. 4150–4160, Dec. 2011.
+[68] X. Yu, J. C. Shen, J. Zhang, and K. B. Letaief, “Alternating minimization algorithms for hybrid precoding in millimeter wave MIMO
+systems,” _IEEE J. Sel. Topics Signal Process._, vol. 10, no. 3, pp. 485–
+500, Apr. 2016.
+[69] S. M. Alamouti, “A simple transmit diversity technique for wireless
+communications,” _IEEE J. Sel. Areas Commun._, vol. 16, no. 8, pp.
+1451–1458, Aug. 1998.
+[70] A. Goldsmith, S. A. Jafar, N. Jindal, and S. Vishwanath, “Capacity
+limits of MIMO channels,” _IEEE J. Sel. Areas Commun._, vol. 51, no. 6,
+pp. 684–195, Jun. 2003.
+[71] E. Larsson, O. Edfors, F. Tufvesson, and T. Marzetta, “Massive MIMO
+for next generation wireless systems,” _IEEE Commun. Mag._, vol. 52,
+no. 2, pp. 186–195, Feb. 2014.
+[72] J. G. Andrews, H. Claussen, M. Dohler, S. Rangan, and M. C. Reed,
+“Femtocells: Past, present, and future,” _IEEE Commun. Mag._, vol. 30,
+no. 3, pp. 497–508, Mar. 2012.
+[73] H. S. Dhillon, R. K. Ganti, F. Baccelli, and J. G. Andrews, “Modeling
+and analysis of K-tier downlink heterogeneous cellular networks,” _IEEE_
+_Trans. Commun._, vol. 30, no. 3, pp. 550–560, Mar. 2012.
+33
+[74] S. Han, Y.-C. Liang, and B.-H. Soong, “Spectrum refarming: A new
+paradigm of spectrum sharing for cellular networks,” _IEEE Trans._
+_Commun._, vol. 63, no. 5, pp. 1895–1906, May 2016.
+[75] Q. Chen, G. Yu, and Z. Ding, “Optimizing unlicensed spectrum
+sharing for LTE-U and WiFi network coexistence,” _IEEE J. Sel. Areas_
+_Commun._, vol. 34, no. 10, pp. 2562–2574, Oct. 2016.
+[76] P. Kryszkiewicz, A. Kliks, and H. Bogucka, “Small-scale spectrum
+aggregation and sharing,” _IEEE J. Sel. Areas Commun._, vol. 34, no. 10,
+pp. 2630–2641, Oct. 2016.
+[77] ERICSSON, “5G radio access - Capabilities and technologies,”
+_White paper_ [, Apr. 2016. [Online]. Available: https://www.ericsson.](https://www.ericsson.com/assets/local/publications/white-papers/wp-5g.pdf)
+[com/assets/local/publications/white-papers/wp-5g.pdf](https://www.ericsson.com/assets/local/publications/white-papers/wp-5g.pdf)
+[78] T. Burd and R. Broderson, “Processor design for portable systems,”
+_Kluwer J. VLSI Signal Process. Syst._, vol. 13, no. 2/3, pp. 203–221,
+Aug. 1996.
+[79] W. Yuan and K. Nahrstedt, “Energy-efficient CPU scheduling for
+multimedia applications,” _ACM Trans. Compt. Syst._, vol. 24, no. 3,
+pp. 292–331, Aug 2006.
+[80] K. D. Vogeleer, G. Memmi, P. Jouvelot, and F. Coelho, “The energy/frequency convexity rule: Modeling and experimental validation
+on mobile devices,” in _Proc. Springer Int. Conf. Parallel Process. Appl._
+_Mathematics (PPAM)_, Warsaw, Poland, Sep. 2013, pp. 793–803.
+[81] W. Zhang, Y. Wen, K. Guan, D. Kilper, H. Luo, and D. O. Wu, “Energyoptimal mobile cloud computing under stochastic wireless channel,”
+_IEEE Trans. Wireless Commun._, vol. 12, no. 9, pp. 4569–4581, Sep.
+2013.
+[82] A. Carroll and G. Heiser, “An analysis of power consumption in a
+smartphone,” in _Proc. USENIX Annual Technical Conf._, Boston, MA,
+Jun. 2010, pp. 1–14.
+[83] C. You, K. Huang, and H. Chae, “Energy efficient mobile cloud
+computing powered by wireless energy transfer,” _IEEE J. Sel. Areas_
+_Commun._, vol. 34, no. 5, pp. 1757–1771, May 2016.
+[84] C. You, K. Huang, H. Chae, and B.-H. Kim, “Energy-efficient resource
+allocation for mobile-edge computation offloading,” _IEEE Trans. Wire-_
+_less Commun._, vol. PP, no. 99, 2016.
+[85] P. Barham, B. Dragovic, K. Fraser, S. Hand, T. Harris, A. Ho,
+R. Neugebauer, I. Pratt, and A. Warfield, “Xen and the art of virtualization,” in _Proc. ACM Symp. Operat. Syst. Principles (SOSP)_, Bolton
+Landing, NY, Oct. 2003, pp. 164–177.
+[86] S. Barbarossa, S. Sardellitti, and P. Di Lorenzo, “Joint allocation of
+computation and communication resources in multiuser mobile cloud
+computing,” in _Proc. IEEE Int. Workshop Signal Process. Advances_
+_Wireless Commun. (SPAWC)_, Darmstadt, Germany, Jun. 2013, pp. 26–
+30.
+[87] X. Chen, L. Jiao, W. Li, and X. Fu, “Efficient multi-user computation
+offloading for mobile-edge cloud computing,” _IEEE Trans. Netw._,
+vol. 24, pp. 2795–2808, Oct. 2016.
+[88] X. Lyu, H. Tian, P. Zhang, and C. Sengul, “Multi-user joint task
+offloading and resources optimization in proximate clouds,” _IEEE_
+_Trans. Veh. Techn._, vol. PP, no. 99, pp. 1–13, Jul. 2016.
+[89] S. Vakilinia, M. M. Ali, and D. Qiu, “Modeling of the resource
+allocation in cloud computing centers,” _Elsevier Comput. Netw._, vol. 91,
+pp. 453–470, Nov. 2015.
+[90] D. Bruneo, “A stochastic model to investigate data center performance
+and QoS in IaaS cloud computing systems,” _IEEE Trans. Parallel_
+_Distrib. Syst._, vol. 25, no. 3, pp. 560–569, 2014.
+[91] X. Fan, W.-D. Weber, and L. A. Barroso, “Power provisioning for a
+warehouse-sized computer,” in _ACM SIGARCH Comput. Archit. News_,
+vol. 35, no. 2, 2007, pp. 13–23.
+[92] C.-C. Lin, P. Liu, and J.-J. Wu, “Energy-efficient virtual machine
+provision algorithms for cloud systems,” in _Proc. IEEE Utility and_
+_Cloud Computing (UCC)_, Melbourne, Australia, Dec. 2011, pp. 81–
+88.
+[93] A. Beloglazov, J. Abawajy, and R. Buyya, “Energy-aware resource
+allocation heuristics for efficient management of data centers for cloud
+computing,” _Elsevier Future Generation Comput. Syst._, vol. 28, no. 5,
+pp. 755–768, May 2012.
+[94] K. Kumar and Y. H. Lu, “Cloud computing for mobile users: Can
+offloading computation save energy?” _Comput._, vol. 43, no. 4, pp. 51–
+56, Apr. 2010.
+[95] K. Kumar, J. Liu, Y.-H. Lu, and B. Bhargava, “A survey of computation
+offloading for mobile systems,” _Mobile Netw. Appl._, vol. 18, no. 1, pp.
+129–140, Feb. 2013.
+[96] S. Barbarossa, S. Sardellitti, and P. D. Lorenzo, “Communicating while
+computing: Distributed mobile cloud computing over 5G heterogeneous
+networks,” _IEEE Signal Process. Mag._, vol. 31, no. 6, pp. 45–55, Nov.
+2014.
+[97] Y. Wang, M. Sheng, X. Wang, L. Wang, and J. Li, “Mobile-edge computing: Partial computation offloading using dynamic voltage scaling,”
+_IEEE Trans. Commun._, vol. 64, no. 10, pp. 4268–4282, Oct. 2016.
+[98] Y. H. Kao, B. Krishnamachari, M. R. Ra, and F. Bai, “Hermes: Latency
+optimal task assignment for resource-constrained mobile computing,”
+in _Proc. IEEE Int. Conf. Comput. Commun. (INFOCOM)_, Hong Kong,
+China, Apr. 2015, pp. 1894–1902.
+[99] W. Zhang, Y. Wen, and D. O. Wu, “Collaborative task execution in
+mobile cloud computing under a stochastic wireless channel,” _IEEE_
+_Trans. Wireless Commun._, vol. 14, no. 1, pp. 81–93, Jan. 2015.
+[100] S. Khalili and O. Simeone, “Inter-layer per-mobile optimization of
+cloud mobile computing: A message-passing approach.” [Online].
+[Available: http://arxiv.org/abs/1509.01596](http://arxiv.org/abs/1509.01596)
+[101] P. D. Lorenzo, S. Barbarossa, and S. Sardellitti, “Joint optimization
+of radio resources and code partitioning in mobile edge computing.”
+[[Online]. Available: http://arxiv.org/abs/1307.3835v3](http://arxiv.org/abs/1307.3835v3)
+[102] S. E. Mahmoodi, K. P. Subbalakshmi, and V. Sagar, “Cloud offloading
+for multi-radio enabled mobile devices,” in _Proc. IEEE Int. Conf._
+_Commun. (ICC)_, London, UK, Jun. 2015, pp. 5473–5478.
+[103] D. Huang, P. Wang, and D. Niyato, “A dynamic offloading algorithm
+for mobile computing,” _IEEE Trans. Wireless Commun._, vol. 11, no. 6,
+pp. 1991–1995, Jun. 2012.
+[104] J. Liu, Y. Mao, J. Zhang, and K. B. Letaief, “Delay-optimal computation task scheduling for mobile-edge computing systems,” in _Proc._
+_IEEE Int. Symp. Inf. Theory (ISIT)_, Barcelona, Spain, Jul 2016, pp.
+1451–1455.
+[105] S. Chen, Y. Wang, and M. Pedram, “A semi-Markovian decision
+process based control method for offloading tasks from mobile devices
+to the cloud,” in _Proc. IEEE Global Commun. Conf. (GLOBECOM)_,
+Atlanta, GA, Dec 2013, pp. 2885–2890.
+[106] S.-T. Hong and H. Kim, “QoE-aware computation offloading scheduling to capture energy-latency tradeoff in mobile clouds,” in _Proc. IEEE_
+_Int. Conf. Sensing, Commun. Netw. (SECON)_, London, UK, Jun. 2016,
+pp. 1–9.
+[107] J. Kwak, Y. Kim, J. Lee, and S. Chong, “Dream: Dynamic resource
+and task allocation for energy minimization in mobile cloud systems,”
+_IEEE J. Sel. Areas Commun._, vol. 33, no. 12, pp. 2510–2523, Dec
+2015.
+[108] Z. Jiang and S. Mao, “Energy delay tradeoff in cloud offloading for
+multi-core mobile devices,” _IEEE Access_, vol. 3, pp. 2306–2316, Nov.
+2015.
+[109] D. T. Hoang, D. Niyato, and P. Wang, “Optimal admission control
+policy for mobile cloud computing hotspot with cloudlet,” in _Proc._
+_IEEE Wireless Commun. Networking Conf. (WCNC)_, Paris, France,
+Apr. 2012, pp. 3145–3149.
+[110] Y. Mao, J. Zhang, S. Song, and K. B. Letaief, “Power-delay tradeoff
+in multi-user mobile-edge computing systems,” in _Proc. IEEE Global_
+_Commun. Conf. (GLOBECOM)_, Washington, DC, Dec. 2016, pp. 1–6.
+[111] K. Wang, K. Yang, and C. Magurawalage, “Joint energy minimization
+and resource allocation in C-RAN with mobile cloud,” _IEEE Trans._
+_Cloud Comput._, vol. PP, no. 99, pp. 1–11, Jan. 2016.
+[112] J. Ren, G. Yu, Y. Cai, and Y. He, “Latency optimization for
+resource allocation in mobile-edge computation offloading.” [Online].
+[Available: https://arxiv.org/pdf/1704.00163.pdf](https://arxiv.org/pdf/1704.00163.pdf)
+[113] M.-H. Chen, B. Liang, and M. Dong, “Joint offloading decision and
+resource allocation for multi-user multi-task mobile cloud,” in _Proc._
+_IEEE Int. Conf. Commun. (ICC)_, Kuala Lumpur, Malaysia, May 2016,
+pp. 1–6.
+[114] M.-H. Chen, B. Liang, and D. Ming, “Joint offloading and resource
+allocation for computation and communication in mobile cloud with
+computing access point,” in _Proc. IEEE Int. Conf. Comput. Commun._
+_(INFOCOM)_, Atlanta, GA, USA, Apr. 2017, pp. 1863–1871.
+[115] X. Chen, “Decentralized computation offloading game for mobile cloud
+computing,” _IEEE Trans. Parallel Distrib. Syst._, vol. 26, no. 4, pp. 974–
+983, Apr. 2016.
+[116] M.-H. Chen, B. Liang, and M. Dong, “Multi-user mobile cloud
+offloading game with computing access point,” in _Proc. IEEE Int. Conf._
+_Cloud Networking (Cloudnet)_, Pisa, Italy, Oct. 2016, pp. 64–69.
+[117] X. Ma, C. Lin, X. Xiang, and C. Chen, “Game-theoretic analysis of
+computation offloading for cloudlet-based mobile cloud computing,” in
+_Proc. ACM Int. Conf. Modeling, Anal. and Simulation of Wireless and_
+_Mobile Syst. (MSWiM)_, Cancun, Mexico, Nov. 2015, pp. 271–278.
+[118] S. Guo, B. Xiao, Y. Yang, and Y. Yang, “Energy-efficient dynamic
+offloading and resource scheduling in mobile cloud computing,” in
+_Proc. IEEE Int. Conf. Comput. Commun. (INFOCOM)_, San Francisco,
+CA, Apr. 2016, pp. 1–9.
+34
+[119] S. Sardellitti, G. Scutari, and S. Barbarossa, “Joint optimization of radio
+and computational resources for multicell mobile-edge computing,”
+_IEEE Trans. Signal Info. Process. Over Networks_, vol. 1, no. 2, pp.
+89–103, Jun. 2015.
+[120] M. Molina, O. Mu˜noz, A. Pascual-Iserte, and J. Vidal, “Joint scheduling
+of communication and computation resources in multiuser wireless
+application offloading,” in _Proc. IEEE Int. Symp. on Personal Indoor_
+_and Mobile Radio Comm. (PIMRC)_, Washington, DC, Sep. 2014, pp.
+1093–1098.
+[121] Y. Yu, J. Zhang, and K. B. Letaief, “Joint subcarrier and CPU time
+allocation for mobile edge computing,” in _Proc. IEEE Global Commun._
+_Conf. (GLOBECOM)_, Washington, DC, Dec. 2016, pp. 1–6.
+[122] L. Yang, J. Cao, H. Cheng, and Y. Ji, “Multi-user computation
+partitioning for latency sensitive mobile cloud applications,” _IEEE_
+_Trans. Comput._, vol. 64, no. 8, pp. 2253–2266, Aug. 2015.
+[123] Y. Li, L. Sun, and W. Wang, “Exploring device-to-device communication for mobile cloud computing,” in _Proc. IEEE Int. Conf. Commun._
+_(ICC)_, Sydney, Australia, Jun. 2014, pp. 2239–2244.
+[124] M. Jo, T. Maksymyuk, B. Strykhalyuk, and C.-H. Cho, “Deviceto-device-based heterogeneous radio access network architecture for
+mobile cloud computing,” _IEEE Wireless Commun._, vol. 22, no. 3, pp.
+50–58, Mar. 2015.
+[125] Z. Sheng, C. Mahapatra, V. Leung, M. Chen, and P. Sahu, “Energy
+efficient cooperative computing in mobile wireless sensor networks,”
+_IEEE Trans. Cloud Comput._, vol. PP, no. 99, pp. 1–13, Jul. 2015.
+[126] J. Song, Y. Cui, M. Li, J. Qiu, and R. Buyya, “Energy-traffic tradeoff cooperative offloading for mobile cloud computing,” in _Proc._
+_IEEE/ACM Int. Symp. Quality of Service (IWQoS)_, Hong Kong, China,
+May 2014, pp. 284–289.
+[127] X. Cao, F. Wang, J. Xu, R. Zhang, and S. Cui, “Joint computation
+and communication cooperation for mobile edge computing,” Apr.
+[2017. [Online]. Available: https://arxiv.org/pdf/1704.06777.pdf](https://arxiv.org/pdf/1704.06777.pdf)
+[128] C. You and K. Huang, “Mobile cooperative computing: Energy-efficient
+peer-to-peer computation offloading,” 2017. [Online]. Available:
+[https://arxiv.org/abs/1704.04595](https://arxiv.org/abs/1704.04595)
+[129] L. Chen, S. Zhou, and J. Xu, “Computation peer offloading for
+energy-constrained mobile edge computing in small-cell networks,”
+[Mar. 2017. [Online]. Available: https://arxiv.org/pdf/1703.06058.pdf](https://arxiv.org/pdf/1703.06058.pdf)
+[130] L. Lei, Z. Zhong, K. Zheng, J. Chen, and H. Meng, “Challenges on
+wireless heterogeneous networks for mobile cloud computing,” _IEEE_
+_Wireless Commun._, vol. 20, no. 3, pp. 34–44, 2013.
+[131] T. Zhao, S. Zhou, X. Guo, Y. Zhao, and Z. Niu, “A cooperative
+scheduling scheme of local cloud and Internet cloud for delay-aware
+mobile cloud computing,” in _Proc. IEEE Global Commun. Conf._
+_Worshops (GC WKSHPS)_, San Diego, CA, Dec. 2015, pp. 1–6.
+[132] Y. Ge, Y. Zhang, Q. Qiu, and Y.-H. Lu, “A game theoretic resource
+allocation for overall energy minimization in mobile cloud computing
+system,” in _Proc. ACM/IEEE Int. Symp. Low Power Electron. Design_,
+Redondo Beach, CA, Jul.-Aug. 2012, pp. 279–284.
+[133] T. Q. Dinh, J. Tang, Q. D. La, and T. Q. Quek, “Offloading in mobile
+edge computing: Task allocation and computational frequency scaling,”
+_Commun. ACM_, vol. PP, no. 99, pp. 1–14, Apr. 2017.
+[134] R. Kaewpuang, D. Niyato, P. Wang, and E. Hossain, “A framework for
+cooperative resource management in mobile cloud computing,” _IEEE_
+_J. Sel. Areas Commun._, vol. 31, no. 12, pp. 2685–2700, Dec. 2013.
+[135] R. Yu, J. Ding, S. Maharjan, S. Gjessing, Y. Zhang, and D. Tsang,
+“Decentralized and optimal resource cooperation in geo-distributed
+mobile cloud computing,” _IEEE Trans. Emerg. Topics Comput._, vol. PP,
+no. 99, pp. 1–13, Sep. 2015.
+[136] M. S. Elbamby, M. Bennis, and W. Saad, “Proactive edge
+computing in latency-constrained fog networks.” [Online]. Available:
+[https://arxiv.org/pdf/1704.06749.pdf](https://arxiv.org/pdf/1704.06749.pdf)
+[137] S. Wang, R. Urgaonkar, T. He, M. Zafer, K. Chan, and K. K. Leung,
+“Mobility-induced service migration in mobile micro-clouds,” in _Proc._
+_IEEE Military Commun. Conf. (MILCOM)_, Baltimore, MD, Oct. 2014,
+pp. 835–840.
+[138] R. Urgaonkar, S. Wang, T. He, M. Zafer, K. Chan, and K. K. Leung,
+“Dynamic service migration and workload scheduling in edge-clouds,”
+_Performance Evaluation_, vol. 91, pp. 205–228, 2015.
+[139] M.-H. Chen, M. Dong, and B. Liang, “Joint offloading decision and
+resource allocation for mobile cloud with computing access point,”
+in _Proc. IEEE Int. Conf. Accoustic, Speech, and Signal Processing_
+_(ICASSP)_, Shanghai, China, Mar. 2016, pp. 3516–3520.
+[140] O. Munoz, A. P-Iserte, and J. Vidal, “Optimization of radio and
+computational resources for energy efficiency in latency-constrained
+application offloading,” _IEEE Trans. Veh. Techn._, vol. 64, no. 10, pp.
+497–508, Oct. 2015.
+[141] S. Wang and S. Dey, “Modeling and characterizing user experience in
+a cloud server based mobile gaming approach,” in _Proc. IEEE Global_
+_Commun. Conf. (GLOBECOM)_, Honolulu, HI, Nov.-Dec. 2009, pp.
+1–7.
+[142] S. Wang, M. Zafer, and K. K. Leung, “Online placement of multicomponent applications in edge computing environments,” _IEEE Ac-_
+_cess_, vol. 5, Feb. 2017.
+[143] Y. Shi, J. Zhang, B. O’Donoghue, and K. B. Letaief, “Large-scale
+convex optimization for dense wireless cooperative networks,” _IEEE_
+_Trans. Signal Process._, vol. 63, no. 18, pp. 4729–4743, Sep. 2013.
+[144] C. Vallati, A. Virdis, E. Mingozzi, and G. Stea, “Mobile-edge computing come home connecting things in future smart homes using
+LTE device-to-device communications,” _IEEE Consum. Electron. Mag._,
+vol. 5, no. 4, pp. 77–83, Oct. 2016.
+[145] T. H. Luan, L. Gao, Z. Li, Y. Xiang, G. Wei, and L. Sun, “Fog
+computing: Focusing on mobile users at the edge.” [Online]. Available:
+[https://arxiv.org/pdf/1502.01815v3.pdf](https://arxiv.org/pdf/1502.01815v3.pdf)
+[146] L. Tong, Y. Li, and W. Gao, “A hierarchical edge cloud architecture
+for mobile computing,” in _Proc. IEEE Int. Conf. Comput. Commun._
+_(INFOCOM)_, San Francisco, CA, USA, Apr. 2016, pp. 1–9.
+[147] G. Kirby, A. Dearle, A. Macdonald, and A. Fernandes, “An
+[approach to ad hoc cloud computing.” [Online]. Available: https:](https://arxiv.org/pdf/1002.4738v1.pdf)
+[//arxiv.org/pdf/1002.4738v1.pdf](https://arxiv.org/pdf/1002.4738v1.pdf)
+[148] T. T. Huu, C. K. Tham, and D. Niyato, “A stochastic workload
+distribution approach for an ad-hoc mobile cloud,” in _Proc. IEEE Int._
+_Conf. Cloud Comput. Techn. Sci. (CloudCom)_, Singapore, Dec. 2014,
+pp. 174–181.
+[149] D. M. Shila, W. Shen, Y. Cheng, X. Tian, and X. Shen, “AMCloud:
+Toward a secure autonomic mobile ad hoc cloud computing system,”
+_IEEE Wireless Commun._, vol. PP, no. 99, pp. 1–8, Oct. 2016.
+[150] X. Hou, Y. Li, M. Chen, D. Wu, D. Jin, and S. Chen, “Vehicular fog
+computing: A viewpoint of vehicles as the infrastructures,” _IEEE Trans._
+_Veh. Techn._, vol. 65, no. 6, pp. 3860–3873, Jun. 2016.
+[151] M. Haenggi, J. G. Andrews, F. Baccelli, O. Dousse, and
+M. Franceschetti, “Stochastic geometry and random graphs for the
+analysis and design of wireless networks,” _IEEE J. Sel. Areas Commun._,
+vol. 27, no. 7, pp. 1029–1046, Sep. 2009.
+[152] J. G. Andrews, F. Baccelli, and R. K. Ganti, “A tractable approach to
+coverage and rate in cellular networks,” _IEEE Trans. Commun._, vol. 59,
+no. 11, pp. 3122–3134, Nov. 2011.
+[153] M. Haenggi, _Stochastic Geometry for Wireless Networks_ . New York,
+NY, USA: Cambridge University Press, 2012.
+[154] C. Li, J. Zhang, J. G. Andrews, and K. B. Letaief, “Success probability
+and area spectral efficiency in multiuser MIMO HetNets,” _IEEE Trans._
+_Commun._, vol. 64, no. 4, pp. 1544–1556, Apr. 2016.
+[155] N. Vastardis and K. Yang, “An enhanced community-based mobility
+model for distributed mobile social networks,” _J. Ambient Intelligence_
+_and Humanized Comput._, vol. 5, no. 1, pp. 65–75, Feb. 2014.
+[156] CISCO, “Cisco visual networking index: Global mobile
+data traffic forecast update, 2015-2020,” _White_ _paper_, 2016.
+[[Online]. Available: http://www.cisco.com/c/en/us/solutions/collateral/](http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/vni-forecast-qa.pdf)
+[service-provider/visual-networking-index-vni/vni-forecast-qa.pdf](http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/vni-forecast-qa.pdf)
+[157] X. Wang, M. Chen, T. Taleb, A. Ksentini, and V. C. Leung, “Cache
+in the air: Exploiting content caching and delivery techniques for 5G
+systems,” _IEEE Commun. Mag._, vol. 52, no. 2, pp. 131–139, Feb. 2014.
+[158] E. Bastug, M. Bennis, and M. Debbah, “Living on the edge: The role
+of proactive caching in 5G wireless networks,” _IEEE Commun. Mag._,
+vol. 52, no. 8, pp. 82–89, Aug. 2014.
+[159] N. Golrezaei, K. Shanmugam, A. G. Dimakis, A. F. Molisch, and
+G. Caire, “Femtocaching: Wireless video content delivery through
+distributed caching helpers,” in _Proc. IEEE Int. Conf. Compt. Commun._
+_(INFOCOM)_, Orlando, FL, Mar. 2012, pp. 1107–1115.
+[160] A. S. Gomes, B. Sousa, D. Palma, V. Fonseca, Z. Zhao, E. Monteiro,
+T. Braun, P. Simoes, and L. Cordeiro, “Edge caching with mobility
+prediction in virtualized LTE mobile networks,” _Future Generation_
+_Comput. Syst._, vol. 70, pp. 148–162, 2017.
+[161] L. Yang, J. Cao, G. Liang, and X. Han, “Cost aware service placement
+and load dispatching in mobile cloud systems,” _IEEE Trans. Comput._,
+vol. 65, no. 5, pp. 1440–1452, May 2016.
+[162] J. Tordsson, R. S. Montero, R. Moreno-Vozmediano, and I. M. Llorente,
+“Cloud brokering mechanisms for optimized placement of virtual
+machines across multiple providers,” _Future Generation Comput. Syst._,
+vol. 28, no. 2, pp. 358–367, Feb. 2012.
+[163] B. Li, J. Li, J. Huai, T. Wo, Q. Li, and L. Zhong, “EnaCloud: An
+energy-saving application live placement approach for cloud computing
+environments,” in _Proc. IEEE Int. Conf. Cloud Comput. (CLOUD)_,
+Bangalore, India, Sep. 2009, pp. 17–24.
+35
+[164] Y. Gao, H. Guan, Z. Qi, Y. Hou, and L. Liu, “A multi-objective
+ant colony system algorithm for virtual machine placement in cloud
+computing,” _J. Comput. Syst. Sci._, vol. 79, no. 8, pp. 1230–1242, Dec.
+2013.
+[165] J. L. Lucas-Simarro, R. Moreno-Vozmediano, R. S. Montero, and I. M.
+Llorente, “Scheduling strategies for optimal service deployment across
+multiple clouds,” _Future Generation Comput. Syst._, vol. 29, no. 6, pp.
+1431–1441, Aug. 2013.
+[166] H. Rheingold, _Virtual Reality: Exploring the Brave New Technologies_ .
+New York, NY, USA: Simon & Schuster Adult Publishing Group, 1991.
+[167] S. Wang and S. Dey, “Modeling and characterizing user experience in
+a cloud server based mobile gaming approach,” in _Proc. IEEE Global_
+_Commun. Conf. (GLOBECOM)_, Honolulu, HI, Nov. 2009, pp. 1–7.
+[168] T. X. Tran, P. Pandey, A. Hajisami, and D. Pompili, “Collaborative
+multi-bitrate video caching and processing in mobile-edge computing
+networks,” in _Proc. IEEE/IFIP Conf. Wireless On-demand Network_
+_Systems and Services (WONS)_, Jackson Hole, WY, USA, Feb. 2017,
+[pp. 1–8. [Online]. Available: https://arxiv.org/pdf/1612.01436v2.pdf](https://arxiv.org/pdf/1612.01436v2.pdf)
+[169] E. Bas¸tuˇg, M. Bennis, M. Kountouris, and M. Debbah, “Cache-enabled
+small cell networks: Modeling and tradeoffs,” _EURASIP J. Wireless_
+_Commun. Networking_, vol. 2015, no. 1, pp. 1–11, Feb. 2015.
+[170] Y. Cui, Y. Wu, and D. Jiang, “Analysis and optimization of caching
+and multicasting in large-scale cache-enabled information-centric networks,” in _Proc. IEEE Global Commun. Conf. (GLOBECOM)_, San
+Diego, CA, Dec. 2015, pp. 1–7.
+[171] V. Suryaprakash, J. Møller, and G. Fettweis, “On the modeling and
+analysis of heterogeneous radio access networks using a poisson cluster
+process,” _IEEE Trans. Wireless Commun._, vol. 14, no. 2, pp. 1035–
+1047, Feb. 2015.
+[172] D. Lopez-Perez, I. Guvenc, and X. Chu, “Mobility management
+challenges in 3GPP heterogeneous networks,” _IEEE Commun. Mag._,
+vol. 50, no. 12, pp. 70–78, 2012.
+[173] A. Damnjanovic, J. Montojo, Y. Wei, T. Ji, T. Luo, M. Vajapeyam,
+T. Yoo, O. Song, and D. Malladi, “A survey on 3GPP heterogeneous
+networks,” _IEEE Wireless Commun._, vol. 18, no. 3, pp. 10–21, Mar.
+2011.
+[174] M. Kassar, B. Kervella, and G. Pujolle, “An overview of vertical
+handover decision strategies in heterogeneous wireless networks,”
+_ELSEVIER Comput. Commun._, vol. 31, no. 10, pp. 2607–2620, Oct.
+2008.
+[175] C. Wang, Y. Li, and D. Jin, “Mobility-assisted opportunistic computation offloading,” _IEEE Commun. Lett._, vol. 18, no. 10, pp. 1779–1782,
+Oct. 2014.
+[176] Y. Zhang, D. Niyato, and P. Wang, “Offloading in mobile cloudlet
+systems with intermittent connectivity,” _IEEE Trans. Mobile Comput._,
+vol. 14, no. 12, pp. 2516–2529, Dec. 2015.
+[177] K. Lee and I. Shin, “User mobility model based computation offloading
+decision for mobile cloud,” _J. Comput. Sci. Eng._, vol. 9, no. 3, pp. 155–
+162, Sep. 2015.
+[178] M. R. Rahimi, N. Venkatasubramanian, and A. V. Vasilakos, “Music:
+Mobility-aware optimal service allocation in mobile cloud computing,”
+in _Proc. IEEE Int. Conf. Cloud Comput. (CLOUD)_, Santa Clara
+Marriott, CA, Jun. 2013, pp. 75–82.
+[179] A. Prasad, P. Lund´en, M. Moisio, M. A. Uusitalo, and Z. Li, “Efficient
+mobility and traffic management for delay tolerant cloud data in 5G
+networks networks,” in _Proc. IEEE Int. Symp. on Personal Indoor and_
+_Mobile Radio Comm. (PIMRC)_, 2015, pp. 1740–1745.
+[180] R. Wang, X. Peng, J. Zhang, and K. B. Letaief, “Mobility-aware
+caching for content-centric wireless networks: Modeling and methodology,” _IEEE Commun. Mag._, vol. 54, no. 8, pp. 77–83, Aug. 2016.
+[181] S.-W. Ko, K. Huang, S.-L. Kim, and H. Chae, “Online prefetching
+for mobile computation offloading,” 2016. [Online]. Available:
+[https://arxiv.org/abs/1608.04878](https://arxiv.org/abs/1608.04878)
+[182] K. Doppler, M. Rinne, C. Wijting, C. B. Ribeiro, and K. Hugl, “Deviceto-device communication as an underlay to LTE-advanced networks,”
+_IEEE Commun. Mag._, vol. 47, no. 12, pp. 42–49, Dec 2009.
+[183] C.-A. Chen, M. Won, R. Stoleru, and G. G. Xie, “Energy-efficient faulttolerant data storage and processing in mobile cloud,” _IEEE Trans._
+_Cloud Comput._, vol. 3, no. 1, pp. 28–41, Jan. 2015.
+[184] C. A. Chen, R. Stoleru, and G. G. Xie, “Energy-efficient and faulttolerant mobile cloud storage,” in _Proc. IEEE Int. Conf. Could Net-_
+_working (Cloudnet)_, Pisa, Italy, Oct. 2016, pp. 51–57.
+[185] D. Satria, D. Park, and M. Jo, “Recovery for overloaded mobile edge
+computing,” _Future Generation Comput. Syst._, vol. 70, pp. 138–147,
+2017.
+[186] S. Chaisiri, B.-S. Lee, and D. Niyato, “Optimization of resource
+provisioning cost in cloud computing,” _IEEE Trans. Serv. Comput._,
+vol. 5, no. 2, pp. 164–177, Apr. 2012.
+[187] Y. Zhang, J. Yan, and X. Fu, “Reservation-based resource scheduling
+and code partition in mobile cloud computing,” in _Proc. IEEE Int. Conf._
+_Compt. Commun. Workshops (INFOCOM WKSHPS)_, San Francisco,
+CA, Apr. 2016, pp. 962–967.
+[188] X. Jin, F. Zhang, A. V. Vasilakos, and Z. Liu, “Green data centers:
+A survey, perspectives, and future directions.” [Online]. Available:
+[http://arxiv.org/abs/1608.00687](http://arxiv.org/abs/1608.00687)
+[189] X. Sun and N. Ansari, “Green cloudlet network: A distributed green
+mobile cloud network,” _IEEE Netw._, to appear.
+[190] L. A. Barroso and U. Holzle, “The case for energy-proportional
+computing,” _Comput._, vol. 40, no. 12, pp. 651–664, Dec 2007.
+[191] M. Lin, A. Wierman, L. L. H. Andrew, and E. Thereska, “Dynamic
+right-sizing for power-proportional data centers,” _IEEE/ACM Trans._
+_Netw._, vol. 21, no. 5, pp. 1378–1391, Oct. 2013.
+[192] M. Lin, Z. Liu, A. Wierman, and L. L. H. Andrew, “Online algorithms
+for geographical load balancing,” in _Proc. IEEE Int. Green Comput._
+_Conf. (IGCC)_, San Jose, CA, Jun 2012, pp. 1–10.
+[193] H. Xu, C. Feng, and B. Li, “Temperature aware workload management
+in geo-distributed data centers,” _IEEE Trans. Parallel Distrib. Syst._,
+vol. 26, no. 6, pp. 1743–1753, Jun. 2015.
+[194] A. Beloglazov and R. Buyya, “Energy efficient resource management in
+virtualized cloud data centers,” in _Proc. IEEE/ACM Int. Conf. Cluster,_
+_Cloud and Grid Computing (CCGrid)_, Melbourne, Australia, May
+2010, pp. 826–831.
+[195] X. Li, J. Wu, S. Tang, and S. Lu, “Let’s stay together: Towards traffic
+aware virtual machine placement in data centers,” in _Proc. IEEE Int._
+_Conf. Comput. Commun. (INFOCOM)_, Toronto, Canada, Apr. 2014,
+pp. 1842–1850.
+[196] L. Chen and H. Shen, “Consolidating complementary VMs with
+spatial/temporal-awareness in cloud datacenters,” in _Proc. IEEE Int._
+_Conf. Comput. Commun. (INFOCOM)_, Apr. 2014, pp. 1033–1041.
+[197] Z. Han, H. Tan, G. Chen, R. Wang, Y. Chen, and F. C. M. Lau, “Dynamic virtual machine management via approximate Markov decision
+process,” in _Proc. IEEE Int. Conf. Comput. Commun. (INFOCOM)_,
+San Francisco, CA, Apr. 2016, pp. 1–9.
+[198] S. Sudevalayam and P. Kulkarni, “Energy harvesting sensor nodes:
+Survey and implications,” _IEEE Commun. Surveys Tuts._, vol. 13, no. 3,
+pp. 443–461, 3rd Quater 2011.
+[199] S. Ulukus, A. Yener, E. Erkip, O. Simeone, M. Zorzi, P. Grover, and
+K. Huang, “Energy harvesting wireless communications: A review of
+recent advances,” _IEEE J. Sel. Areas Commun._, vol. 33, no. 3, pp.
+360–381, Mar. 2015.
+[200] Y. Mao, Y. Luo, J. Zhang, and K. B. Letaief, “Energy harvesting small
+cell networks: Feasibility, deployment, and operation,” _IEEE Commun._
+_Mag._, vol. 53, no. 6, pp. 94–101, Jun 2015.
+[201] CNN, “Battery life concerns mobile users,” Sep. 2005. [Online]. Avail[able: http://edition.cnn.com/2005/TECH/ptech/09/22/phone.study/](http://edition.cnn.com/2005/TECH/ptech/09/22/phone.study/)
+[202] J. Xu and S. Ren, “Online learning for offloading and autoscaling in
+renewable-powered mobile edge computing,” in _Proc. IEEE Global_
+_Commun. Conf. (GLOBECOM)_, Washington, DC, Dec. 2016, pp. 1–6.
+[203] Y. Mao, J. Zhang, and K. B. Letaief, “Dynamic computation offloading
+for mobile-edge computing with energy harvesting devices,” _IEEE J._
+_Sel. Areas Commun._, vol. 34, no. 12, pp. 3590–3605, Dec. 2016.
+[204] C. Chen, B. He, and X. Tang, “Green-aware workload scheduling in
+geographically distributed data centers,” in _Proc. IEEE Int. Conf. Cloud_
+_Comput. Tech. Sci. (CloudCom)_, Taipei, Taiwan, Nov. 2012, pp. 82–89.
+[205] C. Dong, F. Kong, X. Liu, and H. Zeng, “Green power analysis for
+geographical load balancing based datacenters,” in _Proc. IEEE Int._
+_Green Comput. Conf. (IGCC)_, Arlington, VA, Jun. 2013, pp. 1–8.
+[206] X. Sun, N. Ansari, and Q. Fan, “Green energy aware avatar migration
+strategy in green cloudlet networks,” in _Proc. IEEE Int. Conf. Cloud_
+_Comput. Tech. Sci. (CloudCom)_, Vancouver, Canada, Nov. 2015, pp.
+139–146.
+[207] T. Chen, Y. Zhang, X. Wang, and G. B. Giannakis, “Robust workload
+and energy management for sustainable data centers,” _IEEE J. Sel._
+_Areas Commun._, vol. 34, no. 3, pp. 651–664, Mar. 2016.
+[208] Y. Luo, J. Zhang, and K. B. Letaief, “Transmit power minimization
+for wireless networks with energy harvesting relays,” _IEEE Trans._
+_Commun._, vol. 64, no. 3, pp. 987–1000, Mar. 2016.
+[209] J. Gong, S. Zhou, and Z. Niu, “Optimal power allocation for energy
+harvesting and power grid coexisting wireless communication systems,”
+_IEEE Trans. Commun._, vol. 61, no. 7, pp. 3040 – 3049, Jul. 2013.
+36
+[210] T. Han and N. Ansari, “On optimizing green energy utilization for
+cellular networks with hybrid energy supplies,” _IEEE Trans. Wireless_
+_Commun._, vol. 12, no. 8, pp. 3872–3882, 2013.
+[211] Y. Mao, J. Zhang, and K. B. Letaief, “Grid energy consumption and
+QoS tradeoff in hybrid energy supply wireless networks,” _IEEE Trans._
+_Wireless Commun._, vol. 15, no. 5, pp. 3573 – 3586, May 2016.
+[212] W. C. Brown, “The history of power transmission by radio waves,”
+_IEEE Trans. Microw. Theory Techn._, vol. 32, no. 9, pp. 1230–1242,
+Sep. 1984.
+[213] H. Ju and R. Zhang, “Throughput maximization in wireless powered
+communication networks,” _IEEE Trans. Wireless Commun._, vol. 13,
+no. 1, pp. 418–428, Jan. 2014.
+[214] K. Huang and V. K. N. Lau, “Enabling wireless power transfer
+in cellular networks: Architecture, modeling and deployment,” _IEEE_
+_Trans. Wireless Commun._, vol. 13, no. 2, pp. 902–912, May 2014.
+[215] Z. Chang, J. Gong, Y. Li, Z. Zhou, T. Ristaniemi, G. Shi, Z. Han, and
+Z. Niu, “Energy efficient resource allocation for wireless power transfer
+enabled collaborative mobile clouds,” _IEEE J. Sel. Areas Commun._,
+vol. 34, no. 12, pp. 3438–3450, Dec. 2016.
+[216] R. Roman, J. Lopez, and M. Mambo, “Mobile edge computing, fog et
+al.: A survey and analysis of security threats and challenges,” _Elsevier_
+_Future Generation Comput. Syst._, vol. PP, no. 99, Nov. 2016.
+[217] S. Yi, Z. Qin, and Q. Li, “Security and privacy issues of fog computing:
+A survey,” in _Proc. Int. Conf. Wireless Algorithms, Systems, and_
+_Applications (WASA)_, Qufu, China, Aug. 2015, pp. 1–10.
+[218] M. M. Fouda, Z. M. Fadlullah, N. Kato, R. Lu, and X. S. Shen, “A
+lightweight message authentication scheme for smart grid communications,” _IEEE Trans. Smart Grid_, vol. 2, no. 4, pp. 675–685, Dec.
+2011.
+[219] A. M. Y. Ahmed and D. Qian, “An optimization of security and
+trust management in distributed systems,” in _Proc. IEEE Int. Advance_
+_Computing Conf. (IACC)_, Ghaziabad, India, Feb. 2013, pp. 120–126.
+[220] X. Huang, Y. Xiang, E. Bertino, J. Zhou, and L. Xu, “Robust multifactor authentication for fragile communications,” _IEEE Trans. De-_
+_pendable Secure Comput._, vol. 11, no. 6, pp. 568–581, Nov.-Dec. 2014.
+[221] M. C. Gorantla, C. Boyd, and J. M. G. Nieto, “Attribute-based
+authenticated key exchange,” in _Proc. Australian Conf. Info. Security_
+_and Privacy (ACISP)_, Sydney, Australia, Jul. 2010, pp. 1–25.
+[222] H. M. Pimentel, S. Kopp, M. A. S. Jr., R. M. Silveira, and G. Bressan,
+“OCP: A protocol for secure communication in federated content
+networks,” _Compt. Commun._, vol. 68, pp. 47–60, Sep. 2015.
+[223] M. Liyanage, A. B. Abro, M. Ylianttila, and A. Gurtov, “Opportunities and challenges of software-defined mobile networks in network
+security,” _IEEE Security Privacy_, vol. 14, no. 4, pp. 34–44, Jul. 2016.
+[224] W. Yang and C. Fung, “A survey on security in network functions
+virtualization,” in _Proc. IEEE NetSoft Conf. Workshops (NetSoft)_,
+Seoul, Korea, Jun. 2016, pp. 15–19.
+[225] B. Liang, “Mobile edge computing,” in _Key Technologies for 5G_
+_Wireless Systems_, V. W. S. Wong, R. Schober, D. W. K. Ng, and
+L.-C. Wang, Eds. Cambridge University Press, 2017. [Online].
+[Available: http://www.comm.utoronto.ca/](http://www.comm.utoronto.ca/~liang/publications/Chapter_MEC_2016.pdf) _[∼]_ liang/publications/Chapter
+[MEC 2016.pdf](http://www.comm.utoronto.ca/~liang/publications/Chapter_MEC_2016.pdf)
+[226] Alcatel-Lucent, “Providing security in NFV: Challenges and opportu[nities.” [Online]. Available: http://www.tmcnet.com/tmc/whitepapers/](http://www.tmcnet.com/tmc/whitepapers/documents/whitepapers/2014/10172-providing-security-nfv.pdf)
+[documents/whitepapers/2014/10172-providing-security-nfv.pdf](http://www.tmcnet.com/tmc/whitepapers/documents/whitepapers/2014/10172-providing-security-nfv.pdf)
+[227] C. Wang, K. Ren, and J. Wang, “Secure optimization computation
+outsourcing in cloud computing: A case study of linear programming,”
+_IEEE Trans. Comput._, vol. 65, no. 1, pp. 216–229, Jan. 2016.
+[228] R. Gennaro, G. Craig, and P. Bryan, “Non-interactive verifiable computing: Outsourcing computation to untrusted workers,” in _Annu. Conf._
+_Adv. Cryptol._, Santa Barbara, CA, USA, Aug. 2010, pp. 465–482.
+[229] ETSI, “Executive briefing - mobile edge computing (MEC) initiative.”
+[[Online]. Available: https://portal.etsi.org/portals/0/tbpages/mec/docs/](https://portal.etsi.org/portals/0/tbpages/mec/docs/mec%20executive%20brief%20v1%2028-09-14.pdf)
+[mec%20executive%20brief%20v1%2028-09-14.pdf](https://portal.etsi.org/portals/0/tbpages/mec/docs/mec%20executive%20brief%20v1%2028-09-14.pdf)
+[230] ——, “Mobile-edge computing (MEC): Terminology.” [Online].
+Available: [http://www.etsi.org/deliver/etsi gs/MEC/001 099/001/01.](http://www.etsi.org/deliver/etsi_gs/MEC/001_099/001/01.01.01_60/gs_MEC001v010101p.pdf)
+01.01 [60/gs MEC001v010101p.pdf](http://www.etsi.org/deliver/etsi_gs/MEC/001_099/001/01.01.01_60/gs_MEC001v010101p.pdf)
+[231] ——, “Mobile-edge computing (MEC): Framework and reference
+[architecture.” [Online]. Available: http://www.etsi.org/deliver/etsi gs/](http://www.etsi.org/deliver/etsi_gs/MEC/001_099/003/01.01.01_60/gs_MEC003v010101p.pdf)
+MEC/001 099/003/01.01.01 60/gs MEC003v010101p.pdf
+[232] ——, “Mobile-edge computing (MEC): Service scenarios.”
+[[Online]. Available: http://www.etsi.org/deliver/etsi gs/MEC/001 099/](http://www.etsi.org/deliver/etsi_gs/MEC/001_099/002/01.01.01_60/gs_MEC002v010101p.pdf)
+[002/01.01.01 60/gs MEC002v010101p.pdf](http://www.etsi.org/deliver/etsi_gs/MEC/001_099/002/01.01.01_60/gs_MEC002v010101p.pdf)
+[233] S. Antipolis, “ETSI first mobile edge computing proof of concepts at
+MEC World Congress,” Sep. 2016.
+37
+[234] N. Sprecher, J. Friis, R. Dolby, and J. Reister,
+“Edge computing prepares for a multi-access future,” Sep.
+2016. [Online]. Available: [http://www.telecomtv.com/articles/mec/](http://www.telecomtv.com/articles/mec/edge-computing-prepares-for-a-multi-access-future-13986/)
+[edge-computing-prepares-for-a-multi-access-future-13986/](http://www.telecomtv.com/articles/mec/edge-computing-prepares-for-a-multi-access-future-13986/)
+[235] 3GPP, “Technical specification group services and system
+aspects; system architecture for the 5g systems; stage 2
+(release 15),” _3GPP_ _TS_ _23.501_ _V0.4.0_, Apr. 2017. [On[line]. Available: https://portal.3gpp.org/desktopmodules/Specifications/](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3144)
+[SpecificationDetails.aspx?specificationId=3144](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3144)
+[236] A. Anjum, T. Abdullah, M. Tariq, Y. Baltaci, and N. Antonopoulos,
+“Video stream analysis in clouds: An object detection and classification
+framework for high performance video analytics,” _IEEE Trans. Cloud_
+_Comput._, vol. PP, no. 99, pp. 1–1, Jan. 2016.
+[237] Intel, “Intel mobile edge computing technology improves the
+augmented reality experience,” Sep. 2016. [Online]. Available:
+[https://www.youtube.com](https://www.youtube.com)
+[238] P. Papadimitratos, A. L. Fortelle, K. Evenssen, R. Brignolo, and
+S. Cosenza, “Vehicular communication systems: Enabling technologies,
+applications, and future outlook on intelligent transportation,” _IEEE_
+_Commun. Mag._, vol. 47, no. 11, pp. 84–95, Nov. 2009.
+[239] N. Lu, N.Cheng, N. Zhang, X. Shen, and J. W. Mark, “Connected
+vehicles: Solutions and challenges,” _IEEE Internet Things J._, vol. 1,
+no. 4, pp. 289–299, Apr. 2015.
+[240] E. Uhlemann, “Introducing connected vehicles,” _IEEE Veh. Techn._
+_Mag._, vol. 10, no. 1, pp. 23–31, Jan. 2015.
+[241] NOKIA, “UTM infrastructure and connected society,” 2016.
+[[Online]. Available: http://rpas-civops.com/wp-content/uploads/2016/](http://rpas-civops.com/wp-content/uploads/2016/11/S7.2_Nokia_DE_V1.pdf)
+[11/S7.2 Nokia DE V1.pdf](http://rpas-civops.com/wp-content/uploads/2016/11/S7.2_Nokia_DE_V1.pdf)
+[242] Saguna, “Executive briefing - mobile edge computing (MEC)
+initiative.” [Online]. Available: [http://www.saguna.net/site/assets/](http://www.saguna.net/site/assets/files/1723/saguna_intel_mec_wp.pdf?utm_source=homepage?utm_medium=button3?utm_campaign=Q1-2016)
+[files/1723/saguna intel mec wp.pdf?utm source=homepage?utm](http://www.saguna.net/site/assets/files/1723/saguna_intel_mec_wp.pdf?utm_source=homepage?utm_medium=button3?utm_campaign=Q1-2016)
+[medium=button3?utm campaign=Q1-2016](http://www.saguna.net/site/assets/files/1723/saguna_intel_mec_wp.pdf?utm_source=homepage?utm_medium=button3?utm_campaign=Q1-2016)
+[243] Ericsson, “Policy control function in 5G,” Jan. 2017.
+[[Online]. Available: http://portal.3gpp.org/ngppapp/CreateTdoc.aspx?](http://portal.3gpp.org/ngppapp/CreateTdoc.aspx?mode=view&contributionId=756820#)
+[mode=view&contributionId=756820#](http://portal.3gpp.org/ngppapp/CreateTdoc.aspx?mode=view&contributionId=756820#)
+[244] N. Alliance, “Description of network slicing concept,” Jan. 2016.
+[Online]. Available: [https://www.ngmn.org/uploads/media/160113](https://www.ngmn.org/uploads/media/160113_Network_Slicing_v1_0.pdf)
+[Network Slicing v1 0.pdf](https://www.ngmn.org/uploads/media/160113_Network_Slicing_v1_0.pdf)
+[245] A. Nakao, “Network softwarization and slicing: Ongoing developments
+in standard developing organizations,” Oct.-Nov. 2016. [Online].
+[Available: http://cscn2016.ieee-cscn.org/document.pdf](http://cscn2016.ieee-cscn.org/document.pdf)

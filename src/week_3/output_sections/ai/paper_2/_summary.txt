@@ -1,0 +1,9 @@
+STORED SECTIONS SUMMARY
+========================================
+- abstract
+- conclusion
+- discussion
+- methodology
+- raw_text
+- references
+- results

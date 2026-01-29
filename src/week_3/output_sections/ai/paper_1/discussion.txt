@@ -1,0 +1,84 @@
+We have trained language assistants that are both helpful _and_ harmless without using human feedback labels
+for harmlessness. We referred to the technique as ‘constitutional AI’ (CAI) since we used a ‘constitution’ consisting of human-written principles. We established two methods: (1) Constitutional AI which ‘bootstraps’ a
+helpful RLHF’s instruction-following abilities to critique and revise its own responses so as to remove harmful content, and (2) RL with model-generated labels for harmlessness, which further improves harmlessness.
+We used this method to train models that are both harmless and non-evasive, partially resolving an issue in
+[Bai et al., 2022].
+By removing human feedback labels for harmlessness, we have moved further away from reliance on human
+supervision, and closer to the possibility of a self-supervised approach to alignment. However, in this work
+we still relied on human supervision in the form of helpfulness labels. We expect it is possible to achieve helpfulness and instruction-following without human feedback, starting from only a pretrained LM and extensive
+prompting, but we leave this for future work.
+Our ultimate goal is _not_ to remove human supervision entirely, but to make it more efficient, transparent, and
+targeted. All of our methods can leverage chain-of-thought [Nye et al., 2021, Wei et al., 2022] type reasoning
+- for critiques in the SL stage, and for evaluating comparisons for the RL stage – and we expect that a small
+number of very high-quality human demonstrations of this reasoning [Scheurer et al.,, Saunders et al., 2022]
+could be used to improve and focus performance. Natural language feedback is also more transparent, interpretable, and improveable as compared to a large dataset of human preference labels. We leave it to future
+work to study the effectiveness of this type of feedback.
+**6.1** **Future Directions**
+In prior work we have focused on training AI assistants to helpful, harmless, and honest [Askell et al., 2021],
+but otherwise we have allowed their behavior to be determined by generalization patterns from pretraining
+that are not under our direct control.
+However, the constitutional methods we have discussed here are very general, and in principle might be
+applied to steer language models in a variety of ways. For example, we expect we could use these method to
+change the model’s writing style, tone, or personality, or alter its responses to specific categories of questions
+(e.g. to train an AI that heavily caveats certain categories of advice, or that adopts a specific persona). The
+constitutional approach should thus make it much easier to study how different AI behaviors tend to generalize
+and interfere, since by obviating human feedback, our methods lower the barrier to experimentation. For
+example, it should be possible to generate feedback labels along dozens of behavioral axes, and then study
+how preference models trained from these labels are correlated or anti-correlated. This is important for AI
+safety, since the generalization patterns imbued by pretraining are currently something of a black box whose
+correlations may have unforeseen consequences.
+Another remaining issue, and a major motivation for this work, is _robustness_ —that is, can we make models
+essentially immune to red-team attacks? We hope that by making helpfulness and harmlessness more compatible, we will be able to significantly scale-up (automated) red teaming in order to improve robustness.
+Furthermore, we should be able to perform iterated ‘online’ training [Bai et al., 2022] with AI supervision,
+15
+where we update the preference model with new AI feedback in order to keep it on the same distribution as
+the policy produces. We saw that this was valuable with human feedback, and by using AI feedback we can
+fully automate the process.
+Robustness was also another motivation for using chain-of-thought reasoning in this work – we would eventually like AI systems to reason through the hidden risks of certain behaviors, in order to mitigate increasingly
+subtle and implicit harms.
+**6.2** **Broader Impacts**
+As with most methods that can control AI behavior, the ideas discussed in this work have a dual use. As we
+pass from prompting, to RLHF, to the constitutional methods discussed here, we lower the barrier to training
+AI models that behave in ways their creators intend. This means that these methods also make it easier to
+train pernicious systems. The supervised methods we have discussed may be particularly accessible, since
+they do not require an efficient RL implementation with large language models.
+A further issue is that by reducing the _need_ for human feedback, our constitutional methods make it easier to
+train and deploy AI systems that have not been thoroughly tested and _observed_ by humans. This could lead
+developers to deploy models with unforeseen failure modes. On the other hand, our method has the benefit
+that we may no longer need an army of human red teamers to engage in the rather unsavory work of trying to
+trick AI systems into generating harmful content.
+**7** **Contribution Statement**
+**Model Pre-training:** Model pretraining was led by Nicholas Joseph and Sam McCandlish, with help from
+Tom Brown and Jared Kaplan, and much of Anthropic’s technical staff contributed to the development of our
+efficient distributed training infrastructure and the underlying machine learning systems. Core contributors
+include Tom Henighan, Scott Johnston, Sheer El Showk, Nelson Elhage, and Ben Mann. Scott Johnston
+in particular worked on optimizing pretraining for ML efficiency, while Sheer El Showk, Carol Chen, and
+Jennifer Zhou worked on data.
+**Reinforcement Learning:** The core RL infrastructure was built by Andy Jones and Kamal Ndousse in
+collaboration with Shauna Kravec and Dawn Drain. Development of the RL infrastructure has been led by
+Sam McCandlish and Dario Amodei.
+**Sampling and Evaluation:** Efficient sampling efforts were led by Tom Brown, and Tom Conerly carried
+out major aspects of the design, implementation and support for the system, with help from Zac HatfieldDodds. Many members of Anthropic worked on our framework for evaluations, including Saurav Kadavath,
+Nicholas Schiefer, Nick Joseph, Tom Henighan, Amanda Askell, Jared Kaplan, Andy Jones, Ethan Perez,
+Scott Johnston, and Sam McCandlish. Saurav in particular developed the systems for efficient composition
+of sampling, prompting, and evaluation used for SL and RL CAI, which were one of the primary tools used
+in this project. Jackson Kernion helped support human feedback data collection.
+**Cluster:** Nova DasSarma and Eli Tran-Johnson managed the research cluster our research depended on and
+maintained its stability, making this research possible. Many others helped with these efforts, including Ben
+Mann, Tom Henighan, Sam McCandlish, Andy Jones, Zac Hatfield-Dodds, and Tristan Hume.
+**Research:** Jared Kaplan developed the main ideas in discussion with Yuntao Bai, Amanda Askell, and
+Saurav Kadavath, and Jared carried out some of the initial experiments. Yuntao developed the method further
+and designed and carried out most of the experiments in this paper. Amanda helped develop the initial
+experiments, and Sandipan worked on harmlessness scores and automated generation of prompts.
+**Writing:** This paper was drafted by Yuntao Bai and Jared Kaplan. Other members of Anthropic made
+miscellaneous contributions and suggestions throughout the writing process.
+**Other contributions:** The ideas explored in this paper developed in conversations with many of Anthropic’s
+staff, especially Amanda Askell, Deep Ganguli, Sam Bowman, Ethan Perez, Saurav Kadavath, Dario Amodei,
+Sam McCandlish, Jackson Kernion, Stan Fort, Chris Olah, and Catherine Olsson.
+16
+**Acknowledgments**
+We thank Paul Christiano for discussions and Maja Trebacz and Alex Tamkin for comments on the draft.
+We’re also deeply grateful to Daniela Amodei, Jarrah Bloomfield, Jamie Kerr, Timothy Telleen-Lawton, Jia
+Yuan Loke, Jeffrey Ladish, Rebecca Raible, Rune Kvist, Rob Gilson, Guro Khundadze, Filipe Dobreira, and
+Sebastian Conybeare for their help and support. We’d like to thank the staff and workers at Surge AI, Amazon
+MTurk, and Upwork for providing most of the data for our research.

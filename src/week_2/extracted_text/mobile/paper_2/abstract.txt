@@ -1,0 +1,14 @@
+_We introduce an extremely computation-efficient CNN_
+_architecture named ShuffleNet, which is designed specially_
+_for mobile devices with very limited computing power (e.g.,_
+_10-150 MFLOPs). The new architecture utilizes two new_
+_operations, pointwise group convolution and channel shuf-_
+_fle, to greatly reduce computation cost while maintaining_
+_accuracy. Experiments on ImageNet classification and MS_
+_COCO object detection demonstrate the superior perfor-_
+_mance of ShuffleNet over other structures, e.g. lower top-1_
+_error (absolute 7.8%) than recent MobileNet [12] on Ima-_
+_geNet classification task, under the computation budget of_
+_40 MFLOPs. On an ARM-based mobile device, ShuffleNet_
+_achieves ∼13× actual speedup over AlexNet while main-_
+_taining comparable accuracy._

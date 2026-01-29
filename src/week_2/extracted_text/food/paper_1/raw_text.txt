@@ -1,0 +1,927 @@
+**Accepted Version:** This is the author's version of the work. It is posted here by permission of the
+AAAS for personal use, not for redistribution. The definitive version was published in Science
+[360 (6392) 987-992, 01 Jun 2018, doi: 10.1126/science.aaq0216](https://dx.doi.org/10.1126/science.aaq0216)
+A **[free access link](https://josephpoore.com/)** [to the definitive version (html and pdf) is available at https://josephpoore.com](https://josephpoore.com/)
+[Erratum 22 February 2019. See Erratum.](http://science.sciencemag.org/content/363/6429/eaaw9908)
+# **Title: Reducing food’s environmental impacts through producers and** **consumers**
+**Authors:** J. Poore [1,2] *, T. Nemecek [3]
+**Affiliations:**
+1Department of Zoology, University of Oxford, New Radcliffe House, Oxford OX2 6GG, UK.
+2School of Geography & Environment, University of Oxford, South Parks Road, Oxford OX1
+3QY, UK.
+3Agroscope, Agroecology and Environment Research Division, LCA Research Group, CH-8046
+Zurich, Switzerland.
+[*Correspondence to: joseph.poore@queens.ox.ac.uk](mailto:joseph.poore@queens.ox.ac.uk)
+**Abstract** : Food’s environmental impacts are created by millions of diverse producers. To identify
+solutions that are effective under this heterogeneity, we consolidated data covering five
+environmental indicators; 38,700 farms; and 1600 processors, packaging types, and retailers.
+Impact can vary 50-fold among producers of the same product, creating substantial mitigation
+opportunities. However, mitigation is complicated by trade-offs, multiple ways for producers to
+achieve low impacts, and interactions throughout the supply chain. Producers have limits on how
+far they can reduce impacts. Most strikingly, impacts of the lowest-impact animal products
+typically exceed those of vegetable substitutes, providing new evidence for the importance of
+dietary change. Cumulatively, our findings support an approach where producers monitor their
+own impacts, flexibly meet environmental targets by choosing from multiple practices, and
+communicate their impacts to consumers.
+**Main Text:**
+With current diets and production practices, feeding 7.6 billion people is degrading terrestrial and
+aquatic ecosystems, depleting water resources, and driving climate change ( _1_, _2_ ). It is particularly
+challenging to find solutions that are effective across the large and diverse range of producers that
+characterize the agricultural sector. More than 570 million farms produce in almost all the world’s
+climates and soils ( _3_ ), each using vastly different agronomic methods; average farm sizes vary
+from 0.5 hectares in Bangladesh to 3000 hectares in Australia ( _3_ ); average mineral fertilizer use
+ranges from 1kg of nitrogen per hectare in Uganda to 300kg in China ( _4_ ); and although four crops
+provide half of the world’s food calories ( _4_ ), more than 2 million distinct varieties are recorded in
+seed vaults ( _5_ ). Further, products range from minimally to heavily processed and packaged, with
+17 of every 100kg of food produced transported internationally, increasing to 50kg for nuts and
+56kg for oils ( _4_ ).
+Previous studies have assessed aspects of this heterogeneity by using geospatial data sets ( _6_ - _8_ ),
+but global assessments using the inputs, outputs, and practices of actual producers have been
+limited by data. The recent rapid expansion of the life cycle assessment (LCA) literature is
+providing this information by surveying producers around the world. LCA then uses models to
+translate producer data into environmental impacts with sufficient accuracy for most decision
+making ( _9_ - _11_ ).
+To date, efforts to consolidate these data or build new large-scale data sets have covered
+greenhouse gas (GHG) emissions only ( _8_, _12_, _13_ ), agriculture only ( _13_ - _16_ ), small numbers of
+products (8, 14–16), and predominantly Western European producers ( _12_ - _16_ ) and have not
+2
+corrected for important methodological differences between LCAs ( _12_ - _16_ ). Here, we present a
+globally reconciled and methodologically harmonized database on the variation in food’s multiple
+impacts. Our results show the need for far-reaching changes in how food’s environmental impacts
+are managed and communicated.
+**Building the multi-indicator global database**
+We derived data from a comprehensive meta-analysis, identifying 1530 studies for potential
+inclusion, which were supplemented with additional data received from 139 authors. Studies were
+assessed against 11 criteria designed to standardize methodology, resulting in 570 suitable studies
+with a median reference year of 2010 ( _17_ ). The data set covers ~38,700 commercially viable farms
+in 119 countries (fig. S2) and 40 products representing ~90% of global protein and calorie
+consumption. It covers five important environmental impact indicators ( _18_ ): land use; freshwater
+withdrawals weighted by local water scarcity; and GHG, acidifying, and eutrophying emissions.
+For crops, yield represents output for a single harvest. Land use includes multiple cropping (up to
+four harvests per year), fallow (uncultivated periods between crops), and economic allocation to
+crop coproducts such as straw. This makes it a stronger indicator of both farm productivity and
+food security than yield.
+The system we assess begins with inputs (the initial effect of producer choice) and ends at retail
+(the point of consumer choice) (fig. S1). For each study, we recorded the inventory of outputs and
+inputs (including fertilizer quantity and type, irrigation use, soil, and climatic conditions). Where
+data were not reported, for example, on climate, we used study coordinates and spatial data sets to
+fill gaps. We recorded environmental impacts at each stage of the supply chain. For GHG
+3
+emissions, we further disaggregated the farm stage into 20 emission sources. We then used the
+inventory to recalculate all missing emissions. For nitrate leaching and aquaculture, we developed
+new models for this study ( _17_ ).
+Studies included provided ~1050 estimates of post-farm processes. To fill gaps in processing,
+packaging, or retail, we used additional meta-analyses of 153 studies providing 550 observations.
+Transport and losses were included from global data sets. Each observation was weighted by the
+share of national production it represents, and each country by its share of global production. We
+then used randomization to capture variance at all stages of the supply chain ( _17_ ).
+We validated the global representativeness of our sample by comparing average and 90th
+percentile yields to Food and Agriculture Organization (FAO) data ( _4_ ), which reconcile to within
+±10% for most crops. Using FAO food balance sheets ( _4_ ), we scaled up our sample data. Total
+arable land and freshwater withdrawals reconcile to FAO estimates. Emissions from deforestation
+and agricultural methane fall within ranges of independent models ( _17_ ).
+**Environmental impacts of the entire food supply-chain**
+Today’s food supply chain creates ~13.7 billion metric tons of carbon dioxide equivalents (CO2eq),
+26% of anthropogenic GHG emissions. A further 2.8 billion metric tons of CO2eq (5%) are caused
+by nonfood agriculture and other drivers of deforestation ( _17_ ). Food production creates ~32% of
+global terrestrial acidification and ~78% of eutrophication. These emissions can fundamentally
+alter the species composition of natural ecosystems, reducing biodiversity and ecological resilience
+( _19_ ). The farm stage dominates, representing 61% of food’s GHG emissions (81% including
+deforestation), 79% of acidification, and 95% of eutrophication (table S17).
+4
+Today’s agricultural system is also incredibly resource intensive, covering ~43% of the world’s
+ice- and desert-free land. Of this land, ~87% is for food and 13% is for biofuels and textile crops
+or is allocated to nonfood uses such as wool and leather. We estimate that two-thirds of freshwater
+withdrawals are for irrigation. However, irrigation returns less water to rivers and groundwater
+than industrial and municipal uses and predominates in water-scarce areas and times of the year,
+driving 90-95% of global scarcity-weighted water use ( _17_ ).
+5
+**GHG Emissions** **Land Use**
+(kg CO2eq) **[th]** (m [2] year)
+**10** **[th]**
+**Scty. Water**
+(kL eq)
+**Acid.** **Eutroph.**
+(g SO2eq) (g PO43–eq)
+0 75 150 0 75 150 0 50 100
+**A** **100g protein** **n**
+**10** **[th]** **10** **[th]**
+**Pc Mean** 0 100 200 300 **Pc Mean**
+**Pc Mean**
+0 100 200 300
+**100g protein**
+0 25 50 75
+0 50 100
+0 50 100
+0 20 40
+0 100 200
+0 10 20
+0 30 60
+0 20 40
+0 0.1 0.2
+0 0.1 0.2
+|5 10 1|Col2|
+|---|---|
+|<br>|10th pctl.<br>ruminan<br>meat|
+|5 10 1|Col2|
+|---|---|
+|||
+**B**
+**C**
+0 3 6 9
+0 75 150
+0 10 20
+0 5 10
+0 30 60
+0 10 20
+0 10 20
+0 20 40
+0 0.5 1
+**1 liter**
+0 2 4 6
+0 2 4 6
+**1000 kcal**
+0 1 2 3
+**D**
+**E**
+**F**
+**G**
+**H**
+0 10 20 30
+**1 liter**
+0 5 10 15
+0 0.5 1 1.5
+**1kg**
+0 1 2 3
+0 2 4 6
+**1kg**
+0 1 2 3
+0 15 30
+0 5 10
+0 30 60
+0 10 20
+0 10 20
+0 20 40
+0 1 2
+0 1 2 3 4
+**1kg**
+0 2 4 6
+0 0.2 0.4 0.6
+**1 unit**
+0 0.2 0.4 0.6
+**I**
+0 3 6 9 0 5 10 0 10 20
+**1 serving**
+0 3 6 9
+Median Mean
+10 [th] percentile 90 [th] percentile
+6
+**Fig. 1. Estimated global variation in GHG emissions, land use, terrestrial acidification,**
+**eutrophication, and scarcity-weighted freshwater withdrawals, within and between 40 major**
+**foods.** n = farm or regional inventories. Land use is area times years occupied (m [2] ∙year). ( **A** )
+Protein-rich products. Grains are also shown here given they contribute 41% of global protein
+intake, despite lower protein content. ( **B** ) Milks. ( **C** ) Starch-rich products. ( **D** ) Oils. ( **E** )
+Vegetables. ( **F** ) Fruits. ( **G** ) Sugars. ( **H** ) Alcoholic beverages (1 unit = 10ml alcohol). ( **I** )
+Stimulants.
+**Highly variable and skewed environmental impacts**
+We now group products by their primary dietary role and express impacts per unit of primary
+nutritional benefit (Fig. 1 and fig. S3). Immediately apparent in our results is the high variation in
+impact among both products and producers. Ninetieth-percentile GHG emissions of beef are 105kg
+of CO2eq per 100g of protein, and land use (area multiplied by years occupied) is 370 m [2] ∙year.
+These values are 12 and 50 times greater than 10th-percentile dairy beef impacts (which we report
+separately given that its production is tied to milk demand). Tenth-percentile GHG emissions and
+land use of dairy beef are then 36 and 6 times greater than those of peas. High variation within and
+between protein-rich products is also manifest in acidification, eutrophication, and water use.
+Within the major crops wheat, maize, and rice, 90th-percentile impacts are more than three times
+greater than 10th-percentile impacts on all five indicators. Within major growing areas for these
+crops (the Australian wheat belt, the U.S. corn belt, and the Yangtze river basin), land use becomes
+less variable, but we observe the same high levels of variation in all other indicators. This
+7
+variability, even among producers in similar geographic regions, implies substantial potential to
+reduce environmental impacts and enhance productivity in the food system.
+For many products, impacts are skewed by producers with particularly high impacts. This creates
+opportunities for targeted mitigation, making an immense problem more manageable. For
+example, for beef originating from beef herds, the highest-impact 25% of producers represent 56%
+of the beef herd’s GHG emissions and 61% of the land use (an estimated 1.3 billion metric tons of
+CO2eq and 950 million hectares of land, primarily pasture). Across all products, 25% of producers
+contribute on average 53% of each product’s environmental impact (fig. S3). For scarcity
+weighted freshwater withdrawals, the skew is particularly pronounced: Producing just 5% of the
+world’s food calories creates ~40% of the environmental burden. We will now explore how to
+access these mitigation opportunities through heterogenous producers.
+**Mitigation through producers**
+_**Enable producers to monitor multiple impacts**_
+The first step in mitigation is estimating producer impacts. Prior research (e.g., _7_, _8_, _14_ ) has
+suggested that readily measurable proxies predict farm-stage impacts, avoiding the need for
+detailed assessment. From our larger data set, which includes more practices and geographies than
+prior studies, we assess the predictive power of common proxies, including crop yield, nitrogen
+use efficiency, milk yield per cow, liveweight gain, pasture area, and feed conversion ratios.
+Although most proxies significantly covary with impact, they make poor predictors when used
+alone, explaining little of the variation among farms (R [2] = 0-27% in 47 of 48 proxy-impact
+combinations assessed) (fig. S4).
+8
+Prior research has also suggested using one impact indicator to predict others ( _20_ ). We find weakly
+positive and sometimes negative relationships between indicators. For similar products globally,
+correlations between indicators are low (R [2] = 0-30% in 26 of 32 impact-impact combinations
+assessed) (fig. S4). Pork, poultry meat, and milk show higher correlations between acidification
+and eutrophication (R2 ≤ 54%), explained by the dominant role of manure in these impacts, but
+this does not generalize to other products or indicators. The same conclusion holds for farms in
+similar geographies or systems (fig. S5).
+Monitoring multiple impacts and avoiding proxies supports far better decisions and helps prevent
+harmful, unintended consequences. However, two recent studies suggest that data on practices and
+geography, required to quantify impacts, must come directly from producers ( _11_, _21_ ); that
+quantifying impacts with the use of satellite or census data misses much of the variation among
+farms.
+_**Set and incentivize mitigation targets**_
+When land use or emissions are low, we find trade-offs between indicators for many crops (fig.
+S5). This reflects diminishing marginal yield with increasing inputs as crops tend toward their
+maximum yields ( _22_ ). For example, for already low-emission Northern European barley farms,
+halving land use can increase GHG emissions per kilogram of grain by 2.5 times and acidification
+by 3.7 times. To explore trade-offs further, we pair observations from the same study, location,
+and year that assess a practice change (fig. S6). Of the nine changes assessed, only two (changing
+from monoculture to diversified cropping and improving degraded pasture) deliver statistically
+significant reductions in both land use and GHG emissions.
+9
+Geography influences these trade-offs. For example, in the Australian wheat belt, where farmers
+practice low-rainfall, low-input farming, we find that both output per hectare and GHG emissions
+are in the bottom 15% globally. The environmental and social importance of different impacts also
+varies locally, given land scarcity, endemic biodiversity, and water quality, among other factors.
+Setting regional and sector-specific targets will help producers navigate trade-offs and make
+choices that align with local and global priorities.
+_**Meet targets by choosing from multiple practice changes**_
+To meet these targets, policy might encourage widespread adoption of certain practices. However,
+the environmental outcomes of many practices, such as conservation agriculture ( _23_ ), organic
+farming (fig. S6), and even integrated systems of best practice ( _24_ ), are highly variable. Using our
+data set, we can generalize these findings. To do this, we disaggregate each environmental
+indicator into its sources or drivers. We consider practice change as a package of measures that
+targets one or more of these sources. If producers have different impact sources, the effects of
+practice change will be variable.
+We find that sources of impact vary considerably among farms producing the same product (Fig.
+2 and figs. S7-S9). Priority areas for reducing impact for one farm may be immaterial for another.
+For example, measures to reduce direct nitrous oxide emissions from synthetic and organic
+fertilizer, such as biochar application, are included in many mitigation estimates ( _25_ ). However,
+for a third of global crop calorie production, these emissions represent less than 5% of farm-stage
+GHGs. It may be the case that low-impact farms have similar impact drivers. We again find
+10
+variable sources of impact, even for low-impact farms (Fig. 2, C and D). Reducing impacts means
+focusing on different areas for different producers and, by implication, adopting different practices.
+**A** **[Wheat farms]** **C** **[Below median GHG emissions wheat farms]**
+Seed
+Fertilizer & Pesticide
+Manufacture
+Equipment
+100%
+Electricity & Fuel
+Direct
+Indirect
+Synthetic
+Fertilizer
+(N2O)
+Organic Fertilizer (N2O)
+Crop Residue
+Urea (CO2)
+Lime (CO2)
+Residue Burning
+Drying
+0% 25% 50% 75% 100%
+Contribution of each source to farmstage GHG emissions
+10th 90th
+Distribution Percentiles
+Australia, Australia,
+conventional no-till,
+residue burnt
+Cyprus, Germany, Nepal,
+irrigated organic raised beds
+**B Beef farms** **D Below median GHG emissions beef farms**
+Concentrate Feed (incl.
+land use change)
+Pasture Management
+Housing
+Enteric Fermentation (CH4)
+Manure Management (CH4)
+75%
+50%
+25%
+0%
+100%
+75%
+50%
+25%
+0%
+Direct
+Indirect
+Manure
+Management
+(N2O)
+Canada,
+feedlot
+with implants
+China,
+confinement
+dairy
+Denmark,
+dairy, 9mo
+at slaughter
+0% 25% 50% 75% 100%
+Contribution of each source to farmstage GHG emissions
+Australia, Brazil,
+grass-fed improved
+pasture
+**Fig. 2. Contributions of emission sources to total farm-stage GHG emissions.** ( **A**, and **B** ). Gray
+bars show 10th- and 90th-percentile contributions. Shaded bars represent the distribution. For
+example, the 90th-percentile contribution of organic fertilizer N2O to farm-stage emissions is 16%,
+but for most wheat producers the contribution is near 0%. Density is estimated using a Gaussian
+kernel with bandwidth selection performed with biased cross-validation. ( **C**, and **D** ) Contributions
+of emission sources for example producers with below median GHG emissions.
+11
+To explore this further, we use sensitivity analysis ( _26_ ) to decompose the variance in each
+product’s impact into its sources. Numerous sources contribute to variance (fig. S10). Most
+notably, for all crop calorie production globally, differences in fallow duration and multiple
+cropping drive 40% of the variance in land use. This is important as most strategies to increase
+productivity are focused on increasing single crop yields ( _27_ ). But for many producers, increasing
+cropping intensity through the use of early-maturing varieties, intercropping, catch crops, and
+enhanced irrigation can provide more economically viable and trade-off–free ways to boost
+productivity and reduce impacts ( _27_ ).
+Geography plays a major role in this variation and affects the economic and environmental
+desirability of different practices ( _28_ ). However, at the heart of agriculture is changing site
+conditions to enhance productivity (such as liming, terracing, or installing drainage), meaning that
+statements on the importance of geography have limitations. Nevertheless, some impact sources
+stand out. We find that freshwater aquaculture ponds create 0-450g of methane per kg of liveweight
+(for context, enteric fermentation in dairy cows creates ~30-400g per kg of liveweight). Of this
+variation, a third is explained by temperature ( _17_ ), which accelerates methanogenesis and net
+primary production. Improving aeration and limiting addition of surplus feed to ponds can abate
+these emissions, particularly important in warm countries. Further, for every kilogram of nitrogen
+applied to crops, between 60-400g is lost in reactive forms. Of this wide range, ~40% is explained
+by site conditions, including soil pH, temperature, and drainage ( _17_ ). Prior research has also found
+that the potential of soil to store carbon varies significantly with soil properties, slope, and prior
+practice (29).
+12
+Providing producers with multiple ways to reduce their environmental impacts recognizes the
+variability in sources and drivers of impact but requires a step change in thinking: that practices
+such as conservation agriculture or organic farming are not environmental solutions in themselves
+but options that producers choose from to achieve environmental targets.
+However, some practice changes can be pursued across all producers. Methane from flooded rice,
+enteric methane from ruminants, and concentrate feed for pigs and poultry are sizeable globally,
+representing 30% of food’s GHG emissions; are material for all producers, contributing at least
+17% of farm-stage emissions (Fig. 2B and fig. S7); and can be mitigated with relatively trade-off–
+free approaches such as shorter and shallower rice flooding ( _30_ ), improving degraded pasture (fig.
+S6), and improving lifetime animal productivity ( _8_ ). Further, emissions from deforestation and
+cultivated organic soils drive on average 42% of the variance in each product’s agricultural GHG
+emissions (fig. S10) and dominate the highest-impact producers’ emissions (fig. S11), further
+justifying ongoing efforts to curb forest loss and limit cultivation on peatlands.
+_**Communicate impacts up the supply-chain**_
+Processors, distributors, and retailers can substantially reduce their own impacts. For any product,
+90th-percentile post-farm emissions are 2-140 times larger than 10th-percentile emissions,
+indicating large mitigation potential (fig. S12). For example, returnable stainless-steel kegs create
+just 20g of CO2eq per liter of beer, but recycled glass bottles create 300-750g of CO2eq, and bottles
+sent to landfills create 450-2500g of CO2eq.
+Processing, more durable packaging, and greater usage of coproducts can also reduce food waste.
+For example, wastage of processed fruit and vegetables is ~14% lower than that of fresh fruit and
+13
+vegetables, and wastage of processed fish and seafood is ~8% lower ( _24_ ). Providing processors
+and retailers with information about the impacts of their providers could encourage them to reduce
+waste where it matters most. For products such as beef, distribution and retail losses contribute 12
+15% of emissions (fig. S13), whereas the sum of emissions from packaging, transport, and retail
+contributes just 1-9%. Here, reducing losses is a clear priority.
+As a third strategy, procurement could source from low-impact farms. Although this strategy is
+important, and possible only with information about the impacts of providers, it has clear
+limitations. To be effective, it relies on high-impact production not simply being purchased
+elsewhere in the market. The case of the Roundtable on Sustainable Palm Oil (RSPO) shows that
+this is hard to achieve: despite one-fifth of 2017 palm oil production being certified, there remains
+virtually no demand in China, India, and Indonesia ( _31_ ). Alternatively, this strategy would be
+effective if higher prices for sustainable production incentivized low-impact producers to increase
+output or high-impact producers to change practices. The case of organic food shows how passing
+premiums to consumers limits total market size and widespread practice change.
+However, processors and retailers routinely demand that products meet taste, quality, and food
+safety standards. These markets are concentrated, with just 10 retailers representing 52% of U.S.
+grocery sales and 15% of global sales ( _32_ ). This sometimes means that standards achieve market
+transformation ( _33_ ), where virtually all producers adhere to gain market access. A fourth strategy
+for producers is setting environmental standards. These are particularly important: Although many
+environmental issues can be monitored and mitigated in a flexible way, issues such as harmful
+pesticide usage and deforestation require strict controls, and issues such as on-farm biodiversity
+are hard to quantify ( _28_ ). Procurement, farming organizations, and international policy-makers
+14
+must come together to implement a safety net for global agriculture—comprehensive standards to
+manage the worst and hardest-to-quantify environmental issues, extending the successes of
+existing schemes and enabling a flexible mitigation approach to operate effectively.
+15
+**Producer mitigation limits and the role of consumers**
+Though producers are a vital part of the solution, their ability to reduce environmental impacts is
+limited. These limits can mean that a product has higher impacts than another nutritionally
+equivalent product, however it is produced.
+In particular, the impacts of animal products can markedly exceed those of vegetable substitutes
+(Fig. 1). To such a degree that meat, aquaculture, eggs, and dairy use ~83% of the world’s farmland
+and contribute 56-58% of food’s different emissions, despite providing only 37% of our protein
+and 18% of our calories. Can animal products be produced with sufficiently low impacts to redress
+this vast imbalance? Or will reducing animal product consumption deliver greater environmental
+benefits?
+We find that the impacts of the lowest-impact animal products exceed average impacts of
+substitute vegetable proteins across GHG emissions, eutrophication, acidification (excluding nuts),
+and frequently land use (Fig. 1 and data S2). These stark differences are not apparent in any product
+groups except protein-rich products and milk.
+Although tree crops can temporarily sequester carbon and reduce nutrient leaching, the impact of
+nuts is dominated by low-yielding cashews and water-, fertilizer-, and pesticide-intensive almonds.
+Production of nuts doubled between 2000 and 2015 ( _4_ ), and more work is required to improve
+their resource use efficiency. Although aquaculture can have low land requirements, in part by
+converting by-products into edible protein, the lowest-impact aquaculture systems still exceed
+emissions of vegetable proteins. This challenges recommendations to expand aquaculture ( _1_ )
+without major innovation in production practices first. Further, though ruminants convert ~2.7
+16
+billion metric tons of grass dry matter, of which 65% grows on land unsuitable for crops ( _34_ ), into
+human-edible protein each year, the environmental impacts of this conversion are immense under
+any production method practiced today.
+**GHG Emissions** (kg CO2eq 100g protein [–1] )
+**A** **Land Use Change**
+12.0
+2.1
+Avg. veg. proteins
+(excluding nuts)
+2.1
+1.0
+0.21
+-0.23
+-0.76
+**GHG Emiss.**
+(kg CO2eq L [–1] )
+0.5
+0.20
+1.3
+|Col1|Col2|
+|---|---|
+|||
+|Col1|Col2|
+|---|---|
+|||
+0.77
+0.54
+0.02
+0.11
+0.09
+|Col1|0.2|Col3|Col4|
+|---|---|---|---|
+|||0.1|0.1|
+|||||
+|||||
+|||||
+|Col1|Col2|Col3|0.3 0.6 0.2 0.5 0.6 0.5 0.5 0.5 0.1 0.2|Col5|Col6|Col7|Col8|Col9|Col10|Col11|Col12|Col13|Col14|Col15|Col16|Col17|Col18|Col19|Col20|Col21|Col22|Col23|Col24|Col25|Col26|Col27|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+||||||||||||||||||||||||||||
+|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|<br>-0.2|
+|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|
+|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**||||||||||||||||||
+|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|||||||||||||||||||||||
+|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**||||||||||||||||||||||||
+|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|||||||||||||||||||||||||||
+|1.4<br>1.6<br>1.8<br>2.7<br>1.1<br>2.7<br>0.8<br>1.4<br>2.0<br>1.4<br>2.1<br>1.4<br>1.6<br>0.5<br>1.8<br>0.6<br>0.8<br>1.7<br>Avg. veg<br>proteins<br>10th pctl.<br>veg. proteins<br>**Crop Production & Feed Transport**|||||||||||||||||||||||||||
+||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||
+|**L**|**ive**|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|14<br>11<br>9.0<br>6.0<br>1.5<br>3.5<br>0.5<br>1.2<br>15<br>6.0<br>5.0<br>1.9<br>3.7<br>1.0<br>0.9<br>0.5<br>0.4<br>**stock & Aquaculture**<br>28|
+|**L**|**ive**||||||||||||||||||||||||||
+|Col1|Col2|
+|---|---|
+|||
+|Col1|Col2|
+|---|---|
+|||
+|Col1|Col2|
+|---|---|
+|||
+|Col1|1.5|Col3|
+|---|---|---|
+|||1.0|
+||||
+Beef Lamb & Beef Crustaceans Cheese Pig Meat Fish Poultry Eggs
+(beef herd) Mutton (dairy herd) (farmed) (farmed) Meat
+Milk
+Mean (light shaded box) 10 [th] Percentile (dark shaded box)
+**Fig. 3. Mean and 10** **[th]** **percentile GHG emissions of protein-rich products across three major**
+**production stages.** Red lines represent average vegetable protein emissions, and blue lines
+represent 10th-percentile emissions. The gray line represents average emissions excluding nuts,
+which can temporarily sequester carbon if grown on cropland or pasture. To calculate 10th
+percentile emissions by stage, we averaged across farms that have total emissions between the 5th
+and 15th percentiles, controlling for burden shifting between stages.
+17
+Using GHG emissions (Fig. 3), we identified five primarily biophysical reasons for these results.
+These reasons suggest that the differences between animal and vegetable proteins will hold into
+the future unless major technological changes disproportionately target animal products. First,
+emissions from feed production typically exceed emissions of vegetable protein farming. This is
+because feed-to-edible protein conversion ratios are greater than 2 for most animals ( _13_, _34_ );
+because high usage of low-impact by-products is typically offset by low digestibility and growth;
+and because additional transport is required to take feed to livestock. Second, we find that
+deforestation for agriculture is dominated (67%) by feed, particularly soy, maize, and pasture,
+resulting in losses of above- and below-ground carbon. Improved pasture management can
+temporarily sequester carbon ( _25_ ), but it reduces life-cycle ruminant emissions by a maximum of
+22%, with greater sequestration requiring more land. Third, animals create additional emissions
+from enteric fermentation, manure, and aquaculture ponds. For these emissions alone, 10th
+percentile values are 0.4-15kg of CO2eq per 100g of protein. Fourth, emissions from processing,
+particularly emissions from slaughterhouse effluent, add a further 0.3-1.1kg of CO2eq, which is
+greater than processing emissions for most other products. Last, wastage is high for fresh animal
+products, which are prone to spoilage.
+**Mitigation through consumers**
+Today, and probably into the future, dietary change can deliver environmental benefits on a scale
+not achievable by producers. Moving from current diets to a diet that excludes animal products
+(table S13) ( _35_ ) has transformative potential, reducing food’s land use by 3.1 (2.8-3.3) billion
+hectares (a 76% reduction), including a 19% reduction in arable land; food’s GHG emissions by
+6.6 (5.5-7.4) billion metric tons of CO2eq (a 49% reduction); acidification by 50% (45-54%);
+18
+eutrophication by 49% (37-56%); and scarcity-weighted freshwater withdrawals by 19% (−5 to
+32%) for a 2010 reference year. The ranges are based on producing new vegetable proteins with
+impacts between the 10th- and 90th-percentile impacts of existing production. In addition to the
+reduction in food’s annual GHG emissions, the land no longer required for food production could
+remove ~8.1 billion metric tons of CO2eq from the atmosphere each year over 100 years as natural
+vegetation reestablishes and soil carbon re-accumulates, based on simulations conducted in the
+IMAGE integrated assessment model. For the United States, where per capita meat consumption
+is three times the global average, dietary change has the potential for a far greater effect on food’s
+different emissions, reducing them by 61-73%. See supplementary text ( _17_ ) for diet compositions
+and sensitivity analyses and fig. S14 for alternative scenarios.
+Consumers can play another important role by avoiding high-impact producers. We consider a
+second scenario where consumption of each animal product is halved by replacing production with
+above-median GHG emissions with vegetable equivalents. This achieves 71% of the previous
+scenario’s GHG reduction (a reduction of ~10.4 billion metric tons of CO2eq per year, including
+atmospheric CO2 removal by regrowing vegetation) and 67, 64, and 55% of the land use,
+acidification, and eutrophication reductions. Further, lowering consumption of more discretionary
+products (oils, sugar, alcohol, and stimulants) by 20% by avoiding production with the highest
+land use reduces the land use of these products by 39% on average. For emissions, the reductions
+are 31 to 46%, and for scarcity-weighted freshwater withdrawals, 87%.
+Communicating average product impacts to consumers enables dietary change and should be
+pursued. Though dietary change is realistic for any individual, widespread behavioral change will
+be hard to achieve in the narrow timeframe remaining to limit global warming and prevent further,
+19
+irreversible biodiversity loss. Communicating producer impacts allows access to the second
+scenario, which multiplies the effects of smaller consumer changes.
+**An integrated mitigation framework**
+|Farms Processors & Retailers Consumers<br>Validate and Monitor multiple Validate and<br>Monitor multiple<br>communicate impacts using communicate<br>impacts<br>impacts supply-chain data impacts<br>Require<br>Meet targets by sustainability Meet targets<br>choosing from Policy standards<br>multiple practice<br>changes<br>Set and incentivize mitigation targets Incentivize<br>sustainable<br>Researchers Define and regulate sustainability standards consumption<br>Provide multiple mitigation options|Col2|Col3|Col4|
+|---|---|---|---|
+|Monitor multiple<br>impacts<br>Validate and<br>communicate<br>impacts<br>Meet targets by<br>choosing from<br>multiple practice<br>changes<br>**Policy**<br>Se|Monitor multiple<br>impacts<br>Validate and<br>communicate<br>impacts<br>Meet targets by<br>choosing from<br>multiple practice<br>changes<br>**Policy**<br>Se|Monitor multiple<br>impacts<br>Validate and<br>communicate<br>impacts<br>Meet targets by<br>choosing from<br>multiple practice<br>changes<br>**Policy**<br>Se|Monitor multiple<br>impacts<br>Validate and<br>communicate<br>impacts<br>Meet targets by<br>choosing from<br>multiple practice<br>changes<br>**Policy**<br>Se|
+|Monitor multiple<br>impacts<br>Validate and<br>communicate<br>impacts<br>Meet targets by<br>choosing from<br>multiple practice<br>changes<br>**Policy**<br>Se|Monitor multiple<br>impacts<br>Validate and<br>communicate<br>impacts<br>Meet targets by<br>choosing from<br>multiple practice<br>changes<br>**Policy**<br>Se|||
+|Monitor multiple<br>impacts<br>Validate and<br>communicate<br>impacts<br>Meet targets by<br>choosing from<br>multiple practice<br>changes<br>**Policy**<br>Se|Monitor multiple<br>impacts<br>Validate and<br>communicate<br>impacts<br>Meet targets by<br>choosing from<br>multiple practice<br>changes<br>**Policy**<br>Se|t a|nd incentivize mitigation targets|
+|**Researchers**|Define and regulate sustainability standards|Define and regulate sustainability standards|Define and regulate sustainability standards|
+|Provide multiple mitigation options|Provide multiple mitigation options|Provide multiple mitigation options|Provide multiple mitigation options|
+**Fig. 4. Graphical representation of the mitigation framework.**
+In Fig. 4 we illustrate a potential framework implied by our findings, prior research, and emerging
+policy ( _9_ ). First, producers would monitor their impacts using digital tools ( _36_ ). Data would be
+validated against known ranges for each value (e.g., maximum yields given inputs) and validated
+or certified independently. In the United States these tools have already been integrated with
+existing farm software ( _31_ ); in Africa and South Asia they are being trialed with 2G mobile phones
+( _37_ ); and in China they have been operated by extension services with extremely successful results
+( _24_ ).
+20
+Second, policy-makers would set targets on environmental indicators and incentivize them by
+providing producers with credit or tax breaks or by reallocating agricultural subsidies that now
+exceed half a trillion dollars a year worldwide ( _38_ ). Third, the assessment tools would provide
+multiple mitigation and productivity enhancement options to producers. Ideally these tools would
+become platforms that consolidate the vast amounts of research conducted by scientists around the
+world, while also sharing producer best practices. In particular, practice sharing offers a very
+effective way to engage producers ( _24_ ). Maximum flexibility also ensures least-cost mitigation
+( _39_ ) and supports producer-led innovation ( _24_ ).
+Finally, impacts would be communicated up the supply chain and through to consumers. For
+commodity crops that are hard to trace ( _31_ ), this may not be feasible and mitigation efforts may
+have to focus on producers. For animal products, stringent traceability is already required in many
+countries ( _40_ ), suggesting that communicating impacts is most feasible where it matters the most.
+Communication could occur through a combination of environmental labels, taxes or subsidies
+designed to reflect environmental costs in product prices ( _35_ ), and broader education on the true
+cost of food.
+We have consolidated information on the practices and impacts of a wide range of producers. From
+this research, we have provided a unified exposition of the environmental science for making major
+changes to the food system. We hope this stimulates progress in this crucially important area.
+21
+**References and Notes:**
+1. H. C. J. Godfray _et al._, Food security: the challenge of feeding 9 billion people. _Science_ .
+**327**, 812–818 (2010).
+2. J. A. Foley _et al._, Solutions for a cultivated planet. _Nature_ . **478**, 337–342 (2011).
+3. FAO, “The State of Food and Agriculture” (Rome, 2014).
+4. FAOSTAT (2017), (available at http://www.fao.org/faostat).
+5. FAO, “The Second Report on the State of the World’s Plant Genetic Resources for Food
+and Agriculture” (Rome, 2010).
+6. K. M. Carlson _et al._, Greenhouse gas emissions intensity of global croplands. _Nat. Clim._
+_Chang._ **7**, 63–68 (2016).
+7. P. C. West _et al._, Leverage points for improving global food security and the environment.
+_Science_ . **345**, 325–328 (2014).
+8. P. J. Gerber _et al._, “Tackling Climate through Livestock: A Global Assessment of
+Emissions and Mitigation Opportunities” (Rome, 2013).
+9. European Commission, _Recommendation 2013/179/EU on the use of common methods to_
+_measure and communicate the life cycle environmental performance of products and_
+_organisations_ (2013).
+10. S. Hellweg, L. M. Canals, Emerging approaches, challenges and opportunities in life cycle
+assessment. _Science_ . **344**, 1109–1113 (2014).
+11. K. Paustian, Bridging the data gap: engaging developing country farmers in greenhouse
+gas accounting. _Environ. Res. Lett._ **8**, 21001 (2013).
+12. S. Clune, E. Crossin, K. Verghese, Systematic review of greenhouse gas emissions for
+different fresh food categories. _J. Clean. Prod._ **140**, 766–783 (2017).
+13. D. Tilman, M. Clark, Global diets link environmental sustainability and human health.
+_Nature_ . **515**, 518–522 (2014).
+14. M. Clark, D. Tilman, Comparative analysis of environmental impacts of agricultural
+production systems, agricultural input efficiency, and food choice. _Environ. Res. Lett._ **12**,
+64016 (2017).
+15. M. de Vries, I. J. M. de Boer, Comparing environmental impacts for livestock products: A
+review of life cycle assessments. _Livest. Sci._ **128**, 1–11 (2010).
+16. D. Nijdam, T. Rood, H. Westhoek, The price of protein: Review of land use and carbon
+footprints from life cycle assessments of animal food products and their substitutes. _Food_
+_Policy_ . **37**, 760–770 (2012).
+17. Supplementary materials are available online.
+22
+18. W. Steffen _et al._, Planetary Boundaries: Guiding human development on a changing
+planet. _Science_ . **347**, 736 (2015).
+19. A. F. Bouwman, D. P. Van Vuuren, R. G. Derwent, M. Posch, A global analysis of
+acidification and eutrophication of terrestrial ecosystems. _Water. Air. Soil Pollut._ **141**,
+349–382 (2002).
+20. E. Röös, C. Sundberg, P. Tidåker, I. Strid, P.-A. Hansson, Can carbon footprint serve as
+an indicator of the environmental impact of meat production? _Ecol. Indic._ **24**, 573–581
+(2013).
+21. E. Beza, J. V. Silva, L. Kooistra, P. Reidsma, Review of yield gap explaining factors and
+opportunities for alternative data collection approaches. _Eur. J. Agron._ **82**, 206–222
+(2017).
+22. Z. Cui _et al._, Trade-offs between high yields and greenhouse gas emissions in irrigation
+wheat cropland in China. _Biogeosciences_ . **11**, 2287–2294 (2014).
+23. J. K. Ladha _et al._, Agronomic improvements can make future cereal systems in South Asia
+far more productive and result in a lower environmental footprint. _Glob. Chang. Biol._ **22**,
+1054–1074 (2016).
+24. Z. Cui _et al._, Pursuing sustainable productivity with millions of smallholder farmers.
+_Nature_ . **555**, 363–366 (2018).
+25. P. Smith _et al._, in _Climate Change 2014: Mitigation of Climate Change_ (Cambridge
+University Press, Cambridge, 2014).
+26. E. Song, B. L. Nelson, J. Straum, Shapley Effects for Global Sensitivity Analysis: Theory
+and Computation. _SIAM/ASA J. Uncertain. Quantif._ **4**, 1060–1083 (2016).
+27. Q. Yu _et al._, Assessing the harvested area gap in China. _Agric. Syst._ **153**, 212–220 (2017).
+28. R. N. German, C. E. Thompson, T. G. Benton, Relationships among multiple aspects of
+agriculture’s environmental impact and productivity: a meta-analysis to guide sustainable
+agriculture. _Biol. Rev._ **92**, 716–738 (2017).
+29. R. Lal, Digging Deeper: A Holistic Perspective of Factors Affecting Soil Organic Carbon
+Sequestration in Agroecosystems. _Glob. Chang. Biol._ (2018), doi:10.1111/gcb.14054.
+30. P. Smith _et al._, Policy and technological constraints to implementation of greenhouse gas
+mitigation options in agriculture. _Agric. Ecosyst. Environ._ **118**, 6–28 (2007).
+31. K. B. Waldman, J. M. Kerr, Limitations of Certification and Supply Chain Standards for
+Environmental Protection in Commodity Crop Production. _Annu. Rev. Resour. Econ._ **6**,
+429–449 (2014).
+32. Euromonitor (2018), (available at http://www.portal.euromonitor.com).
+33. D. Nepstad, W. Boyd, C. Stickler, T. Bezerra, A. Azevedo, Responding to climate change
+and the global land crisis: REDD+, market transformation and low-emissions rural
+development. _Philos. Trans. R. Soc. Lond. B. Biol. Sci._ **368**, 20120167 (2013).
+23
+34. A. Mottet _et al._, Livestock: On our plates or eating at our table? A new analysis of the
+feed/food debate. _Glob. Food Sec._ **14**, 1–8 (2017).
+35. M. Springmann _et al._, Mitigation potential and global health impacts from emissions
+pricing of food commodities. _Nat. Clim. Chang._ **7**, 69–74 (2016).
+36. K. Denef, K. Paustian, S. Archibeque, S. Biggar, D. Pape, “Report of Greenhouse Gas
+Accounting Tools for Agriculture and Forestry Sectors” (Fort Collins, 2012).
+37. GSMA, “Creating scalable, engaging mobile solutions for agriculture” (London, 2017).
+38. OECD, “Agriculture Policy Monitoring and Evaluation 2017” (Paris, 2017).
+39. K. Segerson, Voluntary Approaches to Environmental Protection and Resource
+Management. _Annu. Rev. Resour. Econ._ **5**, 161–180 (2013).
+40. European Parliament and Council, _Regulation (EU) No 1308/2013: establishing a_
+_common organization of the markets in agricultural products_ (2013).
+41. J. Pryshlakivsky, C. Searcy, Fifteen years of ISO 14040: a review. _J. Clean. Prod._ **57**,
+115–123 (2013).
+42. T. C. Ponsioen, H. M. G. van der Werf, Five propositions to harmonize environmental
+footprints of food and beverages. _J. Clean. Prod._ **153**, 457–464 (2017).
+43. IPCC, _Climate Change 2013: The Physical Science Basis_ (Cambridge University Press,
+Cambridge, 2013).
+44. CML, “CML2 Baseline Method 2000” (Netherlands, 2001).
+45. A. M. Boulay _et al._, The WULCA consensus characterization model for water scarcity
+footprints: assessing impacts of water consumption based on available water remaining
+(AWARE). _Int. J. Life Cycle Assess._ **23**, 368–378 (2018).
+46. IPCC, _Climate Change 2007: Mitigation of Climate Change_ (Cambridge University Press,
+Cambridge, 2007).
+47. R. J. Hijmans _et al._, GADM Database of Global Administrative Areas (v. 2.7) (2015),
+(available at http://www.gadm.org/).
+48. FAO/IIASA/ISRIC/ISSCAS/JRC, “Harmonized World Soil Database (version 1.2)”
+(Rome, Italy and Laxenburg, Austria., 2012).
+49. N. H. Batjes, “World soil property estimates for broad-scale modelling (WISE30sec)”
+(2015).
+50. L. Scherer, S. Pfister, Modelling spatially explicit impacts from phosphorus emissions in
+agriculture. _Int. J. Life Cycle Assess._ **20**, 785–795 (2015).
+51. J. Danielson, D. Gesch, An enhanced global elevation model generalized from multiple
+higher resolution source dataets. _Int. Arch. Photogramm. Remote Sens. Spat. Inf. Sci._
+**XXXVII**, 1857–1864 (2008).
+24
+52. R. J. Hijmans, S. E. Cameron, J. L. Parra, P. G. Jones, A. Jarvis, Very high resolution
+interpolated climate surfaces for global land areas. _Int. J. Climatol._ **25**, 1965–1978 (2005).
+53. R. J. Zomer, A. Trabucco, O. van Straaten, D. A. Bossio, “Carbon, Land and Water: A
+Global Analysis of the Hydrologic Dimensions of Climate Change Mitigation through
+Afforestation/Reforestation” (2006).
+54. R. Hiederer _et al._, “Biofuels: a new methodology to estimate GHG emissions from global
+land use change” (Luxembourg, 2010).
+55. S. Pfister, P. Bayer, A. Koehler, S. Hellweg, Environmental impacts of water use in global
+crop production: hotspots and trade-offs with land use. _Environ. Sci. Technol._ **45**, 5761–8
+(2011).
+56. F. T. Portmann, S. Siebert, P. Döll, MIRCA2000 - Global monthly irrigated and rainfed
+crop areas around the year 2000: A new high-resolution data set for agricultural and
+hydrological modeling. _Global Biogeochem. Cycles_ . **24** (2010),
+doi:10.1029/2008GB003435.
+57. A. K. Chapagain, A. Y. Hoekstra, The blue, green and grey water footprint of rice from
+production and consumption perspectives. _Ecol. Econ._ **70**, 749–758 (2011).
+58. T. Nemecek _et al._, “World Food LCA Database: Methodological Guidelines for the Life
+Cycle Inventory of Agricultural Products. Version 3.0” (Lausanne and Zurich, 2015).
+59. FAO, AQUASTAT (Database) (2017), (available at
+http://www.fao.org/nr/water/aquastat).
+60. R. G. Allen, L. S. Pereira, D. Raes, M. Smith, “Crop evapotranspiration: Guidelines for
+computing crop requirements” (1998).
+61. S. Siebert, F. T. Portmann, P. Doll, Global patterns of cropland use intensity. _Remote_
+_Sens._ **2**, 1625–1643 (2010).
+62. N. Ramankutty, A. T. Evan, C. Monfreda, J. Foley, Farming the planet: 1. Geographic
+distribution of global agricultural lands in the year 2000. _Global Biogeochem. Cycles_ . **22**
+(2008), doi:10.1029/2007GB002952.
+63. J. Webb _et al._, in _Agroecology and Strategies for Climate Change_, E. Lichtfouse, Ed.
+(Springer, ed. 8, 2012), vol. 8, pp. 67–107.
+64. J. Sintermann _et al._, Are ammonia emissions from field-applied slurry substantially overestimated in European emission inventories? _Biogeosciences_ . **9**, 1611–1632 (2012).
+65. V. Colomb _et al._, “AGRIBALYSE®, the French LCI Database for agricultural products:
+high quality data for producers and environmental labelling” (2014).
+66. ASAE, “Manure Production and Characteristics” (St. Joseph, USA, 2005).
+67. EEA, “EMEP/EEA air pollutant emission inventory guidebook 2013: Technical guidance
+to prepare national emission inventories” (Luxembourg, 2013).
+25
+68. T. V. Vellinga _et al._, “Methodology used in feedprint: a tool quantifying greenhouse gas
+emissions of feed production and utilization” (2013).
+69. V. Heuzé, G. Tran, Feedipedia, a programme by INRA, CIRAD, AFZ and FAO. (2015),
+(available at http://www.feedipedia.org/).
+70. R. Köble, “The Global Nitrous Oxide Calculator (GNOC) Online Tool Manual v. 1.2.4”
+(Ispra, Italy, 2014), (available at http://gnoc.jrc.ec.europa.eu/).
+71. IPCC, _IPCC Guidelines for National Greenhouse Gas Inventories_ (IGES, Japan, 2006).
+72. H. Kowata, H. Moriyama, K. Hayashi, H. Kato, N. Agricultural, in _Proc. of the 6th Int._
+_Conf. on LCA in the Agri-Food Sector, Zurich, November 12–14, 2008_ (2008), pp. 49–57.
+73. M. M. Mekonnen, A. Y. Hoekstra, “The Green, Blue and Grey Water Footprint of Farm
+Animals and Animal Products” (Delft, 2010).
+74. UNDP, “Human Development Report 2014” (New York, 2014).
+75. M. Hauschild, J. Potting, “Spatial differentiation in Life Cycle impact assessment - The
+EDIP2003 methodology” (Copenhagen, 2005).
+76. M. Goedkoop _et al._, “ReCiPe 2008” (Netherlands, 2009).
+77. EC-JRC/PBL, EDGAR v4.2 (2011), (available at http://edgar.jrc.ec.europa.eu/).
+78. FAO, “Yield and nutritional value of the commercially more important fish species”
+(Rome, 1989).
+79. IDF, A common carbon footprint approach for dairy: The IDF guide to standard lifecycle
+assessment methodology for the dairy sector. _Bull. Int. Dairy Fed._ (2010).
+80. C. Opio _et al._, “Greenhouse gas emissions from ruminant supply chains” (Rome, 2013).
+81. T. Nemecek _et al._, Designing eco-efficient crop rotations using life cycle assessment of
+crop combinations. _Eur. J. Agron._ **65**, 40–51 (2015).
+82. FAO, “Tree Crops - Guidelines For Estimating Area Data” (Rome, 2011).
+83. B. P. Weidema _et al._, “The ecoinvent database: Overview and methodology” (2013),
+(available at www.ecoinvent.org).
+84. E. Stehfest, L. Bouwman, N2O and NO emission from agricultural fields and soils under
+natural vegetation: summarizing available measurement data and modeling of global
+annual emissions. _Nutr. Cycl. Agroecosystems_ . **74**, 207–228 (2006).
+85. EEA, “EMEP/EEA air pollutant emission inventory guidebook 2016: Technical guidance
+to prepare national emission inventories” (Luxembourg, 2016).
+86. F. J. de Ruijter, J. F. M. Huijsmans, B. Rutgers, Ammonia volatilization from crop
+residues and frozen green manure crops. _Atmos. Environ._ **44**, 3362–3368 (2010).
+87. S. K. Akagi _et al._, Emission factors for open and domestic biomass burning for use in
+atmospheric models. _Atmos. Chem. Phys._ **11**, 4039–4072 (2011).
+26
+88. F. N. Tubiello, R. Biancalani, M. Salvatore, S. Rossi, G. Conchedda, A Worldwide
+Assessment of Greenhouse Gas Emissions from Drained Organic Soils. _Sustainability_ . **8**
+(2016), doi:10.3390/su8040371.
+89. E. M. W. Smeets, L. F. Bouwman, E. Stehfest, D. P. van Vuuren, A. Posthuma,
+Contribution of N2O to the greenhouse gas balance of first-generation biofuels. _Glob._
+_Chang. Biol._ **15**, 1–23 (2009).
+90. J. Shan, X. Yan, Effects of crop residue returning on nitrous oxide emissions in
+agricultural soils. _Atmos. Environ._ **71**, 170–175 (2013).
+91. H. Chen, X. Li, F. Hu, W. Shi, Soil nitrous oxide emissions following crop residue
+addition: A meta-analysis. _Glob. Chang. Biol._ **19**, 2956–2964 (2013).
+92. C. Nevison, Review of the IPCC methodology for estimating nitrous oxide emissions
+associated with agricultural leaching and runoff. _Chemosph. - Glob. Chang. Sci._ **2**, 493–
+500 (2000).
+93. G. van Drecht, A. F. Bouwman, J. M. Knoop, A. H. W. Beusen, C. R. Meinardi, Global
+modeling of the fate of nitrogen from point and nonpoint sources in soils, groundwater,
+and surface water. _Glob. Biogeochem. Cycles_ . **17**, 1115 (2003).
+94. I. G. Burns, An equation to predict the leaching of surface-applied nitrate. _J. agric. Sci.,_
+_Camb_ . **85**, 443–454 (1975).
+95. S. M. Thomas, S. F. Ledgard, G. S. Francis, Improving estimates of nitrate leaching for
+quantifying New Zealand’s indirect nitrous oxide emissions. _Nutr. Cycl. Agroecosystems_ .
+**73**, 213–226 (2005).
+96. J. Liu _et al._, A high-resolution assessment on global nitrogen flows in cropland. _Proc._
+_Natl. Acad. Sci._ **107**, 8035–8040 (2010).
+97. E. Papatryphon, J. Petit, H. M. G. Van Der Werf, K. J. Sadasivam, K. Claver, Nutrientbalance modeling as a tool for environmental management in aquaculture: the case of
+trout farming in France. _Environ. Manage._ **35**, 161–74 (2005).
+98. IPCC, _2013 Supplement to the 2006 IPCC Guidelines for National Greenhouse Gas_
+_Inventories: Wetlands_ (IPCC, Switzerland, 2014).
+99. U. Dämmgen, “Calculations of emission from German agriculture - National Emission
+Inventory Report 2009 for 2007” (Braunschweig, 2009).
+100. A. Gross, C. E. Boyd, C. W. Wood, Nitrogen transformations and balance in channel
+catfish ponds. _Aquac. Eng._ **24**, 1–14 (2000).
+101. G. L. Schroeder, Carbon and Nitrogen Budgets in Manured Fish Ponds on Israel’s Coastal
+Plain. _Aquaculture_ . **62**, 259–279 (1987).
+102. J. C. Fry, in _Detritus and microbial ecology in aquaculture_, D. J. W. Moriarty, R. S. V.
+Pullin, Eds. (ICLARM, Manila, Philippines, 1987), pp. 83–122.
+103. W. Lewis Jr, Global primary production of lakes: 19th Baldi Memorial Lecture. _Inl._
+27
+_Waters_ . **1**, 1–28 (2011).
+104. G. L. Schroeder, Autotrophic and heterotrophic production of micro-organisms in
+intensely-manured fish ponds, and related fish yields. _Aquaculture_ . **14**, 303–325 (1978).
+105. X. Wang _et al._, Chemical composition and release rate of waste discharge from an
+Atlantic salmon farm with an evaluation of IMTA feasibility. _Aquac. Environ. Interact._ **4**,
+147–162 (2013).
+106. R. D. Fallon, S. Harrits, R. S. Hanson, T. D. Brock, The role of methane in internal carbon
+cycling in Lake Mendota during summer stratification. _Limnol. Oceanogr._ **25**, 357–360
+(1980).
+107. K. M. Kuivila, J. W. Murray, A. H. Devol, M. E. Lidstrom, C. E. Reimers, Methane
+cycling in the sediments of Lake Washington. _Limnol. Oceanogr._ **33**, 571–581 (1988).
+108. O. J. Hall, Chemical flux and mass balances in a marine fish cage farm. I. Carbon. _Mar._
+_Ecol. Prog. Ser._ **61**, 61–73 (1990).
+109. D. M. Alongi _et al._, The fate of organic matter derived from small-scale fish cage
+aquaculture in coastal waters of Sulawesi and Sumatra, Indonesia. _Aquaculture_ . **295**, 60–
+75 (2009).
+110. D. Bastviken, L. J. Tranvik, J. A. Downing, J. A. Crill, A. Enrich-Prast, Freshwater
+Methane Emissions Offset the Continental Carbon Sink. _Science_ . **331**, 50 (2011).
+111. A. M. Detweiler _et al._, Characterization of methane flux from photosynthetic oxidation
+ponds in a wastewater treatment plant. _Water Sci. Technol._ **70**, 980–989 (2014).
+112. D. Bastviken, J. J. Cole, M. L. Pace, M. C. Van de-Bogert, Fates of methane from
+different lake habitats: Connecting whole-lake budgets and CH4 emissions. _J. Geophys._
+_Res. Biogeosciences_ . **113** (2008), doi:10.1029/2007JG000608.
+113. EPA, “Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990-2014” (Washington,
+DC, 2016).
+114. M. Holmer, D. Wildish, B. Hargrave, Organic Enrichment from Marine Finfish
+Aquaculture and Effects on Sediment Biogeochemical Processes. _Environ. Eff. Mar._
+_Finfish Aquac._ **5**, 181–206 (2005).
+115. K. I. Suhr, C. O. Letelier-Gordo, I. Lund, Anaerobic digestion of solid waste in RAS:
+effect of reactor type on the biochemical acidogenic potential (BAP) and assessment of
+the biochemical methane potential (BMP) by a batch assay. _Aquac. Eng._ **65**, 65–71
+(2015).
+116. Blonk Consultants, Direct Land Use Change Assessment Tool, Version 2013.1 (2013).
+117. JRC, Support to Renewable Energy Directive (2010), (available at
+http://eusoils.jrc.ec.europa.eu/projects/RenewableEnergy/).
+118. The British Standards Institution, “Publically Available Specificiation (PAS 2050: 2011)”
+(London, 2011).
+28
+119. S. Rossi _et al._, FAOSTAT estimates of greenhouse gas emissions from biomass and peat
+fires. _Clim. Change_ . **135**, 699–711 (2016).
+120. N. Hosonuma _et al._, An assessment of deforestation and forest degradation drivers in
+developing countries. _Environ. Res. Lett._ **7** (2012), doi:10.1088/1748-9326/7/4/044009.
+121. M. C. C. Hansen _et al._, High-Resolution Global Maps of 21st-Century Forest Cover
+Change. _Science_ . **342**, 850–854 (2013).
+122. ecoinvent, Background data for transport (2013), (available at
+http://www.ecoinvent.org/files/transport_default_20130722.xls).
+123. L. Fulton, P. Cazzola, F. Cuenot, IEA Mobility Model (MoMo) and its use in the ETP
+2008. _Energy Policy_ . **37**, 3758–3768 (2009).
+124. UNCTAD, “Review of Maritime Transport 2015” (2015).
+125. International Civil Aviation Organization, Civil Aviation Statistics of the World (2017),
+(available at http://www.icao.int/sustainability/Pages/Statistics.aspx).
+126. S. J. James, C. James, The food cold-chain and climate change. _Food Res. Int._ **43**, 1944–
+1956 (2010).
+127. G. Wernet _et al._, The ecoinvent database version 3 (part I): overview and methodology.
+_Int. J. Life Cycle Assess._ **21**, 1218–1230 (2016).
+128. FAO, “Global food losses and food waste – Extent, causes and prevention” (Rome, 2011).
+129. FAO, “Food balance sheets – a handbook” (Rome, 2001).
+130. J. Gustavsson, C. Cederberg, U. Sonesson, A. Emanuelsson, “The methodology of the
+FAO study: ‘Global Food Losses and Food Waste - extent, causes and prevention’ - FAO,
+2011” (Gothenburg, 2013).
+131. FAO, AQUASTAT (Database) - Conservation Agriculture Adoption Worldwide (2016),
+(available at http://www.fao.org/nr/water/aquastat/data/query/index.html).
+132. S. Siebert _et al._, Groundwater use for irrigation – a global inventory. _Hydrol. Earth Syst._
+_Sci._ **14**, 1863–1880 (2010).
+133. FiBL and IFOAM, in _The World of Organic Agriculture. Statistics and Emerging Trends_
+_2014._, H. Willer, J. Lernoud, Eds. (Frick and Bonn, 2014).
+134. IIASA/FAO, “Global Agro-ecological Zones (GAEZ v3.0) - User’s Guide” (2012).
+135. FAO, FishStatJ - software for fishery statistical time series (2016), (available at
+http://www.fao.org/fishery/statistics/software/fishstatj).
+136. FAO, “Global Livestock Environmental Assessment Model: Reference Documentation
+v2.0” (Rome, 2016).
+137. National Development and Reform Commission of China, “National Data Compilation of
+Revenue and Cost of Agricultural Products 2013” (China Statistics Press, Beijing, 2013).
+29
+138. E. C. Ellis, K. Klein Goldewijk, S. Siebert, D. Lightman, N. Ramankutty, Anthropogenic
+transformation of the biomes, 1700 to 2000. _Glob. Ecol. Biogeogr._ **19**, 589–606 (2010).
+139. M. Herrero _et al._, Biomass use, production, feed efficiencies, and greenhouse gas
+emissions from global livestock systems. _Proc. Natl. Acad. Sci._ **110**, 20888–93 (2013).
+140. R. A. Houghton _et al._, Carbon emissions from land use and land-cover change. **4**, 5125–
+5142 (2012).
+141. P. Friedlingstein _et al._, Persistent growth of CO2 emissions and implications for reaching
+climate targets. _Nat. Publ. Gr._ **7**, 709–715 (2014).
+142. A. G. Pujol _et al._, sensitivity. R package version 1.15.0. (2017).
+143. E. H. Haddad, J. S. Tanzman, What do vegetarians in the United States eat. _Am. J. Clin._
+_Nutr._ **78**, 626S–32S (2003).
+144. M. Springmann, H. C. J. Godfray, M. Rayner, P. Scarborough, Analysis and valuation of
+the health and climate change cobenefits of dietary change. _Proc. Natl. Acad. Sci._ **113**,
+4146–4151 (2016).
+145. H. Darby, K. Hills, E. Cummings, R. Madden, “Assessing the value of oilseed meals for
+soil fertility and weed suppression” (Burlington, 2010).
+146. K. Schmidinger, E. Stehfest, Including CO2 implications of land occupation in LCAs—
+method and example for livestock products. _Int. J. Life Cycle Assess._ **17**, 962–972 (2012).
+147. EC-JRC/PBL, EDGAR v4.2 FT2010 (2013), (available at http://edgar.jrc.ec.europa.eu/).
+148. R. W. R. Parker _et al._, Fuel use and greenhouse gas emissions of world fisheries. _Nat._
+_Clim. Chang._ **8**, 333–337 (2018).
+149. D. Cordell, A. Rosemarin, J. J. Schröder, A. L. Smit, Towards global phosphorus security:
+A systems framework for phosphorus recovery and reuse options. _Chemosphere_ . **84**, 747–
+758 (2011).
+150. T. Coelli, A. Henningsen, frontier: Stochastic Frontier Analysis. R package version 1.1-2.
+(2017).
+151. K. M. Strassmann, F. Joos, G. Fischer, Simulating effects of land use changes on carbon
+fluxes: past contributions to atmospheric CO2 increases and future commitments due to
+losses of terrestrial sink capacity. _Tellus_ . **60B**, 583–603 (2008).
+30
+31
+**Acknowledgments:** We thank the many researchers who provided us with additional data,
+acknowledged in Data S1. We are grateful to R. Grenyer, P. Smith, E.J. Milner-Gulland,
+C. Godfray, G. Gaillard, L. de Baan, Y. Malhi, D. Thomas, K. Javanaud, and K.
+Afemikhe for comments on the manuscript, and Tyana for illustrations. **Funding:** This
+work was unfunded. **Author contributions:** J.P. conducted the analysis and wrote the
+manuscript. Both authors contributed to study design, data interpretation, and reviewed
+the manuscript. **Competing interests:** The authors declare no competing interests. **Data**
+**and materials availability:** A Microsoft Excel file allowing full replication of this
+analysis, containing all original and recalculated data, has been deposited on the Oxford
+[University Research Archive (doi.org/10.5287/bodleian:0z9MYbMyZ).](https://doi.org/10.5287/bodleian:0z9MYbMyZ)
+**Supplementary Materials:**
+Materials and Methods
+Supplementary Text
+Figs. S1 to S14
+Tables S1 to S17
+Captions for Data S1 to S2
+References ( _41_ - _151_ )
+32

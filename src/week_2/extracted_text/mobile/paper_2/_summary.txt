@@ -1,0 +1,7 @@
+EXTRACTED SECTIONS SUMMARY
+==================================================
+
+ABSTRACT: 791 chars
+INTRODUCTION: 2,304 chars
+RELATED WORK: 26,978 chars
+REFERENCES: 8,996 chars
