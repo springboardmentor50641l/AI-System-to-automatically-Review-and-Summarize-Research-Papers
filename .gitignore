@@ -1,10 +1,4 @@
-# Data files (too large for GitHub)
-data/papers/*.pdf
-data/extracted_text/*.json
-data/analysis/*.json
-data/drafts/*.json
-data/drafts/*.txt
-data/metadata/*.json
+
 
 # Python
 __pycache__/
