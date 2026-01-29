@@ -1,13 +1,10 @@
-"""
-paper_search.py - Fixed version with proper imports
-"""
-
 import os
-import sys 
+import sys
 import requests
 import json
 from datetime import datetime
 from pathlib import Path
+import time
 
 # Fix import paths
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -19,80 +16,88 @@ if project_root not in sys.path:
 try:
     from src.config import Config, get_api_headers
     from src.utils import create_filename, download_pdf_file, save_metadata, print_paper_details
-except ImportError:
+except ImportError as e:
+    print(f"❌ Import error: {e}")
+    print("Trying alternative import approach...")
+    
     # Try absolute import
     import sys
-    sys.path.insert(0, project_root)
+    sys.path.insert(0, os.path.dirname(project_root))
     
-    # Try different import patterns
     try:
-        # Try direct module import
-        import src.config as config_module
-        import src.utils as utils_module
-        
-        Config = config_module.Config
-        get_api_headers = config_module.get_api_headers
-        create_filename = utils_module.create_filename
-        download_pdf_file = utils_module.download_pdf_file
-        save_metadata = utils_module.save_metadata
-        print_paper_details = utils_module.print_paper_details
-        
-    except ImportError as e:
-        print(f"Import error: {e}")
-        print("Please check your module structure.")
-        raise
+        from research_paper_reviewer.src.config import Config, get_api_headers
+        from research_paper_reviewer.src.utils import create_filename, download_pdf_file, save_metadata, print_paper_details
+    except ImportError:
+        print("❌ Cannot import required modules")
+        print("Please check your project structure")
+        sys.exit(1)
+
 
 class PaperSearchSystem:
-    """Main system class"""
+    """Main system class for searching and downloading papers"""
     
     def __init__(self):
         """Initialize the system"""
         self.setup_complete = Config.setup_directories()
-    
+        self.session = requests.Session()
+        
     def search_papers(self, topic):
         """
-        Search for papers - FIXED VERSION
+        Search for papers on Semantic Scholar
         Returns: list of papers with PDF URLs
         """
         print(f"\n🔍 Searching for: '{topic}'")
+        
+        # Validate API key
+        if not Config.SEMANTIC_SCHOLAR_API_KEY:
+            print("⚠️  No Semantic Scholar API key found")
+            print("   You can still search, but rate limits apply")
         
         try:
             # Prepare request
             url = f"{Config.API_BASE_URL}/paper/search"
             params = {
                 'query': topic,
-                'limit': 15,  # Get more to find PDFs
-                'fields': 'title,year,abstract,citationCount,openAccessPdf,authors,paperId,url,venue'
+                'limit': 20,  # Get more to find PDFs
+                'offset': 0,
+                'fields': 'title,year,abstract,citationCount,openAccessPdf,authors,paperId,url,venue,publicationTypes'
             }
             
             headers = get_api_headers()
             
             print("🌐 Contacting Semantic Scholar API...")
-            response = requests.get(url, params=params, headers=headers, timeout=Config.TIMEOUT)
+            response = self.session.get(url, params=params, headers=headers, timeout=Config.TIMEOUT)
             
             # Check response
             if response.status_code != 200:
                 print(f"❌ API Error: {response.status_code}")
                 if response.status_code == 429:
-                    print("   Rate limit exceeded. Please wait a few minutes.")
+                    print("   ⏰ Rate limit exceeded. Please wait a few minutes.")
+                    print("   💡 Get a free API key from: https://www.semanticscholar.org/product/api")
                 elif response.status_code == 401:
-                    print("   Invalid API key. Check your .env file.")
+                    print("   🔑 Invalid API key. Check your .env file.")
+                elif response.status_code == 400:
+                    print("   📝 Bad request. The topic might be too specific.")
                 return []
             
             # Parse response
             data = response.json()
             all_papers = data.get('data', [])
+            total_found = data.get('total', 0)
             
             if not all_papers:
-                print("❌ No papers found")
+                print("❌ No papers found for this topic")
                 return []
             
-            print(f"✅ Found {len(all_papers)} papers")
+            print(f"✅ Found {total_found} total papers")
+            print(f"📄 Processing {len(all_papers)} papers from API...")
             
             # Process papers to find those with PDFs
             papers_with_pdfs = []
+            papers_skipped_no_pdf = 0
+            papers_skipped_other = 0
             
-            for paper in all_papers:
+            for i, paper in enumerate(all_papers, 1):
                 try:
                     # Get paper ID
                     paper_id = paper.get('paperId', '')
@@ -100,27 +105,40 @@ class PaperSearchSystem:
                     # Get title - ensure it's a string
                     title = str(paper.get('title', 'No Title')).strip()
                     if not title or title == 'No Title':
+                        papers_skipped_other += 1
+                        continue
+                    
+                    # Skip papers older than 1990 (usually less relevant)
+                    year = paper.get('year')
+                    if year and int(year) < 1990:
                         continue
                     
                     # Get authors
                     authors_list = []
                     authors_data = paper.get('authors', [])
                     if isinstance(authors_data, list):
-                        for author in authors_data[:3]:  # First 3 authors
+                        for author in authors_data[:4]:  # First 4 authors
                             if isinstance(author, dict):
                                 author_name = author.get('name', '')
                                 if author_name:
                                     authors_list.append(author_name)
                     
-                    # Check for PDF
+                    # Check for PDF - multiple approaches
                     pdf_url = None
-                    open_access = paper.get('openAccessPdf')
                     
+                    # Approach 1: Check openAccessPdf
+                    open_access = paper.get('openAccessPdf')
                     if isinstance(open_access, dict):
                         pdf_url = open_access.get('url')
                     
+                    # Approach 2: Check if URL ends with .pdf
+                    paper_url = paper.get('url', '')
+                    if not pdf_url and paper_url and paper_url.lower().endswith('.pdf'):
+                        pdf_url = paper_url
+                    
                     # Skip if no PDF
                     if not pdf_url or not isinstance(pdf_url, str) or not pdf_url.startswith('http'):
+                        papers_skipped_no_pdf += 1
                         continue
                     
                     # Create paper object
@@ -129,7 +147,7 @@ class PaperSearchSystem:
                         'title': title,
                         'authors': authors_list,
                         'year': paper.get('year'),
-                        'abstract': str(paper.get('abstract', ''))[:200] + '...',
+                        'abstract': str(paper.get('abstract', '')[:300]),
                         'citation_count': paper.get('citationCount', 0),
                         'pdf_url': pdf_url,
                         'venue': paper.get('venue', ''),
@@ -137,26 +155,43 @@ class PaperSearchSystem:
                         'pdf_downloaded': False,
                         'file_name': None,
                         'file_path': None,
-                        'download_date': None
+                        'download_date': None,
+                        'publication_types': paper.get('publicationTypes', [])
                     }
                     
                     papers_with_pdfs.append(paper_obj)
                     
-                    # Show progress
+                    # Show progress for first few papers
                     if len(papers_with_pdfs) <= 3:
                         title_display = title[:60] + "..." if len(title) > 60 else title
                         print(f"  {len(papers_with_pdfs)}. {title_display}")
                     
+                    # Stop if we have enough papers
+                    if len(papers_with_pdfs) >= 10:  # Collect more than needed
+                        break
+                        
                 except Exception as e:
-                    # Skip paper if there's an error
+                    papers_skipped_other += 1
                     continue
             
+            print(f"\n📊 Search Summary:")
+            print(f"   ✅ Papers with PDFs: {len(papers_with_pdfs)}")
+            print(f"   ⏭️  Skipped (no PDF): {papers_skipped_no_pdf}")
+            print(f"   ⏭️  Skipped (other): {papers_skipped_other}")
+            
             if not papers_with_pdfs:
-                print("❌ No papers with downloadable PDFs found")
+                print("\n❌ No papers with downloadable PDFs found")
+                print("\n💡 Suggestions:")
+                print("   • Try a different topic")
+                print("   • Some papers may not have open access PDFs")
+                print("   • Try: 'machine learning', 'artificial intelligence', 'deep learning'")
                 return []
             
+            # Sort by citation count (higher is usually better quality)
+            papers_with_pdfs.sort(key=lambda x: x.get('citation_count', 0), reverse=True)
+            
             print(f"\n✅ Found {len(papers_with_pdfs)} papers with PDFs")
-            return papers_with_pdfs[:3]  # Return only first 3
+            return papers_with_pdfs[:Config.MAX_PAPERS_TO_DOWNLOAD]  # Return top N
             
         except requests.exceptions.Timeout:
             print("❌ Request timeout. Check your internet connection.")
@@ -195,7 +230,8 @@ class PaperSearchSystem:
             filename = create_filename(paper['title'])
             filepath = str(Config.PAPERS_DIR / filename)
             
-            print(f"\n[{i}] {filename}")
+            print(f"\n[{i}] 📄 {filename}")
+            print(f"    🔗 Source: {pdf_url[:80]}...")
             
             # Download the PDF
             success, file_size, error_msg = download_pdf_file(pdf_url, filepath)
@@ -215,9 +251,9 @@ class PaperSearchSystem:
                 print(f"    ❌ Failed: {error_msg}")
         
         print(f"\n📊 Download Summary:")
-        print(f"   Attempted: {len(papers)}")
-        print(f"   Successful: {len(downloaded_papers)}")
-        print(f"   Failed: {len(papers) - len(downloaded_papers)}")
+        print(f"   📤 Attempted: {len(papers)}")
+        print(f"   ✅ Successful: {len(downloaded_papers)}")
+        print(f"   ❌ Failed: {len(papers) - len(downloaded_papers)}")
         
         return downloaded_papers
     
@@ -236,7 +272,8 @@ class PaperSearchSystem:
                 'total_papers_found': len(papers),
                 'papers_downloaded': sum(1 for p in papers if p.get('pdf_downloaded')),
                 'papers': papers,
-                'data_location': str(Config.DATA_DIR)
+                'data_location': str(Config.DATA_DIR),
+                'system_version': '1.0.0'
             }
             
             # Save dataset
@@ -277,9 +314,25 @@ class PaperSearchSystem:
             print(f"  • {pdf.name} ({size_str})")
         
         return len(pdf_files)
+    
+    def get_suggested_topics(self):
+        """Get suggested research topics"""
+        return [
+            "machine learning",
+            "artificial intelligence",
+            "deep learning",
+            "natural language processing",
+            "computer vision",
+            "reinforcement learning",
+            "neural networks",
+            "data science",
+            "big data",
+            "internet of things"
+        ]
+
 
 def main():
-    """Main function - runs everything"""
+    """Main function - runs everything for Milestone 1"""
     print("\n" + "="*60)
     print("           AI RESEARCH PAPER COLLECTOR")
     print("           Milestone 1: Paper Search & Download")
@@ -293,22 +346,25 @@ def main():
         print("❌ Failed to setup directories")
         return
     
-    # Get search topic (without quotes)
-    topic = input("\n🔎 Enter research topic (without quotes): ").strip()
+    # Show suggested topics
+    print("\n💡 Suggested topics:")
+    suggested = system.get_suggested_topics()
+    for i, topic in enumerate(suggested[:5], 1):
+        print(f"   {i}. {topic}")
+    
+    # Get search topic
+    topic = input("\n🔎 Enter research topic: ").strip()
     
     if not topic:
         print("❌ Please enter a topic")
-        print("\n💡 Suggested topics:")
-        print("   • machine learning healthcare")
-        print("   • artificial intelligence medicine")
-        print("   • deep learning medical diagnosis")
+        print("\n📝 Example: machine learning in healthcare")
         return
     
     # Remove quotes if user entered them
     topic = topic.strip("'\"")
     
     print("\n" + "="*60)
-    print("STEP 1: SEARCHING FOR PAPERS")
+    print(f"STEP 1: SEARCHING FOR PAPERS")
     print("="*60)
     
     # Search for papers
@@ -316,10 +372,6 @@ def main():
     
     if not papers:
         print("\n❌ No papers found. Try a different topic.")
-        print("\n💡 Tips:")
-        print("   • Use general topics like 'machine learning'")
-        print("   • Avoid very specific or technical terms")
-        print("   • Try: 'machine learning', 'artificial intelligence', 'deep learning'")
         return
     
     print("\n" + "="*60)
@@ -331,10 +383,15 @@ def main():
     
     if not downloaded_papers:
         print("\n❌ No PDFs were downloaded.")
-        print("   This usually means:")
+        print("\n🔧 Possible reasons:")
         print("   1. PDF links are broken or require authentication")
-        print("   2. Network issues")
+        print("   2. Network or firewall issues")
         print("   3. Server timeout")
+        print("   4. Papers don't have open access PDFs")
+        print("\n💡 Try:")
+        print("   • Different research topic")
+        print("   • Check internet connection")
+        print("   • Use VPN if in restricted network")
         return
     
     print("\n" + "="*60)
@@ -377,12 +434,14 @@ def main():
         print("   1. Extract text from downloaded PDFs")
         print("   2. Clean and preprocess the text")
         print("   3. Prepare for analysis")
+        print("\n💡 Run: python -m src.text_extraction")
     else:
         print("⚠️  Partial Completion")
         print("   Some PDFs failed to download")
         print("   Check the error messages above")
     
     print("\n" + "="*60)
+
 
 # Run the program
 if __name__ == "__main__":
