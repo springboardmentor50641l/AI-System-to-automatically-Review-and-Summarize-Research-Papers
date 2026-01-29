@@ -1,4 +1,0 @@
-STORED SECTIONS SUMMARY
-========================================
-- raw_text
-- references

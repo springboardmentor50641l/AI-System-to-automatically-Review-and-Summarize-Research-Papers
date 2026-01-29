@@ -1,9 +1,0 @@
-EXTRACTED SECTIONS SUMMARY
-==================================================
-
-ABSTRACT: 17,257 chars
-METHODOLOGY: 2,538 chars
-RESULTS: 19,003 chars
-DISCUSSION: 5,286 chars
-CONCLUSION: 7,913 chars
-REFERENCES: 15,402 chars

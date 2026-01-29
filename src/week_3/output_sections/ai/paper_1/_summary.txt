@@ -1,8 +1,0 @@
-STORED SECTIONS SUMMARY
-========================================
-- abstract
-- discussion
-- introduction
-- raw_text
-- references
-- related_work
