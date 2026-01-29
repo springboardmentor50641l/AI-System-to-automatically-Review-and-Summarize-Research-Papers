@@ -1,0 +1,40 @@
+{
+  "file_name": "Xception_Deep_Learning_with_Depthwise_Separable_Co_20260129.pdf",
+  "paper_title": "Xception_Deep_Learning_with_Depthwise_Separable_Co_20260129",
+  "extraction_method": "pymupdf",
+  "total_pages": 8,
+  "total_words": 4401,
+  "total_chars": 28999,
+  "analysis_date": "2026-01-29T22:01:52.618492",
+  "sections_found": [
+    "title",
+    "abstract",
+    "introduction",
+    "conclusion",
+    "references"
+  ],
+  "key_findings": [
+    "We also note that Xception outperforms ImageNet results\nreported by He et al.",
+    "Results are reported on ImageNet in ﬁgure\n10, and show that the absence of any non-linearity leads to\nboth faster convergence and better ﬁnal performance."
+  ],
+  "methodology_hints": [],
+  "keywords": [
+    "inception",
+    "convolutions",
+    "separable",
+    "depthwise",
+    "convolution",
+    "architecture",
+    "xception",
+    "imagenet",
+    "neural",
+    "convolutional",
+    "layers",
+    "networks",
+    "modules",
+    "network",
+    "classiﬁcation"
+  ],
+  "avg_sentence_length": 18.5,
+  "vocabulary_size": 1163
+}

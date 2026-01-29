@@ -1,0 +1,44 @@
+{
+  "file_name": "A_survey_on_Image_Data_Augmentation_for_Deep_Learn_20260129.pdf",
+  "paper_title": "A_survey_on_Image_Data_Augmentation_for_Deep_Learn_20260129",
+  "extraction_method": "pymupdf",
+  "total_pages": 48,
+  "total_words": 20564,
+  "total_chars": 135679,
+  "analysis_date": "2026-01-29T22:01:52.423421",
+  "sections_found": [
+    "title",
+    "abstract",
+    "introduction",
+    "discussion",
+    "conclusion",
+    "references"
+  ],
+  "key_findings": [
+    "Many of these augmentations elucidate how an image classifier \ncan be improved, while others do not.",
+    "It seems highly likely that test-time augmentation \ncan be further improved if the weight of each augmented images prediction is further \nparameterized and learned.",
+    "Tero K, Timo A, Samuli L, Jaakko L. Progressive growing of GANs for improved quality, stability, and variation.",
+    "Maayan F-A, Eyal K, Jacob G, Hayit G. GAN-based data augmentation for improved liver lesion classification.",
+    "Improved mixed-example data augmentation."
+  ],
+  "methodology_hints": [],
+  "keywords": [
+    "augmentation",
+    "learning",
+    "arxiv",
+    "neural",
+    "deep",
+    "networks",
+    "image",
+    "2018",
+    "preprint",
+    "2017",
+    "adversarial",
+    "convolutional",
+    "generative",
+    "2016",
+    "classification"
+  ],
+  "avg_sentence_length": 9.8,
+  "vocabulary_size": 1898
+}

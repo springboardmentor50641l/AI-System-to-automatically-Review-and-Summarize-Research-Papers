@@ -1,0 +1,126 @@
+{
+  "total_papers_analyzed": 3,
+  "analysis_date": "2026-01-29T22:01:52.675362",
+  "papers": [
+    {
+      "file_name": "A_survey_on_Image_Data_Augmentation_for_Deep_Learn_20260129.pdf",
+      "keywords": [
+        "augmentation",
+        "learning",
+        "arxiv",
+        "neural",
+        "deep",
+        "networks",
+        "image",
+        "2018",
+        "preprint",
+        "2017"
+      ],
+      "key_findings_count": 5,
+      "methodology_hints": [],
+      "word_count": 20564
+    },
+    {
+      "file_name": "PointNet_Deep_Learning_on_Point_Sets_for_3D_Classi_20260129.pdf",
+      "keywords": [
+        "point",
+        "points",
+        "input",
+        "network",
+        "segmentation",
+        "pointnet",
+        "shape",
+        "cloud",
+        "classiﬁcation",
+        "features"
+      ],
+      "key_findings_count": 5,
+      "methodology_hints": [],
+      "word_count": 11324
+    },
+    {
+      "file_name": "Xception_Deep_Learning_with_Depthwise_Separable_Co_20260129.pdf",
+      "keywords": [
+        "inception",
+        "convolutions",
+        "separable",
+        "depthwise",
+        "convolution",
+        "architecture",
+        "xception",
+        "imagenet",
+        "neural",
+        "convolutional"
+      ],
+      "key_findings_count": 2,
+      "methodology_hints": [],
+      "word_count": 4401
+    }
+  ],
+  "overall_statistics": {
+    "total_words": 36289,
+    "total_pages": 75,
+    "avg_words_per_paper": 12096.0
+  },
+  "similarity_analysis": {
+    "pairwise_similarities": [
+      {
+        "paper1": "A_survey_on_Image_Data_Augmentation_for_Deep_Learn_20260129.pdf",
+        "paper2": "PointNet_Deep_Learning_on_Point_Sets_for_3D_Classi_20260129.pdf",
+        "similarity": 0.094
+      },
+      {
+        "paper1": "A_survey_on_Image_Data_Augmentation_for_Deep_Learn_20260129.pdf",
+        "paper2": "Xception_Deep_Learning_with_Depthwise_Separable_Co_20260129.pdf",
+        "similarity": 0.178
+      },
+      {
+        "paper1": "PointNet_Deep_Learning_on_Point_Sets_for_3D_Classi_20260129.pdf",
+        "paper2": "Xception_Deep_Learning_with_Depthwise_Separable_Co_20260129.pdf",
+        "similarity": 0.054
+      }
+    ]
+  },
+  "common_keywords": [
+    [
+      "neural",
+      2
+    ],
+    [
+      "networks",
+      2
+    ],
+    [
+      "convolutional",
+      2
+    ],
+    [
+      "network",
+      2
+    ],
+    [
+      "classiﬁcation",
+      2
+    ],
+    [
+      "augmentation",
+      1
+    ],
+    [
+      "learning",
+      1
+    ],
+    [
+      "arxiv",
+      1
+    ],
+    [
+      "deep",
+      1
+    ],
+    [
+      "image",
+      1
+    ]
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "file_name": "PointNet_Deep_Learning_on_Point_Sets_for_3D_Classi_20260129.pdf",
+  "paper_title": "PointNet_Deep_Learning_on_Point_Sets_for_3D_Classi_20260129",
+  "extraction_method": "pymupdf",
+  "total_pages": 19,
+  "total_words": 11324,
+  "total_chars": 67708,
+  "analysis_date": "2026-01-29T22:01:52.519143",
+  "sections_found": [
+    "title",
+    "abstract",
+    "introduction",
+    "conclusion",
+    "references",
+    "literature"
+  ],
+  "key_findings": [
+    "We show that\nour network can approximate any set function that is\ncontinuous.",
+    "Under a uniﬁed architecture, not only is\nour PointNet much faster in speed, but it also exhibits strong\nperformance on par or even better than state of the art.",
+    "The decay rate for batch normalization\nstarts with 0.5 and is gradually increased to 0.99.",
+    "Shape Correspondence\nIn this section, we show that\npoint features learnt by PointNet can be potentially used\nto compute shape correspondences.",
+    "We compare with vanilla\nversions of other deep architectures to show that our network based\non point sets input is achieving reasonable performance on this\ntraditional task."
+  ],
+  "methodology_hints": [],
+  "keywords": [
+    "point",
+    "points",
+    "input",
+    "network",
+    "segmentation",
+    "pointnet",
+    "shape",
+    "cloud",
+    "classiﬁcation",
+    "features",
+    "feature",
+    "object",
+    "function",
+    "shapes",
+    "global"
+  ],
+  "avg_sentence_length": 18.9,
+  "vocabulary_size": 2320
+}
