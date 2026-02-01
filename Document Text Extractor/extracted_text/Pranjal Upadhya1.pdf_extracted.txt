@@ -1,0 +1,49 @@
+Pranjal  Upadhyay  
++91 6378581744  | write2mepranjal@gmail.com  | LinkedIn  | GitHub  
+Professional  Summary  
+High -achieving AI & Data Science Scholar (Top 5% of class, 8. 9 CGPA) with proven expertise in building production -
+grade GenAI pipelines and scalable ML models . Strong background in ETL, data modeling, and algorithmic problem -
+solving ( 300+ LeetCode/GFG problems) . 
+Technical  Skills  
+Languages & Databases:  Python (Pandas, NumPy, Scikit -learn, Seaborn), SQL (MySQL, PostgreSQL), C++, 
+MongoDB  
+Data Analysis & BI: Power BI, Tableau, Microsoft Excel, Exploratory Data Analysis (EDA), Data Visualization 
+Machine  Learning  & GenAI: XGBoost, K -Means Clustering, RAG, Computer Vision, LangChain, OpenAI API, 
+Large Language Models (LLMs)  
+Developer  Tools:  Git, GitHub,  Jupyter  Notebook,  Flask,  Google  Colab,  Google  Cloud,  UiPath  
+Professional  Experience  
+Infosys  Springboard  Dec 2025  – Present  
+AI/ML  Intern  Remote  
+– Architected  an automated research synthesis system using GPT models and Semantic Scholar API, reducing 
+document processing time by 85%. 
+– Engineered  a multi -agent workflow using LangGraph  for structured content extraction, improving 
+retrieval accuracy by 35% through cross -document comparison . 
+Edunet  Foundation  – Microsoft  May  2025  – June  2025  
+AI Azure  Intern  Remote  
+– Deployed  end-to-end ML pipelines on Azure, optimizing model performance for Image Classification and 
+Sentiment Analysis . 
+– Standardized  AI application workflows in collaboration with AICTE, ensuring industry -aligned deployment  
+practices . 
+Technical  Projects  
+CIVICA  – AI-Based  Smart  Life Assistant  | Python,  Flask,  AI APIs  GitHub  
+– Built  an AI-powered smart assistant  to help  users  access  government  schemes,  detect  misinformation,  and 
+improve digital literacy.  
+– Integrated  intelligent  features  such  as fake  news  detection  and personalized  guidance  with  a focus  on social  impact.  
+Personalized  Recommendation  System  | Python,  NLP,  ML GitHub  
+– Developed a hybrid  recommendation  engine using content -based filtering (TF -IDF, cosine similarity) and 
+collaborative filtering techniques.  
+– Implemented a hybrid TF -IDF and Cosine Similarity engine that improved recommendation relevance by 35%. 
+Business  Management  System  | Python,  Database,  OOP  GitHub  
+– Designed  a business  management  system  to manage  employees,  inventory,  and sales  operations.  
+– Engineered a modular CRUD -based architecture using OOP principles, ensuring 99.9% data integrity for inventory and 
+sales . 
+Education  
+Poornima  University  Jaipur,  India  
+Bachelor  of Technology  in Computer  Science  (AI & Data  Science)  2023 – 2027  
+– Current  CGPA:  8.88/10.0  (Top  5% of class)  
+Achievements  and Certifications  
+• Problem  Solving:  Solved  300+ problems  on LeetCode,  GeeksforGeeks,  and HackerRank.  
+• Certifications:  
+ Cloud & Generative AI:  Oracle OCI Data Science Professional, Oracle OCI GenAI Professional, Goo gle Gen AI . 
+ Data Analytics:  Google Data Analytics, Microsoft & LinkedIn Career Essentials . 
+ Programming:  IBM Python for Data Science, HackerRank Python & SQL . 

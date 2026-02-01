@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Text Extractor</title>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.12);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --primary-accent: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #432371 0%, #faae7b 100%);
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+        }
+
+        .glass-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .badge {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 16px;
+            border-radius: 100px;
+            display: inline-block;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .drop-zone {
+            border: 2px dashed rgba(255, 255, 255, 0.4);
+            border-radius: 16px;
+            padding: 40px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .drop-zone:hover, .drop-zone.dragover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-accent);
+        }
+
+        .drop-zone p {
+            margin: 0;
+            font-size: 15px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        #file-name {
+            font-size: 13px;
+            color: #ffd6ff;
+            font-weight: 500;
+            margin-top: 5px;
+            display: none; /* Hidden until file selected */
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            background: var(--primary-accent);
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background: #f0f0f0;
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .message {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            font-size: 14px;
+            border-left: 4px solid #faae7b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="glass-box">
+        <h1>📄 Extractor</h1>
+        <div class="badge">PDF • DOCX • TXT</div>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label class="drop-zone" id="dropZone">
+                <p><strong>Drag & Drop file here</strong><br>or click to browse</p>
+                <div id="file-name"></div>
+                <input type="file" name="file" id="fileInput" required>
+            </label>
+
+            <button type="submit">Extract Text</button>
+        </form>
+
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    const dropZone = document.getElementById("dropZone");
+    const fileInput = document.getElementById("fileInput");
+    const fileNameDisplay = document.getElementById("file-name");
+
+    // Update text when file is selected
+    fileInput.addEventListener("change", () => {
+        if (fileInput.files.length > 0) {
+            fileNameDisplay.innerText = "Selected: " + fileInput.files[0].name;
+            fileNameDisplay.style.display = "block";
+        }
+    });
+
+    // Drag and Drop listeners
+    ["dragover", "dragenter"].forEach(type => {
+        dropZone.addEventListener(type, (e) => {
+            e.preventDefault();
+            dropZone.classList.add("dragover");
+        });
+    });
+
+    ["dragleave", "drop"].forEach(type => {
+        dropZone.addEventListener(type, () => {
+            dropZone.classList.remove("dragover");
+        });
+    });
+
+    dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        fileInput.files = e.dataTransfer.files;
+        if (fileInput.files.length > 0) {
+            fileNameDisplay.innerText = "Selected: " + fileInput.files[0].name;
+            fileNameDisplay.style.display = "block";
+        }
+    });
+</script>
+
+</body>
+</html>
