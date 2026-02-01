@@ -1,6 +1,3 @@
-Here is the corrected, fully formatted version of your data. You can copy the code block below directly into your `README.md` file.
-
-```markdown
 # 📄 AI Research Paper Analysis System
 
 ![Project Status](https://img.shields.io/badge/Status-Active-brightgreen) ![Python](https://img.shields.io/badge/Python-3.8%2B-blue) ![Flask](https://img.shields.io/badge/Framework-Flask-orange)
@@ -218,7 +215,3 @@ extracted_text/
 
 * *B.Tech CSE (AI & Data Science)*
 * *Aspiring Data Scientist & AI Engineer*
-
-```
-
-```
