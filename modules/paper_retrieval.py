@@ -1,25 +1,24 @@
 import requests
 from config import SEMANTIC_SCHOLAR_API_KEY
 
-BASE_URL = "https://api.semanticscholar.org/graph/v1"
+BASE_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
 
-def search_papers(topic, limit=5):
-    headers = {}
-    if SEMANTIC_SCHOLAR_API_KEY:
-        headers["x-api-key"] = SEMANTIC_SCHOLAR_API_KEY
+def search_papers(topic, limit=3):
+    headers = {"x-api-key": SEMANTIC_SCHOLAR_API_KEY}
+    params = {
+        "query": topic,
+        "limit": limit * 2,
+        "fields": "title,authors,year,openAccessPdf"
+    }
 
-    r = requests.get(
-        f"{BASE_URL}/paper/search",
-        params={
-            "query": topic,
-            "limit": limit,
-            "fields": "title,abstract,year,authors,url,openAccessPdf"
-        },
-        headers=headers,
-        timeout=20
-    )
+    res = requests.get(BASE_URL, headers=headers, params=params)
+    res.raise_for_status()
 
-    if r.status_code != 200:
-        return []
+    papers = []
+    for p in res.json().get("data", []):
+        if p.get("openAccessPdf") and p["openAccessPdf"].get("url"):
+            papers.append(p)
+        if len(papers) == limit:
+            break
 
-    return r.json().get("data", [])
+    return papers

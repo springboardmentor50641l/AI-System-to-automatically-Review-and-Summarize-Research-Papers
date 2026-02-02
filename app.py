@@ -1,13 +1,20 @@
 import gradio as gr
 from main import run_pipeline
 
-def run(topic):
-    return run_pipeline(topic)
+def run(topic, mode):
+    return run_pipeline(topic, mode)
 
 gr.Interface(
     fn=run,
-    inputs=gr.Textbox(label="Enter Research Topic"),
-    outputs=gr.Textbox(label="Final Reviewed Paper", lines=25),
-    title="AI Research Paper Reviewer (Gemini)",
-    description="Automatically analyzes and summarizes research papers using Gemini API"
+    inputs=[
+        gr.Textbox(label="Research Topic"),
+        gr.Radio(
+            ["automatic", "manual"],
+            label="Paper Input Mode",
+            value="automatic"
+        )
+    ],
+    outputs=gr.Textbox(label="Final Reviewed Output"),
+    title="AI Research Paper Review & Summarization System",
+    description="Automatically reviews and compares research papers using Gemini API"
 ).launch()

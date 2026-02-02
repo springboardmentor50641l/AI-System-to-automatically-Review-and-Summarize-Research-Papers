@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual env
+venv/
+
+# Environment variables
+.env
+
+# Gradio temp files
+.gradio/
+
+# Generated data
+data/papers/
+data/outputs/
+
+# OS
+.DS_Store
+Thumbs.db

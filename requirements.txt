@@ -1,0 +1,22 @@
+python-dotenv
+
+# UI
+gradio
+
+# PDF processing
+pymupdf
+
+# Semantic Scholar
+requests
+
+# LangChain ecosystem
+langchain
+langgraph
+langsmith
+langchain-google-genai
+
+# Gemini SDK (dependency)
+google-generativeai
+
+# Graph visualization (architecture)
+grandalf
