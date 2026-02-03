@@ -10,25 +10,27 @@ from langchain_core.messages import HumanMessage
 
 SECTION_ONTOLOGY = ["abstract","introduction","background","related work","methodology","proposed solution","results","discussion","conclusion"]
 PROMPT = """
-You are given the full text of a research paper.
+You are given the raw text of a research paper.
 
-Your task is to divide the paper into the following logical sections:
+Task:
+Extract verbatim text that explicitly belongs to each of the following sections:
 {sections}
 
 Rules:
-- Do NOT summarize or rewrite the text.
-- Do NOT add new content.
-- Extract the original text verbatim.
-- If a section is missing, return an empty string for it.
-- Return the output strictly as valid JSON.
-- Use section names exactly as provided.
+- Only classify text if the section is clearly marked by headings or titles.
+- Do NOT infer or guess.
+- If a section is not explicitly present, return an empty string.
+- Copy text exactly as it appears.
+- Do NOT rewrite, summarize, or reorder.
+- Output MUST be valid JSON.
+- Keys MUST exactly match the section names.
+- Return ONE JSON object, nothing else.
 
 Paper text:
 {text}
 """
 llm = ChatGoogleGenerativeAI(
-    model="gemini-3-flash-preview", timeout=30, # prevents infinite hanging 
-    temperature=0)
+    model="gemini-3-flash-preview",timeout=120,temperature=0)
     
     
 
@@ -59,18 +61,48 @@ def normalize_text_node(state: PaperState) -> PaperState:
     cleaned = clean_text(state["raw_text"])
     state["clean_text"] = cleaned
     return state
+   
+def empty_sections():
+    return {section: "" for section in SECTION_ONTOLOGY}
 
 def semantic_sectioning_node(state: PaperState) -> PaperState:
+    MAX_CHARS = 12000  # safe for Gemini Flash
+
+    if "clean_text" not in state or not state["clean_text"]:
+        raise ValueError("No clean_text available for sectioning")
+
     text = state["clean_text"]
-    response = llm.invoke([HumanMessage(content=PROMPT.format(sections=SECTION_ONTOLOGY, text=text))])
-    state["sections"] = json.loads(response.content)
+
+    # HARD TRIM to avoid Gemini timeout
+    if len(text) > 12000:
+        print(f"Trimming text from {len(text)} to 12000 characters")
+        text = text[:12000]
+
+    try:
+        response = llm.invoke([
+            HumanMessage(
+                content=PROMPT.format(
+                    sections=SECTION_ONTOLOGY,
+                    text=text
+                )
+            )
+        ])
+
+        raw = response.content if hasattr(response, "content") else response
+        sections = json.loads(raw)
+
+        final = {section: sections.get(section, "") for section in SECTION_ONTOLOGY}
+        state["sections"] = final
+
+        print("Semantic sectioning completed")
+
+    except Exception as e:
+        raise RuntimeError(f"Semantic sectioning failed: {e}")
+
     return state
 
-section_headers = ["abstract","introduction","related work","method","methodology","results","discussion","conclusion","references"]
-def section_split_node(state: PaperState) -> PaperState:
-    sections = split_into_sections(state["clean_text"],section_headers)
-    state["sections"] = sections
-    return state
+
+
 def validate_sections_node(state: PaperState) -> PaperState:
     sections = state["sections"]
     if not isinstance(sections, dict):
@@ -87,9 +119,71 @@ def store_sections_node(state: PaperState) -> PaperState:
         json.dump(state["sections"], f, indent=2, ensure_ascii=False)
     print(f"Semantic sections saved to {output_path}")
     return state
+ def extract_key_findings(sections: dict, llm) -> str:
+    prompt = f"""
+    You are an expert research analyst.
+
+    From the following extracted research paper sections,
+    identify the key findings and main contributions.
+
+    Rules:
+    - Use only the given content
+    - Do not introduce external knowledge
+    - Do not speculate
+    - Return 3–5 bullet points
+
+    Sections:
+    {sections}
+    """
+
+    response = llm.invoke([HumanMessage(content=prompt)])
+
+    return response.content
+def compare_papers(processed_papers: list[dict], llm) -> str:
+    prompt = f"""
+    You are conducting a comparative literature review.
+
+    Compare the following research papers based on:
+    1. Problem addressed
+    2. Methodology
+    3. Results
+    4. Strengths
+    5. Limitations
+
+    Papers:
+    {processed_papers}
+
+    Produce a concise, structured comparison.
+    """
+
+    response = llm.invoke([HumanMessage(content=prompt)])
+
+    return response.content
+
+def generate_draft(comparison_text: str, llm) -> str:
+    prompt = f"""
+    Using the following comparative analysis, generate
+    a formal academic literature review section.
+
+    Requirements:
+    - Formal academic tone
+    - Clear paragraph structure
+    - No hallucinated citations
+    - No new claims beyond the analysis
+
+    Comparative Analysis:
+    {comparison_text}
+    """
+
+    response = llm.invoke([
+        HumanMessage(content=prompt)
+    ])
+
+    return response.content
+   
      
 if __name__ == "__main__":
-    result = pipeline.invoke({"pdf_path": r"text_extraction\sample_paper\test_paper.pdf"})
+    result = pipeline.invoke({"pdf_path": r""})
     print(result["sections"])
 
 
