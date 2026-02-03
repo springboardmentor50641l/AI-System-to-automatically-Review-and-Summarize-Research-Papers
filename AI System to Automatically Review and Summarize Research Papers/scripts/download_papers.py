@@ -33,7 +33,6 @@ def download_selected_papers(papers):
         paper_uid = paper.get("paperId", f"paper_{idx}")
         filename = os.path.join(PDF_DIR, f"{paper_uid}.pdf")
 
-
         print(f"Downloading paper {idx}...")
         success = download_pdf(pdf_url, filename)
 
@@ -42,13 +41,12 @@ def download_selected_papers(papers):
         else:
             print(f"Failed to download paper {idx}")
 
-        # Respect rate limit
         time.sleep(1)
 
+#--------------METADATA--------------
 METADATA_DIR = "data/metadata"
 os.makedirs(METADATA_DIR, exist_ok=True)
 
-#--------------DATASET PREPARATION--------------
 def save_metadata(papers):
     records = []
 
@@ -57,12 +55,12 @@ def save_metadata(papers):
         pdf_path = f"data/raw_papers/{paper_uid}.pdf"
         pdf_exists = os.path.exists(pdf_path)
 
-
         record = {
             "paper_id": idx,
             "title": paper.get("title"),
             "year": paper.get("year"),
             "url": paper.get("url"),
+            "topic": paper.get("topic"),
             "has_pdf": pdf_exists,
             "pdf_path": pdf_path if pdf_exists else None,
             "selection_reason": "Top-ranked paper returned by Semantic Scholar relevance"
@@ -71,12 +69,12 @@ def save_metadata(papers):
         records.append(record)
 
     df = pd.DataFrame(records)
+
     output_path = os.path.join(METADATA_DIR, "selected_papers_metadata.csv")
+
     if os.path.exists(output_path):
         df.to_csv(output_path, mode="a", header=False, index=False)
     else:
         df.to_csv(output_path, header=True, index=False)
 
-
     print(f"\nMetadata saved to: {output_path}")
-

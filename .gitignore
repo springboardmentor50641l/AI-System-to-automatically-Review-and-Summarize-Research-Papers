@@ -2,3 +2,6 @@ venv/
 .env
 __pycache__/
 .vscode/
+data/raw_papers/
+data/sections/
+data/analysis_outputs/

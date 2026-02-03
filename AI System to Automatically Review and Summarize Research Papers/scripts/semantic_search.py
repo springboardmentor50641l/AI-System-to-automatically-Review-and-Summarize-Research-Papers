@@ -30,8 +30,12 @@ def search_papers(topic, limit=3):
     if response.status_code != 200:
         raise Exception(f"API Error: {response.status_code} - {response.text}")
 
-    #Return paper list
-    return response.json().get("data", [])
+    papers = response.json().get("data", [])
+
+    for paper in papers:
+        paper["topic"] = topic
+
+    return papers
 
 #--------------MAIN SCRIPT--------------
 if __name__ == "__main__":
@@ -43,7 +47,6 @@ if __name__ == "__main__":
 
     print(f"\nSearching papers for topic: {topic}\n")
 
-    #--------------PAPER LIST--------------
     papers = search_papers(topic)
     print(f"Selected {len(papers)} papers:\n")
 
@@ -56,8 +59,8 @@ if __name__ == "__main__":
 
         time.sleep(1)
 
-    # --------------CONNECTION--------------
     from download_papers import download_selected_papers
     download_selected_papers(papers)
+
     from download_papers import save_metadata
     save_metadata(papers)
