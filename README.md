@@ -1,32 +1,30 @@
-# 📄 AI Research Paper Analysis System
+# 📄 AI Research Paper Analysis System (Powered by LangGraph)
 
-![Project Status](https://img.shields.io/badge/Status-Active-brightgreen) ![Python](https://img.shields.io/badge/Python-3.8%2B-blue) ![Flask](https://img.shields.io/badge/Framework-Flask-orange)
+![Project Status](https://img.shields.io/badge/Status-Active-brightgreen) ![Python](https://img.shields.io/badge/Python-3.8%2B-blue) ![LangGraph](https://img.shields.io/badge/Orchestration-LangGraph-purple) ![Gemini](https://img.shields.io/badge/AI-Gemini%203.0-blueviolet)
 
-An AI-powered web application that allows users to upload research papers, extract text, analyze content, and perform intelligent queries using Natural Language Processing (NLP) techniques.
+An AI-powered web application that orchestrates advanced research paper analysis using **LangGraph** and **Google Gemini 3.0**. It allows users to search for papers via Semantic Scholar, upload documents, and generate deep comparative reports through a multi-step agentic workflow.
 
 ---
 
 ## 🚀 Project Overview
 
-This project is designed to simplify research paper analysis by enabling users to:
-* Upload academic research papers (PDF/text-based).
-* Automatically extract and store text.
-* Analyze research content efficiently.
-* Query papers using natural language.
-* View structured insights through a web interface.
+This project evolves traditional document analysis by using **Graph-based AI workflows**. Instead of simple text summarization, it employs a **LangGraph StateGraph** to:
+1.  **Search & Acquire:** Fetch relevant academic papers automatically.
+2.  **Individual Analysis:** Summarize each paper independently to extract methodology and metrics.
+3.  **Comparative Synthesis:** aggregate insights to produce a structured comparative literature review.
 
-It is especially useful for **Data Science**, **AI**, and **Research-oriented** domains.
+It is designed for **Data Scientists**, **Researchers**, and **Students** who need to synthesize multiple papers quickly.
 
 ---
 
 ## 🧠 Key Features
 
-* **📤 Upload System:** Seamless interface to upload research papers.
-* **📄 Text Extraction:** Automatically extracts text from PDFs and stores them.
-* **🔍 NLP Analysis:** Performs content analysis using Natural Language Processing.
-* **💬 Query Interface:** Ask questions related to the extracted papers.
-* **🌐 Responsive UI:** Clean web interface using Flask, HTML, CSS, and JS.
-* **📁 Organized Storage:** Structured file system for extracted text management.
+* **🤖 LangGraph Orchestration:** Uses a stateful graph to manage the workflow between individual paper summarization and final comparative reporting.
+* **🌍 Automated Paper Search:** Integrated with the **Semantic Scholar API** to search and download open-access PDFs directly.
+* **📤 Smart Upload System:** Supports PDF, DOCX, and text file uploads.
+* **🔍 Deep Extraction:** Extracts core problems, methodologies, quantitative results, and limitations.
+* **📊 Comparative Reports:** Generates Markdown-formatted tables comparing multiple papers side-by-side.
+* **💬 Natural Language Query:** (Coming Soon) Ask specific questions across the document set.
 
 ---
 
@@ -34,11 +32,12 @@ It is especially useful for **Data Science**, **AI**, and **Research-oriented** 
 
 | Layer | Technology |
 | :--- | :--- |
+| **Orchestration** | **LangGraph**, LangChain |
+| **LLM Engine** | **Google Gemini 3.0 Flash** |
 | **Backend** | Python, Flask |
+| **External APIs** | **Semantic Scholar API** |
 | **Frontend** | HTML, CSS, JavaScript |
-| **NLP** | Python NLP Libraries |
-| **Styling** | Custom CSS |
-| **Environment** | Python Virtual Environment |
+| **Processing** | PyPDF2, python-docx |
 
 ---
 
@@ -47,27 +46,21 @@ It is especially useful for **Data Science**, **AI**, and **Research-oriented** 
 ```text
 Final Project/
 │
-├── app.py                     # Main Flask application
+├── app.py                     # Main Flask app with LangGraph workflow
 ├── requirements.txt           # Project dependencies
-├── .env                       # Environment variables
+├── .env                       # API Keys (Gemini & Semantic Scholar)
 ├── README.md                  # Project documentation
 │
-├── papers/                    # Uploaded research papers
-│
-├── extracted_text/            # Extracted text from papers
-│   ├── *.txt
-│
-├── static/
-│   ├── css/
-│   │   └── style.css          # UI styling
-│   ├── js/
-│   │   └── script.js          # Frontend logic
-│   └── images/
+├── papers/                    # Storage for uploaded/downloaded PDFs
 │
 ├── templates/
-│   ├── index.html             # Home page
-│   ├── analysis.html          # Analysis results page
-│   └── query.html             # Query interface
+│   ├── index.html             # Home & Upload
+│   ├── analysis.html          # Results visualization
+│   └── query.html             # Chat interface
+│
+└── static/
+    ├── css/style.css
+    └── js/script.js
 
 ```
 
@@ -75,61 +68,38 @@ Final Project/
 
 ## ⚙️ Prerequisites
 
-Before running the project, ensure you have the following installed:
+Before running the project, ensure you have:
 
-1. **Python 3.8** or above.
-2. **pip** (Python package manager).
-3. Basic knowledge of Flask (helpful but not required).
+1. **Python 3.9+** (Recommended for modern LangChain/LangGraph support).
+2. **Google Cloud API Key** (Access to Gemini models).
+3. **Semantic Scholar API Key** (Optional, but recommended for higher rate limits).
 
 ---
 
 ## 📦 Installation & Setup
 
-Follow these steps to set up the project locally.
-
-### 🔹 Step 1: Clone or Extract the Project
-
-Clone the repository or extract the ZIP file.
+### 🔹 Step 1: Clone the Repository
 
 ```bash
-# If using git
 git clone <repository-url>
-
-# If using downloaded ZIP, navigate to the folder:
-cd "Final Project/Final Project"
+cd "Final Project"
 
 ```
 
-### 🔹 Step 2: Create Virtual Environment (Recommended)
-
-It is best practice to run this project in a virtual environment.
+### 🔹 Step 2: Create Virtual Environment
 
 ```bash
-# Create the environment
 python -m venv venv
 
-```
-
-**Activate the environment:**
-
-* **Windows:**
-```bash
+# Windows
 venv\Scripts\activate
 
-```
-
-
-* **Linux / Mac:**
-```bash
+# Linux / Mac
 source venv/bin/activate
 
 ```
 
-
-
 ### 🔹 Step 3: Install Dependencies
-
-Install the required Python packages.
 
 ```bash
 pip install -r requirements.txt
@@ -138,10 +108,15 @@ pip install -r requirements.txt
 
 ### 🔹 Step 4: Configure Environment Variables
 
-Open or create a `.env` file in the root directory and add the following:
+Create a `.env` file in the root directory and add your keys:
 
 ```ini
-FLASK_ENV=development
+# Required for Analysis
+GEMINI_API_KEY=your_google_gemini_key_here
+
+# Optional (for better Paper Search limits)
+SEMANTIC_API_KEY=your_semantic_scholar_key_here
+
 FLASK_DEBUG=True
 
 ```
@@ -150,62 +125,44 @@ FLASK_DEBUG=True
 
 ## ▶️ Execution Steps
 
-### 🔹 Step 5: Start Flask Server
-
-Run the main application file.
+### 🔹 Step 5: Start the Application
 
 ```bash
 python app.py
 
 ```
 
-### 🔹 Step 6: Access the Application
+### 🔹 Step 6: Access the Interface
 
-Open your web browser and visit:
-
-```
-[http://127.0.0.1:5000/](http://127.0.0.1:5000/)
-
-```
+Open your browser and visit: `http://127.0.0.1:5000/`
 
 ---
 
-## 🔄 Application Workflow
+## 🔄 LangGraph Workflow Architecture
 
-1. **Home Page:** User uploads a research paper.
-2. **Text Extraction:** The system processes the file, extracts text, and saves it to `extracted_text/`.
-3. **Analysis Page:** AI processes the text to generate insights.
-4. **Query Page:** User asks natural language questions about the paper.
-5. **Results:** Relevant answers and data are displayed.
+The application uses a **StateGraph** to ensure high-quality output. The workflow follows these nodes:
 
----
+1. **Input State:** Raw text is loaded from multiple PDF/DOCX files.
+2. **Node 1: Summarize (`summarize_individual`)**:
+* The LLM iterates through every paper individually.
+* It extracts strict structured data (Problem, Method, Metrics).
+* *Self-Correction:* Includes JSON cleaning logic to handle Gemini 3.0 outputs.
 
-## 🧪 Sample Extracted Output
 
-Extracted papers are stored as `.txt` files in the directory below. Each file corresponds to one uploaded research paper.
+3. **Node 2: Synthesize (`generate_comparison`)**:
+* The graph passes the structured summaries to a second LLM call.
+* The model generates a "Comparative Analysis" including an Executive Summary and Comparison Table.
 
-```text
-extracted_text/
 
-```
+4. **Output:** A rendered HTML report.
 
 ---
 
 ## 🛡️ Error Handling
 
-* **Invalid Files:** Non-compatible files are rejected.
-* **Validation:** Server-side validations ensure data integrity.
-* **UI Feedback:** Graceful error messages are displayed to the user.
-
----
-
-## 📈 Future Enhancements
-
-* [ ] PDF Syntax Highlighting.
-* [ ] Advanced Research Paper Summarization.
-* [ ] Model-based Recommendations.
-* [ ] User Authentication & History.
-* [ ] Cloud Deployment (AWS/Heroku).
+* **API Failures:** Graceful fallback if Semantic Scholar is down or API keys are invalid.
+* **Content Cleaning:** Custom regex logic (`get_clean_content`) ensures clean Markdown output even if the model returns raw JSON.
+* **File Parsing:** Robust handling for encrypted PDFs or corrupted files.
 
 ---
 
