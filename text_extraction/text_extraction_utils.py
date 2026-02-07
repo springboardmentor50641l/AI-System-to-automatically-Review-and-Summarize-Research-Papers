@@ -19,22 +19,32 @@ def load_pdf(pdf_path):
     except Exception as e:
         raise RuntimeError(f"Failed to open PDF: {e}")
 def extract_raw_text(pdf_document):
-    #Extracts text from each page of the PDF and returns full raw text.
     all_pages_text = []
 
     for page_number in range(len(pdf_document)):
         page = pdf_document[page_number]
-        #Extracts readable text
-        page_text = page.get_text("text")
 
-        #string cleaning
+        blocks = page.get_text("blocks")
+        page_text = " ".join(
+            block[4] for block in blocks if block[4].strip()
+        )
+
         if page_text.strip():
             all_pages_text.append(page_text)
 
-        print(f"Extracted text from page {page_number + 1}")
+        print(
+            f"Page {page_number + 1} extracted chars:",
+            len(page_text)
+        )
 
     full_text = "\n".join(all_pages_text)
+    if not full_text.strip():
+        raise ValueError(
+            "PDF text extraction failed. "
+            "Likely scanned or unsupported layout.")
+
     return full_text
+
 # Save raw text to file
 def save_raw_text_to_file(text, output_path):
     #save raw data ina a file
@@ -111,7 +121,7 @@ def save_sections(sections: dict, output_path: Path):
     print(f"split text saved successfully to {output_path}")    
 if __name__ == "__main__":
     # Path to sample PDF
-    pdf_path = Path("text_extraction/sample_paper/test_paper.pdf")
+    pdf_path = Path(r"text_extraction\sample_paper\test_paper_1.pdf")
     # Load PDF
     pdf_doc = load_pdf(pdf_path)   
     #raw text
@@ -121,7 +131,7 @@ if __name__ == "__main__":
     print(raw_text[:1000]) 
     #save raw text to file
     output_file_path = Path("text_extraction/output/raw_text.txt")
-    save_text_to_file(raw_text, output_file_path)
+    save_raw_text_to_file(raw_text, output_file_path)
     #clean text
     cleaned_text = clean_text(raw_text) 
     #save clean text to a file

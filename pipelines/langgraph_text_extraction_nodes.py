@@ -1,8 +1,10 @@
 from text_extraction.text_extraction_utils import (load_pdf,extract_raw_text,clean_text,split_into_sections)
 from typing import TypedDict, Optional, Dict
 from pathlib import Path
+from datetime import datetime
 from langgraph.graph import StateGraph, END
 import json
+import re
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
@@ -29,79 +31,109 @@ Rules:
 Paper text:
 {text}
 """
-llm = ChatGoogleGenerativeAI(
-    model="gemini-3-flash-preview",timeout=120,temperature=0)
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash",timeout=120,temperature=0)
     
     
 
-
-class PaperState(TypedDict):
+class PaperState(TypedDict, total=False):
     pdf_path: str
-    raw_text: Optional[str]
-    clean_text: Optional[str]
-    sections: Optional[Dict]
+    raw_text: str
+    clean_text: str
+    sections: Dict[str, str]
+
 
 
 def load_paper_node(state: PaperState) -> PaperState:
     # Basic validation
     if not Path(state["pdf_path"]).exists():
         raise FileNotFoundError(f"PDF not found: {state['pdf_path']}")
-    return state
-
+    return {**state}
 def extract_text_node(state: PaperState) -> PaperState:
     pdf_path = Path(state["pdf_path"])
     
     pdf_doc = load_pdf(pdf_path)
     raw_text = extract_raw_text(pdf_doc)
     
-    state["raw_text"] = raw_text
-    return state
+    return {
+        **state,
+        "raw_text": raw_text}
 
 def normalize_text_node(state: PaperState) -> PaperState:
-    cleaned = clean_text(state["raw_text"])
-    state["clean_text"] = cleaned
-    return state
+    raw = state["raw_text"]
+
+    print("RAW_TEXT TYPE:", type(raw))
+    print("RAW_TEXT LENGTH:", len(raw) if raw else "EMPTY")
+
+    cleaned = clean_text(raw)
+
+    print("CLEAN_TEXT TYPE:", type(cleaned))
+    print("CLEAN_TEXT LENGTH:", len(cleaned) if cleaned else "EMPTY")
+
+    return {**state, "clean_text": cleaned}
+
    
 def empty_sections():
     return {section: "" for section in SECTION_ONTOLOGY}
 
-def semantic_sectioning_node(state: PaperState) -> PaperState:
-    MAX_CHARS = 12000  # safe for Gemini Flash
+def extract_json(text: str) -> str:
+    text = text.strip()
+    text = re.sub(r"^```(?:json)?", "", text)
+    text = re.sub(r"```$", "", text)
+    return text.strip()
 
-    if "clean_text" not in state or not state["clean_text"]:
-        raise ValueError("No clean_text available for sectioning")
+    
+def semantic_sectioning_node(state: PaperState) -> PaperState:
+    print("ENTER semantic_sectioning_node")
+    print("STATE KEYS:", state.keys())
+
+    # ---- Guard: clean text must exist ----
+    if "clean_text" not in state or not state["clean_text"].strip():
+        raise ValueError("No clean_text available for semantic sectioning")
 
     text = state["clean_text"]
 
-    # HARD TRIM to avoid Gemini timeout
-    if len(text) > 12000:
-        print(f"Trimming text from {len(text)} to 12000 characters")
-        text = text[:12000]
+    # ---- LLM invocation ----
+    response = llm.invoke([
+        HumanMessage(
+            content=PROMPT.format(
+                sections=SECTION_ONTOLOGY,
+                text=text
+            )
+        )
+    ])
+
+    raw = response.content if hasattr(response, "content") else response
+    print("RAW LLM OUTPUT (repr):", repr(raw))
+
+    # ---- Guard: empty LLM output ----
+    if not raw or not raw.strip():
+        raise ValueError("LLM returned EMPTY response — aborting sectioning")
+
+    # ---- Clean + parse JSON ----
+    cleaned_raw = extract_json(raw)
 
     try:
-        response = llm.invoke([
-            HumanMessage(
-                content=PROMPT.format(
-                    sections=SECTION_ONTOLOGY,
-                    text=text
-                )
-            )
-        ])
+        parsed = json.loads(cleaned_raw)
+    except json.JSONDecodeError as e:
+        print("INVALID JSON FROM LLM:")
+        print(cleaned_raw)
+        raise ValueError("LLM returned invalid JSON") from e
 
-        raw = response.content if hasattr(response, "content") else response
-        sections = json.loads(raw)
+    # ---- Normalize sections ----
+    sections = {
+        section: parsed.get(section, "").strip()
+        for section in SECTION_ONTOLOGY
+    }
 
-        final = {section: sections.get(section, "") for section in SECTION_ONTOLOGY}
-        state["sections"] = final
+    # ---- Content validation (very important) ----
+    if all(not v for v in sections.values()):
+        raise ValueError("All extracted sections are empty — rejecting output")
 
-        print("Semantic sectioning completed")
-
-    except Exception as e:
-        raise RuntimeError(f"Semantic sectioning failed: {e}")
-
-    return state
-
-
+    print("SECTIONING SUCCESSFUL")
+    return {
+        **state,
+        "sections": sections
+    }
 
 def validate_sections_node(state: PaperState) -> PaperState:
     sections = state["sections"]
@@ -109,77 +141,38 @@ def validate_sections_node(state: PaperState) -> PaperState:
         raise ValueError("Sections must be a dictionary")
     if not sections:
         raise ValueError("Sections dictionary is empty")
-    return state
+    
+    return {**state}
 
 
 def store_sections_node(state: PaperState) -> PaperState:
-    output_path = Path("text_extraction/output/semantic_sections.json")
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    print("ENTER store_sections_node")
+
+    sections = state.get("sections")
+    if not sections:
+        raise ValueError("No sections found to store")
+
+    output_dir = Path("text_extraction/output/sectioned_data")
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # ---- Unique filename (timestamp-based) ----
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    output_path = output_dir / f"sectioned_data_{timestamp}.json"
+
     with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(state["sections"], f, indent=2, ensure_ascii=False)
-    print(f"Semantic sections saved to {output_path}")
-    return state
- def extract_key_findings(sections: dict, llm) -> str:
-    prompt = f"""
-    You are an expert research analyst.
+        json.dump(sections, f, indent=2, ensure_ascii=False)
 
-    From the following extracted research paper sections,
-    identify the key findings and main contributions.
+    print(f"Sections saved to: {output_path}")
 
-    Rules:
-    - Use only the given content
-    - Do not introduce external knowledge
-    - Do not speculate
-    - Return 3–5 bullet points
+    return {
+        **state,
+        "sections_file": str(output_path)
+    }
 
-    Sections:
-    {sections}
-    """
 
-    response = llm.invoke([HumanMessage(content=prompt)])
 
-    return response.content
-def compare_papers(processed_papers: list[dict], llm) -> str:
-    prompt = f"""
-    You are conducting a comparative literature review.
 
-    Compare the following research papers based on:
-    1. Problem addressed
-    2. Methodology
-    3. Results
-    4. Strengths
-    5. Limitations
 
-    Papers:
-    {processed_papers}
-
-    Produce a concise, structured comparison.
-    """
-
-    response = llm.invoke([HumanMessage(content=prompt)])
-
-    return response.content
-
-def generate_draft(comparison_text: str, llm) -> str:
-    prompt = f"""
-    Using the following comparative analysis, generate
-    a formal academic literature review section.
-
-    Requirements:
-    - Formal academic tone
-    - Clear paragraph structure
-    - No hallucinated citations
-    - No new claims beyond the analysis
-
-    Comparative Analysis:
-    {comparison_text}
-    """
-
-    response = llm.invoke([
-        HumanMessage(content=prompt)
-    ])
-
-    return response.content
    
      
 if __name__ == "__main__":

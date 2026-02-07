@@ -1,0 +1,64 @@
+{
+  "key_findings": [
+    {
+      "claim": "The authors' methods achieve substantial gains over the state of the art for single frame evaluation on the ILSVRC 2012 classification challenge validation set.",
+      "evidence": "21.2% top-1 and 5.6% top-5 error for single frame evaluation using a network with a computational cost of 5 billion multiply-adds per inference and with using less than 25 million parameters.",
+      "source_section": "abstract",
+      "limitations": ""
+    },
+    {
+      "claim": "An ensemble of 4 models with multi-crop evaluation achieved 3.5% top-5 error and 17.3% top-1 error.",
+      "evidence": "With an ensemble of 4 models and multi-crop evaluation, we report 3.5% top-5 error and 17.3% top-1 error.",
+      "source_section": "abstract",
+      "limitations": ""
+    },
+    {
+      "claim": "General principles and optimization ideas for efficiently scaling up convolutional networks were described.",
+      "evidence": "In this paper, we start with describing a few general principles and optimization ideas that that proved to be useful for scaling up convolution networks in efficient ways.",
+      "source_section": "introduction",
+      "limitations": ""
+    },
+    {
+      "claim": "High quality results can be achieved with lower-resolution networks, with final result quality quite close to higher resolution counterparts, when computational effort is kept constant.",
+      "evidence": "Although the lower-resolution networks take longer to train, the quality of the final result is quite close to that of their higher resolution counterparts. (Table 2 shows 79x79 receptive field with 75.2% Top-1 Accuracy, 151x151 with 76.4%, and 299x299 with 76.6%, all with almost identical computational cost).",
+      "source_section": "results",
+      "limitations": "Although the lower-resolution networks take longer to train"
+    },
+    {
+      "claim": "The proposed Inception-v3 architecture (referred to as Inception-v2 BN-auxiliary in Table 3) achieved 21.2% Top-1 Error and 5.6% Top-5 Error in single crop experimental results.",
+      "evidence": "Table 3. Single crop experimental results comparing the cumulative effects on the various contributing factors. ... Inception-v2 BN-auxiliary 21.2% 5.6% 4.8 Bn Ops. ... We are referring to the model in last row of Table 3 as Inception-v3...",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "The Inception-v3 model achieved 18.77% Top-1 Error and 4.2% Top-5 Error with 144-crop evaluation in single-model, multi-crop experiments.",
+      "evidence": "Table 4. Single-model, multi-crop experimental results... Inception-v3 144 18.77% 4.2%",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "An ensemble of four Inception-v3 models achieved 17.2% Top-1 Error and 3.58% Top-5 Error with 144-crop evaluation.",
+      "evidence": "Table 5. Ensemble evaluation results... Inception-v3 4 144 17.2% 3.58%*",
+      "source_section": "results",
+      "limitations": "*All results, but the top-5 ensemble result reported are on the validation set. The ensemble yielded 3.46% top-5 error on the validation set."
+    },
+    {
+      "claim": "The highest quality version of Inception-v3 sets a new state of the art for single crop evaluation on the ILSVR 2012 classification.",
+      "evidence": "Our highest quality version of Inception-v3 reaches 21.2%, top-1 and 5.6% top-5 error for single crop evaluation on the ILSVR 2012 classification, setting a new state of the art.",
+      "source_section": "conclusion",
+      "limitations": ""
+    },
+    {
+      "claim": "The Inception-v3 solution uses much less computation than the best published results based on denser networks, outperforming He et al [6] while being six times cheaper computationally and using at least five times less parameters.",
+      "evidence": "Still our solution uses much less computation than the best published results based on denser networks: our model outperforms the results of He et al [6] – cutting the top-5 (top-1) error by 25% (14%) relative, respectively – while being six times cheaper computationally and using at least five times less parameters (estimated).",
+      "source_section": "conclusion",
+      "limitations": "estimated (for parameters)"
+    },
+    {
+      "claim": "The combination of lower parameter count and additional regularization with batch-normalized auxiliary classifiers and label-smoothing allows for training high quality networks on relatively modest sized training sets.",
+      "evidence": "The combination of lower parameter count and additional regularization with batch-normalized auxiliary classifiers and label-smoothing allows for training high quality networks on relatively modest sized training sets.",
+      "source_section": "conclusion",
+      "limitations": ""
+    }
+  ]
+}

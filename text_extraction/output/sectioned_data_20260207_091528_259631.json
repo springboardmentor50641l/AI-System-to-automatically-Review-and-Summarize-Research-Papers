@@ -1,0 +1,11 @@
+{
+  "abstract": "In the current age of the Fourth Industrial Revolution (4IR or Industry\n4.0), the digital world has a wealth of data, such as Internet of Things\n(IoT) data, cybersecurity data, mobile data, business data, social media\ndata, health data, etc. To intelligently analyze these data and develop the\ncorresponding smart and automated applications, the knowledge of\nartificial intelligence (AI), particularly, machine learning (ML) is the key.\nVarious types of machine learning algorithms such as supervised,\nunsupervised, semi-supervised, and reinforcement learning exist in the\narea. Besides, the deep learning, which is part of a broader family of\nmachine learning methods, can intelligently analyze the data on a large\nscale. In this paper, we present a comprehensive view on these machine\nlearning algorithms that can be applied to enhance the intelligence and\nthe capabilities of an application. Thus, this study’s key contribution is\nexplaining the principles of different machine learning techniques and\ntheir applicability in various real-world application domains, such as\ncybersecurity systems, smart cities, healthcare, e-commerce, agriculture,\nand many more. We also highlight the challenges and potential research\ndirections based on our study. Overall, this paper aims to serve as a\nreference point for both academia and industry professionals as well as\nfor decision-makers in various real-world situations and application\nareas, particularly from the technical point of view.",
+  "introduction": "",
+  "background": "",
+  "related work": "",
+  "methodology": "",
+  "proposed solution": "",
+  "results": "",
+  "discussion": "",
+  "conclusion": ""
+}

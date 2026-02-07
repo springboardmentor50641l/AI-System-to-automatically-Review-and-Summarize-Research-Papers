@@ -2,7 +2,7 @@ from dataset.dataset_code import add_paper
 import requests
 import os 
 from datetime import datetime
-from text_extraction.text_extraction_code import process_pdf
+#from text_extraction.text_extraction_code import process_pdf
 from pathlib import Path
 index=1
 pdf_paper=[]
@@ -54,7 +54,7 @@ for paper in pdf_paper:
         #dataset
         add_paper( paper_id,title,authors,year,topic,source,filename,selected,selection_reason)
         #Text extraction
-        pdf_path = Path(filename)
-        output_base = Path(f"text_extraction/output/{paper_id}")
-        process_pdf(pdf_path, output_base)
+        #pdf_path = Path(filename)
+        #output_base = Path(f"text_extraction/output/{paper_id}")
+        #process_pdf(pdf_path, output_base)
         
