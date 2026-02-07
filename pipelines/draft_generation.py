@@ -9,7 +9,7 @@ import json
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash",timeout=120,temperature=0)
 
 
-
+#final draft
 def generate_draft(comparison: dict, llm) -> str:
     formatted_comparison = json.dumps(comparison, indent=2)
 
@@ -36,6 +36,7 @@ def generate_draft(comparison: dict, llm) -> str:
 
     response = llm.invoke([HumanMessage(content=prompt)])
     return response.content
+#store draft
 def store_literature_review(review_text: str, output_dir: Path) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -48,7 +49,6 @@ def store_literature_review(review_text: str, output_dir: Path) -> Path:
     return file_path
 
 if __name__ == "__main__":
-    # Example: load an existing comparison JSON
     comparison_file = Path("text_extraction/output/review_comparison/review_comparison_20260207_100819.json")
 
 with comparison_file.open("r", encoding="utf-8") as f:
@@ -60,6 +60,6 @@ with comparison_file.open("r", encoding="utf-8") as f:
     # Store result
     output_path = store_literature_review(
         literature_review,
-        output_dir=Path("final_output/final_review"))
+        output_dir=Path(r"text_extraction\output\draft"))
 
     print(f"Literature review saved at: {output_path}")
