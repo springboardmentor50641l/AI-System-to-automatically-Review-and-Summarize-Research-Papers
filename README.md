@@ -1,108 +1,34 @@
-# AI-System-to-automatically-Review-and-Summarize-Research-Papers
+*Project Overview
 
-@"
+This project implements an AI-driven system for automating the literature review process. The system retrieves research papers based on a user-defined topic, extracts and structures their content, identifies key findings, performs cross-paper comparisons, and generates coherent academic literature review drafts using large language models.
 
-\# AI System for Automatic Review and Summarization of Research Papers
+*System Workflow
 
+User inputs a research topic
 
+Relevant papers are retrieved via Semantic Scholar API
 
-\## Overview
+PDFs are downloaded and organized into timestamp-based directories
 
-This project implements an automated pipeline for reviewing and summarizing academic research papers.  
+Text is extracted and cleaned from PDFs
 
-It focuses on transforminging raw PDF documents into structured sections, extracting key findings, performing cross-paper comparisons, and generating academic-style literature review drafts.
+Papers are semantically sectioned (abstract, methodology, results, etc.)
 
+Key findings are extracted for each paper
 
+Cross-paper comparison identifies shared and unique contributions
 
-The system is designed with modularity, reproducibility, and clarity in mind.
+A formal literature review draft is generated
 
+* Data Organization
 
+All intermediate and final outputs are stored using unique timestamp identifiers to ensure reproducibility and avoid overwriting previous runs. Each paper and analysis stage is tracked independently.
 
----
+* Milestone Progress
 
+Milestone 1 (Week 1–2): Automated paper retrieval and dataset preparation 
 
+Milestone 2 (Week 3–4): Text extraction, key-finding extraction, and cross-paper comparison 
 
-\## System Architecture
-
-
-
-\### 1. Per-Paper Processing (LangGraph)
-
-LangGraph is used to orchestrate deterministic, per-paper operations:
-
-
-
-\- PDF loading and validation
-
-\- Raw text extraction
-
-\- Text normalization
-
-\- Semantic section extraction using a controlled LLM prompt
-
-\- Section validation
-
-\- Storage of structured sections
-
-\- Key finding extraction
-
-
-
-\### 2. Cross-Paper Reasoning
-
-Cross-paper operations are performed after individual papers are processed:
-
-
-
-\- Comparative analysis across papers
-
-\- Identification of similarities and differences
-
-\- Automated literature review draft generation
-
-
-
----
-
-
-
-\## Technologies Used
-
-\- Python
-
-\- LangGraph
-
-\- LangChain
-
-\- Google Gemini API
-
-\- JSON
-
-
-
----
-
-
-
-\## Limitations
-
-\- Free-tier Gemini API rate limits restrict batch processing
-
-\- Semantic extraction relies on explicit section headers
-
-\- Large documents may be truncated to avoid API timeouts
-
-
-
----
-
-
-
-\## Author
-
-Pari
-
-"@ | Out-File README.md -Encoding utf8
-
-re.
+Milestone 3 (Week 5–6): Automated literature review draft generations
 
