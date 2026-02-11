@@ -34,7 +34,7 @@
 #                 if text.strip():
 #                     texts.append(text)
 
-#     # ================= MANUAL MODE =================
+#     # ================= MANUAL MODE ===================
 #     else:
 #         if not os.path.exists(PAPER_DIR):
 #             return "Paper directory not found."
@@ -88,6 +88,7 @@ from modules.analyzer import analyze_papers
 from modules.draft_generator import generate_draft
 from modules.reviewer import review_paper
 from utils.apa_formatter import format_references
+from utils.pdf_writer import save_text_as_pdf
 
 
 def run_pipeline(topic: str, mode: str) -> str:
@@ -107,7 +108,6 @@ def run_pipeline(topic: str, mode: str) -> str:
         for i, paper in enumerate(papers):
             pdf_info = paper.get("openAccessPdf")
 
-            # Skip papers without open-access PDFs
             if not pdf_info or not pdf_info.get("url"):
                 continue
 
@@ -121,7 +121,7 @@ def run_pipeline(topic: str, mode: str) -> str:
     # ================= MANUAL MODE =================
     else:
         if not os.path.exists(PAPER_DIR):
-            return "❌ Paper directory not found. Please add PDFs to the papers folder."
+            return "Paper directory not found. Please add PDFs to the papers folder."
 
         for file in os.listdir(PAPER_DIR):
             if file.lower().endswith(".pdf"):
@@ -133,33 +133,41 @@ def run_pipeline(topic: str, mode: str) -> str:
 
     # ================= VALIDATION =================
     if len(texts) < 2:
-        return "❌ At least two valid research papers are required for comparison."
+        return "At least two valid research papers are required for comparison."
 
     # ================= ANALYSIS =================
-    analysis = analyze_papers(texts[:3])  # Compare up to 3 papers
+    analysis = analyze_papers(texts[:3])
 
     # ================= DRAFT GENERATION =================
-    draft = generate_draft(analysis)
+    draft = generate_draft(analysis, topic, mode)
 
-    # ================= REVIEW & REFINEMENT =================
+    # ================= REVIEW =================
     final_output = review_paper(draft)
 
+    # Ensure string output
+    if isinstance(final_output, list):
+        final_output = "\n\n".join(final_output)
+
     # ================= REFERENCES =================
-    references = format_references(papers)
+    if papers:
+        references = format_references(papers)
+    else:
+        references = "Manual mode: Reference metadata not available."
 
     # ================= SAVE OUTPUT =================
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_file = f"summary_{timestamp}.txt"
-    output_path = os.path.join(OUTPUT_DIR, output_file)
 
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(f"RESEARCH TOPIC: {topic}\n")
-        f.write(f"INPUT MODE: {mode.upper()}\n")
-        f.write(f"GENERATED ON: {datetime.datetime.now()}\n\n")
-        f.write(final_output)
-        f.write("\n\nREFERENCES\n")
-        f.write(references)
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    txt_path = os.path.join(OUTPUT_DIR, f"summary_{timestamp}.txt")
+    pdf_path = os.path.join(OUTPUT_DIR, f"summary_{timestamp}.pdf")
+
+    full_text = final_output + "\n\nREFERENCES\n" + references
+
+    with open(txt_path, "w", encoding="utf-8") as f:
+        f.write(full_text)
+
+    save_text_as_pdf(full_text, pdf_path)
 
     return final_output
+
 

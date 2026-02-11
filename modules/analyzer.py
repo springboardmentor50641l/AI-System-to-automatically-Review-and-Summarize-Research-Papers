@@ -47,6 +47,8 @@
 #   --------------------------------------------------------------------------------------------- #
 
 from llm import llm
+from utils.llm_utils import normalize_llm_output
+
 
 def analyze_papers(texts):
     """
@@ -76,4 +78,5 @@ Research Papers:
 Return a structured comparative analysis.
 """
 
-    return llm.invoke(prompt).content
+    response = llm.invoke(prompt)
+    return normalize_llm_output(response.content)

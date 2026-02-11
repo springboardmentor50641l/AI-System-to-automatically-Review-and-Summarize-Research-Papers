@@ -20,3 +20,5 @@ google-generativeai
 
 # Graph visualization (architecture)
 grandalf
+
+reportlab

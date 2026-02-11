@@ -21,26 +21,42 @@
 # code with llm
 
 from llm import llm
+from utils.llm_utils import normalize_llm_output
+
 
 def review_paper(draft: str) -> str:
     """
     Reviews and refines the generated draft.
-    Adds clarity, improves academic tone, and suggests refinements.
+    Returns ONLY the polished report.
     """
 
-    prompt = f"""
-You are a peer reviewer for an academic journal.
+    if not draft or not str(draft).strip():
+        return ""
 
-Review the draft below and:
-- Improve clarity and academic tone
+    prompt = f"""
+You are an academic journal peer reviewer.
+
+Revise the draft below to:
+- Improve academic tone
+- Improve clarity
 - Remove redundancy
-- Refine explanations if needed
-- Keep the structure intact
+- Strengthen logical flow
+
+IMPORTANT:
+Return ONLY the final revised report.
+Do NOT add any explanation.
+Do NOT add commentary.
+Do NOT say what you changed.
+Do NOT add introductory sentences.
 
 Draft:
 {draft}
-
-Return the revised and polished version.
 """
 
-    return llm.invoke(prompt).content
+    try:
+        response = llm.invoke(prompt)
+        return normalize_llm_output(response.content)
+
+    except Exception as e:
+        print(f"[Reviewer Error] {e}")
+        return draft
