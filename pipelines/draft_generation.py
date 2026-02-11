@@ -49,7 +49,7 @@ def store_literature_review(review_text: str, output_dir: Path) -> Path:
     return file_path
 
 if __name__ == "__main__":
-    comparison_file = Path("text_extraction/output/review_comparison/review_comparison_20260207_100819.json")
+    comparison_file = Path("text_extraction/output/review_comparison/review_comparison_20260211_185020.json")
 
 with comparison_file.open("r", encoding="utf-8") as f:
     comparison_data = json.load(f)

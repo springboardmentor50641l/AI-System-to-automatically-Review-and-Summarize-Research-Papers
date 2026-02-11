@@ -1,0 +1,87 @@
+{
+  "claim_clusters": [
+    {
+      "cluster_claim": "The Inception-v3 architecture achieves state-of-the-art performance for single-crop/single-frame evaluation on the ILSVRC 2012 classification challenge, reporting 21.2% Top-1 Error and 5.6% Top-5 Error.",
+      "supported_by_papers": [
+        {
+          "paper_id": "20260211_184535_501914",
+          "evidence": "21.2% top-1 and 5.6% top-5 error for single frame evaluation using a network with a computational cost of 5 billion multiply-adds per inference and with using less than 25 million parameters."
+        },
+        {
+          "paper_id": "20260211_184535_501914",
+          "evidence": "Table 3. Single crop experimental results comparing the cumulative effects on the various contributing factors. ... Inception-v2 BN-auxiliary 21.2% 5.6% 4.8 Bn Ops. ... We are referring to the model in last row of Table 3 as Inception-v3..."
+        },
+        {
+          "paper_id": "20260211_184535_501914",
+          "evidence": "Our highest quality version of Inception-v3 reaches 21.2%, top-1 and 5.6% top-5 error for single crop evaluation on the ILSVR 2012 classification, setting a new state of the art."
+        }
+      ],
+      "limitations": ""
+    },
+    {
+      "cluster_claim": "Inception-v3 models demonstrate improved performance with multi-crop evaluation, achieving 18.77% Top-1 Error and 4.2% Top-5 Error for a single model, and further enhanced results with ensembles, reaching 17.2-17.3% Top-1 Error and 3.5-3.58% Top-5 Error with multi-crop evaluation.",
+      "supported_by_papers": [
+        {
+          "paper_id": "20260211_184535_501914",
+          "evidence": "With an ensemble of 4 models and multi-crop evaluation, we report 3.5% top-5 error and 17.3% top-1 error."
+        },
+        {
+          "paper_id": "20260211_184535_501914",
+          "evidence": "Table 4. Single-model, multi-crop experimental results... Inception-v3 144 18.77% 4.2%"
+        },
+        {
+          "paper_id": "20260211_184535_501914",
+          "evidence": "Table 5. Ensemble evaluation results... Inception-v3 4 144 17.2% 3.58%*"
+        }
+      ],
+      "limitations": "*All results, but the top-5 ensemble result reported are on the validation set. The ensemble yielded 3.46% top-5 error on the validation set."
+    },
+    {
+      "cluster_claim": "The Inception-v3 solution is computationally efficient, requiring significantly less computation and parameters compared to other state-of-the-art denser networks, and its design facilitates training high-quality networks on relatively modest datasets.",
+      "supported_by_papers": [
+        {
+          "paper_id": "20260211_184535_501914",
+          "evidence": "Still our solution uses much less computation than the best published results based on denser networks: our model outperforms the results of He et al [6] – cutting the top-5 (top-1) error by 25% (14%) relative, respectively – while being six times cheaper computationally and using at least five times less parameters (estimated)."
+        },
+        {
+          "paper_id": "20260211_184535_501914",
+          "evidence": "The combination of lower parameter count and additional regularization with batch-normalized auxiliary classifiers and label-smoothing allows for training high quality networks on relatively modest sized training sets."
+        }
+      ],
+      "limitations": "estimated (for parameters)"
+    }
+  ],
+  "unique_claims": [
+    {
+      "claim": "General principles and optimization ideas for efficiently scaling up convolutional networks were described.",
+      "paper_id": "20260211_184535_501914",
+      "evidence": "In this paper, we start with describing a few general principles and optimization ideas that that proved to be useful for scaling up convolution networks in efficient ways."
+    },
+    {
+      "claim": "High quality results can be achieved with lower-resolution networks, with final result quality quite close to higher resolution counterparts, when computational effort is kept constant.",
+      "paper_id": "20260211_184535_501914",
+      "evidence": "Although the lower-resolution networks take longer to train, the quality of the final result is quite close to that of their higher resolution counterparts. (Table 2 shows 79x79 receptive field with 75.2% Top-1 Accuracy, 151x151 with 76.4%, and 299x299 with 76.6%, all with almost identical computational cost).",
+      "limitations": "Although the lower-resolution networks take longer to train"
+    },
+    {
+      "claim": "The paper presents a comprehensive view on machine learning algorithms applicable to enhance application intelligence and capabilities.",
+      "paper_id": "20260211_184543_058571",
+      "evidence": "In this paper, we present a comprehensive view on these machine learning algorithms that can be applied to enhance the intelligence and the capabilities of an application."
+    },
+    {
+      "claim": "A key contribution of this study is explaining the principles of different machine learning techniques and their applicability in various real-world application domains.",
+      "paper_id": "20260211_184543_058571",
+      "evidence": "Thus, this study’s key contribution is explaining the principles of different machine learning techniques and their applicability in various real-world application domains, such as cybersecurity systems, smart cities, healthcare, e-commerce, agriculture, and many more."
+    },
+    {
+      "claim": "The paper highlights challenges and potential research directions based on the study.",
+      "paper_id": "20260211_184543_058571",
+      "evidence": "We also highlight the challenges and potential research directions based on our study."
+    },
+    {
+      "claim": "The paper aims to serve as a reference point for academia, industry professionals, and decision-makers in various real-world situations and application areas, particularly from a technical point of view.",
+      "paper_id": "20260211_184543_058571",
+      "evidence": "Overall, this paper aims to serve as a reference point for both academia and industry professionals as well as for decision-makers in various real-world situations and application areas, particularly from the technical point of view."
+    }
+  ]
+}

@@ -121,7 +121,7 @@ def save_sections(sections: dict, output_path: Path):
     print(f"split text saved successfully to {output_path}")    
 if __name__ == "__main__":
     # Path to sample PDF
-    pdf_path = Path(r"text_extraction\sample_paper\test_paper_1.pdf")
+    pdf_path = Path(r"papers/machine learning_260207_085659/machine learning_paper_3.pdf")
     # Load PDF
     pdf_doc = load_pdf(pdf_path)   
     #raw text

@@ -1,7 +1,7 @@
 {
   "key_findings": [
     {
-      "claim": "The paper presents a comprehensive view of machine learning algorithms that can be applied to enhance the intelligence and capabilities of an application.",
+      "claim": "The paper presents a comprehensive view on machine learning algorithms applicable to enhance application intelligence and capabilities.",
       "evidence": "In this paper, we present a comprehensive view on these machine learning algorithms that can be applied to enhance the intelligence and the capabilities of an application.",
       "source_section": "abstract",
       "limitations": ""
@@ -13,7 +13,7 @@
       "limitations": ""
     },
     {
-      "claim": "The authors highlight challenges and potential research directions based on their study.",
+      "claim": "The paper highlights challenges and potential research directions based on the study.",
       "evidence": "We also highlight the challenges and potential research directions based on our study.",
       "source_section": "abstract",
       "limitations": ""

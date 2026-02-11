@@ -100,7 +100,7 @@ def store_key_findings(key_findings: dict, paper_id: str) -> Path:
 
 
 if __name__ == "__main__":
-    section_file = Path(r"C:\Users\Pari\Desktop\AI-System-to-automatically-Review-and-Summarize-Research-Papers\text_extraction\output\sectioned_data_20260207_091522_789269.json")
+    section_file = Path(r"C:\Users\Pari\Desktop\AI-System-to-automatically-Review-and-Summarize-Research-Papers\text_extraction\output\sectioned_data\sectioned_data_20260211_184543_058571.json")
 
     if not section_file.exists():
         raise FileNotFoundError(f"Section file not found: {section_file}")

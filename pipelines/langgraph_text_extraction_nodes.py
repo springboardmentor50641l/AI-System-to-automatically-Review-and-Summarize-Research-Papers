@@ -48,6 +48,7 @@ def load_paper_node(state: PaperState) -> PaperState:
     if not Path(state["pdf_path"]).exists():
         raise FileNotFoundError(f"PDF not found: {state['pdf_path']}")
     return {**state}
+
 def extract_text_node(state: PaperState) -> PaperState:
     pdf_path = Path(state["pdf_path"])
     
@@ -86,13 +87,13 @@ def semantic_sectioning_node(state: PaperState) -> PaperState:
     print("ENTER semantic_sectioning_node")
     print("STATE KEYS:", state.keys())
 
-    # ---- Guard: clean text must exist ----
+    #clean text must exist
     if "clean_text" not in state or not state["clean_text"].strip():
         raise ValueError("No clean_text available for semantic sectioning")
 
     text = state["clean_text"]
 
-    # ---- LLM invocation ----
+    #LLM INVOCATION
     response = llm.invoke([
         HumanMessage(
             content=PROMPT.format(
@@ -105,11 +106,11 @@ def semantic_sectioning_node(state: PaperState) -> PaperState:
     raw = response.content if hasattr(response, "content") else response
     print("RAW LLM OUTPUT (repr):", repr(raw))
 
-    # ---- Guard: empty LLM output ----
+    #  LLM output 
     if not raw or not raw.strip():
         raise ValueError("LLM returned EMPTY response — aborting sectioning")
 
-    # ---- Clean + parse JSON ----
+    # Clean + parse JSON 
     cleaned_raw = extract_json(raw)
 
     try:
@@ -119,13 +120,13 @@ def semantic_sectioning_node(state: PaperState) -> PaperState:
         print(cleaned_raw)
         raise ValueError("LLM returned invalid JSON") from e
 
-    # ---- Normalize sections ----
+    #  Normalize sections
     sections = {
         section: parsed.get(section, "").strip()
         for section in SECTION_ONTOLOGY
     }
 
-    # ---- Content validation (very important) ----
+    # ---- Content validation ----
     if all(not v for v in sections.values()):
         raise ValueError("All extracted sections are empty — rejecting output")
 
@@ -155,7 +156,7 @@ def store_sections_node(state: PaperState) -> PaperState:
     output_dir = Path("text_extraction/output/sectioned_data")
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # ---- Unique filename (timestamp-based) ----
+    #  Unique filename (timestamp-based) 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
     output_path = output_dir / f"sectioned_data_{timestamp}.json"
 
@@ -170,11 +171,6 @@ def store_sections_node(state: PaperState) -> PaperState:
     }
 
 
-
-
-
-   
-     
 if __name__ == "__main__":
     result = pipeline.invoke({"pdf_path": r""})
     print(result["sections"])
