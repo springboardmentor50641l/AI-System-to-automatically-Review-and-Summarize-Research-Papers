@@ -13,7 +13,7 @@ def download_pdf(url, filename):
             f.write(r.content)
 
         # Validate PDF by size
-        if os.path.getsize(path) < 10_000:
+        if os.path.getsize(path) < 1000:
             os.remove(path)
             return None
 
