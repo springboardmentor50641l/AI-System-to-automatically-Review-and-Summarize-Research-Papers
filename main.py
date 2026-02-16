@@ -97,15 +97,13 @@
 #-------------------------------------------------------------------------------#
 
 import os
-import datetime
 
-from config import PAPER_DIR, OUTPUT_DIR, MAX_PAPERS
+from config import PAPER_DIR, MAX_PAPERS
 from modules.planner import plan_research
 from modules.paper_retrieval import search_papers
 from modules.pdf_downloader import download_pdf
 from modules.text_extractor import extract_text
 from utils.apa_formatter import format_references
-from utils.pdf_writer import save_text_as_pdf
 
 # Import Workflow Controller
 from graph.workflow import run_workflow
@@ -115,6 +113,7 @@ def run_pipeline(topic: str, mode: str, uploaded_files=None) -> str:
     """
     Main Pipeline Controller.
     Handles paper retrieval and delegates analysis to workflow.
+    Returns final formatted output (NO AUTO SAVE).
     """
 
     texts = []
@@ -141,10 +140,10 @@ def run_pipeline(topic: str, mode: str, uploaded_files=None) -> str:
                     texts.append(text)
 
     # ================= MANUAL MODE =================
-    # ================= MANUAL MODE =================
     else:
         if not uploaded_files or len(uploaded_files) < 2:
             return "Please upload at least two PDF files for manual mode."
+
         for file in uploaded_files:
             try:
                 pdf_path = file.name
@@ -155,14 +154,16 @@ def run_pipeline(topic: str, mode: str, uploaded_files=None) -> str:
 
             except Exception as e:
                 print(f"[Manual Mode Error] {e}")
- 
 
     # ================= VALIDATION =================
     if len(texts) < 2:
         return "At least two valid research papers are required for comparison."
 
     # ================= WORKFLOW EXECUTION =================
-    final_output = run_workflow(texts[:3], topic, mode)
+    try:
+        final_output = run_workflow(texts[:3], topic, mode)
+    except Exception as e:
+        return f"Workflow execution failed: {str(e)}"
 
     # ================= REFERENCES =================
     if papers:
@@ -170,20 +171,7 @@ def run_pipeline(topic: str, mode: str, uploaded_files=None) -> str:
     else:
         references = "Manual mode: Reference metadata not available."
 
-    # ================= SAVE OUTPUT =================
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S_%f")
-
-    txt_path = os.path.join(OUTPUT_DIR, f"summary_{timestamp}.txt")
-    pdf_path = os.path.join(OUTPUT_DIR, f"summary_{timestamp}.pdf")
-
+    # ================= RETURN FINAL TEXT =================
     full_text = final_output + "\n\nREFERENCES\n" + references
 
-    with open(txt_path, "w", encoding="utf-8") as f:
-        f.write(full_text)
-
-    save_text_as_pdf(full_text, pdf_path)
-
-    return final_output
-
+    return full_text

@@ -1,24 +1,3 @@
-# from google import genai
-# from config import GEMINI_API_KEY, MODEL_NAME
-
-# client = genai.Client(api_key=GEMINI_API_KEY)
-
-# def review_paper(draft):
-#     prompt = f"""
-#     Review the following draft.
-#     Suggest improvements and refine language.
-
-#     Draft:
-#     {draft}
-#     """
-
-#     return client.models.generate_content(
-#         model=MODEL_NAME,
-#         contents=prompt
-#     ).text
-
-# -    -------------------------------------------------------====================================----- #
-# code with llm
 
 from llm import llm
 from utils.llm_utils import normalize_llm_output
