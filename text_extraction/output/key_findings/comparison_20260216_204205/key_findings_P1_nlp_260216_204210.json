@@ -1,0 +1,76 @@
+{
+  "key_findings": [
+    {
+      "claim": "Introduction of SUPER-NATURALINSTRUCTIONS, a benchmark of 1,616 diverse NLP tasks and their expert-written instructions, covering 76 distinct task types and 55 languages.",
+      "evidence": "we first introduce SUPER-NATURALINSTRUCTIONS, a benchmark of 1,616 diverse NLP tasks and their expert-written instructions. Our collection covers 76 distinct task types, including but not limited to classification, extraction, infilling, sequence tagging, text rewriting, and text composition. (abstract)\nOur dataset, SUPER-NATURALINSTRUCTIONS (SUP-NATINST for short), is a large benchmark of 1,616 NLP tasks and their natural language instructions. It brings in a diverse variety of tasks—76 broad task types spanning 55 different languages. (introduction)\nIn total, the dataset includes 1616 tasks and 5M instances. On average, each instruction is paired with 2.8 positive and 2.4 negative examples. The average definition length is 56.6 in words. (methodology, Table 2)",
+      "source_section": "abstract, introduction, methodology",
+      "limitations": "While the presented data offers a notable variety (e.g., diverse task types), its underlying distributions suffer from skews which should be addressed in future work (see Appendix F). On language diversity, the proposed benchmark is biased toward English. On output diversity, the collected tasks are generally still skewed to short responses, which might reflect the distribution of the available tasks in the field. This under-representation of the long-tail of tasks poses a challenge for building general-purpose models in the future."
+    },
+    {
+      "claim": "The SUPER-NATURALINSTRUCTIONS benchmark enables rigorous benchmarking of cross-task generalization under instructions, including the first study in cross-lingual cross-task generalization.",
+      "evidence": "This large and diverse collection of tasks enables rigorous benchmarking of cross-task generalization under instructions—training models to follow instructions on a subset of tasks and evaluating them on the remaining unseen ones. (abstract)\nTo the best of our knowledge, this is the first study in cross-lingual cross-task generalization (i.e., generalization to unseen tasks in different languages). (benchmarking cross-task generalization with SUP-NATINST)",
+      "source_section": "abstract, benchmarking cross-task generalization with SUP-NATINST",
+      "limitations": ""
+    },
+    {
+      "claim": "Development of Tk-INSTRUCT, a transformer model trained to follow a variety of in-context instructions.",
+      "evidence": "Furthermore, we build Tk-INSTRUCT, a transformer model trained to follow a variety of in-context instructions (plain language task definitions or k-shot examples). (abstract)",
+      "source_section": "abstract",
+      "limitations": ""
+    },
+    {
+      "claim": "Tk-INSTRUCT outperforms existing instruction-following models such as InstructGPT by over 9% on the benchmark, despite being an order of magnitude smaller.",
+      "evidence": "Our experiments show that Tk-INSTRUCT outperforms existing instruction-following models such as InstructGPT by over 9% on our benchmark despite being an order of magnitude smaller. (abstract)\nOur Tk-INSTRUCT and mTk-INSTRUCT models, which are trained with a variety of tasks, generalize best to unseen tasks for both English and non-English tasks in all evaluation task categories. (results)",
+      "source_section": "abstract, results",
+      "limitations": "However, we want to note it is not clear if InstructGPT’s training data overlaps with our evaluation tasks since their data is unavailable."
+    },
+    {
+      "claim": "Instruction-tuned models perform better compared to their untuned LM counterparts and heuristic baselines, indicating that models learn to follow instructions by finetuning on instruction data, which generalizes to new instructions for unseen tasks.",
+      "evidence": "Generally instruction-tuned models perform better compared to their untuned LM counterparts (Tk-INSTRUCT vs. T5-LM, InstructGPT vs. GPT-3) and heuristic baselines. This indicates models do learn to follow instructions by finetuning on instruction data, and this can generalize to new instructions for unseen tasks. (results)",
+      "source_section": "results",
+      "limitations": "T0 is an exception, which is only slightly better than T5-LM. We suspect this is because the style of prompting in T0’s training data is very different from our style of instructions."
+    },
+    {
+      "claim": "There is a sizable gap between the generalization of instruction-based models and the supervised training approach, indicating room for improvement.",
+      "evidence": "Despite the impressive performance of current models, there is a sizable gap between the generalization of instruction-based models and the supervised training approach, leaving more room for improvement. (results)",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Model generalization performance grows log-linearly with an increasing number of training tasks and consistently improves with larger model sizes (log-linearly with parameter size). However, a large number of training instances per task do not help generalization beyond 64 instances.",
+      "evidence": "The model generalization performance grows log-linearly as we increase the set of tasks used for training. ... we show that this trend holds even with 757 diverse training tasks. (discussion)\nIn our setup, the model’s performance saturates when only 64 instances per task are used for training. A large number of training instances would instead lead to longer training time and risk overfitting to the training tasks. (discussion)\nWe found that increasing the model sizes consistently bring significant improvement (log-linearly with parameter size). (discussion)",
+      "source_section": "discussion",
+      "limitations": "Due to the computational cost, this analysis is done on the English track and using the T5-3B checkpoint, except for the experiments on model sizes. This finding contradicts the claim in Xu et al. (2022) that “model size has little impact on performance with an extremely large number of tasks.”"
+    },
+    {
+      "claim": "Increasing the diversity of training tasks is an alternative to scaling model sizes for achieving comparable performance.",
+      "evidence": "Combining Fig. 5(a) and Fig. 5(c), one can create a correspondence between model size and task size. For example, a T5-large model trained with 757 tasks can achieve comparable performance (48.0 ROUGE-L) to the T5-3B model trained with 128 tasks (48.4 ROUGE-L), indicating that increasing the diversity of training tasks is an alternative to scaling model sizes. (discussion)",
+      "source_section": "discussion",
+      "limitations": "Due to the computational cost, this analysis is done on the English track and using the T5-3B checkpoint, except for the experiments on model sizes."
+    },
+    {
+      "claim": "Including the task definition consistently helps models generalize better, and combining it with positive demonstration examples yields further improvement. Models trained on encodings with both definition and examples are robust across different encoding variations.",
+      "evidence": "Based on the diagonal numbers, including the task definition consistently helps the model to generalize better. Moreover, combining the task definition with positive demonstration examples yields further improvement. (discussion)\nHowever, models trained on encodings that contain both definition and examples are surprisingly robust across different encoding variations. (discussion)",
+      "source_section": "discussion",
+      "limitations": "However, adding more demonstration examples is negligible. Negative examples help a little bit; explanations decrease performance, which is consistent with the observations of Mishra et al. (2022b) and Lampinen et al. (2022) when the model is not large enough. The negative result here is that definition-only models cannot generalize to example-only test encodings; and similarly, example-only models cannot generalize to definition-only test encodings."
+    },
+    {
+      "claim": "The SUPER-NATURALINSTRUCTIONS benchmark was collected through a large community effort on GitHub by 88 NLP practitioners, with a multi-phase quality control process including automatic tests, peer-review, and crowdsourced feedback.",
+      "evidence": "These tasks and their instructions are contributed by 88 NLP practitioners, in response to our public call. These contributions are consolidated after several rounds of peer-review and crowdsourced feedback to ensure quality. (introduction)\nWe had 88 contributors from diverse locations and backgrounds contribute to our repository. Quality control. Controlling the quality of this community-contributed data was done in several phases: (1) Upon creating a GitHub pull request of the proposed task, it immediately went through an automatic test. ... (2) The proposed task was then peer-reviewed by 1–2 other expert contributors... (3) Lastly, the added tasks were presented to crowdworkers in order to collect feedback on the quality of the provided instructions... (methodology)",
+      "source_section": "introduction, methodology",
+      "limitations": "This feedback was done only for English tasks, as finding high-quality crowdworkers in other languages is nontrivial (Pavlick et al., 2014)."
+    },
+    {
+      "claim": "ROUGE-L is adopted as an aggregated metric for evaluating models in an open-ended generation setting, and it correlates well with accuracy for classification tasks and human evaluation.",
+      "evidence": "Due to the diversity of our tasks and the open-ended generation nature of our formulation, we adopt ROUGE-L (Lin, 2004) for reporting aggregated performance results. ... We show that the ranking from this metric correlates well with accuracy for classification tasks in Appendix E. We also conduct a human evaluation in §6.2. (benchmarking cross-task generalization with SUP-NATINST)\nThe results of human evaluation (shown in Fig. 3) align quite well with our automatic metrics and confirm the human-perceived quality of our models. (results)",
+      "source_section": "benchmarking cross-task generalization with SUP-NATINST, results",
+      "limitations": "However, there are specific tasks for which ROUGE-L might not serve as an effective proxy of quality (such as rewriting tasks or error correction tasks where copying the input can result in a high ROUGE-L score). We hope these issues will be addressed with the development of more powerful evaluation metrics for text generation."
+    },
+    {
+      "claim": "The proposed benchmark provides diverse tasks for studying multi-task learning at a massive scale.",
+      "evidence": "Beyond cross-task generalization, our benchmark can also be used to study multi-task learning more broadly... Our proposed benchmark provides diverse tasks for studying multi-tasking at a massive scale. (related work)",
+      "source_section": "related work",
+      "limitations": ""
+    }
+  ]
+}

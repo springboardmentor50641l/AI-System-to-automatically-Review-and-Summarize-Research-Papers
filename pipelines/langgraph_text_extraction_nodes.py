@@ -1,4 +1,4 @@
-from text_extraction.text_extraction_utils import (load_pdf,extract_raw_text,clean_text,split_into_sections)
+from text_extraction.text_extraction_utils import (save_clean_text,load_pdf,extract_raw_text,clean_text,split_into_sections)
 from typing import TypedDict, Optional, Dict
 from pathlib import Path
 from datetime import datetime
@@ -15,18 +15,37 @@ PROMPT = """
 You are given the raw text of a research paper.
 
 Task:
-Extract verbatim text that explicitly belongs to each of the following sections:
+Extract text that belongs to the following sections:
 {sections}
 
 Rules:
-- Only classify text if the section is clearly marked by headings or titles.
-- Do NOT infer or guess.
-- If a section is not explicitly present, return an empty string.
-- Copy text exactly as it appears.
-- Do NOT rewrite, summarize, or reorder.
-- Output MUST be valid JSON.
-- Keys MUST exactly match the section names.
-- Return ONE JSON object, nothing else.
+
+Identify sections based on explicit headings OR common synonymous academic headings.
+
+Map similar headings to the closest section in the provided list.
+Examples:
+
+"Experimental Setup" → methodology
+
+"Approach" → methodology
+
+"Evaluation" → results
+
+"Findings" → results
+
+"Analysis" → discussion
+
+If no reasonable match exists, return an empty string.
+
+Copy text exactly as it appears.
+
+Do NOT summarize or rewrite.
+
+Output MUST be valid JSON.
+
+Keys MUST exactly match the section names.
+
+Return ONE JSON object only.
 
 Paper text:
 {text}
@@ -40,6 +59,9 @@ class PaperState(TypedDict, total=False):
     raw_text: str
     clean_text: str
     sections: Dict[str, str]
+    paper_id: str
+    clean_text_file: str
+    sections_file: str
 
 
 
@@ -47,6 +69,8 @@ def load_paper_node(state: PaperState) -> PaperState:
     # Basic validation
     if not Path(state["pdf_path"]).exists():
         raise FileNotFoundError(f"PDF not found: {state['pdf_path']}")
+    if "paper_id" not in state:
+        raise ValueError("paper_id must be provided from metadata stage")
     return {**state}
 
 def extract_text_node(state: PaperState) -> PaperState:
@@ -72,7 +96,29 @@ def normalize_text_node(state: PaperState) -> PaperState:
 
     return {**state, "clean_text": cleaned}
 
-   
+def store_clean_text_node(state: PaperState) -> PaperState:
+
+    clean_text = state.get("clean_text")
+    paper_id = state.get("paper_id")
+
+    if not clean_text:
+        raise ValueError("No clean_text found")
+
+    if not paper_id:
+        raise ValueError("paper_id missing in state")
+
+    output_dir = Path("text_extraction/output/clean_text")
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    output_path = output_dir / f"clean_text_{paper_id}.txt"
+
+    save_clean_text(clean_text, output_path)
+
+    return {
+        **state,
+        "clean_text_file": str(output_path)
+    }
+  
 def empty_sections():
     return {section: "" for section in SECTION_ONTOLOGY}
 
@@ -135,7 +181,6 @@ def semantic_sectioning_node(state: PaperState) -> PaperState:
         **state,
         "sections": sections
     }
-
 def validate_sections_node(state: PaperState) -> PaperState:
     sections = state["sections"]
     if not isinstance(sections, dict):
@@ -144,21 +189,22 @@ def validate_sections_node(state: PaperState) -> PaperState:
         raise ValueError("Sections dictionary is empty")
     
     return {**state}
-
-
 def store_sections_node(state: PaperState) -> PaperState:
     print("ENTER store_sections_node")
 
     sections = state.get("sections")
+    paper_id = state.get("paper_id")
+
     if not sections:
         raise ValueError("No sections found to store")
+
+    if not paper_id:
+        raise ValueError("paper_id missing in state")
 
     output_dir = Path("text_extraction/output/sectioned_data")
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    #  Unique filename (timestamp-based) 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
-    output_path = output_dir / f"sectioned_data_{timestamp}.json"
+    output_path = output_dir / f"sectioned_data_{paper_id}.json"
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(sections, f, indent=2, ensure_ascii=False)
@@ -169,6 +215,7 @@ def store_sections_node(state: PaperState) -> PaperState:
         **state,
         "sections_file": str(output_path)
     }
+
 
 
 if __name__ == "__main__":

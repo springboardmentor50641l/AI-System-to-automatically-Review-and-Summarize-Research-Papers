@@ -1,0 +1,80 @@
+{
+  "claim_clusters": [
+    {
+      "cluster_claim": "The SUPER-NATURALINSTRUCTIONS benchmark is a large, diverse collection of NLP tasks with expert-written instructions, enabling rigorous benchmarking of cross-task and cross-lingual generalization, and supporting multi-task learning studies. It was developed through a community effort with multi-phase quality control.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P1_nlp_260216_204210",
+          "evidence": "we first introduce SUPER-NATURALINSTRUCTIONS, a benchmark of 1,616 diverse NLP tasks and their expert-written instructions. Our collection covers 76 distinct task types, including but not limited to classification, extraction, infilling, sequence tagging, text rewriting, and text composition. (abstract)\nOur dataset, SUPER-NATURALINSTRUCTIONS (SUP-NATINST for short), is a large benchmark of 1,616 NLP tasks and their natural language instructions. It brings in a diverse variety of tasks—76 broad task types spanning 55 different languages. (introduction)\nIn total, the dataset includes 1616 tasks and 5M instances. On average, each instruction is paired with 2.8 positive and 2.4 negative examples. The average definition length is 56.6 in words. (methodology, Table 2)\nThis large and diverse collection of tasks enables rigorous benchmarking of cross-task generalization under instructions—training models to follow instructions on a subset of tasks and evaluating them on the remaining unseen ones. (abstract)\nTo the best of our knowledge, this is the first study in cross-lingual cross-task generalization (i.e., generalization to unseen tasks in different languages). (benchmarking cross-task generalization with SUP-NATINST)\nThese tasks and their instructions are contributed by 88 NLP practitioners, in response to our public call. These contributions are consolidated after several rounds of peer-review and crowdsourced feedback to ensure quality. (introduction)\nWe had 88 contributors from diverse locations and backgrounds contribute to our repository. Quality control. Controlling the quality of this community-contributed data was done in several phases: (1) Upon creating a GitHub pull request of the proposed task, it immediately went through an automatic test. ... (2) The proposed task was then peer-reviewed by 1–2 other expert contributors... (3) Lastly, the added tasks were presented to crowdworkers in order to collect feedback on the quality of the provided instructions... (methodology)\nBeyond cross-task generalization, our benchmark can also be used to study multi-task learning more broadly... Our proposed benchmark provides diverse tasks for studying multi-tasking at a massive scale. (related work)"
+        }
+      ],
+      "limitations": "While the presented data offers a notable variety (e.g., diverse task types), its underlying distributions suffer from skews which should be addressed in future work (see Appendix F). On language diversity, the proposed benchmark is biased toward English. On output diversity, the collected tasks are generally still skewed to short responses, which might reflect the distribution of the available tasks in the field. This under-representation of the long-tail of tasks poses a challenge for building general-purpose models in the future. This feedback was done only for English tasks, as finding high-quality crowdworkers in other languages is nontrivial (Pavlick et al., 2014)."
+    },
+    {
+      "cluster_claim": "Instruction-tuned models, such as Tk-INSTRUCT, demonstrate improved generalization to unseen tasks by learning to follow instructions, outperforming untuned counterparts and existing models like InstructGPT, despite being smaller.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P1_nlp_260216_204210",
+          "evidence": "Furthermore, we build Tk-INSTRUCT, a transformer model trained to follow a variety of in-context instructions (plain language task definitions or k-shot examples). (abstract)\nOur experiments show that Tk-INSTRUCT outperforms existing instruction-following models such as InstructGPT by over 9% on our benchmark despite being an order of magnitude smaller. (abstract)\nOur Tk-INSTRUCT and mTk-INSTRUCT models, which are trained with a variety of tasks, generalize best to unseen tasks for both English and non-English tasks in all evaluation task categories. (results)\nGenerally instruction-tuned models perform better compared to their untuned LM counterparts (Tk-INSTRUCT vs. T5-LM, InstructGPT vs. GPT-3) and heuristic baselines. This indicates models do learn to follow instructions by finetuning on instruction data, and this can generalize to new instructions for unseen tasks. (results)"
+        }
+      ],
+      "limitations": "However, we want to note it is not clear if InstructGPT’s training data overlaps with our evaluation tasks since their data is unavailable. T0 is an exception, which is only slightly better than T5-LM. We suspect this is because the style of prompting in T0’s training data is very different from our style of instructions."
+    },
+    {
+      "cluster_claim": "Model generalization performance improves log-linearly with an increasing number of training tasks and larger model sizes. Increasing the diversity of training tasks can be an alternative to scaling model sizes for comparable performance, while a large number of training instances per task beyond 64 does not further help generalization.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P1_nlp_260216_204210",
+          "evidence": "The model generalization performance grows log-linearly as we increase the set of tasks used for training. ... we show that this trend holds even with 757 diverse training tasks. (discussion)\nIn our setup, the model’s performance saturates when only 64 instances per task are used for training. A large number of training instances would instead lead to longer training time and risk overfitting to the training tasks. (discussion)\nWe found that increasing the model sizes consistently bring significant improvement (log-linearly with parameter size). (discussion)\nCombining Fig. 5(a) and Fig. 5(c), one can create a correspondence between model size and task size. For example, a T5-large model trained with 757 tasks can achieve comparable performance (48.0 ROUGE-L) to the T5-3B model trained with 128 tasks (48.4 ROUGE-L), indicating that increasing the diversity of training tasks is an alternative to scaling model sizes. (discussion)"
+        }
+      ],
+      "limitations": "Due to the computational cost, this analysis is done on the English track and using the T5-3B checkpoint, except for the experiments on model sizes. This finding contradicts the claim in Xu et al. (2022) that “model size has little impact on performance with an extremely large number of tasks.”"
+    },
+    {
+      "cluster_claim": "Existing MWP solvers rely on shallow heuristics and existing benchmark English MWP datasets (MAWPS and ASDiv-A) suffer from artifacts, leading to an overestimation of current models' capabilities in solving elementary math word problems.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P3_nlp_260216_204210",
+          "evidence": "MWP solvers that do not have access to the question asked in the MWP can still solve a large fraction of MWPs. Similarly, models that treat MWPs as bag-of-words can also achieve surprisingly high accuracy. The best performing model achieved a 5-fold cross-validation accuracy of 64.4% on ASDiv-A and 77.7% on MAWPS when questions were removed. A constrained model without word-order information achieved 51.2% on ASDiv-A and 77.9% on MAWPS.\nThe majority of problems in the existing datasets can be solved by simple heuristics even without word-order information or the question text. SOTA models exploit these artifacts, and the bulk of their success is due to 'Easy' problems (those solved without the question).\nThis paper gives a negative answer to the question of whether existing NLP models are able to solve elementary math word problems, based on empirical evidence from benchmark datasets and performance on the proposed challenge dataset SVAMP."
+        }
+      ],
+      "limitations": "We do not claim that every model trained on these datasets relies on the occurrence of specific words in the input problem for prediction the way our constrained model does."
+    },
+    {
+      "cluster_claim": "The SVAMP (Simple Variations on Arithmetic Math word Problems) challenge dataset was introduced to provide a more robust evaluation for elementary math word problem solvers. It presents more challenging problems that require contextual information, leading to substantially lower accuracy for state-of-the-art models compared to existing benchmarks.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P3_nlp_260216_204210",
+          "evidence": "SVAMP was created by applying carefully chosen variations (Question Sensitivity, Reasoning Ability, and Structural Invariance) over examples sampled from existing datasets (ASDiv-A). It consists of a final set of 1000 one-unknown arithmetic word problems with grade level up to 4.\nThe best accuracy achieved by SOTA models is 43.8% on SVAMP. This failure of SOTA models on SVAMP points to the extent to which they rely on simple heuristics in training data to make their prediction.\nThe accuracy of models drops by half when questions are removed from SVAMP examples compared to ASDiv-A. The constrained model (without word-order information) achieves only 18.3% accuracy on SVAMP, which is marginally better than the majority template baseline. Both the Question Sensitivity and Structural Invariance categories of variations show an increase in accuracy when their examples are removed, indicating they make SVAMP more challenging."
+        }
+      ],
+      "limitations": ""
+    }
+  ],
+  "unique_claims": [
+    {
+      "claim": "There is a sizable gap between the generalization of instruction-based models and the supervised training approach, indicating room for improvement.",
+      "paper_id": "P1_nlp_260216_204210",
+      "evidence": "Despite the impressive performance of current models, there is a sizable gap between the generalization of instruction-based models and the supervised training approach, leaving more room for improvement. (results)",
+      "limitations": ""
+    },
+    {
+      "claim": "Including the task definition consistently helps models generalize better, and combining it with positive demonstration examples yields further improvement. Models trained on encodings with both definition and examples are robust across different encoding variations.",
+      "paper_id": "P1_nlp_260216_204210",
+      "evidence": "Based on the diagonal numbers, including the task definition consistently helps the model to generalize better. Moreover, combining the task definition with positive demonstration examples yields further improvement. (discussion)\nHowever, models trained on encodings that contain both definition and examples are surprisingly robust across different encoding variations. (discussion)",
+      "limitations": "However, adding more demonstration examples is negligible. Negative examples help a little bit; explanations decrease performance, which is consistent with the observations of Mishra et al. (2022b) and Lampinen et al. (2022) when the model is not large enough. The negative result here is that definition-only models cannot generalize to example-only test encodings; and similarly, example-only models cannot generalize to definition-only test encodings."
+    },
+    {
+      "claim": "ROUGE-L is adopted as an aggregated metric for evaluating models in an open-ended generation setting, and it correlates well with accuracy for classification tasks and human evaluation.",
+      "paper_id": "P1_nlp_260216_204210",
+      "evidence": "Due to the diversity of our tasks and the open-ended generation nature of our formulation, we adopt ROUGE-L (Lin, 2004) for reporting aggregated performance results. ... We show that the ranking from this metric correlates well with accuracy for classification tasks in Appendix E. We also conduct a human evaluation in §6.2. (benchmarking cross-task generalization with SUP-NATINST)\nThe results of human evaluation (shown in Fig. 3) align quite well with our automatic metrics and confirm the human-perceived quality of our models. (results)",
+      "limitations": "However, there are specific tasks for which ROUGE-L might not serve as an effective proxy of quality (such as rewriting tasks or error correction tasks where copying the input can result in a high ROUGE-L score). We hope these issues will be addressed with the development of more powerful evaluation metrics for text generation."
+    },
+    {
+      "claim": "Current methods are incapable of properly associating numbers to their context, especially in problems with more than two numbers.",
+      "paper_id": "P3_nlp_260216_204210",
+      "evidence": "While the model can solve many problems consisting of only two numbers in the input text (even in our challenge set), it performs very badly on problems having more than two numbers.",
+      "limitations": ""
+    }
+  ]
+}

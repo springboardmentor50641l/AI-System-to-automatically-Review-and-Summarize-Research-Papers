@@ -1,0 +1,58 @@
+{
+  "key_findings": [
+    {
+      "claim": "VOSviewer is a freely available computer program for constructing and viewing bibliometric maps.",
+      "evidence": "We present VOSviewer, a freely available computer program that we have developed for constructing and viewing bibliometric maps. The program is freely available to the bibliometric research community (see www.vosviewer.com).",
+      "source_section": "abstract, introduction",
+      "limitations": ""
+    },
+    {
+      "claim": "VOSviewer pays special attention to the graphical representation of bibliometric maps, overcoming limitations of simple graphical representations provided by other programs like SPSS and Pajek.",
+      "evidence": "Unlike most computer programs that are used for bibliometric mapping, VOSviewer pays special attention to the graphical representation of bibliometric maps. SPSS and Pajek both provide rather simple graphical representations of bibliometric maps. The programs both have serious problems with overlapping labels. Due to these problems, maps can be difficult to interpret, especially in the details. In the rest of this section, we demonstrate how VOSviewer overcomes the limitations of simple graphical representations provided by programs such as SPSS and Pajek. The map shown in Fig. 4 is much easier to interpret than the maps shown in Figs. 1 and 2. This demonstrates one of the main advantages of VOSviewer over commonly used computer programs such as SPSS and Pajek.",
+      "source_section": "abstract, introduction, proposed solution, conclusion",
+      "limitations": ""
+    },
+    {
+      "claim": "VOSviewer is especially useful for displaying large bibliometric maps in an easy-to-interpret way, capable of constructing maps with several thousands of items and displaying maps with more than 10,000 items.",
+      "evidence": "The functionality of VOSviewer is especially useful for displaying large bibliometric maps in an easy-to-interpret way. The viewing capabilities of VOSviewer are especially useful for maps containing at least a moderately large number of items (e.g., at least 100 items). Most computer programs that are used for bibliometric mapping do not display such maps in a satisfactory way. Another important feature of VOSviewer is its ability to handle large maps. VOSviewer can easily construct maps that contain several thousands of items, and it can display maps that contain more than 10,000 items. To demonstrate VOSviewer’s ability to handle large maps, we use the program to construct and display a co-citation map of 5,000 major scientific journals.",
+      "source_section": "abstract, introduction, proposed solution, results, conclusion",
+      "limitations": ""
+    },
+    {
+      "claim": "VOSviewer provides functionality for zooming, scrolling, searching, and a special labeling algorithm to facilitate the detailed examination of large maps.",
+      "evidence": "VOSviewer has functionality for zooming, scrolling, and searching, which facilitates the detailed examination of a map. When displaying a map, VOSviewer uses a special algorithm to determine which labels can be displayed and which labels cannot be displayed without having labels that overlap each other. The further one zooms in on a specific area of a map, the more labels become visible. Without the zoom functionality of a computer program such as VOSviewer, only the global structure of a map can be inspected and detailed examinations of large maps such as our journal co-citation map are not possible.",
+      "source_section": "introduction, proposed solution, results",
+      "limitations": ""
+    },
+    {
+      "claim": "VOSviewer fully integrates the VOS mapping technique, allowing both construction and viewing of VOS maps without a separate computer program.",
+      "evidence": "To construct a map, VOSviewer uses the VOS mapping technique (Van Eck and Waltman 2007a), where VOS stands for visualization of similarities. Because the VOS mapping technique shows a very good performance (Van Eck et al. 2008), this technique has been fully integrated into VOSviewer. This means that VOSviewer can be used not only to view VOS maps but also to construct them. Hence, no separate computer program is needed for constructing VOS maps.",
+      "source_section": "introduction, related work",
+      "limitations": "VOSviewer does not support constructing maps in more than two dimensions, though the VOS mapping technique can."
+    },
+    {
+      "claim": "VOSviewer can display any two-dimensional distance-based map, regardless of the mapping technique used for construction.",
+      "evidence": "VOSviewer can display maps constructed using any suitable mapping technique. Hence, the program can be employed not only for displaying maps constructed using the VOS mapping technique but also for displaying maps constructed using techniques such as multidimensional scaling. VOSviewer can be employed to view any two-dimensional distance-based map, regardless of the mapping technique that has been used to construct the map.",
+      "source_section": "introduction, related work",
+      "limitations": "VOSviewer only supports distance-based maps."
+    },
+    {
+      "claim": "VOSviewer produces consistent map results by applying specific transformations (translation, rotation, and reflection) to the optimized solution.",
+      "evidence": "It is of course important that VOSviewer produces consistent results. The same co-occurrence matrix should therefore always yield the same map (ignoring differences caused by local optima). These three transformations are sufficient to ensure that VOSviewer produces consistent results.",
+      "source_section": "methodology",
+      "limitations": "Consistency ignores differences caused by local optima."
+    },
+    {
+      "claim": "The general shape of maps constructed using VOSviewer (with the VOS mapping technique) appears to be determined by the data rather than being imposed by the mapping technique.",
+      "evidence": "In our map constructed using VOSviewer, we cannot find any indications of a structure that has been imposed by the mapping technique. The general shape of our map seems to have been determined by the data rather than by the mapping technique that we used.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Maps constructed using VOSviewer feature a relatively empty center, which clearly separates fields between which there are no strong relations.",
+      "evidence": "A noticeable difference between our map and the maps of Boyack et al. is the relatively empty center of our map. Due to the relatively empty center, fields between which there are no strong relations are clearly separated from each other.",
+      "source_section": "results",
+      "limitations": ""
+    }
+  ]
+}

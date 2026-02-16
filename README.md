@@ -1,8 +1,8 @@
-*Project Overview
+* Project Overview
 
 This project implements an AI-driven system for automating the literature review process. The system retrieves research papers based on a user-defined topic, extracts and structures their content, identifies key findings, performs cross-paper comparisons, and generates coherent academic literature review drafts using large language models.
 
-*System Workflow
+* System Workflow
 
 User inputs a research topic
 

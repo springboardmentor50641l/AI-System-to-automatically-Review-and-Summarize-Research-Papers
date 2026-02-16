@@ -26,6 +26,9 @@ def extract_json_strict(text: str) -> dict:
 
     return json.loads(match.group(0))
 
+
+
+
 #load multiple papers
 def load_all_key_findings(key_findings_dir: Path) -> list:
     """
@@ -34,7 +37,7 @@ def load_all_key_findings(key_findings_dir: Path) -> list:
 
     papers = []
 
-    for file in key_findings_dir.glob("key_findings_*.json"):
+    for file in key_findings_dir.glob("key_findings*.json"):
         with open(file, "r", encoding="utf-8") as f:
             data = json.load(f)
 
@@ -118,18 +121,38 @@ def compare_all_key_findings(papers: list, llm) -> dict:
     return parsed
 
 #store comparision
-def store_review_comparison(result: dict) -> Path:
+def store_review_comparison(result: dict, comparison_id: str) -> Path:
     output_dir = Path("text_extraction/output/review_comparison")
     output_dir.mkdir(parents=True, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_path = output_dir / f"review_comparison_{timestamp}.json"
+    output_path = output_dir / f"review_comparison_{comparison_id}.json"
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(result, f, indent=2, ensure_ascii=False)
 
     print(f"[OK] Review comparison saved to {output_path}")
     return output_path
+
+def run_review_builder(comparison_id: str):
+
+    key_findings_dir = Path("text_extraction/output/key_findings") / comparison_id
+
+    print("[INFO] Loading key findings...")
+    papers = load_all_key_findings(key_findings_dir)
+
+    print(f"[INFO] Comparing {len(papers)} papers...")
+
+    review_comparison = compare_all_key_findings(
+        papers=papers,
+        llm=llm
+    )
+
+    output_path = store_review_comparison(review_comparison, comparison_id)
+
+    print("[OK] Review building complete.")
+    return output_path
+
 
 
 if __name__ == "__main__":
