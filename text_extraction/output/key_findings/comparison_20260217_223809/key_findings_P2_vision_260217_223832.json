@@ -1,0 +1,274 @@
+{
+  "key_findings": [
+    {
+      "claim": "Masked autoencoders (MAE) are scalable self-supervised learners for computer vision.",
+      "evidence": "Our scalable approach allows for learning high-capacity models that generalize well: e.g., a vanilla ViT-Huge model achieves the best accuracy (87.8%) among methods that use only ImageNet-1K data. Transfer performance in downstream tasks outperforms supervised pre-training and shows promising scaling behavior.",
+      "source_section": "abstract",
+      "limitations": ""
+    },
+    {
+      "claim": "The MAE approach is simple.",
+      "evidence": "Our MAE approach is simple: we mask random patches of the input image and reconstruct the missing pixels.",
+      "source_section": "abstract",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE is based on an asymmetric encoder-decoder architecture.",
+      "evidence": "First, we develop an asymmetric encoder-decoder architecture, with an encoder that operates only on the visible subset of patches (without mask tokens), along with a lightweight decoder that reconstructs the original image from the latent representation and mask tokens.",
+      "source_section": "abstract",
+      "limitations": ""
+    },
+    {
+      "claim": "Masking a high proportion of the input image, e.g., 75%, yields a nontrivial and meaningful self-supervisory task.",
+      "evidence": "Second, we find that masking a high proportion of the input image, e.g., 75%, yields a nontrivial and meaningful self-supervisory task.",
+      "source_section": "abstract",
+      "limitations": ""
+    },
+    {
+      "claim": "Coupling the asymmetric architecture and high masking ratio enables efficient and effective training of large models, accelerating training (by 3x or more) and improving accuracy.",
+      "evidence": "Coupling these two designs enables us to train large models efficiently and effectively: we accelerate training (by 3x or more) and improve accuracy.",
+      "source_section": "abstract",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE allows for learning high-capacity models that generalize well.",
+      "evidence": "Our scalable approach allows for learning high-capacity models that generalize well: e.g., a vanilla ViT-Huge model achieves the best accuracy (87.8%) among methods that use only ImageNet-1K data.",
+      "source_section": "abstract",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE's transfer performance in downstream tasks outperforms supervised pre-training and shows promising scaling behavior.",
+      "evidence": "Transfer performance in downstream tasks outperforms supervised pre-training and shows promising scaling behavior.",
+      "source_section": "abstract",
+      "limitations": ""
+    },
+    {
+      "claim": "Masking a very high portion of random patches works well in computer vision to reduce redundancy and create a challenging self-supervisory task.",
+      "evidence": "To overcome this difference and encourage learning useful features, we show that a simple strategy works well in computer vision: masking a very high portion of random patches. This strategy largely reduces redundancy and creates a challenging self-supervisory task that requires holistic understanding beyond low-level image statistics.",
+      "source_section": "introduction",
+      "limitations": ""
+    },
+    {
+      "claim": "The decoder design plays a key role in determining the semantic level of learned latent representations for images.",
+      "evidence": "While in BERT the decoder can be trivial (an MLP) [14], we found that for images, the decoder design plays a key role in determining the semantic level of the learned latent representations.",
+      "source_section": "introduction",
+      "limitations": ""
+    },
+    {
+      "claim": "Shifting mask tokens to the small decoder in the asymmetric encoder-decoder results in a large reduction in computation.",
+      "evidence": "Shifting the mask tokens to the small decoder in our asymmetric encoder-decoder results in a large reduction in computation.",
+      "source_section": "introduction",
+      "limitations": ""
+    },
+    {
+      "claim": "A very high masking ratio (e.g., 75%) optimizes accuracy and allows the encoder to process only a small portion (e.g., 25%) of patches, reducing pre-training time by 3x or more and memory consumption.",
+      "evidence": "Under this design, a very high masking ratio (e.g., 75%) can achieve a win-win scenario: it optimizes accuracy while allowing the encoder to process only a small portion (e.g., 25%) of patches. This can reduce overall pre-training time by 3x or more and likewise reduce memory consumption, enabling us to easily scale our MAE to large models.",
+      "source_section": "introduction",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE pre-training improves generalization performance for data-hungry models like ViT-Large/-Huge on ImageNet-1K, outperforming all previous results that use only ImageNet-1K data.",
+      "evidence": "With MAE pre-training, we can train data-hungry models like ViT-Large/-Huge [16] on ImageNet-1K with improved generalization performance. With a vanilla ViT-Huge model, we achieve 87.8% accuracy when fine-tuned on ImageNet-1K. This outperforms all previous results that use only ImageNet-1K data.",
+      "source_section": "introduction",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE pre-training achieves better results than supervised pre-training counterparts in transfer learning tasks (object detection, instance segmentation, semantic segmentation) and shows significant gains by scaling up models.",
+      "evidence": "We also evaluate transfer learning on object detection, instance segmentation, and semantic segmentation. In these tasks, our pre-training achieves better results than its supervised pre-training counterparts, and more importantly, we observe significant gains by scaling up models.",
+      "source_section": "introduction",
+      "limitations": ""
+    },
+    {
+      "claim": "The MAE encoder operates only on visible, unmasked patches, allowing training of very large encoders with a fraction of compute and memory.",
+      "evidence": "Our encoder is a ViT [16] but applied only on visible, unmasked patches... This allows us to train very large encoders with only a fraction of compute and memory.",
+      "source_section": "methodology",
+      "limitations": ""
+    },
+    {
+      "claim": "The MAE decoder is lightweight and processes the full set of tokens, significantly reducing pre-training time.",
+      "evidence": "Our default decoder has <10% computation per token vs. the encoder. With this asymmetrical design, the full set of tokens are only processed by the lightweight decoder, which significantly reduces pre-training time.",
+      "source_section": "methodology",
+      "limitations": ""
+    },
+    {
+      "claim": "Using normalized pixels as the reconstruction target improves representation quality.",
+      "evidence": "Using normalized pixels as the reconstruction target improves representation quality in our experiments.",
+      "source_section": "methodology",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE pre-training can be implemented efficiently without specialized sparse operations.",
+      "evidence": "Our MAE pre-training can be implemented efficiently, and importantly, does not require any specialized sparse operations.",
+      "source_section": "methodology",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE pre-training provides a big improvement in fine-tuning accuracy over training supervised ViT-L from scratch (84.9% vs 82.5%).",
+      "evidence": "Even so, our MAE pre-training contributes a big improvement. Here fine-tuning is only for 50 epochs (vs. 200 from scratch), implying that the fine-tuning accuracy heavily depends on pre-training. (Baseline MAE: 84.9%, scratch, our impl.: 82.5%)",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "The optimal masking ratios for MAE are surprisingly high (e.g., 75%), contrasting with BERT (15%) and other vision methods (20-50%).",
+      "evidence": "The optimal ratios are surprisingly high. The ratio of 75% is good for both linear probing and fine-tuning. This behavior is in contrast with BERT [14], whose typical masking ratio is 15%. Our masking ratios are also much higher than those in related works [6, 16, 2] in computer vision (20% to 50%).",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "A sufficiently deep decoder is important for linear probing accuracy, but less influential for fine-tuning.",
+      "evidence": "A sufficiently deep decoder is important for linear probing... The decoder depth is less influential for improving fine-tuning (Table 1a, ‘ft’).",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "An MAE with a single-block decoder can perform strongly with fine-tuning (84.8%) and further speed up training.",
+      "evidence": "Interestingly, our MAE with a single-block decoder can perform strongly with fine-tuning (84.8%)... Such a small decoder can further speed up training.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Skipping mask tokens in the encoder improves accuracy and greatly reduces training computation (3.3x FLOPs reduction, 2.8x wall-clock speedup).",
+      "evidence": "If the encoder uses mask tokens, it performs worse: its accuracy drops by 14% in linear probing... By removing the mask token from the encoder, we constrain the encoder to always see real patches and thus improve accuracy. Moreover, by skipping the mask token in the encoder, we greatly reduce training computation. In Table 1c, we reduce the overall training FLOPs by 3.3x. This leads to a 2.8x wall-clock speedup in our implementation (see Table 2).",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "The time and memory efficiency of MAE makes it favorable for training very large models.",
+      "evidence": "The time and memory efficiency makes our MAE favorable for training very large models.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "High-frequency components are useful in MAE, as using normalized pixels improves accuracy while PCA coefficients degrade it.",
+      "evidence": "Using pixels with normalization improves accuracy... In another variant, we perform PCA in the patch space... Doing so degrades accuracy. Both experiments suggest that the high-frequency components are useful in our method.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Pixel-based MAE is simpler and more efficient than tokenization-based methods like BEiT, without sacrificing accuracy.",
+      "evidence": "Our pixel-based MAE is much simpler than tokenization... The dVAE encoder is a large convolutional network (40% FLOPs of ViT-L) and adds nontrivial overhead. Using pixels does not suffer from these problems.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE works well with minimal or no data augmentation, a property dramatically different from contrastive learning methods which heavily rely on it.",
+      "evidence": "Our MAE works well using cropping-only augmentation... Surprisingly, our MAE behaves decently even if using no data augmentation... This property is dramatically different from contrastive learning and related methods [62, 23, 7, 21], which heavily rely on data augmentation.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Simple random sampling for masking works best for MAE, allowing for higher masking ratios and greater speedup benefits while enjoying good accuracy.",
+      "evidence": "Simple random sampling works the best for our MAE. It allows for a higher masking ratio, which provides a greater speedup benefit while also enjoying good accuracy.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE accuracy improves steadily with longer training schedules, without saturation observed even at 1600 epochs, unlike contrastive learning methods.",
+      "evidence": "The accuracy improves steadily with longer training. Indeed, we have not observed saturation of linear probing accuracy even at 1600 epochs. This behavior is unlike contrastive learning methods, e.g., MoCo v3 [9] saturates at 300 epochs for ViT-L.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE achieves state-of-the-art accuracy (87.8%) on ImageNet-1K among methods using only IN1K data, using a vanilla ViT-Huge model.",
+      "evidence": "By fine-tuning with a 448 size, we achieve 87.8% accuracy, using only IN1K data. The previous best accuracy, among all methods using only IN1K data, is 87.1% (512 size) [67]... We improve over the state-of-the-art by a nontrivial margin in the highly competitive benchmark of IN1K (no external data). Our result is based on vanilla ViT.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE is more accurate, simpler, and considerably faster (3.5x per epoch) than BEiT.",
+      "evidence": "Comparing with BEiT [2], our MAE is more accurate while being simpler and faster... Moreover, our MAE is considerably faster (3.5x per epoch) than BEiT, for the reason as studied in Table 1c.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE pre-training generalizes better than supervised pre-training, with larger gains for higher-capacity models, enabling scaling up model sizes.",
+      "evidence": "Our MAE pre-training, using only IN1K, can generalize better: the gain over training from scratch is bigger for higher-capacity models... This comparison shows that our MAE can help scale up model sizes.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Fine-tuning only a few Transformer blocks (partial fine-tuning) can achieve accuracy close to full fine-tuning, significantly boosting accuracy from linear probing.",
+      "evidence": "Notably, fine-tuning only one Transformer block boosts the accuracy significantly from 73.5% to 81.0%... Fine-tuning a few blocks (e.g., 4 or 6) can achieve accuracy close to full fine-tuning.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE representations are less linearly separable than MoCo v3 but are stronger non-linear features, performing better when a non-linear head is tuned.",
+      "evidence": "MoCo v3 has higher linear probing accuracy; however, all of its partial fine-tuning results are worse than MAE... While the MAE representations are less linearly separable, they are stronger non-linear features and perform well when a non-linear head is tuned.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Linear separability is not the sole metric for evaluating representation quality, and linear probing is not well correlated with transfer learning performance.",
+      "evidence": "These observations suggest that linear separability is not the sole metric for evaluating representation quality. It has also been observed (e.g., [8]) that linear probing is not well correlated with transfer learning performance, e.g., for object detection.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE pre-training performs better than supervised pre-training in COCO object detection and segmentation, with larger gains for larger models.",
+      "evidence": "Compared to supervised pre-training, our MAE performs better under all configurations (Table 4). With the smaller ViT-B, our MAE is 2.4 points higher than supervised pre-training (50.3 vs. 47.9, APbox). More significantly, with the larger ViT-L, our MAE pre-training outperforms supervised pre-training by 4.0 points (53.3 vs. 49.3).",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Pixel-based MAE is better than or on par with token-based BEiT for COCO object detection and segmentation.",
+      "evidence": "The pixel-based MAE is better than or on par with the token-based BEiT, while MAE is much simpler and faster.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE pre-training significantly improves results over supervised pre-training in ADE20K semantic segmentation.",
+      "evidence": "Table 5 shows that our pre-training significantly improves results over supervised pre-training, e.g., by 3.7 points for ViT-L.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Pixel-based MAE outperforms token-based BEiT in ADE20K semantic segmentation.",
+      "evidence": "Our pixel-based MAE also outperforms the token-based BEiT.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE shows strong scaling behavior and surpasses previous best results by large margins on iNaturalists classification tasks.",
+      "evidence": "On iNat, our method shows strong scaling behavior: accuracy improves considerably with bigger models. Our results surpass the previous best results by large margins.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE outperforms previous best results on Places classification tasks, even those obtained via pre-training on billions of images.",
+      "evidence": "On Places, our MAE outperforms the previous best results [19, 40], which were obtained via pre-training on billions of images.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Tokenization is not necessary for MAE, as using normalized pixels is statistically similar to using dVAE tokens across various tasks.",
+      "evidence": "While using dVAE tokens is better than using unnormalized pixels, it is statistically similar to using normalized pixels across all cases we tested. It again shows that tokenization is not necessary for our MAE.",
+      "source_section": "results",
+      "limitations": ""
+    },
+    {
+      "claim": "Self-supervised learning in vision may now be embarking on a similar trajectory as in NLP, with MAE providing scalable benefits.",
+      "evidence": "In this study, we observe on ImageNet and in transfer learning that an autoencoder—a simple self-supervised method similar to techniques in NLP—provides scalable benefits. Self-supervised learning in vision may now be embarking on a similar trajectory as in NLP.",
+      "source_section": "discussion",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE infers complex, holistic reconstructions, suggesting it has learned numerous visual concepts (semantics), despite reconstructing pixels.",
+      "evidence": "Nevertheless, we observe (e.g., Figure 4) that our MAE infers complex, holistic reconstructions, suggesting it has learned numerous visual concepts, i.e., semantics.",
+      "source_section": "discussion",
+      "limitations": ""
+    },
+    {
+      "claim": "The proposed method will reflect biases in the training dataset, including ones with negative societal impacts.",
+      "evidence": "The proposed method predicts content based on learned statistics of the training dataset and as such will reflect biases in those data, including ones with negative societal impacts.",
+      "source_section": "conclusion",
+      "limitations": "The proposed method predicts content based on learned statistics of the training dataset and as such will reflect biases in those data, including ones with negative societal impacts."
+    },
+    {
+      "claim": "The model may generate inexistent content.",
+      "evidence": "The model may generate inexistent content.",
+      "source_section": "conclusion",
+      "limitations": "The model may generate inexistent content."
+    }
+  ]
+}

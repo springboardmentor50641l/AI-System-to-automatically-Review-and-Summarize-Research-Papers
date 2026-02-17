@@ -1,0 +1,550 @@
+{
+  "claim_clusters": [
+    {
+      "cluster_claim": "Self-supervised methods like MAE and DINO enable scalable and effective training of large Vision Transformers (ViTs), leading to improved generalization and performance.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our scalable approach allows for learning high-capacity models that generalize well: e.g., a vanilla ViT-Huge model achieves the best accuracy (87.8%) among methods that use only ImageNet-1K data. Transfer performance in downstream tasks outperforms supervised pre-training and shows promising scaling behavior."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our scalable approach allows for learning high-capacity models that generalize well: e.g., a vanilla ViT-Huge model achieves the best accuracy (87.8%) among methods that use only ImageNet-1K data."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Coupling these two designs enables us to train large models efficiently and effectively: we accelerate training (by 3x or more) and improve accuracy."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "The time and memory efficiency makes our MAE favorable for training very large models."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our MAE pre-training, using only IN1K, can generalize better: the gain over training from scratch is bigger for higher-capacity models... This comparison shows that our MAE can help scale up model sizes."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Achieving performance that are comparable with the best convnets speciﬁcally designed for this setting."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Training a model with a batch size of 8 reached 35.2% after 50 epochs."
+        }
+      ],
+      "limitations": ""
+    },
+    {
+      "cluster_claim": "MAE's core design involves an asymmetric encoder-decoder architecture and a high masking ratio (e.g., 75%) of input patches, which together contribute to efficiency, reduced computation, and improved accuracy.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "First, we develop an asymmetric encoder-decoder architecture, with an encoder that operates only on the visible subset of patches (without mask tokens), along with a lightweight decoder that reconstructs the original image from the latent representation and mask tokens."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Second, we find that masking a high proportion of the input image, e.g., 75%, yields a nontrivial and meaningful self-supervisory task."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Coupling these two designs enables us to train large models efficiently and effectively: we accelerate training (by 3x or more) and improve accuracy."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "To overcome this difference and encourage learning useful features, we show that a simple strategy works well in computer vision: masking a very high portion of random patches. This strategy largely reduces redundancy and creates a challenging self-supervisory task that requires holistic understanding beyond low-level image statistics."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Shifting the mask tokens to the small decoder in our asymmetric encoder-decoder results in a large reduction in computation."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Under this design, a very high masking ratio (e.g., 75%) can achieve a win-win scenario: it optimizes accuracy while allowing the encoder to process only a small portion (e.g., 25%) of patches. This can reduce overall pre-training time by 3x or more and likewise reduce memory consumption, enabling us to easily scale our MAE to large models."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our encoder is a ViT [16] but applied only on visible, unmasked patches... This allows us to train very large encoders with only a fraction of compute and memory."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our default decoder has <10% computation per token vs. the encoder. With this asymmetrical design, the full set of tokens are only processed by the lightweight decoder, which significantly reduces pre-training time."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "The optimal ratios are surprisingly high. The ratio of 75% is good for both linear probing and fine-tuning. This behavior is in contrast with BERT [14], whose typical masking ratio is 15%. Our masking ratios are also much higher than those in related works [6, 16, 2] in computer vision (20% to 50%)."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "If the encoder uses mask tokens, it performs worse: its accuracy drops by 14% in linear probing... By removing the mask token from the encoder, we constrain the encoder to always see real patches and thus improve accuracy. Moreover, by skipping the mask token in the encoder, we greatly reduce training computation. In Table 1c, we reduce the overall training FLOPs by 3.3x. This leads to a 2.8x wall-clock speedup in our implementation (see Table 2)."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Simple random sampling works the best for our MAE. It allows for a higher masking ratio, which provides a greater speedup benefit while also enjoying good accuracy."
+        }
+      ],
+      "limitations": ""
+    },
+    {
+      "cluster_claim": "DINO is a self-supervised method based on self-distillation with no labels, utilizing a momentum teacher (EMA of student weights) and techniques like centering and sharpening to prevent collapse and achieve strong performance.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "We implement our ﬁndings into a simple self-supervised method, called DINO, which we interpret as a form of self-distillation with no labels."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Our approach takes its inspiration from BYOL but operates with a different similarity matching loss and uses the exact same architecture for the student and the teacher."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Our work builds on this relation and extends knowledge distillation to the case where no labels are available."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Of particular interest, using an exponential moving average (EMA) on the student weights, i.e., a momentum encoder [33], is particularly well suited for our framework."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "This teacher has better performance than the student throughout the training, guiding the student by providing higher quality target features. This dynamic was not observed in previous works [30, 58]."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "DINO can work with only a centering and sharpening of the teacher output to avoid collapse."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Centering prevents one dimension to dominate but encourages collapse to the uniform distribution, while sharpening has the opposite effect. Applying both operations balances their effects, which is sufficient to avoid collapse in presence of a momentum teacher (Section 5.3)."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "The centering operation only depends on ﬁrst-order batch statistics and can be interpreted as adding a bias term c to the teacher. The center c is updated with an exponential moving average, which allows the approach to work well across different batch sizes (Section 5.5)."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "In the absence of momentum, our framework does not work (Table 7, row 2) and more advanced operations, SK for example, are required to avoid collapse (Table 7, row 9). With momentum, using SK has little impact (Table 7, row 3)."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "This behavior has not been observed by other frameworks also using momentum [33, 30], nor when the teacher is built from the previous epoch."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Freezing the teacher network over an epoch works surprisingly well in DINO."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "We do not use a predictor [30, 16], resulting in the exact same architecture in both student and teacher networks."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "It is critical in BYOL to prevent collapse [16, 30]."
+        }
+      ],
+      "limitations": ""
+    },
+    {
+      "cluster_claim": "For Vision Transformers (ViTs) trained with self-supervised methods like DINO, using smaller patches significantly improves feature quality and performance, particularly for dense recognition tasks.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Our study also underlines the importance of momentum encoder [33], multi-crop training [10], and the use of small patches with ViTs."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Another ﬁnding from our study is the importance of using smaller patches with ViTs to improve the quality of the resulting features."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "While training a larger ViT with DINO improves the performance, reducing the size of the patches (“/8” variants) has a bigger impact on the performance."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "This is achieved with 10x less parameters and 1.4x faster run time than previous state of the art [13]."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "+9.1% (J &F)m for ViT-B with “/8” patches."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Observed in Fig. 5 for ViT-S models trained with different patch sizes (16x16, 8x8, 5x5)."
+        }
+      ],
+      "limitations": "Reducing the patch size leads to a significant reduction of running time and larger memory usage. The performance gain from using smaller patches comes at the expense of throughput (e.g., 5x5 patches fall to 44 im/s, vs 180 im/s for 8x8 patches)."
+    },
+    {
+      "cluster_claim": "Both MAE and DINO demonstrate strong performance on ImageNet classification, with MAE achieving state-of-the-art accuracy (87.8%) and DINO showing excellent k-NN and linear classification results with ViTs.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "With MAE pre-training, we can train data-hungry models like ViT-Large/-Huge [16] on ImageNet-1K with improved generalization performance. With a vanilla ViT-Huge model, we achieve 87.8% accuracy when fine-tuned on ImageNet-1K. This outperforms all previous results that use only ImageNet-1K data."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Even so, our MAE pre-training contributes a big improvement. Here fine-tuning is only for 50 epochs (vs. 200 from scratch), implying that the fine-tuning accuracy heavily depends on pre-training. (Baseline MAE: 84.9%, scratch, our impl.: 82.5%)"
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "By fine-tuning with a 448 size, we achieve 87.8% accuracy, using only IN1K data. The previous best accuracy, among all methods using only IN1K data, is 87.1% (512 size) [67]... We improve over the state-of-the-art by a nontrivial margin in the highly competitive benchmark of IN1K (no external data). Our result is based on vanilla ViT."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Reaching 78.3% top-1 on ImageNet with a small ViT."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Achieving 80.1% top-1 on ImageNet in linear evaluation with ViT-Base."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Achieving 78.3% top-1 accuracy on ImageNet without any finetuning, linear classifier, nor data augmentation."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Takes just two 8-GPU servers over 3 days, outperforming self-supervised systems based on convnets of comparable sizes [10, 30]."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "This is achieved with 10x less parameters and 1.4x faster run time than previous state of the art [13]."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Results improve by +1-2%."
+        }
+      ],
+      "limitations": ""
+    },
+    {
+      "cluster_claim": "Self-supervised pre-training with MAE and DINO leads to superior transfer learning performance across various downstream tasks, including object detection, segmentation, image retrieval, and classification, often outperforming supervised pre-training and showing strong scaling behavior.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Transfer performance in downstream tasks outperforms supervised pre-training and shows promising scaling behavior."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "We also evaluate transfer learning on object detection, instance segmentation, and semantic segmentation. In these tasks, our pre-training achieves better results than its supervised pre-training counterparts, and more importantly, we observe significant gains by scaling up models."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Compared to supervised pre-training, our MAE performs better under all configurations (Table 4). With the smaller ViT-B, our MAE is 2.4 points higher than supervised pre-training (50.3 vs. 47.9, APbox). More significantly, with the larger ViT-L, our MAE pre-training outperforms supervised pre-training by 4.0 points (53.3 vs. 49.3)."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "The pixel-based MAE is better than or on par with the token-based BEiT, while MAE is much simpler and faster."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Table 5 shows that our pre-training significantly improves results over supervised pre-training, e.g., by 3.7 points for ViT-L."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our pixel-based MAE also outperforms the token-based BEiT."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "On iNat, our method shows strong scaling behavior: accuracy improves considerably with bigger models. Our results surpass the previous best results by large margins."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "On Places, our MAE outperforms the previous best results [19, 40], which were obtained via pre-training on billions of images."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Observed in Table 3."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Outperforming previously published methods based on off-the-shelf descriptors [68, 57]."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Table 4 shows that ViT trained with DINO is very competitive on copy detection."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Even though our training objective nor our architecture are designed for dense tasks, the performance is competitive on this benchmark (Table 5)."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "This is consistent with observations made on convolutional networks [10, 33, 62]."
+        }
+      ],
+      "limitations": ""
+    },
+    {
+      "cluster_claim": "Self-supervised Vision Transformer features, particularly from DINO and MAE, contain explicit semantic information, including scene layout, object boundaries, and segmentation masks, which is not as clearly observed in supervised ViTs.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "This information does not emerge as clearly with supervised ViTs, nor with convolutional networks (convnets)."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "This information is directly accessible in the self-attention modules of the last block, as shown in Figure 1."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "The emergence of segmentation masks is a property shared across self-supervised methods."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Even when they are occluded (the bushes on the third row) or small (the ﬂag on the second row), as shown in Fig. 3."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "A clear difference between the supervised or DINO models with a signiﬁcant gap in terms of Jaccard similarities is observed when probing self-attention maps (Fig. 4)."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Nevertheless, we observe (e.g., Figure 4) that our MAE infers complex, holistic reconstructions, suggesting it has learned numerous visual concepts, i.e., semantics."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "While in BERT the decoder can be trivial (an MLP) [14], we found that for images, the decoder design plays a key role in determining the semantic level of the learned latent representations."
+        }
+      ],
+      "limitations": "The self-attention maps are smooth and not optimized to produce a mask."
+    },
+    {
+      "cluster_claim": "Both MAE and DINO are described as simple and efficient self-supervised methods, with MAE being pixel-based and faster than tokenization-based alternatives, and DINO being flexible across architectures.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our MAE approach is simple: we mask random patches of the input image and reconstruct the missing pixels."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our MAE pre-training can be implemented efficiently, and importantly, does not require any specialized sparse operations."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our pixel-based MAE is much simpler than tokenization... The dVAE encoder is a large convolutional network (40% FLOPs of ViT-L) and adds nontrivial overhead. Using pixels does not suffer from these problems."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Comparing with BEiT [2], our MAE is more accurate while being simpler and faster... Moreover, our MAE is considerably faster (3.5x per epoch) than BEiT, for the reason as studied in Table 1c."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "We implement our ﬁndings into a simple self-supervised method, called DINO, which we interpret as a form of self-distillation with no labels."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Without the need to modify the architecture, nor adapt internal normalizations [58]."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Takes just two 8-GPU servers over 3 days, outperforming self-supervised systems based on convnets of comparable sizes [10, 30]."
+        }
+      ],
+      "limitations": ""
+    },
+    {
+      "cluster_claim": "While DINO-trained ViT features excel as k-NN classifiers, MAE representations are less linearly separable but stronger non-linear features, suggesting that linear separability and linear probing may not be the sole or best metrics for evaluating self-supervised representation quality or transfer learning performance.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Reaching 78.3% top-1 on ImageNet with a small ViT."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Achieving 78.3% top-1 accuracy on ImageNet without any finetuning, linear classifier, nor data augmentation."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "74.5% versus 77.0%. This property emerges only when using DINO with ViT architectures, and does not appear with other existing self-supervised methods nor with a ResNet-50."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "The quality of the features in k-NN classiﬁcation has a potential for image retrieval where ViT are already showing promising results [22]. The presence of information about the scene layout in the features can also beneﬁt weakly supervised image segmentation."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "MoCo v3 has higher linear probing accuracy; however, all of its partial fine-tuning results are worse than MAE... While the MAE representations are less linearly separable, they are stronger non-linear features and perform well when a non-linear head is tuned."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "These observations suggest that linear separability is not the sole metric for evaluating representation quality. It has also been observed (e.g., [8]) that linear probing is not well correlated with transfer learning performance, e.g., for object detection."
+        }
+      ],
+      "limitations": ""
+    },
+    {
+      "cluster_claim": "Key components for DINO's performance and stability include the momentum encoder, multi-crop training (especially local-to-global augmentation), and the cross-entropy loss, enabling high performance even with small batch sizes and without Batch Normalization in ViT applications.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Our study also underlines the importance of momentum encoder [33], multi-crop training [10], and the use of small patches with ViTs."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "The good performance with k-NN only emerges when combining certain components such as momentum encoder [33] and multi-crop augmentation [10]."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "ViT architectures do not use batch normalizations (BN) by default. Therefore, when applying DINO to ViT we do not use any BN also in the projection heads."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "In the absence of momentum, our framework does not work (Table 7, row 2) and more advanced operations, SK for example, are required to avoid collapse (Table 7, row 9). With momentum, using SK has little impact (Table 7, row 3)."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Observed in rows 4 and 5 of Table 7."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "The performance is 74.6% in 24 hours with 2x224^2+10x96^2 crop setting, while 72.5% after 46 hours of training without multi-crop (2x224^2)."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "The performance boost brought with multi-crop cannot be caught up by more training in the 2x224^2 setting, which shows the value of the “local-to-global” augmentation."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Table 9 confirms this. Results with batch size of 128 are slightly below default (1024)."
+        }
+      ],
+      "limitations": "Memory usage is higher with multi-crop (15.4G versus 9.3G). Results with smaller batch sizes (bs = 128) are slightly below our default training setup of bs = 1024, and would certainly require to re-tune hyperparameters like the momentum rates for example."
+    },
+    {
+      "cluster_claim": "Both MAE and DINO demonstrate superior performance compared to supervised pre-training in various tasks and often outperform or are competitive with other self-supervised methods (e.g., BEiT, BYOL, MoCov2, SwAV), especially when applied to ViT architectures.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Transfer performance in downstream tasks outperforms supervised pre-training and shows promising scaling behavior."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "We also evaluate transfer learning on object detection, instance segmentation, and semantic segmentation. In these tasks, our pre-training achieves better results than its supervised pre-training counterparts, and more importantly, we observe significant gains by scaling up models."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Comparing with BEiT [2], our MAE is more accurate while being simpler and faster... Moreover, our MAE is considerably faster (3.5x per epoch) than BEiT, for the reason as studied in Table 1c."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our MAE pre-training, using only IN1K, can generalize better: the gain over training from scratch is bigger for higher-capacity models... This comparison shows that our MAE can help scale up model sizes."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Compared to supervised pre-training, our MAE performs better under all configurations (Table 4). With the smaller ViT-B, our MAE is 2.4 points higher than supervised pre-training (50.3 vs. 47.9, APbox). More significantly, with the larger ViT-L, our MAE pre-training outperforms supervised pre-training by 4.0 points (53.3 vs. 49.3)."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "The pixel-based MAE is better than or on par with the token-based BEiT, while MAE is much simpler and faster."
+        },
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "Our pixel-based MAE also outperforms the token-based BEiT."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Validating that DINO works in the standard setting."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "DINO outperforms BYOL, MoCov2 and SwAV by +3.5% with linear classiﬁcation and by +7.9% with k-NN evaluation."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "This is consistent with observations made on convolutional networks [10, 33, 62]."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "Results improve by +1-2%."
+        }
+      ],
+      "limitations": ""
+    },
+    {
+      "cluster_claim": "Self-supervised learning in computer vision, exemplified by methods like MAE, shows potential to follow a similar trajectory as in NLP, possibly leading to BERT-like models based on Vision Transformers.",
+      "supported_by_papers": [
+        {
+          "paper_id": "P2_vision_260217_223832",
+          "evidence": "In this study, we observe on ImageNet and in transfer learning that an autoencoder—a simple self-supervised method similar to techniques in NLP—provides scalable benefits. Self-supervised learning in vision may now be embarking on a similar trajectory as in NLP."
+        },
+        {
+          "paper_id": "P3_vision_260217_223832",
+          "evidence": "We have evidences that self-supervised learning could be the key to developing a BERT-like model based on ViT."
+        }
+      ],
+      "limitations": ""
+    }
+  ],
+  "unique_claims": [
+    {
+      "claim": "Using normalized pixels as the reconstruction target improves representation quality.",
+      "paper_id": "P2_vision_260217_223832",
+      "evidence": "Using normalized pixels as the reconstruction target improves representation quality in our experiments.",
+      "limitations": ""
+    },
+    {
+      "claim": "A sufficiently deep decoder is important for linear probing accuracy, but less influential for fine-tuning.",
+      "paper_id": "P2_vision_260217_223832",
+      "evidence": "A sufficiently deep decoder is important for linear probing... The decoder depth is less influential for improving fine-tuning (Table 1a, ‘ft’).",
+      "limitations": ""
+    },
+    {
+      "claim": "An MAE with a single-block decoder can perform strongly with fine-tuning (84.8%) and further speed up training.",
+      "paper_id": "P2_vision_260217_223832",
+      "evidence": "Interestingly, our MAE with a single-block decoder can perform strongly with fine-tuning (84.8%)... Such a small decoder can further speed up training.",
+      "limitations": ""
+    },
+    {
+      "claim": "High-frequency components are useful in MAE, as using normalized pixels improves accuracy while PCA coefficients degrade it.",
+      "paper_id": "P2_vision_260217_223832",
+      "evidence": "Using pixels with normalization improves accuracy... In another variant, we perform PCA in the patch space... Doing so degrades accuracy. Both experiments suggest that the high-frequency components are useful in our method.",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE works well with minimal or no data augmentation, a property dramatically different from contrastive learning methods which heavily rely on it.",
+      "paper_id": "P2_vision_260217_223832",
+      "evidence": "Our MAE works well using cropping-only augmentation... Surprisingly, our MAE behaves decently even if using no data augmentation... This property is dramatically different from contrastive learning and related methods [62, 23, 7, 21], which heavily rely on data augmentation.",
+      "limitations": ""
+    },
+    {
+      "claim": "MAE accuracy improves steadily with longer training schedules, without saturation observed even at 1600 epochs, unlike contrastive learning methods.",
+      "paper_id": "P2_vision_260217_223832",
+      "evidence": "The accuracy improves steadily with longer training. Indeed, we have not observed saturation of linear probing accuracy even at 1600 epochs. This behavior is unlike contrastive learning methods, e.g., MoCo v3 [9] saturates at 300 epochs for ViT-L.",
+      "limitations": ""
+    },
+    {
+      "claim": "Fine-tuning only a few Transformer blocks (partial fine-tuning) can achieve accuracy close to full fine-tuning, significantly boosting accuracy from linear probing.",
+      "paper_id": "P2_vision_260217_223832",
+      "evidence": "Notably, fine-tuning only one Transformer block boosts the accuracy significantly from 73.5% to 81.0%... Fine-tuning a few blocks (e.g., 4 or 6) can achieve accuracy close to full fine-tuning.",
+      "limitations": ""
+    },
+    {
+      "claim": "Tokenization is not necessary for MAE, as using normalized pixels is statistically similar to using dVAE tokens across various tasks.",
+      "paper_id": "P2_vision_260217_223832",
+      "evidence": "While using dVAE tokens is better than using unnormalized pixels, it is statistically similar to using normalized pixels across all cases we tested. It again shows that tokenization is not necessary for our MAE.",
+      "limitations": ""
+    },
+    {
+      "claim": "The proposed method will reflect biases in the training dataset, including ones with negative societal impacts.",
+      "paper_id": "P2_vision_260217_223832",
+      "evidence": "The proposed method predicts content based on learned statistics of the training dataset and as such will reflect biases in those data, including ones with negative societal impacts.",
+      "limitations": "The proposed method predicts content based on learned statistics of the training dataset and as such will reflect biases in those data, including ones with negative societal impacts."
+    },
+    {
+      "claim": "The model may generate inexistent content.",
+      "paper_id": "P2_vision_260217_223832",
+      "evidence": "The model may generate inexistent content.",
+      "limitations": "The model may generate inexistent content."
+    },
+    {
+      "claim": "The gain from adding more views diminishes for longer trainings.",
+      "paper_id": "P3_vision_260217_223832",
+      "evidence": "+0.2% from 6x to 10x 96^2 crops.",
+      "limitations": ""
+    },
+    {
+      "claim": "Using a teacher from the previous epoch does not collapse and provides competitive k-NN performance.",
+      "paper_id": "P3_vision_260217_223832",
+      "evidence": "Competitive with existing frameworks such as MoCo-v2 or BYOL. However, a momentum encoder clearly provides superior performance.",
+      "limitations": "Momentum encoder provides superior performance."
+    }
+  ]
+}

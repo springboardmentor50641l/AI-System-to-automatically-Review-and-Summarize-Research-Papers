@@ -8,6 +8,8 @@ from pipelines.key_finding import run_key_findings
 from pipelines.compare_papers import run_review_builder
 from comparision_id import generate_comparison_id
 from pipelines.draft_generation import build_final_literature_review
+from qaulity.review import run_review_evaluation
+from qaulity.refinement import run_review_refinement
 
 
 comparison_id = generate_comparison_id()
@@ -95,7 +97,16 @@ if len(successful_papers) >= 2:
     for paper_id in successful_papers:
         run_key_findings(paper_id, comparison_id)
     run_review_builder(comparison_id)
-    build_final_literature_review(comparison_id, metadata_list)
+    version=1
+    build_final_literature_review(comparison_id, metadata_list,version=version)
+    run_review_evaluation(comparison_id, version=version)
+
+    choice = input("Refine this draft? (y/n): ").lower()
+
+    if choice == "y":
+        run_review_refinement(comparison_id, version=version)
+        run_review_evaluation(comparison_id, version=version+1)
+
 
 else:
     print("Not enough successfully processed papers for review.")
