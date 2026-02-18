@@ -4,11 +4,12 @@ load_dotenv()
 from pathlib import Path
 import json
 import pandas as pd
+from typing import Callable, Optional
 
 from pipeline.graph import build_graph
 
 
-# -------- CONFIG --------
+# ------------CONFIG -------------
 METADATA_PATH = Path("data/metadata/selected_papers_metadata.csv")
 OUTPUT_DIR = Path("data/sections")
 OUTPUT_DIR.mkdir(exist_ok=True)
@@ -16,7 +17,6 @@ OUTPUT_DIR.mkdir(exist_ok=True)
 
 def normalize_topic(topic: str) -> str:
     return " ".join(topic.lower().split())
-
 
 
 def get_pdfs_for_topic(topic: str):
@@ -31,11 +31,9 @@ def get_pdfs_for_topic(topic: str):
 
     df = pd.read_csv(METADATA_PATH)
 
-    # Normalize stored topics
     df["topic_normalized"] = df["topic"].astype(str).apply(
-    lambda x: " ".join(x.lower().split())
+        lambda x: " ".join(x.lower().split())
     )
-
 
     topic_norm = normalize_topic(topic)
 
@@ -45,28 +43,32 @@ def get_pdfs_for_topic(topic: str):
     ]
 
     if topic_df.empty:
-        available_topics = df["topic"].dropna().unique().tolist()
-        print("\nNo PDFs matched the given topic.")
-        print("Available topics in metadata:")
-        for t in available_topics:
-            print(f" - {t}")
         return []
 
     return topic_df["pdf_path"].tolist()
 
 
-def main():
-    topic = input("Enter topic to process: ").strip()
-    if not topic:
-        print("Topic cannot be empty.")
-        return
+
+#----------MAIN GRAPH RUNNER----------
+
+def run_graph_for_topic(
+    topic: str,
+    progress_callback: Optional[Callable[[str], None]] = None
+):
+    """
+    Run LangGraph sectioning for all PDFs under a topic.
+
+    progress_callback(message) can be passed by UI
+    to stream execution updates.
+    """
 
     pdf_paths = get_pdfs_for_topic(topic)
 
     if not pdf_paths:
-        return
+        raise ValueError("No PDFs found for this topic.")
 
-    print(f"\nFound {len(pdf_paths)} PDF(s) for topic '{topic}'")
+    if progress_callback:
+        progress_callback(f"Found {len(pdf_paths)} PDF(s)")
 
     graph = build_graph()
 
@@ -74,10 +76,12 @@ def main():
         pdf = Path(pdf_path)
 
         if not pdf.exists():
-            print(f"Skipping missing PDF: {pdf_path}")
+            if progress_callback:
+                progress_callback(f"Skipping missing PDF: {pdf_path}")
             continue
 
-        print(f"\nRunning LangGraph pipeline on: {pdf.name}")
+        if progress_callback:
+            progress_callback(f"Processing: {pdf.name}")
 
         initial_state = {
             "pdf_path": str(pdf),
@@ -97,9 +101,22 @@ def main():
                 ensure_ascii=False
             )
 
-        print(f"Saved LangGraph output to {output_file}")
+        if progress_callback:
+            progress_callback(f"Saved sections → {output_file.name}")
 
-    print("\nTopic-level LangGraph processing completed.")
+    if progress_callback:
+        progress_callback("LangGraph processing completed.")
+
+
+
+#------------ CLI MODE (optional)------------
+def main():
+    topic = input("Enter topic to process: ").strip()
+    if not topic:
+        print("Topic cannot be empty.")
+        return
+
+    run_graph_for_topic(topic, print)
 
 
 if __name__ == "__main__":

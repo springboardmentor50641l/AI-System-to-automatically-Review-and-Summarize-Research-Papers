@@ -22,7 +22,7 @@ def search_papers(topic, limit=3):
     params = {
         "query": topic,
         "limit": limit,
-        "fields": "paperId,title,authors,year,abstract,url,openAccessPdf"
+        "fields": "paperId,title,authors,year,venue,abstract,url,openAccessPdf,externalIds"
     }
 
     response = requests.get(BASE_URL, headers=HEADERS, params=params)

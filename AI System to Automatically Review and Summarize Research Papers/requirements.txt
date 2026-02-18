@@ -5,3 +5,4 @@ tqdm
 PyMuPDF 
 langchain 
 langchain-google-genai
+gradio

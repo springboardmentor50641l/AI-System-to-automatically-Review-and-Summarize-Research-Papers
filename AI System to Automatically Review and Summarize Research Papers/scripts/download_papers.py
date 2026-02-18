@@ -57,8 +57,12 @@ def save_metadata(papers):
 
         record = {
             "paper_id": idx,
+            "paper_uid": paper.get("paperId"),
             "title": paper.get("title"),
+            "authors": ", ".join([a["name"] for a in paper.get("authors", [])]),
             "year": paper.get("year"),
+            "venue": paper.get("venue"),
+            "doi": (paper.get("externalIds") or {}).get("DOI"),
             "url": paper.get("url"),
             "topic": paper.get("topic"),
             "has_pdf": pdf_exists,
