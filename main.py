@@ -166,10 +166,13 @@ def run_pipeline(topic: str, mode: str, uploaded_files=None) -> str:
         return f"Workflow execution failed: {str(e)}"
 
     # ================= REFERENCES =================
-    if papers:
+    if mode == "automatic" and papers:
         references = format_references(papers)
-    else:
+    elif mode == "manual":
         references = "Manual mode: Reference metadata not available."
+    else:
+        references = "No reference metadata available."
+            
 
     # ================= RETURN FINAL TEXT =================
     full_text = final_output + "\n\nREFERENCES\n" + references

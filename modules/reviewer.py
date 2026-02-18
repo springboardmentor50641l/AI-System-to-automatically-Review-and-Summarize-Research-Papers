@@ -1,13 +1,8 @@
-
 from llm import llm
 from utils.llm_utils import normalize_llm_output
 
 
 def review_paper(draft: str) -> str:
-    """
-    Reviews and refines the generated draft.
-    Returns ONLY the polished report.
-    """
 
     if not draft or not str(draft).strip():
         return ""
@@ -22,11 +17,8 @@ Revise the draft below to:
 - Strengthen logical flow
 
 IMPORTANT:
+Do NOT remove or modify the header section if present.
 Return ONLY the final revised report.
-Do NOT add any explanation.
-Do NOT add commentary.
-Do NOT say what you changed.
-Do NOT add introductory sentences.
 
 Draft:
 {draft}
@@ -36,6 +28,5 @@ Draft:
         response = llm.invoke(prompt)
         return normalize_llm_output(response.content)
 
-    except Exception as e:
-        print(f"[Reviewer Error] {e}")
+    except Exception:
         return draft

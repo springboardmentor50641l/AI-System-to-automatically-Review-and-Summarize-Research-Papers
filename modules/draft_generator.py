@@ -1,19 +1,14 @@
-
-# code with llm
 from llm import llm
 from utils.llm_utils import normalize_llm_output
-import datetime
 
 
-def generate_draft(analysis, topic: str, mode: str) -> str:
+def generate_draft(analysis: str) -> str:
 
     if isinstance(analysis, list):
         analysis = "\n\n".join(str(x) for x in analysis)
 
     if not analysis or not str(analysis).strip():
-        return "Draft generation failed: Empty analysis."
-
-    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        return ""
 
     prompt = f"""
 You are an academic research writer.
@@ -26,36 +21,16 @@ Generate a structured research review with:
 4. Key Insights
 5. Limitations
 
+Return ONLY the structured report.
+Do NOT add any extra commentary.
+
 Analysis:
 {analysis}
 """
 
     try:
         response = llm.invoke(prompt)
+        return normalize_llm_output(response.content)
 
-        clean_text = normalize_llm_output(response.content)
-
-        final_output = f"""
-==================================================
-AI Research Paper Review & Summarization System
-==================================================
-
-RESEARCH TOPIC : {topic}
-INPUT MODE     : {mode.capitalize()}
-GENERATED ON   : {timestamp}
-
---------------------------------------------------
-
-{clean_text}
-
---------------------------------------------------
-End of Report
---------------------------------------------------
-"""
-
-        return final_output.strip()
-
-    except Exception as e:
-        return f"Draft generation error: {str(e)}"
-
-
+    except Exception:
+        return ""
