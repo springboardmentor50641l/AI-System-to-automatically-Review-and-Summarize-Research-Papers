@@ -60,8 +60,7 @@ REFERENCES
 
     return full_text
 
-def build_final_literature_review(comparison_id: str, metadata_list: list):
-
+def build_final_literature_review(comparison_id, metadata_list, version=1):
     """
     Loads comparison JSON and generates full draft.
     Saves final_review_<comparison_id>.txt
@@ -76,12 +75,15 @@ def build_final_literature_review(comparison_id: str, metadata_list: list):
 
     # 3️ Save in same folder as comparison
     base_path = Path("text_extraction") / "output" / "review_comparison"
-    output_file = base_path / f"final_review_{comparison_id}_v1.txt"
+    output_file = base_path / f"final_review_{comparison_id}_v{version}.txt"
 
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(final_text)
 
-    print(f"\n  Final review saved at: {output_file}")
+    print(f"\nFinal review saved at: {output_file}")
+
+    return final_text
+
 
     return final_text
 if __name__ == "__main__":

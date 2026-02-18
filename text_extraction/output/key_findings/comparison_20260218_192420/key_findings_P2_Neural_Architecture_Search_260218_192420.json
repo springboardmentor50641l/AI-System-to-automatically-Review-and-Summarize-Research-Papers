@@ -1,0 +1,58 @@
+{
+  "key_findings": [
+    {
+      "claim": "A differentiable neural architecture search (DNAS) framework is proposed to optimize ConvNet architectures using gradient-based methods.",
+      "evidence": "We propose a differentiable neural architecture search (DNAS) framework that uses gradient-based methods to optimize ConvNet architectures, avoiding enumerating and training individual architectures separately as in previous methods. It optimizes over a layer-wise search space and represents the search space by a stochastic super net. The actual target device latency of blocks is used to compute the loss for super net training.",
+      "source_section": "abstract, introduction, methodology, conclusion",
+      "limitations": ""
+    },
+    {
+      "claim": "FBNets, a family of models discovered by DNAS, surpass state-of-the-art models designed both manually and automatically, demonstrating superior accuracy and efficiency.",
+      "evidence": "FBNets (Facebook-Berkeley-Nets), a family of models discovered by DNAS surpass state-of-the-art models both designed manually and generated automatically. FBNet-A achieves 73.0% accuracy, better than 1.0-MobileNetV2 (+1.0%), 1.5-ShuffleNet V2 (+0.4%), and CondenseNet (+2%), and are on par with DARTS and MnasNet-65. Regarding latency, FBNet-A is 1.9 ms (relative 9.6%), 2.2 ms (relative 11%), and 8.6 ms (relative 43%) better than the MobileNetV2, ShuffleNetV2, and CondenseNet counterparts. FBNet-A’s FLOP count is only 249M, 50M smaller (relative 20%) than MobileNetV2 and ShuffleNetV2, 20M (relative 8%) smaller than MnasNet, and 2.4X smaller than DARTS. FBNet-B achieves comparable accuracy with 1.3-MobileNetV2, but the latency is 1.46x lower, and the FLOP count is 1.73x smaller... Compared with MnasNet, FBNet-B’s accuracy is 0.1% higher, latency is 0.6ms lower, and FLOP count is 22M (relative 7%) smaller. FBNet-C achieves 74.9% accuracy, same as 2.0-ShuffleNetV2 and better than all others. The latency is 28.1 ms, 1.33x and 1.19x faster than MobileNet and ShuffleNet. The FLOP count is 1.56x, 1.58x, and 1.03x smaller than MobileNet, ShuffleNet, and MnasNet-92.",
+      "source_section": "abstract, introduction, results, conclusion",
+      "limitations": ""
+    },
+    {
+      "claim": "FBNet-B achieves 74.1% top-1 accuracy on ImageNet with 295M FLOPs and 23.1 ms latency on a Samsung S8 phone, outperforming MobileNetV2-1.3 and MnasNet.",
+      "evidence": "FBNet-B achieves 74.1% top-1 accuracy on ImageNet with 295M FLOPs and 23.1 ms latency on a Samsung S8 phone, 2.4x smaller and 1.5x faster than MobileNetV2-1.3[17] with similar accuracy. Despite higher accuracy and lower latency than MnasNet[20], we estimate FBNet-B’s search cost is 420x smaller than MnasNet’s, at only 216 GPU-hours.",
+      "source_section": "abstract, introduction, results, conclusion",
+      "limitations": ""
+    },
+    {
+      "claim": "DNAS significantly reduces the computational cost of neural architecture search compared to previous RL-based methods.",
+      "evidence": "We estimate FBNet-B’s search cost is 420x smaller than MnasNet’s, at only 216 GPU-hours. The computational cost is only 216 GPU hours, or 421x faster than MnasNet, 222x faster than NAS, 27.8x faster than PNAS, and 1.33x faster than DARTS.",
+      "source_section": "abstract, introduction, results, conclusion",
+      "limitations": "The search cost for MnasNet is estimated according to the description in [20]. The search cost for PNAS is estimated based on the claim from [11] that PNAS [11] is 8x lower than NAS[31]."
+    },
+    {
+      "claim": "FBNets searched for different input resolutions and channel sizes achieve 1.5% to 6.4% higher accuracy than MobileNetV2 models with similar latency.",
+      "evidence": "Searched for different resolutions and channel sizes, FBNets achieve 1.5% to 6.4% higher accuracy than MobileNetV2. Compared with MobileNetV2 under the same input size and channel size scaling, our searched models achieve 1.5% to 6.4% better accuracy with similar latency.",
+      "source_section": "abstract, introduction, results, conclusion",
+      "limitations": ""
+    },
+    {
+      "claim": "The smallest FBNet model (FBNet-96-0.35-1) achieves 50.2% accuracy and 2.9 ms latency (345 frames per second) on a Samsung S8.",
+      "evidence": "The smallest FBNet achieves 50.2% accuracy and 2.9 ms latency (345 frames per second) on a Samsung S8. Especially the FBNet-96-0.35-1 model achieves 50.2% (+4.7%) accuracy and 2.9 ms latency (345 frames per second) on a Samsung Galaxy S8.",
+      "source_section": "abstract, introduction, results, conclusion",
+      "limitations": ""
+    },
+    {
+      "claim": "DNAS can automatically optimize and generate different ConvNets for different target devices, demonstrating the necessity of device-specific redesign.",
+      "evidence": "Over a Samsung-optimized FBNet, the iPhone-X-optimized model achieves a 1.4x speedup on an iPhone X. This demonstrates the necessity of re-designing ConvNets for different target devices. FBNet-iphoneX model’s latency is 19.84 ms on its target device, but when deployed to a Samsung S8, its latency increases to 23.33 ms. On the other hand, FBNet-S8 reaches a latency of 22.12 ms on a Samsung S8, but when deployed to an iPhone X, the latency hikes to 27.53 ms, 7.69 ms (relatively 39%) higher than FBNet-iPhone X. This shows DNAS can automatically optimize the operator adoptions and generate different ConvNets optimized for different devices.",
+      "source_section": "abstract, introduction, results, conclusion",
+      "limitations": ""
+    },
+    {
+      "claim": "DNAS utilizes a layer-wise search space and a latency-aware loss function for optimization.",
+      "evidence": "DNAS allows us to explore a layer-wise search space where we can choose a different block for each layer of the network. The loss used to train the stochastic super net consists of both the cross-entropy loss that leads to better accuracy and the latency loss that penalizes the network’s latency on a target device. In this work, we construct a layer-wise search space with a fixed macro-architecture, and each layer can choose a different block. The loss function used in (1) has to reflect not only the accuracy of a given architecture but also the latency on the target hardware.",
+      "source_section": "introduction, methodology, conclusion",
+      "limitations": ""
+    },
+    {
+      "claim": "DNAS employs a latency lookup table model to estimate overall network latency, making the latency term differentiable with respect to layer-wise block choices.",
+      "evidence": "To estimate the latency of an architecture, we measure the latency of each operator in the search space and use a lookup table model to compute the overall latency by adding up the latency of each operator. More importantly, it makes the latency differentiable with respect to layer-wise block choices. Using the lookup table model makes the latency term in the loss function (2) differentiable with respect to layer-wise block choices, and this allows us to use gradient-based optimization to solve problem (1).",
+      "source_section": "introduction, methodology",
+      "limitations": "This assumes that on the target processor, the runtime of each operator is independent of other operators."
+    }
+  ]
+}

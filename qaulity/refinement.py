@@ -74,14 +74,24 @@ def refine_review_with_feedback(original_review: str, critique: dict) -> str:
 
     Use ONLY the provided critique feedback to revise the review.
 
-    Rules:
-    - Preserve section structure
-    - Do NOT fabricate references
-    - Do NOT remove valid content
-    - Address all weaknesses
-    - Integrate missing elements
-    - Deepen analytical discussion where needed
-    - Improve coherence and transitions
+    CRITICAL INSTRUCTIONS:
+    - Preserve the exact section structure and headings.
+    - Do NOT modify, rewrite, reformat, add, remove, or correct anything inside the REFERENCES section.
+    - The REFERENCES section must remain EXACTLY as provided.
+    - If critique comments relate to references, ignore them.
+    - Do NOT fabricate or infer missing citation details.
+    - Do NOT add new references.
+    - Revise ONLY the main body of the review (from ABSTRACT through CONCLUSION).
+    - Keep all existing in-text citations unchanged.
+    - Do NOT introduce new citations.
+    - Improve clarity, analytical depth, coherence, and transitions only where critique explicitly requires it.
+
+    Additional Rules:
+    - Do NOT remove valid content.
+    - Address all weaknesses mentioned in the critique.
+    - Integrate missing conceptual elements into existing sections (do not create new sections).
+    - Deepen comparative analysis where needed.
+    - Maintain formal academic tone.
 
     -------------------
     ORIGINAL REVIEW:
@@ -104,6 +114,8 @@ def refine_review_with_feedback(original_review: str, critique: dict) -> str:
     {revision_suggestions}
 
     Return ONLY the fully revised literature review.
+    Do NOT output commentary or explanations.
+
     """
 
     response = llm.invoke([HumanMessage(content=prompt)])
@@ -153,10 +165,10 @@ def run_review_refinement(comparison_id: str, version: int):
 
 def refine_once(comparison_id: str, current_version: int):
     """
-    Refines one version and returns new version number.
+    Refines one version and returns updated info for UI.
     """
 
-    # Step 1: refine current version -> produces next version
+    # Step 1: refine current version
     run_review_refinement(comparison_id, version=current_version)
 
     new_version = current_version + 1
@@ -164,7 +176,22 @@ def refine_once(comparison_id: str, current_version: int):
     # Step 2: evaluate the new version
     run_review_evaluation(comparison_id, version=new_version)
 
-    return new_version
+    return f"Refinement complete.\nNew Version: v{new_version}"
+
+from qaulity.review import load_final_review
+
+def refine_once(comparison_id: str, current_version: int):
+
+    run_review_refinement(comparison_id, version=current_version)
+
+    new_version = current_version + 1
+
+    run_review_evaluation(comparison_id, version=new_version)
+
+    refined_text = load_final_review(comparison_id, version=new_version)
+
+    return refined_text, new_version
+
 
 # Standalone test execution
 
