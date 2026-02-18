@@ -1,28 +1,69 @@
 import datetime
+from langgraph.graph import StateGraph
+from graph.state import WorkflowState
+
 from modules.analyzer import analyze_papers
 from modules.draft_generator import generate_draft
 from modules.reviewer import review_paper
 
 
+# ---------------------------
+# NODE DEFINITIONS
+# ---------------------------
+
+def analyze_node(state: WorkflowState) -> WorkflowState:
+    state.analysis = analyze_papers(state.texts)
+    return state
+
+
+def draft_node(state: WorkflowState) -> WorkflowState:
+    state.draft = generate_draft(state.analysis)
+    return state
+
+
+def review_node(state: WorkflowState) -> WorkflowState:
+    state.reviewed = review_paper(state.draft)
+    return state
+
+
+# ---------------------------
+# BUILD LANGGRAPH DAG
+# ---------------------------
+
+builder = StateGraph(WorkflowState)
+
+builder.add_node("analyze", analyze_node)
+builder.add_node("draft", draft_node)
+builder.add_node("review", review_node)
+
+builder.set_entry_point("analyze")
+
+builder.add_edge("analyze", "draft")
+builder.add_edge("draft", "review")
+
+graph = builder.compile()
+
+
+# ---------------------------
+# WORKFLOW EXECUTION
+# ---------------------------
+
 def run_workflow(texts, topic, mode):
     """
-    Executes complete AI review workflow.
+    Executes real LangGraph DAG workflow.
     """
 
     try:
-        # Step 1: Analyze
-        analysis = analyze_papers(texts)
+        # Initialize state
+        state = WorkflowState(
+            topic=topic,
+            mode=mode,
+            texts=texts
+        )
 
-        # Step 2: Draft
-        draft = generate_draft(analysis)
+        # Run graph (returns dict)
+        final_state = graph.invoke(state.model_dump())
 
-        # Step 3: Review
-        reviewed = review_paper(draft)
-
-        if isinstance(reviewed, list):
-            reviewed = "\n\n".join(str(x) for x in reviewed)
-
-        # Step 4: Add Header AFTER review
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         header = f"""
@@ -30,16 +71,26 @@ def run_workflow(texts, topic, mode):
 AI Research Paper Review & Summarization System
 ==================================================
 
-RESEARCH TOPIC : {topic}
-INPUT MODE     : {mode.capitalize()}
+RESEARCH TOPIC : {final_state['topic']}
+INPUT MODE     : {final_state['mode'].capitalize()}
 GENERATED ON   : {timestamp}
 
 --------------------------------------------------
 """
 
-        final_output = header + "\n" + reviewed.strip() + "\n\n--------------------------------------------------\nEnd of Report\n--------------------------------------------------"
+        reviewed_text = final_state.get("reviewed", "")
+
+        final_output = (
+            header
+            + "\n"
+            + reviewed_text.strip()
+            + "\n\n--------------------------------------------------\n"
+            + "End of Report\n"
+            + "--------------------------------------------------"
+        )
 
         return final_output
 
     except Exception as e:
         return f"Workflow execution error: {str(e)}"
+

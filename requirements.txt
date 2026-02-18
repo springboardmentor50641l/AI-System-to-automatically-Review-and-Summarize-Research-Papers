@@ -22,3 +22,5 @@ google-generativeai
 grandalf
 
 reportlab
+pydantic
+

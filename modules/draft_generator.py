@@ -23,6 +23,8 @@ Generate a structured research review with:
 
 Return ONLY the structured report.
 Do NOT add any extra commentary.
+Do not use markdown symbols (*, #).
+
 
 Analysis:
 {analysis}
