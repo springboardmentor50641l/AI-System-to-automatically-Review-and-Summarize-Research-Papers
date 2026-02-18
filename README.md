@@ -23,6 +23,7 @@ The system performs:
 
 ## Project Structure
 
+```text
 AI-System/
 │
 ├── app.py
@@ -30,37 +31,39 @@ AI-System/
 ├── .env
 │
 ├── scripts/
-│ ├── semantic_search.py
-│ └── download_papers.py
+│   ├── semantic_search.py
+│   └── download_papers.py
 │
 ├── pipeline/
-│ ├── graph.py
-│ ├── run_graph.py
-│ ├── state.py
-│ │
-│ ├── core/
-│ │ ├── extract.py
-│ │ ├── normalize.py
-│ │ └── section.py
-│ │
-│ ├── nodes/
-│ │ ├── extract_node.py
-│ │ ├── normalize_node.py
-│ │ └── section_node.py
-│ │
-│ └── analysis/
-│ ├── paper_analysis.py
-│ ├── run_analysis.py
-│ ├── structured_writer.py
-│ └── review_module.py
+│   ├── graph.py
+│   ├── run_graph.py
+│   ├── state.py
+│   │
+│   ├── core/
+│   │   ├── extract.py
+│   │   ├── normalize.py
+│   │   └── section.py
+│   │
+│   ├── nodes/
+│   │   ├── extract_node.py
+│   │   ├── normalize_node.py
+│   │   └── section_node.py
+│   │
+│   └── analysis/
+│       ├── paper_analysis.py
+│       ├── run_analysis.py
+│       ├── structured_writer.py
+│       └── review_module.py
 │
 ├── data/
-│ ├── raw_papers/
-│ ├── sections/
-│ ├── metadata/
-│ └── analysis_outputs/
+│   ├── raw_papers/
+│   ├── sections/
+│   ├── metadata/
+│   └── analysis_outputs/
 │
 └── docs/
+```
+
 
 
 Note: The `data/` directory stores generated outputs and may not be fully tracked in Git.
@@ -97,9 +100,7 @@ SEMANTIC_SCHOLAR_API_KEY=your_semantic_scholar_api_key
 ## Running the Application
 
 Start the Gradio interface:
-
 python app.py
-
 
 Open the local URL shown in the terminal.
 
@@ -131,7 +132,6 @@ This prevents duplicate processing and unnecessary API calls.
 ## Output
 
 Generated outputs are stored in:
-
 data/analysis_outputs/
 
 
