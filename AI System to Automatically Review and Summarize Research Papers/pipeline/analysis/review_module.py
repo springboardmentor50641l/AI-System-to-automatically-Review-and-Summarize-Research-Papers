@@ -138,7 +138,6 @@ Original Review:
 
     return revised
 
-
 # ---------------- CLI MODE ----------------
 def main():
     topic = input("Enter topic for review cycle: ").strip()

@@ -8,13 +8,23 @@ os.makedirs(PDF_DIR, exist_ok=True)
 
 #--------------DOWNLOAD FUNCTION--------------
 def download_pdf(pdf_url, filename):
-    response = requests.get(pdf_url)
+    try:
+        headers = {
+            "User-Agent": "Mozilla/5.0"
+        }
 
-    if response.status_code == 200:
-        with open(filename, "wb") as f:
-            f.write(response.content)
-        return True
-    return False
+        response = requests.get(pdf_url, headers=headers, timeout=15)
+
+        if response.status_code == 200:
+            with open(filename, "wb") as f:
+                f.write(response.content)
+            return True
+        else:
+            return False
+
+    except requests.exceptions.RequestException:
+        return False
+
 
 #--------------PAPER DOWNLOAD----------------
 def download_selected_papers(papers):
