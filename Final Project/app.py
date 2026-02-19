@@ -188,6 +188,7 @@ def get_text_from_path(filepath):
 
 # ---------------- ROUTES ----------------
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -195,6 +196,17 @@ def index():
 @app.route("/analysis")
 def analysis():
     return render_template("analysis.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+
+# ---------------- SIGNUP PAGE ----------------
+@app.route("/signup")
+def signup():
+    return render_template("login.html")  
+    
 
 @app.route("/query")
 def query():
