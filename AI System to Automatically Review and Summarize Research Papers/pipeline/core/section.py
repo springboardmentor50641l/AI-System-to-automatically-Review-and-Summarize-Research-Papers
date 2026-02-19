@@ -44,18 +44,22 @@ Research Paper Text:
 
 # -------- SAFE JSON EXTRACTION --------
 def _extract_json(text: str) -> dict:
-    """
-    Safely extract a JSON object from an LLM response.
-    Handles extra text or Markdown formatting.
-    """
+    if not text or not text.strip():
+        raise ValueError("LLM returned empty response during sectioning.")
+
     start = text.find("{")
     end = text.rfind("}") + 1
 
     if start == -1 or end == -1:
-        raise ValueError("No JSON object found in LLM response")
+        raise ValueError("No valid JSON found in LLM response.")
 
     json_text = text[start:end]
-    return json.loads(json_text)
+
+    try:
+        return json.loads(json_text)
+    except json.JSONDecodeError:
+        raise ValueError("Invalid JSON returned by LLM during sectioning.")
+
 
 
 def semantic_sectioning(text: str, api_key: str) -> dict:

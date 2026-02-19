@@ -37,9 +37,12 @@ def load_final_review(topic: str) -> str:
 # ---------------- CRITIQUE ----------------
 def generate_critique(
     topic: str,
-    progress_callback: Optional[Callable[[str], None]] = None
+    progress_callback: Optional[Callable[[str], None]] = None,
+    review_text: Optional[str] = None
 ) -> str:
-    review_text = load_final_review(topic)
+
+    if review_text is None:
+        review_text = load_final_review(topic)
 
     if progress_callback:
         progress_callback("Generating critique")
@@ -84,16 +87,20 @@ Review:
 # ---------------- REVISION ----------------
 def generate_revision(
     topic: str,
-    progress_callback: Optional[Callable[[str], None]] = None
+    progress_callback: Optional[Callable[[str], None]] = None,
+    review_text: Optional[str] = None,
+    critique_text: Optional[str] = None
 ) -> str:
-    review_text = load_final_review(topic)
 
-    critique_file = ANALYSIS_DIR / f"{topic.replace(' ', '_')}_critique.txt"
+    if review_text is None:
+        review_text = load_final_review(topic)
 
-    if critique_file.exists():
-        critique_text = critique_file.read_text(encoding="utf-8")
-    else:
-        critique_text = generate_critique(topic)
+    if critique_text is None:
+        critique_file = ANALYSIS_DIR / f"{topic.replace(' ', '_')}_critique.txt"
+        if critique_file.exists():
+            critique_text = critique_file.read_text(encoding="utf-8")
+        else:
+            critique_text = generate_critique(topic, review_text=review_text)
 
     if progress_callback:
         progress_callback("Generating revised draft")

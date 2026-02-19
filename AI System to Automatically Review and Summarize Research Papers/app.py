@@ -73,6 +73,16 @@ def sections_exist_for_topic(topic: str):
 def run_full_pipeline(topic):
     logs = []
 
+    def graph_cb(msg):
+        logs.append(msg)
+
+    def analysis_cb(msg):
+        logs.append(msg)
+
+    def structured_cb(msg):
+        logs.append(msg)
+
+
     try:
         if not topic or not topic.strip():
             yield "Enter a topic.", ""
@@ -98,8 +108,15 @@ def run_full_pipeline(topic):
             logs.append("Downloading PDFs...")
             yield "  \n".join(logs), ""
 
-            download_selected_papers(papers)
-            save_metadata(papers)
+            successful_papers = download_selected_papers(papers)
+
+            if not successful_papers:
+                logs.append("No PDFs downloaded. Stopping pipeline.")
+                yield "  \n".join(logs), ""
+                return
+
+            save_metadata(successful_papers)
+
 
             logs.append("Download complete.")
             yield "  \n".join(logs), ""
@@ -110,14 +127,16 @@ def run_full_pipeline(topic):
             logs.append("Skipping LangGraph processing.")
         else:
             logs.append("Running LangGraph sectioning...")
-            yield "\n".join(logs), ""
+            yield "  \n".join(logs), ""
 
-            def graph_cb(msg):
-                logs.append(msg)
-
-            run_graph_for_topic(topic, progress_callback=graph_cb)
-
+            try:
+                run_graph_for_topic(topic, progress_callback=graph_cb)
+            except Exception as e:
+                logs.append(f"Graph stage failed: {str(e)}")
+                yield "  \n".join(logs), ""
+                return
         yield "  \n".join(logs), ""
+
 
 
         # -------- ANALYSIS --------
@@ -127,10 +146,6 @@ def run_full_pipeline(topic):
         else:
             logs.append("Running analysis stage...")
             yield "  \n".join(logs), ""
-
-
-            def analysis_cb(msg):
-                logs.append(msg)
 
             run_analysis_for_topic(topic, progress_callback=analysis_cb)
 
@@ -147,10 +162,6 @@ def run_full_pipeline(topic):
             logs.append("Generating structured review...")
             yield "  \n".join(logs), ""
 
-
-            def structured_cb(msg):
-                logs.append(msg)
-
             final_review = generate_structured_review(
                 topic,
                 progress_callback=structured_cb
@@ -164,19 +175,28 @@ def run_full_pipeline(topic):
 
 
 # -------- CRITIQUE --------
-def critique_pipeline(topic):
+def critique_pipeline(topic, review_text):
     try:
-        return generate_critique(topic)
+        return generate_critique(
+            topic,
+            review_text=review_text
+        )
     except Exception as e:
         return f"Error:\n{str(e)}"
+
 
 
 # -------- REVISION --------
-def revision_pipeline(topic):
+def revision_pipeline(topic, review_text, critique_text):
     try:
-        return generate_revision(topic)
+        return generate_revision(
+            topic,
+            review_text=review_text,
+            critique_text=critique_text
+        )
     except Exception as e:
         return f"Error:\n{str(e)}"
+
 
 
 # -------- CSS --------
@@ -292,16 +312,17 @@ with gr.Blocks() as app:
     )
 
     critique_button.click(
-        critique_pipeline,
-        inputs=topic_input,
-        outputs=critique_output
+    critique_pipeline,
+    inputs=[topic_input, output_box],
+    outputs=critique_output
     )
 
     revision_button.click(
-        revision_pipeline,
-        inputs=topic_input,
-        outputs=revision_output
+    revision_pipeline,
+    inputs=[topic_input, output_box, critique_output],
+    outputs=revision_output
     )
+
 
 
 app.launch(css=custom_css)

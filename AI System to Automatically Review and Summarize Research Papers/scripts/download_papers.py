@@ -18,6 +18,8 @@ def download_pdf(pdf_url, filename):
 
 #--------------PAPER DOWNLOAD----------------
 def download_selected_papers(papers):
+    successful_papers = []
+
     for idx, paper in enumerate(papers, start=1):
         pdf_info = paper.get("openAccessPdf")
 
@@ -38,10 +40,13 @@ def download_selected_papers(papers):
 
         if success:
             print(f"Saved: {filename}")
+            successful_papers.append(paper)
         else:
             print(f"Failed to download paper {idx}")
 
         time.sleep(1)
+
+    return successful_papers
 
 #--------------METADATA--------------
 METADATA_DIR = "data/metadata"
