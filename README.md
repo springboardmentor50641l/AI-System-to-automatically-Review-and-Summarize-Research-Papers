@@ -56,7 +56,8 @@ Final Project/
 ├── templates/
 │   ├── index.html             # Home & Upload
 │   ├── analysis.html          # Results visualization
-│   └── query.html             # Chat interface
+│   ├── query.html             # Chat interface
+|   └── login.html             # Login and Signup
 │
 └── static/
     ├── css/style.css
