@@ -1,89 +1,42 @@
 # AI Research Reviewer
 
-An end-to-end AI system that automatically retrieves, analyses, summarises, and generates structured review drafts from research papers.
+An end to end AI powered system that automates research paper discovery, analysis, and structured review generation.
 
-Developed as part of the Infosys Internship Program.
+Built during the Infosys Internship Program to simplify literature review workflows for students, researchers, and developers.
 
 ---
 
-## Overview
+## Project Vision
 
-This system automates literature review by:
+Manual literature reviews are time consuming and repetitive. This project demonstrates how modern AI and LLM pipelines can automate the entire research review lifecycle, from paper discovery to final draft generation.
 
-- Retrieving research papers using Semantic Scholar API
-- Downloading and extracting text from PDFsA
-- Normalizing and cleaning extracted content
-- Performing LLM based semantic sectioning
-- Conducting cross paper analysis
-- Generating structured review drafts
-- Displaying results using a Gradio interface
+The goal is to create a scalable research assistant that helps users quickly understand trends, compare findings, and produce structured review drafts.
+
+---
+
+## Key Capabilities
+
+- Automated research paper retrieval using Semantic Scholar  
+- Intelligent PDF download and text extraction  
+- Content cleaning and normalization pipeline  
+- LLM driven semantic section detection  
+- Cross paper comparative analysis  
+- Structured literature review draft generation  
+- Interactive Gradio based user interface  
+
+---
+
+## System Workflow
+
+1. User enters a research topic  
+2. System fetches relevant papers via Semantic Scholar API  
+3. PDFs are downloaded and parsed  
+4. Extracted text is cleaned and normalized  
+5. LLM performs semantic sectioning and understanding  
+6. Cross paper insights are generated  
+7. A structured review draft is produced  
+8. Results are displayed in an interactive UI  
 
 ---
 
 ## Project Structure
-
-Ai-Research-Reviewer/
-│
-├── Documents/
-├── data/
-├── modules/
-│   ├── paper_search.py
-│   ├── pdf_downloader.py
-│   ├── text_extractor.py
-│   ├── analyzer.py
-│   ├── draft_generator.py
-│   ├── reviewer.py
-│
-├── utils/
-├── app.py
-├── config.py
-└── requirements.txt
-
----
-
-## Tech Stack
-
-- Python
-- Semantic Scholar API
-- PyMuPDF
-- Google Gemini API
-- Gradio
-
----
-
-Create a virtual environment:
-
-python -m venv venv  
-venv\Scripts\activate  
-
-Install dependencies:
-
-pip install -r requirements.txt
-
----
-
-## Run the Application
-
-python app.py
-
-Open the generated local link to access the Gradio UI.
-
----
-
-## Key Features
-
-- Automated research paper retrieval
-- PDF text extraction and normalization
-- LLM based section detection
-- Cross paper comparative analysis
-- Structured review generation
-- Interactive UI
-
----
-
-### Author
-
-Kedar Pradip Gosavi  
-Infosys Internship Project
-
-
