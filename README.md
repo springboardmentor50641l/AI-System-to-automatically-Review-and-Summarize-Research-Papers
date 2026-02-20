@@ -1,185 +1,187 @@
-### Milestone 1 — Paper Collection & Dataset Preparation (Week 1–2)
+# AI System to Automatically Review and Summarize Research Papers
+**Infosys Springboard Internship Project**
+
+A production-ready, graph-based AI pipeline that automatically searches, downloads, analyzes, and synthesizes academic research papers into a structured literature review — powered by LangGraph, Gemini (or GPT), Semantic Scholar, and PyMuPDF.
 
 ---
 
-## 📌 Project Overview
+## Project Structure
 
-The **AI Research Paper Reviewer** is an automated system designed to support systematic literature reviews by simplifying the process of collecting and organizing academic research papers.
-
-This project automates the early research workflow — from topic-based paper search to dataset preparation — enabling faster and more structured review creation.
-
----
-
-## 🎯 Current Milestone: Week 1–2
-
-**Goal:**  
-Automate research paper discovery and prepare a clean dataset for further analysis.
-
----
-
-## ✅ Features Implemented
-
-- 🔍 Topic-based academic paper search  
-- 🌐 Integration with **Semantic Scholar API**  
-- 📄 Retrieval of paper metadata (title, authors, year, abstract)  
-- 📥 Automatic PDF download (when available)  
-- 🗂 Structured dataset generation in JSON format  
-- 📁 Clean and modular project structure  
-
----
-
-## 🧠 Workflow Implemented
-
-User Topic Input
-↓
-Semantic Scholar API Search
-↓
-Research Paper Metadata Collection
-↓
-Top-N Paper Selection
-↓
-PDF Download
-↓
-Dataset Preparation
-
-
----
-
-## 🧱 Project Structure
-
-AI-System-to-automatically-Review-and-Summarize-Research-Papers/
-│
-├── data/
-│ ├── papers/ # Downloaded research PDFs
-│ ├── metadata/
-│ │ └── papers_metadata.json # Research paper metadata
-│ └── dataset.json # Final prepared dataset
-│
-├── src/
-│ ├── init.py
-│ ├── config.py # API keys and settings
-│ ├── paper_search.py # Semantic Scholar search logic
-│ └── utils.py # Helper utility functions
-│
-├── .gitignore
+```
+research_review/
+├── app.py                  ← Gradio web UI (entry point)
+├── pipeline.py             ← LangGraph graph definition & run helpers
+├── state.py                ← PaperState TypedDict (shared state schema)
+├── papersearch.py          ← Milestone 1: Search & download nodes
+├── text_extraction.py      ← Milestone 2: Extract, normalize, section nodes
+├── paper_analyzer.py       ← Milestone 3: Key findings & cross-compare nodes
+├── draft_generator.py      ← Milestone 3-4: Writing, critique, revision nodes
+├── utils/
+│   ├── logger.py           ← Structured logger
+│   └── helpers.py          ← JSON parsing, text helpers, APA formatter
+├── downloads/              ← PDFs downloaded by the pipeline
 ├── requirements.txt
-└── README.md
-
-
----
-
-## ⚙️ Technology Stack
-
-- **Language:** Python 3.x  
-- **API:** Semantic Scholar API  
-- **Libraries:**
-  - requests
-  - json
-  - pathlib
-  - tqdm
-  - python-dotenv (optional)
+├── .env.example
+└── setup.sh
+```
 
 ---
 
-## 🔧 Setup Instructions
+## Quick Start
 
-### 1️⃣ Install Python 3.8+
+### Step 1: Clone / copy files
+```bash
+cd research_review
+```
 
-Check Python version:
+### Step 2: Automated setup
+```bash
+chmod +x setup.sh
+./setup.sh
+```
 
-python --version
+### Step 3: Configure API keys
+Edit `.env`:
+```dotenv
+GEMINI_API_KEY=your_gemini_api_key_here
+LLM_PROVIDER=gemini        # or "openai"
+OPENAI_API_KEY=            # optional
+SEMANTIC_SCHOLAR_API_KEY=  # optional (raises rate limit)
+MAX_PAPERS=3
+DOWNLOAD_DIR=downloads
+```
 
+Get your **Gemini API key** free at: https://aistudio.google.com/app/apikey
 
----
-
-### 2️⃣ Clone the Repository
-
-git clone https://github.com/springboardmentor50641l/AI-System-to-automatically-Review-and-Summarize-Research-Papers.git
-cd AI-System-to-automatically-Review-and-Summarize-Research-Papers
-
-
----
-
-### 3️⃣ Create Virtual Environment (Recommended)
-
-python -m venv venv
-
-
-Activate environment:
-
-**Windows**
-venv\Scripts\activate
-
-
-**macOS / Linux**
+### Step 4: Run
+```bash
 source venv/bin/activate
+python app.py
+```
 
+Open **http://localhost:7860** in your browser.
 
 ---
 
-### 4️⃣ Install Dependencies
+## Manual Installation (if setup.sh fails)
 
+```bash
+python3 -m venv venv
+source venv/bin/activate          # Windows: venv\Scripts\activate
+pip install --upgrade pip
 pip install -r requirements.txt
-
+cp .env.example .env
+# Edit .env
+python app.py
+```
 
 ---
 
-### 5️⃣ Configure API Key
+## Pipeline Architecture (LangGraph)
 
-Edit the file:
+```
+__start__
+  │
+  ├── process_input         ← Validate topic
+  ├── planner               ← Generate search queries (LLM)
+  ├── search_articles       ← Query Semantic Scholar API
+  ├── article_decisions     ← Rank & select top papers
+  ├── download_articles     ← Download open-access PDFs
+  │                                        ↑ MILESTONE 1
+  ├── extract_text          ← PyMuPDF text extraction
+  ├── normalize_text        ← Whitespace / artifact cleanup
+  ├── semantic_section      ← LLM-based sectioning
+  ├── validate_sections     ← Structural validation
+  ├── store_sections        ← Prepare for analysis
+  │                                        ↑ MILESTONE 2
+  ├── paper_analyzer        ← Extract key findings per paper
+  ├── cross_compare         ← Cross-paper comparison (LLM)
+  ├── write_abstract        ← 100-word abstract
+  ├── write_introduction    ← Introduction section
+  ├── write_methods         ← Methods comparison
+  ├── write_results         ← Results synthesis
+  ├── write_conclusion      ← Conclusion
+  ├── write_references      ← APA 7th references
+  ├── aggregate_paper       ← Assemble full draft
+  │                                        ↑ MILESTONE 3
+  ├── critique_paper        ← Quality review (LLM)
+  ├── [conditional]────────┬── revise_paper (loop ≤2×) ─┐
+  │                        └── final_draft               │
+  │                              ↑ MILESTONE 4           │
+  └── __end__  ←────────────────────────────────────────┘
+```
 
-src/config.py
+---
 
+## UI Controls
 
-Add your Semantic Scholar API key:
+| Button | Action |
+|--------|--------|
+| 🔍 **Search Papers** | Search Semantic Scholar, download PDFs (Milestone 1) |
+| ✍️ **Generate Draft** | Run full analysis + write all sections (Milestones 2–4) |
+| 🔄 **Critique / Revise** | Re-run critique and apply one more revision pass |
 
-```python
-SEMANTIC_SCHOLAR_API_KEY = "your_api_key_here"
-⚠️ Do not upload API keys to GitHub.
+---
 
-▶️ How to Run
-python src/paper_search.py
-📤 Generated Outputs
-File	Description
-papers_metadata.json	Metadata of collected papers
-dataset.json	Structured dataset for analysis
-/papers/	Downloaded research PDFs
-📊 Sample Dataset Format
-{
-  "paper_id": "123456",
-  "title": "Artificial Intelligence in Healthcare",
-  "authors": ["Author A", "Author B"],
-  "year": 2023,
-  "abstract": "...",
-  "pdf_url": "...",
-  "local_pdf_path": "data/papers/ai_healthcare.pdf"
-}
-✅ Milestone 1 Achievements
-✔ Environment setup completed
-✔ Semantic Scholar API integrated
-✔ Automated research paper search
-✔ PDF download pipeline implemented
-✔ Dataset generation completed
-✔ Code structured for scalability
+## Output Sections
 
-🔜 Upcoming Milestone (Week 3–4)
-PDF text extraction
+- **Abstract** — 100-word structured abstract
+- **Methods Comparison** — Comparative analysis of methodologies
+- **Results Synthesis** — Integrated findings across papers
+- **APA References** — Properly formatted 7th edition references
+- **Critique** — Quality score and revision notes
+- **Final Draft** — Complete assembled literature review
 
-Section-wise content segmentation
+---
 
-Key finding identification
+## Technology Stack
 
-Cross-paper comparison module
+| Component | Technology |
+|-----------|-----------|
+| Language | Python 3.10+ |
+| UI | Gradio 4.x |
+| Graph pipeline | LangGraph 0.2+ |
+| LLM integration | LangChain + Gemini 1.5 Pro / GPT-4o-mini |
+| Paper search | Semantic Scholar Graph API |
+| PDF parsing | PyMuPDF (fitz) |
+| State schema | Pydantic / TypedDict |
+| Retry logic | Tenacity |
 
-👩‍🏫 Internship Context
-This project is developed as part of the
-Infosys Springboard Internship Program
-under guided milestone-based evaluation.
+---
 
-📜 License
-For academic and educational use only.
+## Example Output Flow
 
-⭐ Milestone 1 successfully completed.
+```
+Topic: "Vision Transformers for medical image segmentation"
 
+Milestone 1:
+  ✅ Queries: ["vision transformer medical segmentation", ...]
+  ✅ Found 18 candidates → Selected 3 open-access papers
+  ✅ Downloaded: abc123.pdf, def456.pdf, ghi789.pdf
 
+Milestone 2:
+  ✅ Extracted ~12,000 chars per paper
+  ✅ Semantic sections identified: abstract, intro, methods, results, conclusion
 
+Milestone 3:
+  ✅ Key findings extracted per paper
+  ✅ Cross-comparison: 450 words
+  ✅ Abstract, Intro, Methods, Results, Conclusion, References written
+
+Milestone 4:
+  ✅ Critique: Overall Quality: Good | Coherence: 7/10
+  ✅ Revision applied
+  ✅ Final draft ready (2,800 words)
+```
+
+---
+
+## Troubleshooting
+
+| Problem | Fix |
+|---------|-----|
+| No PDFs downloaded | The topic may have few open-access papers. Try a broader topic. |
+| `GEMINI_API_KEY` error | Ensure .env is present and key is valid |
+| Rate limit from Semantic Scholar | Add `SEMANTIC_SCHOLAR_API_KEY` to .env |
+| LangGraph import error | `pip install langgraph --upgrade` |
+| Blank sections | LLM sectioning failed; check API key and network |

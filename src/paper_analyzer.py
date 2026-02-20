@@ -1,426 +1,440 @@
+#!/usr/bin/env python3
 """
-paper_analyzer.py - SIMPLIFIED WORKING VERSION
-Milestone 2: Paper Analysis Module
-Analyzes extracted text and identifies key findings
+Paper Analyzer Module
+Milestone 2: Performs semantic sectioning and cross-paper analysis.
+UPDATED: Uses new google.genai package with correct model names.
 """
 
-import json
-import re
-import nltk
-from pathlib import Path
-from datetime import datetime
-from collections import Counter
-import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 import sys
-import os
+import json
+import time
+from pathlib import Path
+from typing import List, Dict, Any, Optional
+from google import genai  # NEW: Import from google.genai
+from google.genai import types  # NEW: Import types for configuration
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
+from loguru import logger
 
-# Setup paths
-current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.dirname(current_dir)
-if project_root not in sys.path:
-    sys.path.insert(0, project_root)
+# Local imports
+from config import (
+    GEMINI_API_KEY, GEMINI_MODEL, GEMINI_TEMPERATURE,
+    EXTRACTED_DIR, ANALYSIS_DIR, SECTION_ONTOLOGY,
+    SECTIONING_PROMPT, ANALYSIS_PROMPT, COMPARISON_PROMPT,
+    AVAILABLE_MODELS
+)
+from utils import (
+    setup_logging, safe_json_loads, chunk_text, count_tokens,
+    format_progress_message
+)
+
+# Setup logging
+logger = setup_logging()
+
+# Configure Gemini with new client
+if not GEMINI_API_KEY:
+    logger.error("❌ GEMINI_API_KEY not set. Please check your .env file.")
+    logger.error("Get your API key from: https://makersuite.google.com/app/apikey")
+    sys.exit(1)
 
 try:
-    from src.config import Config
-    from src.utils import clean_text_for_display
-except ImportError as e:
-    print(f"❌ Import error: {e}")
-    print("Trying alternative import...")
-    import sys
-    sys.path.insert(0, str(Path(__file__).parent.parent))
-    from src.config import Config
-    from src.utils import clean_text_for_display
+    # NEW: Initialize the new client
+    client = genai.Client(api_key=GEMINI_API_KEY)
+    logger.info(f"✅ Gemini client initialized successfully")
+except Exception as e:
+    logger.error(f"❌ Failed to initialize Gemini client: {e}")
+    sys.exit(1)
 
+class AnalysisError(Exception):
+    """Custom exception for analysis errors."""
+    pass
 
 class PaperAnalyzer:
-    """Analyzes research papers for key findings and patterns"""
+    """Handles semantic analysis of research papers using new Gemini API."""
     
     def __init__(self):
-        """Initialize analyzer"""
-        self.analysis_dir = Config.ANALYSIS_DIR
-        self.analysis_dir.mkdir(exist_ok=True)
+        self.client = client
+        # Use the correct model name from config
+        self.model = GEMINI_MODEL
+        logger.info(f"Using Gemini model: {self.model}")
         
-        # Setup NLTK
-        try:
-            nltk.data.find("tokenizers/punkt")
-            nltk.data.find("corpora/stopwords")
-        except:
-            print("📥 Downloading NLTK data...")
-            nltk.download("punkt", quiet=True)
-            nltk.download("stopwords", quiet=True)
-        
-        # Academic stopwords (common words to ignore)
-        self.stop_words = set(nltk.corpus.stopwords.words('english'))
-        academic_stopwords = {'paper', 'study', 'research', 'result', 'method', 'approach', 
-                             'propose', 'proposed', 'show', 'shown', 'use', 'using', 'used',
-                             'figure', 'table', 'section', 'chapter', 'example', 'et', 'al',
-                             'also', 'however', 'therefore', 'thus', 'hence', 'furthermore'}
-        self.stop_words.update(academic_stopwords)
+        # Available models from debug output
+        self.model_fallbacks = AVAILABLE_MODELS
     
-    def load_extracted_papers(self):
-        """Load papers from extracted text directory"""
-        extracted_dir = Config.EXTRACTED_TEXT_DIR
-        if not extracted_dir.exists():
-            print("❌ No extracted papers found")
-            print(f"📁 Directory: {extracted_dir}")
-            return []
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=1, min=4, max=10),
+        retry=retry_if_exception_type(Exception)
+    )
+    def section_paper(self, text: str) -> Dict[str, str]:
+        """
+        Use Gemini to semantically section the paper.
         
-        files = list(extracted_dir.glob("*_extracted.json"))
-        if not files:
-            print("❌ No extracted JSON files found")
-            print("💡 Run text extraction first: python -m src.text_extraction")
-            return []
+        Args:
+            text: Normalized paper text
+            
+        Returns:
+            Dictionary mapping section names to content
+        """
+        logger.info("Performing semantic sectioning")
         
-        print(f"📂 Found {len(files)} extracted papers")
+        if not text or len(text.strip()) < 100:
+            logger.warning("Text too short for sectioning")
+            return {section: "" for section in SECTION_ONTOLOGY}
         
-        papers = []
-        for file_path in files:
+        # Check token count and truncate if needed
+        token_count = count_tokens(text)
+        logger.debug(f"Token count: {token_count}")
+        
+        if token_count > 28000:
+            logger.warning(f"Text too long ({token_count} tokens), truncating")
+            text = text[:100000]  # Rough truncation
+        
+        # Prepare prompt
+        sections_str = ", ".join(SECTION_ONTOLOGY)
+        prompt = SECTIONING_PROMPT.format(sections=sections_str, text=text)
+        
+        # Try different models if one fails
+        models_to_try = [self.model] + self.model_fallbacks
+        
+        for model_name in models_to_try:
             try:
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
+                logger.debug(f"Trying model: {model_name}")
                 
-                # Basic validation
-                if not data or 'total_words' not in data or data['total_words'] < 10:
-                    print(f"⚠️  Skipping {file_path.name}: insufficient text")
+                # NEW: Use the new API format
+                response = self.client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        temperature=0.1,
+                        max_output_tokens=8192,
+                    )
+                )
+                
+                if not response.text:
+                    logger.warning(f"Empty response from {model_name}")
                     continue
                 
-                papers.append(data)
-                print(f"✅ Loaded: {data.get('file_name', 'Unknown')}")
+                # Parse response
+                sections = safe_json_loads(response.text)
+                
+                # Validate sections
+                for section in SECTION_ONTOLOGY:
+                    if section not in sections:
+                        sections[section] = ""
+                
+                non_empty = len([v for v in sections.values() if v])
+                logger.success(f"Sectioned paper into {non_empty} non-empty sections using {model_name}")
+                return sections
                 
             except Exception as e:
-                print(f"❌ Error loading {file_path.name}: {e}")
+                logger.debug(f"Model {model_name} failed: {e}")
+                continue
         
-        return papers
+        # If all models fail, return empty sections
+        logger.error("All models failed for sectioning")
+        return {section: "" for section in SECTION_ONTOLOGY}
     
-    def extract_keywords(self, text, n_keywords=15):
-        """Extract keywords from text using TF-IDF-like approach"""
-        if not text or len(text) < 100:
-            return []
+    @retry(
+        stop=stop_after_attempt(2),
+        wait=wait_exponential(multiplier=1, min=2, max=5)
+    )
+    def extract_insights(self, sections: Dict[str, str]) -> Dict[str, Any]:
+        """
+        Extract key insights from paper sections.
         
-        # Tokenize and clean
-        words = nltk.word_tokenize(text.lower())
-        words = [w for w in words if w.isalnum() and len(w) > 2 and w not in self.stop_words]
-        
-        # Count frequencies
-        word_freq = Counter(words)
-        
-        # Get most common words
-        common_words = word_freq.most_common(n_keywords * 2)  # Get more for filtering
-        
-        # Filter out overly common academic words
-        filtered_keywords = []
-        academic_common = {'analysis', 'model', 'system', 'data', 'problem', 'solution',
-                          'algorithm', 'technique', 'framework', 'process', 'approach'}
-        
-        for word, count in common_words:
-            if word not in academic_common and len(word) > 3:
-                filtered_keywords.append(word)
-            if len(filtered_keywords) >= n_keywords:
-                break
-        
-        return filtered_keywords
-    
-    def extract_key_findings(self, text):
-        """Extract potential key findings from text"""
-        if not text:
-            return []
-        
-        # Look for sentences that might contain findings
-        sentences = nltk.sent_tokenize(text)
-        
-        key_findings = []
-        finding_indicators = ['show that', 'demonstrate that', 'find that', 'conclude that',
-                            'results indicate', 'evidence suggests', 'our analysis shows',
-                            'we found', 'we demonstrate', 'significant', 'improved',
-                            'increased', 'decreased', 'better than', 'outperforms']
-        
-        for sentence in sentences:
-            sentence_lower = sentence.lower()
-            # Check if sentence contains finding indicators
-            if any(indicator in sentence_lower for indicator in finding_indicators):
-                # Clean and shorten if too long
-                if len(sentence) > 200:
-                    sentence = sentence[:200] + "..."
-                key_findings.append(sentence.strip())
-        
-        return key_findings[:5]  # Return top 5
-    
-    def calculate_similarity(self, papers):
-        """Calculate similarity between papers"""
-        if len(papers) < 2:
-            return {}
-        
-        # Extract text for each paper
-        paper_texts = []
-        for paper in papers:
-            # Combine sections if available
-            if 'sections' in paper and paper['sections']:
-                combined = ' '.join([str(v) for v in paper['sections'].values() if v])
-            else:
-                # Fallback to page text
-                combined = ' '.join([page.get('text', '') for page in paper.get('pages', [])])
-            paper_texts.append(combined[:5000])  # Limit text length
-        
-        # Calculate TF-IDF and cosine similarity
-        try:
-            vectorizer = TfidfVectorizer(stop_words='english', max_features=1000)
-            tfidf_matrix = vectorizer.fit_transform(paper_texts)
+        Args:
+            sections: Sectioned paper content
             
-            # Calculate cosine similarity
-            similarity_matrix = cosine_similarity(tfidf_matrix)
-            
-            # Prepare results
-            results = []
-            for i in range(len(papers)):
-                for j in range(i + 1, len(papers)):
-                    similarity = similarity_matrix[i, j]
-                    results.append({
-                        'paper1': papers[i].get('file_name', f'Paper_{i+1}'),
-                        'paper2': papers[j].get('file_name', f'Paper_{j+1}'),
-                        'similarity': round(float(similarity), 3)
-                    })
-            
-            return {'pairwise_similarities': results}
-            
-        except Exception as e:
-            print(f"⚠️  Similarity calculation failed: {e}")
-            return {}
-    
-    def analyze_paper(self, paper_data):
-        """Analyze a single paper"""
-        analysis = {
-            'file_name': paper_data.get('file_name', 'Unknown'),
-            'paper_title': Path(paper_data.get('file_name', '')).stem,
-            'extraction_method': paper_data.get('extraction_method', 'unknown'),
-            'total_pages': paper_data.get('total_pages', 0),
-            'total_words': paper_data.get('total_words', 0),
-            'total_chars': paper_data.get('total_chars', 0),
-            'analysis_date': datetime.now().isoformat(),
-            'sections_found': [],
-            'key_findings': [],
-            'methodology_hints': []
-        }
+        Returns:
+            Dictionary with insights
+        """
+        logger.info("Extracting insights from paper")
         
-        # Extract combined text
-        combined_text = ""
+        if not any(sections.values()):
+            logger.warning("No section content to analyze")
+            return self._get_default_insights()
         
-        # Try to get text from sections first
-        if 'sections' in paper_data and paper_data['sections']:
-            sections = paper_data['sections']
-            analysis['sections_found'] = [k for k, v in sections.items() if v and len(str(v).strip()) > 0]
-            
-            # Combine all section text
-            for section_text in sections.values():
-                if section_text:
-                    combined_text += str(section_text) + " "
-            
-            # Look for methodology hints
-            if sections.get('methodology'):
-                methodology_text = sections['methodology'][:1000]
-                analysis['methodology_hints'] = self.extract_methodology_hints(methodology_text)
+        # Prepare sections for prompt
+        sections_summary = {}
+        for key, value in sections.items():
+            if value:
+                if len(value) > 3000:
+                    sections_summary[key] = value[:3000] + "..."
+                else:
+                    sections_summary[key] = value
         
-        # Fallback to page text
-        if not combined_text or len(combined_text) < 100:
-            for page in paper_data.get('pages', []):
-                page_text = page.get('text', '')
-                if page_text:
-                    combined_text += page_text + " "
+        prompt = ANALYSIS_PROMPT.format(sections=json.dumps(sections_summary, indent=2))
         
-        # Extract keywords if we have enough text
-        if len(combined_text) > 100:
-            analysis['keywords'] = self.extract_keywords(combined_text)
-            analysis['key_findings'] = self.extract_key_findings(combined_text)
-            
-            # Calculate readability metrics
-            words = nltk.word_tokenize(combined_text)
-            sentences = nltk.sent_tokenize(combined_text)
-            
-            if sentences and words:
-                analysis['avg_sentence_length'] = round(len(words) / len(sentences), 1)
-                analysis['vocabulary_size'] = len(set(words))
+        models_to_try = [self.model] + self.model_fallbacks
         
-        return analysis
-    
-    def extract_methodology_hints(self, methodology_text):
-        """Extract hints about methodology from text"""
-        if not methodology_text:
-            return []
-        
-        hints = []
-        methodology_indicators = [
-            ('experiment', ['experiment', 'experimental', 'trial']),
-            ('survey', ['survey', 'questionnaire', 'interview']),
-            ('simulation', ['simulation', 'model', 'modeling']),
-            ('case study', ['case study', 'case analysis']),
-            ('statistical', ['statistical', 'regression', 'correlation', 'anova']),
-            ('machine learning', ['neural network', 'deep learning', 'machine learning', 'ai']),
-            ('qualitative', ['qualitative', 'thematic analysis', 'content analysis']),
-            ('quantitative', ['quantitative', 'measurement', 'metric'])
-        ]
-        
-        text_lower = methodology_text.lower()
-        for method_name, indicators in methodology_indicators:
-            if any(indicator in text_lower for indicator in indicators):
-                hints.append(method_name)
-        
-        return hints[:5]
-    
-    def run_complete_analysis(self):
-        """Run analysis on all extracted papers"""
-        print(f"\n{'='*60}")
-        print("🔬 PAPER ANALYSIS STARTING")
-        print(f"{'='*60}")
-        
-        # Load papers
-        papers = self.load_extracted_papers()
-        if not papers:
-            return []
-        
-        print(f"\n📊 Analyzing {len(papers)} papers...")
-        
-        all_analyses = []
-        
-        # Analyze each paper
-        for i, paper in enumerate(papers, 1):
-            print(f"\n📄 Analyzing paper {i}/{len(papers)}: {paper.get('file_name', 'Unknown')}")
-            
-            analysis = self.analyze_paper(paper)
-            all_analyses.append(analysis)
-            
-            # Show quick summary
-            if analysis.get('keywords'):
-                print(f"   🔑 Keywords: {', '.join(analysis['keywords'][:5])}")
-            if analysis.get('key_findings'):
-                print(f"   💡 Findings: {len(analysis['key_findings'])} identified")
-        
-        # Calculate similarities between papers
-        if len(papers) > 1:
-            print(f"\n🔗 Calculating similarities between papers...")
-            similarity_results = self.calculate_similarity(papers)
-            if similarity_results:
-                print(f"   📈 Similarity analysis complete")
-        
-        # Save individual analyses
-        for analysis in all_analyses:
+        for model_name in models_to_try:
             try:
-                # Create safe filename
-                safe_name = re.sub(r'[^\w\s-]', '', analysis['file_name'])
-                safe_name = re.sub(r'\s+', '_', safe_name)
-                output_file = self.analysis_dir / f"{safe_name[:40]}_analysis.json"
+                response = self.client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        temperature=0.1,
+                        max_output_tokens=8192,
+                    )
+                )
                 
-                with open(output_file, 'w', encoding='utf-8') as f:
-                    json.dump(analysis, f, indent=2, ensure_ascii=False)
+                if not response.text:
+                    continue
                 
-                print(f"✅ Saved analysis: {output_file.name}")
+                insights = safe_json_loads(response.text)
+                
+                # Ensure required fields
+                required_fields = ["key_findings", "contributions", "limitations", "future_work"]
+                for field in required_fields:
+                    if field not in insights or not insights[field]:
+                        insights[field] = []
+                
+                logger.success(f"Extracted {len(insights.get('key_findings', []))} key findings")
+                return insights
                 
             except Exception as e:
-                print(f"❌ Error saving analysis: {e}")
+                logger.debug(f"Insight extraction with {model_name} failed: {e}")
+                continue
         
-        # Generate summary report
-        self.generate_summary_report(all_analyses, similarity_results if 'similarity_results' in locals() else {})
-        
-        print(f"\n{'='*60}")
-        print("🎉 ANALYSIS COMPLETE!")
-        print(f"{'='*60}")
-        
-        return all_analyses
+        return self._get_default_insights()
     
-    def generate_summary_report(self, analyses, similarity_results):
-        """Generate a summary report of all analyses"""
+    def _get_default_insights(self) -> Dict[str, Any]:
+        """Return default insights when analysis fails."""
+        return {
+            "key_findings": ["Analysis temporarily unavailable - API issue"],
+            "contributions": [],
+            "limitations": [],
+            "future_work": []
+        }
+    
+    def analyze_paper(self, extracted_json: Path) -> Dict[str, Any]:
+        """
+        Complete analysis pipeline for a single paper.
+        """
+        logger.info(format_progress_message("analyze", f"Analyzing: {extracted_json.name}"))
+        
         try:
-            summary = {
-                'total_papers_analyzed': len(analyses),
-                'analysis_date': datetime.now().isoformat(),
-                'papers': [],
-                'overall_statistics': {
-                    'total_words': sum(a.get('total_words', 0) for a in analyses),
-                    'total_pages': sum(a.get('total_pages', 0) for a in analyses),
-                    'avg_words_per_paper': round(sum(a.get('total_words', 0) for a in analyses) / max(len(analyses), 1), 0)
-                },
-                'similarity_analysis': similarity_results
+            with open(extracted_json, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            normalized_text = data.get("normalized_text", "")
+            if not normalized_text:
+                logger.warning(f"No normalized text found in {extracted_json.name}")
+                return self._create_failed_analysis(data, "No text content")
+            
+            # Perform sectioning
+            sections = self.section_paper(normalized_text)
+            
+            # Extract insights
+            insights = self.extract_insights(sections)
+            
+            analysis = {
+                "pdf_path": data.get("pdf_path"),
+                "pdf_name": data.get("pdf_name"),
+                "file_hash": data.get("file_hash"),
+                "metadata": data.get("metadata", {}),
+                "sections": sections,
+                "insights": insights,
+                "analysis_status": "success",
+                "stats": {
+                    "total_sections": len([v for v in sections.values() if v]),
+                    "key_findings_count": len(insights.get("key_findings", [])),
+                    "text_length": len(normalized_text),
+                    "analysis_timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+                }
             }
             
-            # Add paper summaries
-            for analysis in analyses:
-                paper_summary = {
-                    'file_name': analysis.get('file_name'),
-                    'keywords': analysis.get('keywords', [])[:10],
-                    'key_findings_count': len(analysis.get('key_findings', [])),
-                    'methodology_hints': analysis.get('methodology_hints', []),
-                    'word_count': analysis.get('total_words', 0)
-                }
-                summary['papers'].append(paper_summary)
-            
-            # Find common keywords across papers
-            all_keywords = []
-            for analysis in analyses:
-                all_keywords.extend(analysis.get('keywords', []))
-            
-            keyword_freq = Counter(all_keywords)
-            summary['common_keywords'] = keyword_freq.most_common(10)
-            
-            # Save summary
-            summary_file = self.analysis_dir / "analysis_summary.json"
-            with open(summary_file, 'w', encoding='utf-8') as f:
-                json.dump(summary, f, indent=2, ensure_ascii=False)
-            
-            print(f"\n📊 ANALYSIS SUMMARY:")
-            print(f"   📄 Papers analyzed: {summary['total_papers_analyzed']}")
-            print(f"   📝 Total words: {summary['overall_statistics']['total_words']:,}")
-            print(f"   📑 Total pages: {summary['overall_statistics']['total_pages']}")
-            
-            if summary['common_keywords']:
-                print(f"\n   🔑 Common keywords across papers:")
-                for keyword, freq in summary['common_keywords'][:5]:
-                    print(f"      • {keyword} ({freq} papers)")
-            
-            print(f"\n📁 Results saved in: {self.analysis_dir}")
+            logger.success(f"Analysis complete for {extracted_json.stem}")
+            return analysis
             
         except Exception as e:
-            print(f"❌ Error generating summary: {e}")
-
+            logger.error(f"Failed to analyze {extracted_json.name}: {e}")
+            return self._create_failed_analysis({"pdf_name": extracted_json.name}, str(e))
+    
+    def _create_failed_analysis(self, data: Dict, error_msg: str) -> Dict:
+        """Create a failed analysis entry."""
+        return {
+            "pdf_path": data.get("pdf_path", "Unknown"),
+            "pdf_name": data.get("pdf_name", "Unknown"),
+            "analysis_status": "failed",
+            "error": error_msg,
+            "sections": {},
+            "insights": self._get_default_insights(),
+            "stats": {
+                "total_sections": 0,
+                "key_findings_count": 0,
+                "analysis_timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+            }
+        }
+    
+    def save_analysis(self, analysis: Dict, output_dir: Path) -> Path:
+        """Save analysis to JSON file."""
+        pdf_name = Path(analysis.get("pdf_path", "unknown")).stem
+        safe_name = "".join(c for c in pdf_name if c.isalnum() or c in (' ', '-', '_')).rstrip()
+        out_path = output_dir / f"{safe_name}_analysis.json"
+        
+        with open(out_path, 'w', encoding='utf-8') as f:
+            json.dump(analysis, f, indent=2, ensure_ascii=False)
+        
+        logger.info(f"Saved analysis: {out_path.name}")
+        return out_path
+    
+    def process_all_papers(self, extracted_dir: Path = EXTRACTED_DIR) -> List[Path]:
+        """Process all extracted papers."""
+        json_files = list(extracted_dir.glob("*.json"))
+        
+        if not json_files:
+            logger.warning(f"No extracted text files found in {extracted_dir}")
+            return []
+        
+        logger.info(f"Found {len(json_files)} papers to analyze")
+        analysis_paths = []
+        analyses = []
+        
+        for i, json_path in enumerate(json_files, 1):
+            logger.info(f"Processing paper {i}/{len(json_files)}: {json_path.name}")
+            try:
+                analysis = self.analyze_paper(json_path)
+                out_path = self.save_analysis(analysis, ANALYSIS_DIR)
+                analysis_paths.append(str(out_path))
+                
+                if analysis.get("analysis_status") == "success":
+                    analyses.append(analysis)
+                
+                # Delay to avoid rate limits
+                time.sleep(2)
+                
+            except Exception as e:
+                logger.error(f"Failed to analyze {json_path.name}: {e}")
+        
+        # Perform cross-paper comparison if multiple papers
+        if len(analyses) >= 2:
+            try:
+                topic = "research_topic"
+                comparison = self.compare_papers(analyses, topic)
+                
+                comp_path = ANALYSIS_DIR / "cross_paper_comparison.json"
+                with open(comp_path, 'w', encoding='utf-8') as f:
+                    json.dump(comparison, f, indent=2, ensure_ascii=False)
+                
+                logger.success(f"Saved cross-paper comparison: {comp_path}")
+                
+            except Exception as e:
+                logger.error(f"Cross-paper comparison failed: {e}")
+        
+        return analysis_paths
+    
+    def compare_papers(self, analyses: List[Dict], topic: str) -> Dict[str, Any]:
+        """Compare multiple papers."""
+        logger.info("Performing cross-paper comparison")
+        
+        if len(analyses) < 2:
+            return {"error": "Insufficient papers for comparison", "num_papers": len(analyses)}
+        
+        try:
+            comparison_data = []
+            for analysis in analyses:
+                paper_summary = {
+                    "title": analysis.get("metadata", {}).get("title", "Unknown"),
+                    "key_findings": analysis.get("insights", {}).get("key_findings", [])[:3],
+                    "methodology": analysis.get("sections", {}).get("methodology", "")[:1000],
+                    "conclusion": analysis.get("sections", {}).get("conclusion", "")[:500]
+                }
+                comparison_data.append(paper_summary)
+            
+            prompt = COMPARISON_PROMPT.format(
+                topic=topic,
+                analyses=json.dumps(comparison_data, indent=2)
+            )
+            
+            models_to_try = [self.model] + self.model_fallbacks
+            
+            for model_name in models_to_try:
+                try:
+                    response = self.client.models.generate_content(
+                        model=model_name,
+                        contents=prompt,
+                        config=types.GenerateContentConfig(
+                            temperature=0.1,
+                            max_output_tokens=8192,
+                        )
+                    )
+                    
+                    if response.text:
+                        comparison = safe_json_loads(response.text)
+                        comparison["num_papers"] = len(analyses)
+                        comparison["topic"] = topic
+                        comparison["timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
+                        return comparison
+                        
+                except Exception as e:
+                    logger.debug(f"Comparison with {model_name} failed: {e}")
+                    continue
+            
+            return self._get_default_comparison(len(analyses), topic)
+            
+        except Exception as e:
+            logger.error(f"Comparison failed: {e}")
+            return self._get_default_comparison(len(analyses), topic)
+    
+    def _get_default_comparison(self, num_papers: int, topic: str) -> Dict:
+        """Return default comparison."""
+        return {
+            "common_methodologies": ["Unable to extract methodologies"],
+            "divergent_findings": ["Analysis temporarily unavailable"],
+            "unique_contributions": [],
+            "research_gaps": [],
+            "summary": f"Cross-paper analysis for {num_papers} papers on '{topic}' is temporarily unavailable.",
+            "num_papers": num_papers,
+            "topic": topic,
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+        }
 
 def main():
-    """Main entry point for paper analyzer"""
-    print("\n" + "="*60)
-    print("           PAPER ANALYZER")
-    print("           Milestone 2: Part 2")
-    print("="*60)
+    """CLI entry point."""
+    import argparse
     
-    analyzer = PaperAnalyzer()
+    parser = argparse.ArgumentParser(description="Analyze extracted research papers")
+    parser.add_argument("json_path", nargs="?", help="Path to specific extracted JSON file")
+    parser.add_argument("--dir", help="Directory with extracted JSON files")
+    parser.add_argument("--topic", help="Research topic for comparison")
     
-    # Check if we have extracted papers
-    extracted_dir = Config.EXTRACTED_TEXT_DIR
-    if not extracted_dir.exists() or not list(extracted_dir.glob("*_extracted.json")):
-        print("❌ No extracted papers found")
-        print("\n💡 First run text extraction:")
-        print("   python -m src.text_extraction")
-        print("\n   Or run complete pipeline:")
-        print("   python -m src.pipeline")
-        return
+    args = parser.parse_args()
     
-    # Run analysis
-    results = analyzer.run_complete_analysis()
+    try:
+        analyzer = PaperAnalyzer()
+    except Exception as e:
+        logger.error(f"Failed to initialize analyzer: {e}")
+        sys.exit(1)
     
-    if results:
-        print(f"\n📋 Sample from first paper analysis:")
-        if results[0].get('keywords'):
-            print(f"   🔑 Keywords: {', '.join(results[0]['keywords'][:5])}")
-        if results[0].get('key_findings'):
-            print(f"   💡 Sample finding: {results[0]['key_findings'][0][:100]}...")
-        
-        print(f"\n🎯 MILESTONE 2 PART 2 COMPLETE!")
-        print(f"\n📁 Analysis saved in: {analyzer.analysis_dir}")
-        print(f"\n📋 Next Steps (Milestone 3):")
-        print("   • Generate review draft: python -m src.draft_generator")
-        print("   • Or run complete pipeline: python -m src.pipeline")
-    else:
-        print("❌ No papers were analyzed")
-    
-    print("\n" + "="*60)
-
+    try:
+        if args.json_path:
+            json_path = Path(args.json_path)
+            if not json_path.exists():
+                logger.error(f"File not found: {json_path}")
+                sys.exit(1)
+            
+            analysis = analyzer.analyze_paper(json_path)
+            out_path = analyzer.save_analysis(analysis, ANALYSIS_DIR)
+            print(f"\n✅ Analysis saved to: {out_path}")
+            
+        else:
+            input_dir = Path(args.dir) if args.dir else EXTRACTED_DIR
+            analysis_paths = analyzer.process_all_papers(input_dir)
+            
+            print("\n" + "="*50)
+            print(f"📊 Analysis Results")
+            print("="*50)
+            print(f"Total papers processed: {len(analysis_paths)}")
+            for path in analysis_paths:
+                print(f"  ✅ {Path(path).name}")
+            print("="*50)
+            
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

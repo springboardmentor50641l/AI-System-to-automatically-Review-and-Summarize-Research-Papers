@@ -1,274 +1,135 @@
 """
-utils.py - Utility functions for the Research Paper Reviewer
+Utility functions for the Automated Research Review System.
 """
 
-import os
-import re
 import json
-import requests
-from datetime import datetime
+import hashlib
 from pathlib import Path
-import time
+from datetime import datetime
+from typing import Dict, Any, Optional
+from loguru import logger
+import tiktoken
 
-try:
-    from src.config import Config
-except ImportError:
-    import sys
-    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    from config import Config
+# FIX: Import from config properly
+from config import LOGS_DIR, LOG_LEVEL
 
-
-def create_filename(title):
-    """Create a safe filename from title"""
-    if not title:
-        return f"paper_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+def setup_logging():
+    """Configure logging for the application."""
     
-    # Clean the title
-    clean = re.sub(r'[^\w\s-]', '', str(title))
-    clean = re.sub(r'\s+', '_', clean)
-    clean = clean.strip('_')
+    # Remove default handler
+    logger.remove()
     
-    # Shorten if too long
-    if len(clean) > 50:
-        clean = clean[:50]
+    # Add console handler
+    logger.add(
+        sink=lambda msg: print(msg),
+        level=LOG_LEVEL,
+        format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
+    )
     
-    # Add date
-    timestamp = datetime.now().strftime("%Y%m%d")
-    return f"{clean}_{timestamp}.pdf"
-
-
-def download_pdf_file(pdf_url, save_path):
-    """
-    Download a PDF file with improved error handling and retries
-    Returns: (success, file_size, error_message)
-    """
-    max_retries = 2
-    retry_delay = 2
+    # Add file handler
+    log_file = LOGS_DIR / f"app_{datetime.now().strftime('%Y%m%d')}.log"
+    logger.add(
+        sink=str(log_file),
+        level=LOG_LEVEL,
+        format="{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name}:{function}:{line} - {message}",
+        rotation="1 day",
+        retention="30 days",
+        compression="zip"
+    )
     
-    for attempt in range(max_retries):
-        try:
-            if not pdf_url or not isinstance(pdf_url, str):
-                return False, 0, "Invalid URL"
-            
-            if attempt > 0:
-                print(f"    🔄 Retry attempt {attempt + 1}...")
-                time.sleep(retry_delay * attempt)
-            
-            # Enhanced headers to mimic browser
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.5',
-                'Accept-Encoding': 'gzip, deflate',
-                'Connection': 'keep-alive',
-                'Upgrade-Insecure-Requests': '1',
-                'Cache-Control': 'max-age=0'
-            }
-            
-            # Add referer on retry
-            if attempt == 1:
-                headers['Referer'] = 'https://www.semanticscholar.org/'
-            
-            print(f"    📥 Downloading from: {pdf_url[:80]}...")
-            
-            # Download with timeout
-            response = requests.get(
-                pdf_url, 
-                headers=headers, 
-                timeout=Config.DOWNLOAD_TIMEOUT, 
-                stream=True,
-                allow_redirects=True
-            )
-            
-            # Check response
-            if response.status_code != 200:
-                error_msg = f"HTTP {response.status_code}"
-                if response.status_code == 403:
-                    error_msg += " (Forbidden - may need different approach)"
-                elif response.status_code == 404:
-                    error_msg += " (Not Found)"
-                elif response.status_code == 429:
-                    error_msg += " (Rate Limited)"
-                
-                print(f"    ⚠️ {error_msg}")
-                
-                if response.status_code == 429 and attempt < max_retries - 1:
-                    continue  # Retry on rate limit
-                return False, 0, error_msg
-            
-            # Check content type
-            content_type = response.headers.get('content-type', '').lower()
-            content_length = response.headers.get('content-length')
-            
-            # Validate it's a PDF
-            is_pdf = False
-            if 'pdf' in content_type:
-                is_pdf = True
-            elif 'application/octet-stream' in content_type:
-                # Could be PDF, check first bytes
-                first_bytes = response.content[:5] if len(response.content) >= 5 else b''
-                if first_bytes == b'%PDF-':
-                    is_pdf = True
-            
-            if not is_pdf:
-                # Check if it's HTML (redirect page)
-                if 'text/html' in content_type:
-                    return False, 0, "URL redirects to HTML page (not direct PDF)"
-                return False, 0, f"Not a PDF file: {content_type}"
-            
-            # Save file
-            save_path = Path(save_path)
-            save_path.parent.mkdir(parents=True, exist_ok=True)
-            
-            total_size = 0
-            with open(save_path, 'wb') as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    if chunk:
-                        f.write(chunk)
-                        total_size += len(chunk)
-            
-            # Verify file
-            if save_path.exists() and save_path.stat().st_size > 1024:  # At least 1KB
-                file_size = save_path.stat().st_size
-                
-                # Double check it's a PDF
-                with open(save_path, 'rb') as f:
-                    first_bytes = f.read(5)
-                    if first_bytes == b'%PDF-':
-                        print(f"    ✅ Downloaded {file_size:,} bytes (verified PDF)")
-                        return True, file_size, "Success"
-                    else:
-                        save_path.unlink()
-                        return False, 0, "File is not a valid PDF"
-            else:
-                if save_path.exists():
-                    save_path.unlink()
-                return False, 0, "File too small or empty"
-                
-        except requests.exceptions.Timeout:
-            print(f"    ⏰ Timeout (attempt {attempt + 1})")
-            if attempt < max_retries - 1:
-                continue
-            return False, 0, "Timeout"
-            
-        except requests.exceptions.ConnectionError:
-            print(f"    🔌 Connection error (attempt {attempt + 1})")
-            if attempt < max_retries - 1:
-                continue
-            return False, 0, "Connection error"
-            
-        except requests.exceptions.TooManyRedirects:
-            return False, 0, "Too many redirects"
-            
-        except Exception as e:
-            print(f"    ❌ Error: {str(e)[:100]}")
-            if attempt < max_retries - 1:
-                continue
-            return False, 0, str(e)
-    
-    return False, 0, "All download attempts failed"
+    return logger
 
-
-def save_metadata(papers):
-    """Save paper metadata to JSON file"""
+def count_tokens(text: str, model: str = "gpt-3.5-turbo") -> int:
+    """Count the number of tokens in a text string."""
     try:
-        metadata_file = Config.METADATA_DIR / "papers_metadata.json"
-        metadata_file.parent.mkdir(parents=True, exist_ok=True)
+        encoding = tiktoken.encoding_for_model(model)
+        return len(encoding.encode(text))
+    except Exception:
+        # Fallback: rough estimate (4 chars per token)
+        return len(text) // 4
+
+def chunk_text(text: str, max_tokens: int = 30000) -> list:
+    """Split text into chunks of approximately max_tokens."""
+    chunks = []
+    current_chunk = []
+    current_tokens = 0
+    
+    # Split by paragraphs to maintain coherence
+    paragraphs = text.split('\n\n')
+    
+    for para in paragraphs:
+        para_tokens = count_tokens(para)
         
-        with open(metadata_file, 'w', encoding='utf-8') as f:
-            json.dump(papers, f, indent=2, ensure_ascii=False)
-        
-        print(f"✅ Metadata saved: {metadata_file.name}")
-        return True, str(metadata_file)
-        
-    except Exception as e:
-        print(f"❌ Error saving metadata: {e}")
-        return False, str(e)
+        if current_tokens + para_tokens > max_tokens and current_chunk:
+            # Save current chunk
+            chunks.append('\n\n'.join(current_chunk))
+            current_chunk = [para]
+            current_tokens = para_tokens
+        else:
+            current_chunk.append(para)
+            current_tokens += para_tokens
+    
+    # Add last chunk
+    if current_chunk:
+        chunks.append('\n\n'.join(current_chunk))
+    
+    return chunks
 
+def safe_json_loads(json_str: str) -> Dict[str, Any]:
+    """Safely load JSON string with error handling."""
+    try:
+        return json.loads(json_str)
+    except json.JSONDecodeError as e:
+        logger.error(f"Failed to parse JSON: {e}")
+        # Try to extract JSON from markdown code blocks
+        import re
+        json_pattern = r'```(?:json)?\s*([\s\S]*?)\s*```'
+        matches = re.findall(json_pattern, json_str)
+        if matches:
+            try:
+                return json.loads(matches[0])
+            except:
+                pass
+        return {}
 
-def print_paper_details(paper, index):
-    """Print formatted paper information"""
-    print(f"\n{'='*60}")
-    print(f"📄 PAPER {index}")
-    print(f"{'='*60}")
-    
-    # Title
-    title = paper.get('title', 'Unknown Title')
-    if len(title) > 70:
-        title = title[:70] + "..."
-    print(f"📝 Title: {title}")
-    
-    # Authors
-    authors = paper.get('authors', [])
-    if authors:
-        authors_str = ', '.join(authors[:3])
-        if len(authors) > 3:
-            authors_str += f" and {len(authors) - 3} more"
-        print(f"👥 Authors: {authors_str}")
-    
-    # Year and citations
-    year = paper.get('year', 'Unknown')
-    citations = paper.get('citation_count', 0)
-    print(f"📅 Year: {year} | 📈 Citations: {citations}")
-    
-    # Venue
-    venue = paper.get('venue', '')
-    if venue:
-        print(f"🏛️  Venue: {venue[:50]}")
-    
-    # Abstract preview
-    abstract = paper.get('abstract', '')
-    if abstract and len(abstract) > 10:
-        print(f"\n📋 Abstract Preview:")
-        print(f"   {abstract[:150]}..." if len(abstract) > 150 else f"   {abstract}")
-    
-    # PDF status
-    if paper.get('pdf_downloaded'):
-        print(f"\n📄 PDF Status: ✅ Downloaded")
-        if paper.get('file_path'):
-            file_path = Path(paper['file_path'])
-            if file_path.exists():
-                size = file_path.stat().st_size
-                if size > 1024 * 1024:
-                    size_str = f"{size/(1024*1024):.2f} MB"
-                else:
-                    size_str = f"{size/1024:.1f} KB"
-                print(f"   📏 Size: {size_str}")
-                print(f"   📍 Location: {file_path.name}")
-    else:
-        print(f"\n📄 PDF Status: ❌ Not downloaded")
-        error = paper.get('download_error', 'Unknown error')
-        print(f"   ⚠️  Reason: {error}")
-    
-    print(f"{'='*60}")
+def generate_file_hash(file_path: Path) -> str:
+    """Generate SHA-256 hash of a file."""
+    sha256_hash = hashlib.sha256()
+    with open(file_path, "rb") as f:
+        for byte_block in iter(lambda: f.read(4096), b""):
+            sha256_hash.update(byte_block)
+    return sha256_hash.hexdigest()
 
+def sanitize_filename(filename: str) -> str:
+    """Sanitize filename by removing invalid characters."""
+    import re
+    # Remove invalid characters
+    filename = re.sub(r'[<>:"/\\|?*]', '_', filename)
+    # Limit length
+    if len(filename) > 200:
+        name, ext = filename.rsplit('.', 1) if '.' in filename else (filename, '')
+        filename = name[:195] + '...' + ('.' + ext if ext else '')
+    return filename
 
-def clean_text_for_display(text, max_length=200):
-    """Clean and truncate text for display"""
-    if not text:
-        return ""
+def format_progress_message(step: str, status: str, details: str = "") -> str:
+    """Format progress messages for UI display."""
+    icons = {
+        "start": "🚀",
+        "search": "🔍",
+        "download": "📥",
+        "extract": "📄",
+        "analyze": "🔬",
+        "draft": "✍️",
+        "complete": "✅",
+        "error": "❌",
+        "warning": "⚠️"
+    }
     
-    # Remove excessive whitespace
-    text = re.sub(r'\s+', ' ', text)
-    text = text.strip()
+    icon = icons.get(step.lower(), "•")
+    timestamp = datetime.now().strftime("%H:%M:%S")
     
-    # Truncate if too long
-    if len(text) > max_length:
-        text = text[:max_length] + "..."
+    message = f"[{timestamp}] {icon} {status}"
+    if details:
+        message += f"\n   📌 {details}"
     
-    return text
-
-
-def format_file_size(bytes_size):
-    """Format file size in human-readable format"""
-    if bytes_size < 1024:
-        return f"{bytes_size} bytes"
-    elif bytes_size < 1024 * 1024:
-        return f"{bytes_size/1024:.1f} KB"
-    else:
-        return f"{bytes_size/(1024*1024):.2f} MB"
-
-
-if __name__ == "__main__":
-    print("✅ Utils module loaded successfully")
-    print(f"Download timeout: {Config.DOWNLOAD_TIMEOUT} seconds")
+    return message

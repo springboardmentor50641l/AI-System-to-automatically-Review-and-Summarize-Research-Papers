@@ -1,27 +1,33 @@
-
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-
 # Virtual Environment
 venv/
 env/
 ENV/
 
-# IDE
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Environment variables
+.env
+
+# Data directories
+data/
+logs/
+*.log
+
+# IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# OS
+# OS files
 .DS_Store
 Thumbs.db
 
-# API Keys
-.env
-secrets.json
+# API keys
+*.key
+*.pem
