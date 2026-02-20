@@ -1,0 +1,41 @@
+{
+  "pdf_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\Detecting drifts in data streams using Kullback-Leibler (KL) divergence measure for data engineering applications.pdf",
+  "pdf_name": "Detecting drifts in data streams using Kullback-Leibler (KL) divergence measure for data engineering applications.pdf",
+  "file_hash": "5f8f9641efc35aef57f747f8ff1efe0cc570e14a3ae170d47a151c53ffd3d2c7",
+  "metadata": {
+    "title": "",
+    "author": "",
+    "subject": "",
+    "keywords": "",
+    "creator": "LaTeX with hyperref package",
+    "producer": "Acrobat Distiller 22.0 (Windows)",
+    "creation_date": "D:20240815093802Z",
+    "modification_date": "D:20240815094013Z"
+  },
+  "sections": {
+    "abstract": "",
+    "introduction": "",
+    "related_work": "",
+    "methodology": "",
+    "experiments": "",
+    "results": "",
+    "discussion": "",
+    "conclusion": "",
+    "references": ""
+  },
+  "insights": {
+    "key_findings": [
+      "Analysis temporarily unavailable - API issue"
+    ],
+    "contributions": [],
+    "limitations": [],
+    "future_work": []
+  },
+  "analysis_status": "success",
+  "stats": {
+    "total_sections": 0,
+    "key_findings_count": 1,
+    "text_length": 36611,
+    "analysis_timestamp": "2026-02-20 22:39:57"
+  }
+}

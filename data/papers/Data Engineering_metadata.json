@@ -1,0 +1,21 @@
+{
+  "topic": "Data Engineering",
+  "timestamp": "2026-02-20 22:30:02",
+  "total_papers": 1,
+  "papers": [
+    {
+      "title": "Detecting drifts in data streams using Kullback-Leibler (KL) divergence measure for data engineering applications",
+      "abstract": "The exponential growth of data coupled with the widespread application of artificial intelligence(AI) presents organizations with challenges in upholding data accuracy, especially within data engineering functions. While the Extraction, Transformation, and Loading process addresses error-free data ingestion, validating the content within data streams remains a challenge. Prompt detection and remediation of data issues are crucial, especially in automated analytical environments driven by AI. To address these issues, this study focuses on detecting drifts in data distributions and divergence within data fields processed from different sample populations. Using a hypothetical banking scenario, we illustrate the impact of data drift on automated decision-making processes. We propose a scalable method leveraging the Kullback-Leibler (KL) divergence measure, specifically the Population Stability Index (PSI), to detect and quantify data drift. Through comprehensive simulations, we demonstrate the effectiveness of PSI in identifying and mitigating data drift issues. This study contributes to enhancing data engineering functions in organizations by offering a scalable solution for early drift detection in data ingestion pipelines. We discuss related research works, identify gaps, and present the methodology and experiment results, underscoring the importance of robust data governance practices in mitigating risks associated with data drift and improving data observability.",
+      "pdf_url": "https://link.springer.com/content/pdf/10.1007/s42488-024-00119-y.pdf",
+      "url": "https://www.semanticscholar.org/paper/1a350c69383ea5f4dacba6021c2cee331dfe337b",
+      "year": 2024,
+      "authors": [
+        "Jeomoan Francis Kurian",
+        "Mohamed Allali"
+      ],
+      "venue": "Journal of Data, Information and Management",
+      "citation_count": 23,
+      "local_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\Detecting drifts in data streams using Kullback-Leibler (KL) divergence measure for data engineering applications.pdf"
+    }
+  ]
+}

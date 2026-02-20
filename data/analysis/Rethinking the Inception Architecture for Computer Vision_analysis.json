@@ -1,0 +1,41 @@
+{
+  "pdf_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\Rethinking the Inception Architecture for Computer Vision.pdf",
+  "pdf_name": "Rethinking the Inception Architecture for Computer Vision.pdf",
+  "file_hash": "80e30acdfa89bcb41a00c8b221cb9a1dc44256897e75af8762f171ec9dc77b85",
+  "metadata": {
+    "title": "",
+    "author": "",
+    "subject": "",
+    "keywords": "",
+    "creator": "LaTeX with hyperref package",
+    "producer": "pdfTeX-1.40.12",
+    "creation_date": "D:20151214012340Z",
+    "modification_date": "D:20151214012340Z"
+  },
+  "sections": {
+    "abstract": "",
+    "introduction": "",
+    "related_work": "",
+    "methodology": "",
+    "experiments": "",
+    "results": "",
+    "discussion": "",
+    "conclusion": "",
+    "references": ""
+  },
+  "insights": {
+    "key_findings": [
+      "Analysis temporarily unavailable - API issue"
+    ],
+    "contributions": [],
+    "limitations": [],
+    "future_work": []
+  },
+  "analysis_status": "success",
+  "stats": {
+    "total_sections": 0,
+    "key_findings_count": 1,
+    "text_length": 41107,
+    "analysis_timestamp": "2026-02-20 22:40:40"
+  }
+}

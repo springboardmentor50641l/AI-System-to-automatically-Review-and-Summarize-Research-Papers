@@ -1,0 +1,41 @@
+{
+  "pdf_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\A Survey on Bias and Fairness in Machine Learning.pdf",
+  "pdf_name": "A Survey on Bias and Fairness in Machine Learning.pdf",
+  "file_hash": "fe97bf537ccab8ecc907d16cde6c8b7a385f41a9eeb8020684f95750e179193f",
+  "metadata": {
+    "title": "A Survey on Bias and Fairness in Machine Learning",
+    "author": "Ninareh Mehrabi, Fred Morstatter, Nripsuta Saxena, Kristina Lerman, and Aram Galstyan, USC-ISI",
+    "subject": "-  Computing methodologies  ->  Artificial intelligence; Philosophical/theoretical foundations of artificial intelligence; ",
+    "keywords": "Fairness and Bias in Artificial Intelligence, Machine Learning, Deep Learning, Natural Language Processing, Representation Learning",
+    "creator": "LaTeX with acmart 2018/08/12 v1.55 Typesetting articles for the Association for Computing Machinery and hyperref 2020-05-15 v7.00e Hypertext links for LaTeX",
+    "producer": "pdfTeX-1.40.21",
+    "creation_date": "D:20220126013410Z",
+    "modification_date": "D:20220126013410Z"
+  },
+  "sections": {
+    "abstract": "",
+    "introduction": "",
+    "related_work": "",
+    "methodology": "",
+    "experiments": "",
+    "results": "",
+    "discussion": "",
+    "conclusion": "",
+    "references": ""
+  },
+  "insights": {
+    "key_findings": [
+      "Analysis temporarily unavailable - API issue"
+    ],
+    "contributions": [],
+    "limitations": [],
+    "future_work": []
+  },
+  "analysis_status": "success",
+  "stats": {
+    "total_sections": 0,
+    "key_findings_count": 1,
+    "text_length": 129168,
+    "analysis_timestamp": "2026-02-20 22:38:36"
+  }
+}
