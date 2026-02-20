@@ -1,0 +1,7 @@
+langgraph 
+pymupdf 
+python-dotenv 
+google-genai
+gradio
+streamlit
+altair
