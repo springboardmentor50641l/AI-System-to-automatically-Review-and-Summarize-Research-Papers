@@ -40,3 +40,44 @@ The goal is to create a scalable research assistant that helps users quickly und
 ---
 
 ## Project Structure
+
+Ai-Research-Reviewer/
+│
+├── Documents/ # Generated outputs and reports
+├── data/ # Cached papers and intermediate data
+├── modules/
+│ ├── paper_search.py # Fetch papers from Semantic Scholar
+│ ├── pdf_downloader.py # Download research PDFs
+│ ├── text_extractor.py # Extract and clean text
+│ ├── analyzer.py # Semantic analysis and insights
+│ ├── draft_generator.py # Generate structured reviews
+│ ├── reviewer.py # Review refinement logic
+│
+├── utils/ # Helper utilities
+├── app.py # Gradio interface entry point
+├── config.py # API keys and configuration
+└── requirements.txt # Dependencies
+
+
+---
+
+## Tech Stack
+
+### Core Technologies
+- Python  
+- Gradio  
+- PyMuPDF  
+
+### AI and APIs
+- Semantic Scholar API  
+- Google Gemini API  
+
+---
+
+## Installation Guide
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/Ai-Research-Reviewer.git
+cd Ai-Research-Reviewer
