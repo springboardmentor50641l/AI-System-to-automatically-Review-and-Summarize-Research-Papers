@@ -82,10 +82,8 @@ def format_output(review_text, evaluation, version):
 📊 *Would you like to refine this version?*
 """
 
-
-# -------------------------
 # CUSTOM PASTEL THEME
-# -------------------------
+
 
 custom_css = """
 body {
@@ -137,9 +135,8 @@ h1 {
 
 """
 
-# -------------------------
 # UI
-# -------------------------
+
 
 with gr.Blocks(css=custom_css) as demo:
 

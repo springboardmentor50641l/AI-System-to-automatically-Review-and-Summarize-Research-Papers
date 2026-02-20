@@ -18,13 +18,33 @@ def load_pdf(pdf_path):
     #runtime error
     except Exception as e:
         raise RuntimeError(f"Failed to open PDF: {e}")
-def extract_raw_text(pdf_document):
+def extract_raw_text(pdf_document, page_limit_threshold=30):
+    total_pages = len(pdf_document)
+    print(f"TOTAL PAGES: {total_pages}")
+
+    selected_pages = []
+
+    if total_pages > page_limit_threshold:
+        print("Large paper detected. Strategic sampling enabled.")
+
+        # First 5 pages (abstract + intro)
+        selected_pages.extend(range(0, min(5, total_pages)))
+
+        # Next 5 pages (likely methodology)
+        selected_pages.extend(range(5, min(10, total_pages)))
+
+        # Next 5 pages (likely experiments/results)
+        selected_pages.extend(range(10, min(15, total_pages)))
+
+    else:
+        selected_pages = range(total_pages)
+
     all_pages_text = []
 
-    for page_number in range(len(pdf_document)):
+    for page_number in selected_pages:
         page = pdf_document[page_number]
-
         blocks = page.get_text("blocks")
+
         page_text = " ".join(
             block[4] for block in blocks if block[4].strip()
         )
@@ -32,16 +52,17 @@ def extract_raw_text(pdf_document):
         if page_text.strip():
             all_pages_text.append(page_text)
 
-        print(
-            f"Page {page_number + 1} extracted chars:",
-            len(page_text)
-        )
+        print(f"Page {page_number + 1} extracted chars:", len(page_text))
 
     full_text = "\n".join(all_pages_text)
+
     if not full_text.strip():
         raise ValueError(
-            "PDF text extraction failed. "
-            "Likely scanned or unsupported layout.")
+            "PDF text extraction failed. Likely scanned or unsupported layout."
+        )
+
+    # Remove references if present
+    full_text = re.split(r"\bReferences\b", full_text, flags=re.IGNORECASE)[0]
 
     return full_text
 
@@ -121,7 +142,7 @@ def save_sections(sections: dict, output_path: Path):
     print(f"split text saved successfully to {output_path}")    
 if __name__ == "__main__":
     # Path to sample PDF
-    pdf_path = Path(r"papers/machine learning_260207_085659/machine learning_paper_3.pdf")
+    pdf_path = Path(r"papers\Quantum_Machine_Learning_260218_210359\Quantum_Machine_Learning_paper_1.pdf")
     # Load PDF
     pdf_doc = load_pdf(pdf_path)   
     #raw text
@@ -145,3 +166,4 @@ if __name__ == "__main__":
     #save split text
     split_text_path=Path("text_extraction/output/split_text.json")
     save_sections(section_text,split_text_path)
+

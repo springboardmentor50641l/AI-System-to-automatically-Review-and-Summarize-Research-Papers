@@ -2,10 +2,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
 from datetime import datetime
 from pathlib import Path
-from pipelines.method import generate_methods
 from pipelines.references import format_apa_reference
-from pipelines.result import generate_results
-from pipelines.abstract import generate_abstract
+
 import re
     
 import json
@@ -33,32 +31,54 @@ def load_comparison_result(comparison_id: str) -> dict:
 
 #final draft
 def generate_full_draft(compare_result: dict, metadata_list: list):
-    abstract = generate_abstract(compare_result)
-    methods = generate_methods(compare_result)
-    results = generate_results(compare_result)
+
+    prompt = f"""
+    You are an academic research writer generating a structured literature review draft.
+
+    STRICT RULES:
+    - Maintain formal academic tone.
+    - Do NOT use conversational language.
+    - Do NOT summarize papers individually.
+    - Synthesize findings across studies.
+    - Highlight methodological similarities and contrasts.
+    - Avoid vague phrases such as "many studies suggest".
+    - Do not fabricate citations.
+    - No bullet points.
+    - No commentary outside the required format.
+
+    Length constraint:
+    - 250–400 words total.
+
+    FORMAT:
+
+    ABSTRACT
+    --------
+    Provide a concise overview of the comparative theme and central contributions.
+
+    METHODS
+    -------
+    Compare methodological approaches, datasets, architectures, and evaluation strategies.
+
+    RESULTS
+    -------
+    Synthesize performance trends, strengths, limitations, and emerging patterns.
+
+    Use the following structured comparison data:
+
+    {json.dumps(compare_result)}
+    """
+
+    response = llm.invoke([HumanMessage(content=prompt)])
+    draft_text = response.content.strip()
 
     references = sorted(
         [format_apa_reference(meta) for meta in metadata_list]
     )
 
-    full_text = f"""
-ABSTRACT
---------
-{abstract}
-
-METHODS
--------
-{methods}
-
-RESULTS
--------
-{results}
-
-REFERENCES
-----------
-""" + "\n".join(references)
+    full_text = draft_text + "\n\nREFERENCES\n----------\n" + "\n".join(references)
 
     return full_text
+
 
 def build_final_literature_review(comparison_id, metadata_list, version=1):
     """
@@ -84,8 +104,63 @@ def build_final_literature_review(comparison_id, metadata_list, version=1):
 
     return final_text
 
+def store_review_draft(draft_text: str, comparison_id: str, version: int) -> Path:
 
-    return final_text
+    output_dir = Path("text_extraction/output/review_comparison")
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    draft_path = output_dir / f"final_review_{comparison_id}_v{version}.txt"
+
+    with open(draft_path, "w", encoding="utf-8") as f:
+        f.write(draft_text)
+
+    print(f"[OK] Draft saved to {draft_path}")
+
+    return draft_path
+def generate_single_paper_draft(key_findings: list, metadata: dict):
+    """
+    Generates structured academic review for ONE paper.
+    """
+
+    prompt = f"""
+    You are an academic reviewer writing a structured review of a single research paper.
+
+    STRICT RULES:
+    - Formal academic tone.
+    - Do NOT fabricate content.
+    - Base analysis strictly on provided sections.
+    - No bullet points.
+    - 250–400 words total.
+
+    FORMAT:
+
+    ABSTRACT
+    --------
+    Summarize the core research contribution and objective.
+
+    METHODS
+    -------
+    Describe methodology, datasets, architecture, and experimental setup.
+
+    RESULTS
+    -------
+    Analyze findings, strengths, and potential weaknesses.
+
+    Provide critical but balanced academic insight.
+
+    PAPER CONTENT:
+    {json.dumps(key_findings)}
+    """
+
+    response = llm.invoke([HumanMessage(content=prompt)])
+    draft_text = response.content.strip()
+
+    reference = format_apa_reference(metadata)
+
+    full_text = draft_text + "\n\nREFERENCES\n----------\n" + reference
+    
+    return full_text
+
 if __name__ == "__main__":
 
     # 🔹 Hardcoded comparison_id (from your sample file name)

@@ -12,40 +12,22 @@ from langchain_core.messages import HumanMessage
 
 SECTION_ONTOLOGY = ["abstract","introduction","background","related work","methodology","proposed solution","results","discussion","conclusion"]
 PROMPT = """
-You are given the raw text of a research paper.
+You are given raw text of a research paper.
 
-Task:
-Extract text that belongs to the following sections:
+Extract ONLY the following sections:
 {sections}
 
 Rules:
 
-Identify sections based on explicit headings OR common synonymous academic headings.
-
-Map similar headings to the closest section in the provided list.
-Examples:
-
-"Experimental Setup" → methodology
-
-"Approach" → methodology
-
-"Evaluation" → results
-
-"Findings" → results
-
-"Analysis" → discussion
-
-If no reasonable match exists, return an empty string.
-
-Copy text exactly as it appears.
-
-Do NOT summarize or rewrite.
-
-Output MUST be valid JSON.
-
-Keys MUST exactly match the section names.
-
-Return ONE JSON object only.
+1. Identify sections using explicit headings or common academic synonyms.
+2. Map similar headings to the closest section in the list.
+3. If a section does not exist, return an empty string.
+4. Ignore references, bibliography, appendix, page numbers, and website navigation text.
+5. If a section is extremely long, return only the first 2000 words of that section.
+6. Do NOT summarize. Copy the detected section text as-is.
+7. Output MUST be valid JSON.
+8. Keys MUST exactly match the provided section names.
+9. Return ONLY one JSON object and nothing else.
 
 Paper text:
 {text}

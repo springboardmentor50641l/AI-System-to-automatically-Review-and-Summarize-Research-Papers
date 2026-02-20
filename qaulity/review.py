@@ -108,9 +108,9 @@ def heuristic_quality_score(review_text: str) -> float:
 
     word_count = len(review_text.split())
 
-    if word_count > 800:
+    if word_count >50 :
         score += 3
-    elif word_count > 500:
+    elif word_count > 30:
         score += 2
     else:
         score += 1
