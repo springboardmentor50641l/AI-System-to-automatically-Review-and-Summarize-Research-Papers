@@ -36,13 +36,35 @@ def semantic_scholar_search(query: str, limit: int = 10, api_key: str | None = N
         "fields": DEFAULT_FIELDS,
     }
 
-    resp = requests.get(
-        SEMANTIC_SCHOLAR_SEARCH_URL,
-        params=params,
-        headers=headers,
-        timeout=60
-    )
-    resp.raise_for_status()
+    # perform request with basic retry/backoff on rate limit (HTTP 429)
+    retries = 3
+    backoff = 1.0
+    while True:
+        resp = requests.get(
+            SEMANTIC_SCHOLAR_SEARCH_URL,
+            params=params,
+            headers=headers,
+            timeout=60
+        )
+        if resp.status_code == 429:
+            # rate limited; respect Retry-After header if present
+            retry_after = resp.headers.get("Retry-After")
+            try:
+                wait = float(retry_after) if retry_after is not None else backoff
+            except ValueError:
+                wait = backoff
+            print(f"⚠️  Rate limited by Semantic Scholar API, sleeping {wait}s before retry")
+            time.sleep(wait)
+            retries -= 1
+            if retries <= 0:
+                # give up and raise the error so caller can handle it
+                resp.raise_for_status()
+            backoff *= 2
+            continue
+        # for other statuses raise exception normally
+        resp.raise_for_status()
+        break
+
     data = resp.json()
     return data.get("data", [])
 
@@ -89,10 +111,22 @@ def main():
 
     topic_slug = slugify(topic)
     topic_folder = Path("papers") / topic_slug
+
+    # If the topic folder already exists and contains any files, assume
+    # previous run has already handled this topic. Skip search/download.
+    if topic_folder.exists() and any(topic_folder.iterdir()):
+        print(f"✅ Topic folder '{topic_folder}' already exists, skipping search and download.")
+        return
+
     topic_folder.mkdir(parents=True, exist_ok=True)
 
     print(f"\n🔎 Searching Semantic Scholar for: {topic}")
-    papers = semantic_scholar_search(topic, limit=args.limit, api_key=api_key)
+    try:
+        papers = semantic_scholar_search(topic, limit=args.limit, api_key=api_key)
+    except requests.exceptions.HTTPError as exc:
+        print(f"❌ HTTP error during search: {exc}")
+        print("You may be rate limited or have an invalid API key. Try again later or set SEMANTIC_SCHOLAR_API_KEY.")
+        return
 
     if not papers:
         print("❌ No papers found.")
