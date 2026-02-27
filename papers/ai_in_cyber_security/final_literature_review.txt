@@ -1,0 +1,8 @@
+
+Final Literature Review
+
+The implemented AI-based review system successfully performs
+paper retrieval, section extraction, structured aggregation,
+and cross-paper comparison using a stateful graph architecture.
+
+Search → Extraction → Aggregation → Comparison → Review Generation
