@@ -1,6 +1,8 @@
 import os
 import sys
 from dotenv import load_dotenv
+from langchain_core.messages import HumanMessage
+from graph.llm_config import llm
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 
@@ -8,9 +10,13 @@ from search import search_papers
 from download import select_and_download_pdfs
 from dataset import prepare_dataset
 
+from graph.pipeline import (
+    build_extraction_pipeline,
+    build_review_pipeline
+)
+
 
 def sanitize_topic(topic: str) -> str:
-    """Convert topic into a safe folder name."""
     return topic.lower().replace(" ", "_")
 
 
@@ -19,49 +25,51 @@ def main():
 
     api_key = os.getenv("CORE_API_KEY")
     if not api_key:
-        raise RuntimeError("CORE_API_KEY not found in .env file")
+        raise RuntimeError("CORE_API_KEY not found")
 
     topic = input("Enter research topic: ").strip()
-    if not topic:
-        print("Topic cannot be empty")
-        return
-
     safe_topic = sanitize_topic(topic)
     paper_folder = os.path.join("papers", safe_topic)
 
     print("Searching research papers...")
-    papers = search_papers(topic, api_key, limit=50)
-
-    if not papers:
-        print("The data source is temporarily unable to process broad topics.")
-        print("No papers returned by the API. Try a different topic.")
-        return
+    papers = search_papers(topic, api_key)
 
     print("Downloading PDFs...")
     downloaded_papers, _ = select_and_download_pdfs(
-        papers,
-        required_count=3,
-        folder=paper_folder
+    papers,
+    required_count=3,
+    folder=paper_folder
     )
+
+
+    if not downloaded_papers:
+        print("No PDFs downloaded. Cannot generate review.")
+        return
+
+
+    print("Processing papers...")
+    extraction_pipeline = build_extraction_pipeline()
+
+    for pdf_path in downloaded_papers:
+        extraction_pipeline.invoke({"pdf_path": pdf_path})
 
     print("Preparing dataset...")
-    df = prepare_dataset(
-        downloaded_papers,
-        folder=paper_folder,
-        expected_count=3
-    )
+    df = prepare_dataset(downloaded_papers, folder=paper_folder)
+    df.to_csv("research_dataset.csv", index=False)
 
-    csv_path = "research_dataset.csv"
+    print("Generating literature review...")
+    review_pipeline = build_review_pipeline()
 
-    if os.path.exists(csv_path):
-        df.to_csv(csv_path, mode="a", header=False, index=False)
-    else:
-        df.to_csv(csv_path, index=False)
+    final_state = review_pipeline.invoke({})
+    final_review = final_state.get("final_review", "")
 
-    print("Completed successfully")
-    print(f"Topic: {topic}")
-    print(f"Papers with PDF: {len(downloaded_papers)} / 3")
-    print("See research_dataset.csv for details")
+    review_path = os.path.join(paper_folder, "final_literature_review.txt")
+    with open(review_path, "w", encoding="utf-8") as f:
+        f.write(final_review)
+
+    print("FINAL REVIEW SAVED:", review_path)
+
+
 
 
 if __name__ == "__main__":

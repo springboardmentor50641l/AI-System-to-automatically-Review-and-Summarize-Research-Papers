@@ -1,6 +1,6 @@
 import os
 import requests
-import time
+
 
 def select_and_download_pdfs(papers, required_count=3, folder="papers"):
     os.makedirs(folder, exist_ok=True)
@@ -18,10 +18,17 @@ def select_and_download_pdfs(papers, required_count=3, folder="papers"):
             continue
 
         try:
-            response = requests.get(url, allow_redirects=True, timeout=40)
-            content_type = response.headers.get("Content-Type", "").lower()
+            print(f"Trying to download: {url}")
 
-            if "pdf" not in content_type:
+            response = requests.get(
+                url,
+                headers={"User-Agent": "Mozilla/5.0"},
+                timeout=40,
+                allow_redirects=True
+            )
+
+            if response.status_code != 200:
+                print(f"Failed (status {response.status_code})")
                 failed.append(paper)
                 continue
 
@@ -32,10 +39,11 @@ def select_and_download_pdfs(papers, required_count=3, folder="papers"):
             with open(file_path, "wb") as f:
                 f.write(response.content)
 
-            downloaded.append(paper)
+            downloaded.append(file_path)
             print(f"Downloaded PDF {len(downloaded)}")
 
-        except Exception:
+        except Exception as e:
+            print(f"Download error: {e}")
             failed.append(paper)
 
     return downloaded, failed
