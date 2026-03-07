@@ -1,0 +1,41 @@
+{
+  "pdf_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\Early automated detection system for skin cancer diagnosis using artificial intelligent techniques.pdf",
+  "pdf_name": "Early automated detection system for skin cancer diagnosis using artificial intelligent techniques.pdf",
+  "file_hash": "468c4f713c430abdf29af22dc7934dd2f92f124edb6c361d257d31b7f8b21e3f",
+  "metadata": {
+    "title": "Early automated detection system for skin cancer diagnosis using artificial intelligent techniques",
+    "author": "Nourelhoda M. Mahmoud ",
+    "subject": "Scientific Reports, https://doi.org/10.1038/s41598-024-59783-0",
+    "keywords": "Skin cancer; Artificial intelligent; Artificial neural networks; Support vector machine; Adaptive snake; Region growing",
+    "creator": "Springer",
+    "producer": "Acrobat Distiller 10.1.8 (Windows); modified using iText® 5.3.5 ©2000-2012 1T3XT BVBA (SPRINGER SBM; licensed version)",
+    "creation_date": "D:20240427215810+05'30'",
+    "modification_date": "D:20240428183439+02'00'"
+  },
+  "sections": {
+    "abstract": "",
+    "introduction": "",
+    "related_work": "",
+    "methodology": "",
+    "experiments": "",
+    "results": "",
+    "discussion": "",
+    "conclusion": "",
+    "references": ""
+  },
+  "insights": {
+    "key_findings": [
+      "Analysis temporarily unavailable - API issue"
+    ],
+    "contributions": [],
+    "limitations": [],
+    "future_work": []
+  },
+  "analysis_status": "success",
+  "stats": {
+    "total_sections": 0,
+    "key_findings_count": 1,
+    "text_length": 47568,
+    "analysis_timestamp": "2026-02-21 20:11:49"
+  }
+}

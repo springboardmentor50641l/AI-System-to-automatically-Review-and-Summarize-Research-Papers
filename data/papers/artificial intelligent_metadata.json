@@ -1,0 +1,21 @@
+{
+  "topic": "artificial intelligent",
+  "timestamp": "2026-02-21 20:09:11",
+  "total_papers": 1,
+  "papers": [
+    {
+      "title": "Early automated detection system for skin cancer diagnosis using artificial intelligent techniques",
+      "abstract": "Recently, skin cancer is one of the spread and dangerous cancers around the world. Early detection of skin cancer can reduce mortality. Traditional methods for skin cancer detection are painful, time-consuming, expensive, and may cause the disease to spread out. Dermoscopy is used for noninvasive diagnosis of skin cancer. Artificial Intelligence (AI) plays a vital role in diseases’ diagnosis especially in biomedical engineering field. The automated detection systems based on AI reduce the complications in the traditional methods and can improve skin cancer’s diagnosis rate. In this paper, automated early detection system for skin cancer dermoscopic images using artificial intelligent is presented. Adaptive snake (AS) and region growing (RG) algorithms are used for automated segmentation and compared with each other. The results show that AS is accurate and efficient (accuracy = 96%) more than RG algorithm (accuracy = 90%). Artificial Neural networks (ANN) and support vector machine (SVM) algorithms are used for automated classification compared with each other. The proposed system with ANN algorithm shows high accuracy (94%), precision (96%), specificity (95.83%), sensitivity (recall) (92.30%), and F1-score (0.94). The proposed system is easy to use, time consuming, enables patients to make early detection for skin cancer and has high efficiency.",
+      "pdf_url": "https://www.nature.com/articles/s41598-024-59783-0.pdf",
+      "url": "https://www.semanticscholar.org/paper/841a5c9f78826ca15d51ec4a7b828ba8967afcfe",
+      "year": 2024,
+      "authors": [
+        "Nourelhoda M. Mahmoud",
+        "Ahmed M Soliman"
+      ],
+      "venue": "Scientific Reports",
+      "citation_count": 48,
+      "local_path": "C:\\Users\\ASUS\\Documents\\GitHub\\AI-System-to-automatically-Review-and-Summarize-Research-Papers\\data\\papers\\Early automated detection system for skin cancer diagnosis using artificial intelligent techniques.pdf"
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
-  "common_methodologies": "Information unavailable due to missing paper analysis.",
-  "divergent_findings": "Information unavailable due to missing paper analysis.",
-  "unique_contributions": "Information unavailable due to missing paper analysis.",
-  "research_gaps": "Information unavailable due to missing paper analysis.",
-  "summary": "A comprehensive comparison of the provided research papers on 'research_topic' cannot be generated at this time. The analysis for each paper, including key findings, methodology, and conclusion, is temporarily unavailable due to an API issue. Without this critical information, it is not possible to identify common methodologies, divergent findings, unique contributions, or research gaps across the papers.",
-  "num_papers": 4,
+  "common_methodologies": "Cannot determine common methodologies as the analysis for each paper's methodology is temporarily unavailable.",
+  "divergent_findings": "Cannot identify divergent findings or contradictions as the key findings for each paper are temporarily unavailable.",
+  "unique_contributions": "Cannot determine unique contributions of each paper as their key findings, methodologies, and conclusions are temporarily unavailable.",
+  "research_gaps": "Cannot identify research gaps based on the provided information, as the content and findings of the papers are temporarily unavailable.",
+  "summary": "A comprehensive comparison of these research papers on the topic 'research_topic' cannot be performed at this time. The analysis for key findings, methodology, and conclusion for all papers is temporarily unavailable due to an API issue. Without this crucial information, it is impossible to identify common methodologies, divergent findings, unique contributions, or research gaps across the papers.",
+  "num_papers": 5,
   "topic": "research_topic",
-  "timestamp": "2026-02-20 22:40:47"
+  "timestamp": "2026-02-21 20:12:38"
 }
